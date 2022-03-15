@@ -1,2 +1,2 @@
 cd ./src/client
-godot -e
+..\..\scripts\godot-3.4.exe -e
