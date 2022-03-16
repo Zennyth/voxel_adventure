@@ -88,3 +88,7 @@ script = ExtResource( 10 )
 
 [node name="Water" type="Node" parent="."]
 script = ExtResource( 11 )
+
+[node name="entities" type="YSort" parent="."]
+
+[node name="otherPlayers" type="YSort" parent="entities"]

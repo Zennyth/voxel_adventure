@@ -14,6 +14,10 @@ config/name="client"
 run/main_scene="res://blocky_game/blocky_game.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+server="*res://scenes/singletons/server.tscn"
+
 [physics]
 
 common/enable_pause_aware_picking=true
