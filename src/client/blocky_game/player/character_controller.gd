@@ -14,6 +14,9 @@ var _grounded = false
 var _head = null
 var _box_mover = VoxelBoxMover.new()
 
+# networking
+var player_state
+
 
 func _ready():
 	_box_mover.set_collision_mask(1) # Excludes rails
@@ -21,6 +24,11 @@ func _ready():
 
 
 func _physics_process(delta):
+	movement_process(delta)
+	define_state()
+
+
+func movement_process(delta):
 	var forward = _head.get_transform().basis.z.normalized()
 	forward = Plane(Vector3(0, 1, 0), 0).project(forward)
 	var right = _head.get_transform().basis.x.normalized()
@@ -61,5 +69,10 @@ func _physics_process(delta):
 	assert(delta > 0)
 	_velocity = motion / delta
 
-
-
+func define_state():
+	player_state = {
+		"T": OS.get_system_time_msecs(),
+		"P": global_transform.origin
+	}
+	
+	server.send_player_state(player_state)
