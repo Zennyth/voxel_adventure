@@ -6,22 +6,15 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
+config_version=5
 
 [application]
 
 config/name="client"
-run/main_scene="res://blocky_game/blocky_game.tscn"
+run/main_scene="res://scenes/main/main.tscn"
 config/icon="res://icon.png"
+config/features=PackedStringArray("4.0", "Vulkan Clustered")
 
 [autoload]
 
 server="*res://scenes/singletons/server.tscn"
-
-[physics]
-
-common/enable_pause_aware_picking=true
-
-[rendering]
-
-environment/default_environment="res://default_env.tres"

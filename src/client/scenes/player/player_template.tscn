@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh44xhqf56o25"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_osemp"]
+size = Vector3(0.8, 1.8, 0.8)
+
+[node name="playerTemplate" type="Node3D"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.952941, 1, 0.160784, 1)
+omni_range = 10.0
+omni_attenuation = 2.54
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource( "BoxMesh_osemp" )

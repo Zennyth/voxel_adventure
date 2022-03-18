@@ -1,0 +1,12 @@
+c9154cb0880d17ea1e160c68f3aaad63
+::res://::1647625714
+icon.png::CompressedTexture2D::877880322377219371::1647540152::1647540158::1::::<><>::
+::res://scenes/::1647621875
+::res://scenes/main/::1647625346
+main.gd::GDScript::-1::1647625345::0::1::::<>Node<>::
+main.tscn::PackedScene::155026043096344010::1647625346::0::1::::<><>::res://scenes/main/main.gd
+::res://scenes/player/::1647625762
+player_template.tscn::PackedScene::2939411802725925732::1647622165::0::1::::<><>::
+::res://scenes/singletons/::1647625385
+server.gd::GDScript::-1::1647625385::0::1::::<>Node3D<>::
+server.tscn::PackedScene::7462408395746077564::1647625385::0::1::::<><>::res://scenes/singletons/server.gd

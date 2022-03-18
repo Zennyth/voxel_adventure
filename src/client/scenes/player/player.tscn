@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1bge5pyitujc"]
+
+[ext_resource type="Script" path="res://scenes/player/player_camera.gd" id="1_jcmg8"]
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_xdp00"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_osemp"]
+size = Vector3(0.8, 1.8, 0.8)
+
+[node name="player" type="Node3D"]
+script = ExtResource( "1_xdp00" )
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.952941, 1, 0.160784, 1)
+omni_range = 10.0
+omni_attenuation = 2.54
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource( "BoxMesh_osemp" )
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.705587, 0)
+current = true
+script = ExtResource( "1_jcmg8" )

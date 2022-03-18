@@ -1,0 +1,8 @@
+c9154cb0880d17ea1e160c68f3aaad63
+::res://::1647626576
+icon.png::CompressedTexture2D::9056738802736019478::1647540254::1647540260::1::::<><>::
+::res://scenes/::1647540494
+::res://scenes/main/::1647625428
+server.gd::GDScript::-1::1647625428::0::1::::<>Node<>::
+server.tscn::PackedScene::4409153951637521571::1647625428::0::1::::<><>::res://scenes/main/server.gd<>res://scenes/main/state.gd
+state.gd::GDScript::-1::1647623557::0::1::::<>Node<>::
