@@ -74,3 +74,21 @@ func send_world_state(world_state):
 @rpc(unreliable)
 func receive_world_state(_world_state):
 	pass
+	
+@rpc(any_peer)
+func receive_fireball(direction):
+	print(direction)
+	var player_id = get_tree().multiplayer.get_remote_sender_id()
+	rpc_id(0, "sync_fireball", direction, player_id)
+@rpc
+func sync_fireball(_direction, _player_id):
+	pass
+	
+
+### Map events
+
+func send_chunk(player_id: int, buffer: StreamPeerBuffer, size: int, voxels_position: Vector3i):
+	rpc_id(player_id, "sync_chunk", buffer, size, voxels_position)
+@rpc
+func sync_chunk(_buffer: StreamPeerBuffer, _size: int, _voxels_position: Vector3i):
+	pass

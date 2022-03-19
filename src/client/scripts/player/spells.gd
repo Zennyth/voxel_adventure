@@ -3,6 +3,7 @@ extends Node
 @export
 var entity: NodePath
 var _entity = null
+
 @export
 var spell_list: Array[PackedScene] = []
 

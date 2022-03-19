@@ -18,9 +18,11 @@ script = ExtResource( "2_fgfcn" )
 
 [node name="VoxelTerrain" type="VoxelTerrain" parent="."]
 process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0193325, 0)
 stream = SubResource( "VoxelStreamRegionFiles_ekqiu" )
 generator = ExtResource( "4_my1s0" )
 mesher = ExtResource( "4_6r63b" )
+generate_collisions = false
 block_enter_notification_enabled = true
 run_stream_in_editor = false
 script = ExtResource( "5_3ddrg" )

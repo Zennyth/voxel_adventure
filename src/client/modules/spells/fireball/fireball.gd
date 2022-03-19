@@ -3,7 +3,7 @@ extends RigidDynamicBody3D
 signal exploded
 
 @export
-var init_velocity: float = 25
+var init_velocity: float = 35
 
 var direction: Vector3 = Vector3.UP * 20
 var velocity = Vector3.ZERO

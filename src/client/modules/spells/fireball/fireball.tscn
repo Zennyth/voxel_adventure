@@ -65,6 +65,9 @@ color_ramp = SubResource( "GradientTexture1D_rifyu" )
 [sub_resource type="BoxMesh" id="BoxMesh_gyug8"]
 
 [node name="fireball" type="RigidDynamicBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.21103)
+collision_layer = 2
+collision_mask = 2
 gravity_scale = 0.0
 script = ExtResource( "1_n1uec" )
 
@@ -72,7 +75,6 @@ script = ExtResource( "1_n1uec" )
 shape = SubResource( "SphereShape3D_hscyl" )
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.440639, 0, 2.04954)
 material_override = SubResource( "StandardMaterial3D_0mnek" )
 amount = 80
 local_coords = false

@@ -11,6 +11,9 @@ var head: NodePath
 @export
 var terrain: NodePath
 
+@onready
+var spring_arm: SpringArm3D = $SpringArm3D
+
 var _velocity = Vector3()
 var _grounded = false
 var _head = null
@@ -30,26 +33,14 @@ func _physics_process(delta):
 
 
 func movement_process(delta):
-	var forward = _head.get_transform().basis.z.normalized()
-	forward = Plane(Vector3(0, 1, 0), 0).project(forward)
-	var right = _head.get_transform().basis.x.normalized()
-	var motor = Vector3()
+	var direction := Vector3.ZERO
+	direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
+	direction.z = Input.get_action_strength("back") - Input.get_action_strength("forward")
+	direction = direction.rotated(Vector3.UP, spring_arm.rotation.y).normalized()
 	
-	if Input.is_key_pressed(KEY_UP) or Input.is_key_pressed(KEY_Z) or Input.is_key_pressed(KEY_W):
-		motor -= forward
-	if Input.is_key_pressed(KEY_DOWN) or Input.is_key_pressed(KEY_S):
-		motor += forward
-	if Input.is_key_pressed(KEY_LEFT) or Input.is_key_pressed(KEY_Q) or Input.is_key_pressed(KEY_A):
-		motor -= right
-	if Input.is_key_pressed(KEY_RIGHT) or Input.is_key_pressed(KEY_D):
-		motor += right
-	if Input.is_key_pressed(KEY_F):
-		get_node("spells").cast_fireball(-forward)
-	motor = motor.normalized() * speed
-	
-	_velocity.x = motor.x
-	_velocity.z = motor.z
-	_velocity.y -= gravity * delta
+	_velocity.x = direction.x * speed
+	_velocity.z = direction.z * speed
+	_velocity.y -= gravity * delta 
 	
 	if _grounded and Input.is_key_pressed(KEY_SPACE):
 		_velocity.y = jump_force
@@ -67,9 +58,15 @@ func movement_process(delta):
 		if abs(motion.y) > 0.001:
 			_grounded = false
 		global_translate(motion)
+	
+	if Input.is_key_pressed(KEY_F):
+		get_node("spells").cast_fireball(direction)
+		server.send_fireball(direction)
 
 	assert(delta > 0)
 	_velocity = motion / delta
+	
+	# dqspring_arm.translation = translation
 	
 func define_state():
 	player_state = {

@@ -93,3 +93,10 @@ func update_world_state(world_state):
 #				get_node("entities/otherPlayers/" + str(player)).position = world_state["players"][player]["P"]
 #			else:
 #				spawn_player(player, world_state["players"][player]["P"])
+
+func sync_fireball(direction, player_id):
+	if get_node("entities/otherPlayers").has_node(str(player_id)):
+		get_node("entities/otherPlayers/" + str(player_id)).get_node("spells").cast_fireball(direction)
+
+func sync_chunk(buffer: StreamPeerBuffer, size: int, voxels_position: Vector3i):
+	get_node("VoxelTerrain").sync_chunk(buffer, size, voxels_position)

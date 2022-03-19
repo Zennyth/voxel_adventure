@@ -85,7 +85,6 @@ func return_latency(client_time):
 func send_player_state(player_state):
 	rpc_id(1, "receive_player_state", player_state)
 
-
 # declare this function for the client to know how to call (any_peer, unreliable)
 @rpc(any_peer, unreliable)
 func receive_player_state(_player_state):
@@ -95,3 +94,23 @@ func receive_player_state(_player_state):
 func receive_world_state(world_state):
 	get_node("../main").update_world_state(world_state)
 	# print("world state clock: " + str(world_state["T"]) + ", client clock: " + str(client_clock))
+	
+
+func send_fireball(direction: Vector3):
+	print(direction)
+	rpc_id(1, "receive_fireball", direction)
+@rpc(any_peer)
+func receive_fireball(_direction):
+	pass
+
+@rpc
+func sync_fireball(direction, player_id):
+	get_node("../main").sync_fireball(direction, player_id)
+
+
+
+### Map events
+
+@rpc
+func sync_chunk(buffer: StreamPeerBuffer, size: int, voxels_position: Vector3i):
+	get_node("../main").sync_chunk(buffer, size, voxels_position)
