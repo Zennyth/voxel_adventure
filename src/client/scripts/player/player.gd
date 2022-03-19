@@ -1,0 +1,79 @@
+extends Node3D
+
+@export
+var speed: float = 5.0
+@export
+var gravity: float = 9.8
+@export
+var jump_force: float = 5.0
+@export
+var head: NodePath
+@export
+var terrain: NodePath
+
+var _velocity = Vector3()
+var _grounded = false
+var _head = null
+var _box_mover = VoxelBoxMover.new()
+
+# networking
+var player_state
+
+
+func _ready():
+	_box_mover.set_collision_mask(1) # Excludes rails
+	_head = get_node(head)
+
+func _physics_process(delta):
+	movement_process(delta)
+	define_state()
+
+
+func movement_process(delta):
+	var forward = _head.get_transform().basis.z.normalized()
+	forward = Plane(Vector3(0, 1, 0), 0).project(forward)
+	var right = _head.get_transform().basis.x.normalized()
+	var motor = Vector3()
+	
+	if Input.is_key_pressed(KEY_UP) or Input.is_key_pressed(KEY_Z) or Input.is_key_pressed(KEY_W):
+		motor -= forward
+	if Input.is_key_pressed(KEY_DOWN) or Input.is_key_pressed(KEY_S):
+		motor += forward
+	if Input.is_key_pressed(KEY_LEFT) or Input.is_key_pressed(KEY_Q) or Input.is_key_pressed(KEY_A):
+		motor -= right
+	if Input.is_key_pressed(KEY_RIGHT) or Input.is_key_pressed(KEY_D):
+		motor += right
+	
+	motor = motor.normalized() * speed
+	
+	_velocity.x = motor.x
+	_velocity.z = motor.z
+	_velocity.y -= gravity * delta
+	
+	if _grounded and Input.is_key_pressed(KEY_SPACE):
+		_velocity.y = jump_force
+		_grounded = false
+	
+	var motion = _velocity * delta
+	
+	if has_node(terrain):
+		var aabb = AABB(Vector3(-0.4, -0.9, -0.4), Vector3(0.8, 1.8, 0.8))
+		var terrain_node = get_node(terrain)
+		var prev_motion = motion
+		motion = _box_mover.get_motion(position, motion, aabb, terrain_node)
+		if abs(motion.y) < 0.001 and prev_motion.y < -0.001:
+			_grounded = true
+		if abs(motion.y) > 0.001:
+			_grounded = false
+		global_translate(motion)
+
+	assert(delta > 0)
+	_velocity = motion / delta
+	
+func define_state():
+	player_state = {
+		"T": server.client_clock,
+		"P": position
+	}
+	
+	server.send_player_state(player_state)

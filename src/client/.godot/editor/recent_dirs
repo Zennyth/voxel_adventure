@@ -1,2 +1,6 @@
+res://assets/terrain/blocks
+res://assets/terrain
+res://scripts/singletons
+res://save/terrain
 res://scenes/main
 res://scenes/singletons

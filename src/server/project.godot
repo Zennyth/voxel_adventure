@@ -15,6 +15,10 @@ run/main_scene="res://scenes/main/server.tscn"
 config/icon="res://icon.png"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
 
+[autoload]
+
+random="*res://scripts/singletons/random.gd"
+
 [physics]
 
 common/physics_ticks_per_second=20

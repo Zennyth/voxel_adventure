@@ -1,7 +1,9 @@
-res://scenes/main/main.gd
+res://assets/terrain/blocks/voxel_library.tres
+res://assets/terrain/voxel_mesher.tres
+res://assets/terrain/world_generator.tres
+res://scenes/main/VoxelTerrain.gd
 res://scenes/main/main.tscn
-res://scenes/player/player.gd
 res://scenes/player/player.tscn
-res://scenes/player/player_camera.gd
-res://scenes/singletons/server.gd
 res://scenes/singletons/server.tscn
+res://scripts/terrain/terrain_generator.gd
+res://scripts/terrain/terrain_listener.gd

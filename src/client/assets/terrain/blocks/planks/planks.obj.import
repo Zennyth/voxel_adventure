@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://u1bpiem1s7kc"
+path="res://.godot/imported/planks.obj-7bb325a2b8055aaac1dad10da0b0b919.mesh"
+
+[deps]
+
+files=["res://.godot/imported/planks.obj-7bb325a2b8055aaac1dad10da0b0b919.mesh"]
+
+source_file="res://assets/terrain/blocks/planks/planks.obj"
+dest_files=["res://.godot/imported/planks.obj-7bb325a2b8055aaac1dad10da0b0b919.mesh", "res://.godot/imported/planks.obj-7bb325a2b8055aaac1dad10da0b0b919.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

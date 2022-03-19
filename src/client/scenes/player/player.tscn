@@ -1,13 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1bge5pyitujc"]
+[gd_scene load_steps=4 format=3 uid="uid://dvx21j3lj1bx7"]
 
-[ext_resource type="Script" path="res://scenes/player/player_camera.gd" id="1_jcmg8"]
-[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_xdp00"]
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_xdp00"]
+[ext_resource type="Script" path="res://scripts/player/player_camera.gd" id="2_sjyfj"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_osemp"]
 size = Vector3(0.8, 1.8, 0.8)
 
 [node name="player" type="Node3D"]
 script = ExtResource( "1_xdp00" )
+speed = 6.0
+gravity = 40.0
+jump_force = 10.0
+head = NodePath("Camera3D")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(0.952941, 1, 0.160784, 1)
@@ -20,4 +24,6 @@ mesh = SubResource( "BoxMesh_osemp" )
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.705587, 0)
 current = true
-script = ExtResource( "1_jcmg8" )
+script = ExtResource( "2_sjyfj" )
+
+[node name="VoxelViewer" type="VoxelViewer" parent="."]

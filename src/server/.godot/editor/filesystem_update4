@@ -1,3 +1,6 @@
-res://scenes/main/server.gd
+res://assets/world/blocks/voxel_library.tres
+res://assets/world/heightmap_curve.tres
+res://assets/world/voxel_mesher.tres
 res://scenes/main/server.tscn
-res://scenes/main/state.gd
+res://scenes/player/player.tscn
+res://scripts/world/terrain.gd

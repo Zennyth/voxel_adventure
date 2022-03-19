@@ -1,7 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://chdiyi3p6ylm"]
+[gd_scene load_steps=12 format=3 uid="uid://d2y13cvlqlq16"]
 
-[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_umhtm"]
-[ext_resource type="PackedScene" uid="uid://b1bge5pyitujc" path="res://scenes/player/player.tscn" id="2_tkmtv"]
+[ext_resource type="Script" path="res://scripts/main/main.gd" id="1_umhtm"]
+[ext_resource type="PackedScene" uid="uid://dvx21j3lj1bx7" path="res://scenes/player/player.tscn" id="2_tkmtv"]
+[ext_resource type="VoxelGeneratorScript" uid="uid://ewt0qj8wnhce" path="res://assets/terrain/world_generator.tres" id="3_dd4ir"]
+[ext_resource type="Material" path="res://assets/terrain/blocks/terrain_material.tres" id="4_5kgk7"]
+[ext_resource type="VoxelMesherBlocky" uid="uid://b6eict865kwe4" path="res://assets/terrain/voxel_mesher.tres" id="4_uv825"]
+[ext_resource type="Material" path="res://assets/terrain/blocks/terrain_material_transparent.tres" id="5_3lg35"]
+[ext_resource type="Material" path="res://assets/terrain/blocks/terrain_material_foliage.tres" id="6_cll2m"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0pf2j"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -16,15 +21,35 @@ sky = SubResource( "Sky_o7e76" )
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="VoxelStreamRegionFiles" id="VoxelStreamRegionFiles_e8hl1"]
+directory = "res://save/terrain"
+
 [node name="main" type="Node"]
 script = ExtResource( "1_umhtm" )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( "Environment_pfdmh" )
 
+[node name="VoxelTerrain" type="VoxelTerrain" parent="."]
+stream = SubResource( "VoxelStreamRegionFiles_e8hl1" )
+generator = ExtResource( "3_dd4ir" )
+mesher = ExtResource( "4_uv825" )
+generate_collisions = false
+block_enter_notification_enabled = true
+run_stream_in_editor = false
+material/0 = ExtResource( "4_5kgk7" )
+material/1 = ExtResource( "5_3lg35" )
+material/2 = ExtResource( "6_cll2m" )
+
 [node name="entities" type="Node" parent="."]
 
 [node name="otherPlayers" type="Node" parent="entities"]
 
 [node name="player" parent="." instance=ExtResource( "2_tkmtv" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.856281, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 64, 0)
+gravity = 9.8
+terrain = NodePath("../VoxelTerrain")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.973146, 0.172529, -0.152385, -0.047778, 0.496193, 0.866897, 0.225177, 0.850897, -0.474625, 1.52, 19.7, 14.088)
+shadow_enabled = true

@@ -1,0 +1,6 @@
+[gd_resource type="VoxelGeneratorScript" load_steps=2 format=3 uid="uid://clho6802og8u0"]
+
+[ext_resource type="Script" path="res://scripts/world/world_generator.gd" id="1_moyat"]
+
+[resource]
+script = ExtResource( "1_moyat" )

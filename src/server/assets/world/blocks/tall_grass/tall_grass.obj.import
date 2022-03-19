@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://brtxpsesn4j41"
+path="res://.godot/imported/tall_grass.obj-134734f89ae90c17b3332162b2c534dd.mesh"
+
+[deps]
+
+files=["res://.godot/imported/tall_grass.obj-134734f89ae90c17b3332162b2c534dd.mesh"]
+
+source_file="res://assets/world/blocks/tall_grass/tall_grass.obj"
+dest_files=["res://.godot/imported/tall_grass.obj-134734f89ae90c17b3332162b2c534dd.mesh", "res://.godot/imported/tall_grass.obj-134734f89ae90c17b3332162b2c534dd.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
