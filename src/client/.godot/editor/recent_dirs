@@ -1,5 +1,5 @@
-res://assets/terrain/blocks
 res://assets/terrain
+res://assets/terrain/blocks
 res://scripts/singletons
 res://save/terrain
 res://scenes/main

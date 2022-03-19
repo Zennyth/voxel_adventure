@@ -1,2 +1,3 @@
+ImageTexture
 VoxelGeneratorScript
 GDScript

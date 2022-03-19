@@ -43,7 +43,8 @@ func movement_process(delta):
 		motor -= right
 	if Input.is_key_pressed(KEY_RIGHT) or Input.is_key_pressed(KEY_D):
 		motor += right
-	
+	if Input.is_key_pressed(KEY_F):
+		get_node("spells").cast_fireball(-forward)
 	motor = motor.normalized() * speed
 	
 	_velocity.x = motor.x

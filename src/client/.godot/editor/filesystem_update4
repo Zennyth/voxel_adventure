@@ -1,9 +1,17 @@
+res://assets/terrain/blocks/terrain_material.tres
 res://assets/terrain/blocks/voxel_library.tres
+res://assets/terrain/terrain_material.tres
+res://assets/terrain/terrain_material_foliage.tres
+res://assets/terrain/terrain_material_transparent.tres
 res://assets/terrain/voxel_mesher.tres
 res://assets/terrain/world_generator.tres
+res://modules/spells/fireball/fireball.gd
+res://modules/spells/fireball/fireball.tscn
 res://scenes/main/VoxelTerrain.gd
 res://scenes/main/main.tscn
 res://scenes/player/player.tscn
 res://scenes/singletons/server.tscn
+res://scripts/player/player.gd
+res://scripts/player/spells.gd
 res://scripts/terrain/terrain_generator.gd
 res://scripts/terrain/terrain_listener.gd

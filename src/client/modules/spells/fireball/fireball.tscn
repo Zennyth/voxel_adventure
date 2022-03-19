@@ -1,8 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://c0co7ckct4n2v"]
+[gd_scene load_steps=17 format=3 uid="uid://yrtrholbjjs"]
 
-[ext_resource type="Curve" uid="uid://bch42iwtdxwn7" path="res://scenes/spells/fireball/fireball_cycle.tres" id="1_ixc3e"]
+[ext_resource type="Curve" path="res://modules/spells/fireball/fireball_cycle.tres" id="1_ixc3e"]
+[ext_resource type="Script" path="res://modules/spells/fireball/fireball.gd" id="1_n1uec"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hscyl"]
+radius = 1.361
 
 [sub_resource type="Gradient" id="Gradient_wymuu"]
 
@@ -52,7 +54,7 @@ curve = ExtResource( "1_ixc3e" )
 [sub_resource type="ParticlesMaterial" id="ParticlesMaterial_xai4p"]
 emission_shape = 1
 emission_sphere_radius = 0.8
-gravity = Vector3(10, 0, 0)
+gravity = Vector3(0, 0, 0)
 angular_velocity_max = 15.0
 radial_accel_curve = SubResource( "CurveTexture_ey617" )
 angle_max = 180.0
@@ -63,12 +65,18 @@ color_ramp = SubResource( "GradientTexture1D_rifyu" )
 [sub_resource type="BoxMesh" id="BoxMesh_gyug8"]
 
 [node name="fireball" type="RigidDynamicBody3D"]
+gravity_scale = 0.0
+script = ExtResource( "1_n1uec" )
 
 [node name="collision" type="CollisionShape3D" parent="."]
 shape = SubResource( "SphereShape3D_hscyl" )
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.440639, 0, 2.04954)
 material_override = SubResource( "StandardMaterial3D_0mnek" )
 amount = 80
+local_coords = false
 process_material = SubResource( "ParticlesMaterial_xai4p" )
 draw_pass_1 = SubResource( "BoxMesh_gyug8" )
+
+[node name="Timer" type="Timer" parent="."]

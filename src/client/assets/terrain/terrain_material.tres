@@ -3,4 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://d1xmchlrwv7vp" path="res://assets/terrain/terrain.png" id="1_fhgfh"]
 
 [resource]
+transparency = 1
 albedo_texture = ExtResource( "1_fhgfh" )
+metallic_specular = 0.0

@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvx21j3lj1bx7"]
+[gd_scene load_steps=6 format=3 uid="uid://dvx21j3lj1bx7"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_xdp00"]
 [ext_resource type="Script" path="res://scripts/player/player_camera.gd" id="2_sjyfj"]
+[ext_resource type="Script" path="res://scripts/player/spells.gd" id="3_lmmvh"]
+[ext_resource type="PackedScene" uid="uid://yrtrholbjjs" path="res://modules/spells/fireball/fireball.tscn" id="4_wkfnu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_osemp"]
 size = Vector3(0.8, 1.8, 0.8)
@@ -14,6 +16,7 @@ jump_force = 10.0
 head = NodePath("Camera3D")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
+visible = false
 light_color = Color(0.952941, 1, 0.160784, 1)
 omni_range = 10.0
 omni_attenuation = 2.54
@@ -27,3 +30,8 @@ current = true
 script = ExtResource( "2_sjyfj" )
 
 [node name="VoxelViewer" type="VoxelViewer" parent="."]
+
+[node name="spells" type="Node" parent="."]
+script = ExtResource( "3_lmmvh" )
+entity = NodePath("..")
+spell_list = [ExtResource( "4_wkfnu" )]
