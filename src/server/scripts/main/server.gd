@@ -25,8 +25,8 @@ func _peer_connected(player_id):
 
 func _peer_disconnected(player_id):
 	print("User " + str(player_id) + " is disconnected !")
-	if has_node(str(player_id)):
-		get_node(str(player_id)).queue_free()
+	
+	get_node("players").despawn_player(player_id)
 
 	if player_state_collection.has(player_id):
 		player_state_collection.erase(player_id)
@@ -77,7 +77,6 @@ func receive_world_state(_world_state):
 	
 @rpc(any_peer)
 func receive_fireball(direction):
-	print(direction)
 	var player_id = get_tree().multiplayer.get_remote_sender_id()
 	rpc_id(0, "sync_fireball", direction, player_id)
 @rpc
@@ -88,7 +87,8 @@ func sync_fireball(_direction, _player_id):
 ### Map events
 
 func send_chunk(player_id: int, buffer: StreamPeerBuffer, size: int, voxels_position: Vector3i):
-	rpc_id(player_id, "sync_chunk", buffer, size, voxels_position)
+	if player_state_collection.has(player_id):
+		rpc_id(player_id, "sync_chunk", buffer.data_array, size, voxels_position)
 @rpc
-func sync_chunk(_buffer: StreamPeerBuffer, _size: int, _voxels_position: Vector3i):
+func sync_chunk(_data_array: PackedByteArray, _size: int, _voxels_position: Vector3i):
 	pass

@@ -25,7 +25,7 @@ mesh = SubResource( "CapsuleMesh_60w8j" )
 
 [node name="VoxelViewer" type="VoxelViewer" parent="."]
 view_distance = 256
-requires_data_block_notifications = true
+requires_collisions = false
 
 [node name="spells" type="Node" parent="."]
 script = ExtResource( "3_lmmvh" )

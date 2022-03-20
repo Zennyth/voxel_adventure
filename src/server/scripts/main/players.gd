@@ -7,6 +7,10 @@ func spawn_player(player_id, player_state):
 	new_player.init(player_id, player_state["P"])
 	add_child(new_player)
 
+func despawn_player(player_id):
+	if has_node(str(player_id)):
+		get_node(str(player_id)).queue_free()
+
 func update_player(player_id, player_state):
 	if has_node(str(player_id)):
 		var player = get_node(str(player_id))

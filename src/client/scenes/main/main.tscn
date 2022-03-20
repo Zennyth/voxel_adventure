@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d2y13cvlqlq16"]
+[gd_scene load_steps=13 format=3 uid="uid://s4krvbmdhp5w"]
 
 [ext_resource type="Script" path="res://scripts/main/main.gd" id="1_umhtm"]
 [ext_resource type="PackedScene" uid="uid://dvx21j3lj1bx7" path="res://scenes/player/player.tscn" id="2_tkmtv"]
@@ -37,6 +37,7 @@ stream = SubResource( "VoxelStreamRegionFiles_e8hl1" )
 generator = ExtResource( "3_dd4ir" )
 mesher = ExtResource( "4_uv825" )
 max_view_distance = 256
+generate_collisions = false
 run_stream_in_editor = false
 material/0 = ExtResource( "4_5kgk7" )
 material/1 = ExtResource( "5_3lg35" )

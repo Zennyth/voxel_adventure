@@ -98,5 +98,5 @@ func sync_fireball(direction, player_id):
 	if get_node("entities/otherPlayers").has_node(str(player_id)):
 		get_node("entities/otherPlayers/" + str(player_id)).get_node("spells").cast_fireball(direction)
 
-func sync_chunk(buffer: StreamPeerBuffer, size: int, voxels_position: Vector3i):
-	get_node("VoxelTerrain").sync_chunk(buffer, size, voxels_position)
+func sync_chunk(data_array: PackedByteArray, size: int, voxels_position: Vector3i):
+	get_node("VoxelTerrain").sync_chunk(data_array, size, voxels_position)

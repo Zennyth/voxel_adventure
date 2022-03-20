@@ -6,5 +6,5 @@ res://modules/spells/fireball/fireball.tscn
 res://scenes/main/main.tscn
 res://scenes/player/player.tscn
 res://scenes/player/player_template.tscn
-res://scenes/player/spring_arm.gd
+res://scripts/main/terrain.gd
 res://scripts/player/player.gd

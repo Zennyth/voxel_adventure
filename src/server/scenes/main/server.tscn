@@ -17,7 +17,6 @@ script = ExtResource( "1_jh01i" )
 script = ExtResource( "2_fgfcn" )
 
 [node name="VoxelTerrain" type="VoxelTerrain" parent="."]
-process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0193325, 0)
 stream = SubResource( "VoxelStreamRegionFiles_ekqiu" )
 generator = ExtResource( "4_my1s0" )

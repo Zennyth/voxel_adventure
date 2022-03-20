@@ -112,5 +112,5 @@ func sync_fireball(direction, player_id):
 ### Map events
 
 @rpc
-func sync_chunk(buffer: StreamPeerBuffer, size: int, voxels_position: Vector3i):
-	get_node("../main").sync_chunk(buffer, size, voxels_position)
+func sync_chunk(data_array: PackedByteArray, size: int, voxels_position: Vector3i):
+	get_node("../main").sync_chunk(data_array, size, voxels_position)
