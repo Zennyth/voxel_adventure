@@ -12,7 +12,9 @@ var head: NodePath
 var terrain: NodePath
 
 @onready
-var spring_arm: SpringArm3D = $SpringArm3D
+var _spring_arm: SpringArm3D = $SpringArm3D
+@onready
+var _spells = $spells
 
 var _velocity = Vector3()
 var _grounded = false
@@ -36,7 +38,7 @@ func movement_process(delta):
 	var direction := Vector3.ZERO
 	direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	direction.z = Input.get_action_strength("back") - Input.get_action_strength("forward")
-	direction = direction.rotated(Vector3.UP, spring_arm.rotation.y).normalized()
+	direction = direction.rotated(Vector3.UP, _spring_arm.rotation.y).normalized()
 	
 	_velocity.x = direction.x * speed
 	_velocity.z = direction.z * speed
@@ -60,13 +62,11 @@ func movement_process(delta):
 		global_translate(motion)
 	
 	if Input.is_key_pressed(KEY_F):
-		get_node("spells").cast_fireball(direction)
+		_spells.cast_fireball(direction)
 		server.send_fireball(direction)
 
 	assert(delta > 0)
 	_velocity = motion / delta
-	
-	# dqspring_arm.translation = translation
 	
 func define_state():
 	player_state = {

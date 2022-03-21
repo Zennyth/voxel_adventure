@@ -84,7 +84,6 @@ func return_latency(client_time):
 
 func send_player_state(player_state):
 	rpc_id(1, "receive_player_state", player_state)
-
 # declare this function for the client to know how to call (any_peer, unreliable)
 @rpc(any_peer, unreliable)
 func receive_player_state(_player_state):
@@ -97,7 +96,6 @@ func receive_world_state(world_state):
 	
 
 func send_fireball(direction: Vector3):
-	print(direction)
 	rpc_id(1, "receive_fireball", direction)
 @rpc(any_peer)
 func receive_fireball(_direction):

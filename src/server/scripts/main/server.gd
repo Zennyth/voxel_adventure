@@ -6,6 +6,11 @@ var max_players = 100
 
 var player_state_collection = {}
 
+@onready
+var _players = $players
+@onready
+var _state = $state
+
 func _ready():
 	start_server()
 	
@@ -26,7 +31,7 @@ func _peer_connected(player_id):
 func _peer_disconnected(player_id):
 	print("User " + str(player_id) + " is disconnected !")
 	
-	get_node("players").despawn_player(player_id)
+	_players.despawn_player(player_id)
 
 	if player_state_collection.has(player_id):
 		player_state_collection.erase(player_id)
@@ -62,13 +67,13 @@ func receive_player_state(player_state):
 	else:
 		# new player has connect
 		player_state_collection[player_id] = player_state
-		get_node("players").spawn_player(player_id, player_state)
+		_players.spawn_player(player_id, player_state)
 		
 func send_world_state(world_state):
 	rpc_id(0, "receive_world_state", world_state)
 	
 	for player_id in world_state["players"].keys():
-		get_node("players").update_player(player_id, world_state["players"][player_id])
+		_players.update_player(player_id, world_state["players"][player_id])
 
 # declare this function for the serevr to know how to call (unreliable)
 @rpc(unreliable)

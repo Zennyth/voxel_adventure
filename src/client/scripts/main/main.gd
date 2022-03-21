@@ -1,9 +1,11 @@
 extends Node
 
-#onready var _light = $DirectionalLight
-#onready var _terrain = $VoxelTerrain
-
-var player_template = preload("res://scenes/player/player_template.tscn")
+@onready 
+var _light = $DirectionalLight
+@onready 
+var _terrain = $VoxelTerrain
+@onready
+var _entities = $entities
 
 var last_world_state = 0
 var world_state_buffer = []
@@ -35,14 +37,13 @@ func spawn_player(player_id, spawn_position):
 	if get_tree().multiplayer.get_unique_id() == player_id:
 		pass
 	else:
-		var new_player = player_template.instantiate()
-		new_player.name = str(player_id)
-		new_player.position = spawn_position
-		get_node("entities/otherPlayers").add_child(new_player)
+		_entities._other_players.spawn_other_player(player_id, {
+			"P": spawn_position
+		})
 
 func despawn_player(player_id):
 	await get_tree().create_timer(.2)
-	get_node("entities/otherPlayers" + str(player_id)).queue_free()
+	_entities._other_players.despawn_other_player(player_id)
 	
 func _physics_process(_delta):
 	var render_time = server.client_clock - interpolation_offset
@@ -60,12 +61,12 @@ func _physics_process(_delta):
 				if not world_state_buffer[1]["players"].has(player):
 					continue
 
-				if get_node("entities/otherPlayers").has_node(str(player)):
+				if _entities._other_players.has_other_player(player):
 					#print(world_state_buffer[1]["players"][player]["P"], world_state_buffer[2]["players"][player]["P"], interpolation_factor)
 					var new_position = world_state_buffer[1]["players"][player]["P"].lerp(world_state_buffer[2]["players"][player]["P"], interpolation_factor)
-					get_node("entities/otherPlayers/" + str(player)).position = new_position
+					_entities._other_players.get_other_player(str(player)).position = new_position
 				else:
-					spawn_player(player, world_state_buffer[2]["players"][player]["P"])
+					_entities._other_players.spawn_other_player(player, world_state_buffer[2]["players"][player])
 
 		elif render_time > world_state_buffer[1].T:
 			var extrapolation_factor = float(render_time - world_state_buffer[0]["T"]) / float(world_state_buffer[1]["T"] - world_state_buffer[0]["T"]) - 1.0
@@ -76,27 +77,20 @@ func _physics_process(_delta):
 				if not world_state_buffer[0]["players"].has(player):
 					continue
 
-				if get_node("entities/otherPlayers").has_node(str(player)):
+				if _entities._other_players.has_other_player(player):
 					var position_delta = (world_state_buffer[1]["players"][player]["P"] - world_state_buffer[0]["players"][player]["P"])
 					var new_position = world_state_buffer[1]["players"][player]["P"] + (position_delta * extrapolation_factor)
-					get_node("entities/otherPlayers/" + str(player)).position = new_position
+					_entities._other_players.get_other_player(str(player)).position = new_position
 
 
 func update_world_state(world_state):
 	if world_state["T"] > last_world_state:
 		last_world_state = world_state["T"]
 		world_state_buffer.append(world_state)
-		
-#		world_state["players"].erase(get_tree().multiplayer.get_unique_id())
-#		for player in world_state["players"].keys():
-#			if get_node("entities/otherPlayers").has_node(str(player)):
-#				get_node("entities/otherPlayers/" + str(player)).position = world_state["players"][player]["P"]
-#			else:
-#				spawn_player(player, world_state["players"][player]["P"])
 
 func sync_fireball(direction, player_id):
-	if get_node("entities/otherPlayers").has_node(str(player_id)):
-		get_node("entities/otherPlayers/" + str(player_id)).get_node("spells").cast_fireball(direction)
+	if _entities._other_players.has_other_player(player_id):
+		_entities._other_players.get_other_player(player_id).get_node("spells").cast_fireball(direction)
 
 func sync_chunk(data_array: PackedByteArray, size: int, voxels_position: Vector3i):
-	get_node("VoxelTerrain").sync_chunk(data_array, size, voxels_position)
+	_terrain.sync_chunk(data_array, size, voxels_position)

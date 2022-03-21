@@ -1,6 +1,6 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://byeqlcbyx1otd"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c5a6djjnhd2po"]
 
-[ext_resource type="Texture2D" uid="uid://bmhhvftrjc5m5" path="res://assets/terrain/blocks/terrain.png" id="1"]
+[ext_resource type="Texture2D" path="res://assets/terrain/blocks/terrain.png" id="1"]
 
 [resource]
 vertex_color_use_as_albedo = true
