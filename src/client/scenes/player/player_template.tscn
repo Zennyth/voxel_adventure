@@ -1,13 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3cqam2isda3p"]
+[gd_scene load_steps=5 format=3 uid="uid://cfdor0eg1pfi7"]
 
-[ext_resource type="Script" path="res://scripts/entities/player_template.gd" id="1_defkc"]
-[ext_resource type="Script" path="res://scripts/player/spells.gd" id="1_tsrgo"]
+[ext_resource type="Script" path="res://scripts/entities/characters/player_template.gd" id="1_4bo06"]
+[ext_resource type="Script" path="res://modules/spells/spells_manager.gd" id="2_1ay81"]
 [ext_resource type="PackedScene" uid="uid://yrtrholbjjs" path="res://modules/spells/fireball/fireball.tscn" id="2_uupyd"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_c27ll"]
 
 [node name="PlayerTemplate" type="Node3D"]
-script = ExtResource( "1_defkc" )
+script = ExtResource( "1_4bo06" )
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(0.952941, 1, 0.160784, 1)
@@ -17,7 +17,7 @@ omni_attenuation = 2.54
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource( "CapsuleMesh_c27ll" )
 
-[node name="Spells" type="Node" parent="."]
-script = ExtResource( "1_tsrgo" )
+[node name="SpellsManager" type="Node" parent="."]
+script = ExtResource( "2_1ay81" )
 entity = NodePath("..")
 spell_list = [ExtResource( "2_uupyd" )]

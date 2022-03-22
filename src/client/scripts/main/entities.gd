@@ -1,4 +1,4 @@
 extends Node
 
 @onready
-var _other_players: EntityManager = $OtherPlayers
+var _other_players: EntitiesManager = $OtherPlayers

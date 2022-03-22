@@ -90,7 +90,8 @@ func update_world_state(world_state: Dictionary) -> void:
 
 func sync_fireball(direction: Vector3, player_id: int) -> void:
 	if _entities._other_players.has_entity(player_id):
-		_entities._other_players.get_entity(player_id).get_node("Spells").cast_fireball(direction)
+		var character: Character = _entities._other_players.get_entity(player_id)
+		character.spells_manager.cast_fireball(direction)
 
 func sync_chunk(data_array: PackedByteArray, size: int, voxels_position: Vector3i) -> void:
 	_terrain.sync_chunk(data_array, size, voxels_position)

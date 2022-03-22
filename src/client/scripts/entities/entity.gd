@@ -21,7 +21,7 @@ func get_position() -> Vector3:
 	return position
 
 func set_position(new_position: Vector3) -> void:
-	global_translate(new_position)
+	position = new_position
 
 
 ####

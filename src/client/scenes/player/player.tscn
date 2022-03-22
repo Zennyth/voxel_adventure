@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ihj8il2bhvo2"]
+[gd_scene load_steps=6 format=3 uid="uid://5g86tfj8xxk2"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_xdp00"]
-[ext_resource type="Script" path="res://scripts/player/spells.gd" id="3_lmmvh"]
+[ext_resource type="Script" path="res://modules/spells/spells_manager.gd" id="2_1q5mf"]
 [ext_resource type="PackedScene" uid="uid://yrtrholbjjs" path="res://modules/spells/fireball/fireball.tscn" id="4_wkfnu"]
 [ext_resource type="Script" path="res://scripts/player/spring_arm.gd" id="4_x7wvw"]
 
@@ -28,7 +28,7 @@ view_distance = 256
 requires_collisions = false
 
 [node name="Spells" type="Node" parent="."]
-script = ExtResource( "3_lmmvh" )
+script = ExtResource( "2_1q5mf" )
 entity = NodePath("..")
 spell_list = [ExtResource( "4_wkfnu" )]
 

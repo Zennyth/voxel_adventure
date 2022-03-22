@@ -1,12 +1,12 @@
 extends Node
-class_name EntityManager
+class_name EntitiesManager
 
 ####
 ## Init
 ####
 
 @export
-var entity_type: PackedScene
+var entity_scene: PackedScene
 
 func get_entity(entity_id: int) -> Entity:
 	if not has_entity(entity_id): return null
@@ -29,7 +29,7 @@ func update_entity(entity_id: int, entity_state: Dictionary) -> void:
 func spawn_entity(entity_id: int, entity_state: Dictionary) -> Entity:
 	if has_entity(entity_id): return null
 	
-	var new_entity: Entity = entity_type.instantiate()
+	var new_entity: Entity = entity_scene.instantiate()
 	new_entity.init(entity_id, entity_state["P"])
 	add_child(new_entity)
 	return new_entity
