@@ -7,7 +7,7 @@ var _entity = null
 @export
 var spell_list: Array[PackedScene] = []
 
-func _ready():
+func _ready() -> void:
 	_entity = get_node(entity)
 
 func cast_fireball(direction: Vector3) -> bool:

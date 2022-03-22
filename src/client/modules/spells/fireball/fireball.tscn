@@ -64,14 +64,14 @@ color_ramp = SubResource( "GradientTexture1D_rifyu" )
 
 [sub_resource type="BoxMesh" id="BoxMesh_gyug8"]
 
-[node name="fireball" type="RigidDynamicBody3D"]
+[node name="Fireball" type="RigidDynamicBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.21103)
 collision_layer = 2
 collision_mask = 2
 gravity_scale = 0.0
 script = ExtResource( "1_n1uec" )
 
-[node name="collision" type="CollisionShape3D" parent="."]
+[node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource( "SphereShape3D_hscyl" )
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]

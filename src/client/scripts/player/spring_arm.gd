@@ -17,6 +17,5 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event is InputEventKey:
 		if event.pressed:
 			if event.keycode == KEY_ESCAPE:
-				# Get the mouse back
 				lock = not lock
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE if lock else Input.MOUSE_MODE_CAPTURED)

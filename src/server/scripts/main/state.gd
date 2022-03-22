@@ -1,8 +1,8 @@
 extends Node
 
-var world_state
+var world_state: Dictionary = {}
 
-func _physics_process(_delta):
+func _physics_process(_delta: float) -> void:
 	if get_parent().player_state_collection.keys().size() > 0:
 		world_state = {
 			"T": Time.get_ticks_msec(),

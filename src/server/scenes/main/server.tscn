@@ -10,10 +10,10 @@
 [sub_resource type="VoxelStreamRegionFiles" id="VoxelStreamRegionFiles_ekqiu"]
 directory = "res://save/world"
 
-[node name="server" type="Node3D"]
+[node name="Server" type="Node3D"]
 script = ExtResource( "1_jh01i" )
 
-[node name="state" type="Node3D" parent="."]
+[node name="State" type="Node3D" parent="."]
 script = ExtResource( "2_fgfcn" )
 
 [node name="VoxelTerrain" type="VoxelTerrain" parent="."]
@@ -26,5 +26,5 @@ block_enter_notification_enabled = true
 run_stream_in_editor = false
 script = ExtResource( "5_3ddrg" )
 
-[node name="players" type="Node3D" parent="."]
+[node name="Players" type="Node3D" parent="."]
 script = ExtResource( "3_ydn1c" )

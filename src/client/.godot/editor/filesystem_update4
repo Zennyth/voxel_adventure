@@ -3,14 +3,10 @@ res://assets/terrain/blocks/terrain_material_foliage.tres
 res://assets/terrain/blocks/terrain_material_transparent.tres
 res://assets/terrain/blocks/voxel_library.tres
 res://modules/spells/fireball/fireball.tscn
-res://scenes/main/entities.gd
 res://scenes/main/main.tscn
-res://scenes/main/other_players.gd
 res://scenes/player/player.tscn
 res://scenes/player/player_template.tscn
+res://scripts/entities/entity.gd
+res://scripts/entities/entity_manager.gd
 res://scripts/main/entities.gd
 res://scripts/main/main.gd
-res://scripts/main/other_players.gd
-res://scripts/player/player.gd
-res://scripts/player/player_template.gd
-res://scripts/singletons/server.gd

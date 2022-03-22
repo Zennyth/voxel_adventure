@@ -14,7 +14,7 @@ var terrain: NodePath
 @onready
 var _spring_arm: SpringArm3D = $SpringArm3D
 @onready
-var _spells = $spells
+var _spells = $Spells
 
 var _velocity = Vector3()
 var _grounded = false
@@ -25,16 +25,16 @@ var _box_mover = VoxelBoxMover.new()
 var player_state
 
 
-func _ready():
+func _ready() -> void:
 	_box_mover.set_collision_mask(1) # Excludes rails
 	_head = get_node(head)
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	movement_process(delta)
 	define_state()
 
 
-func movement_process(delta):
+func movement_process(delta: float) -> void:
 	var direction := Vector3.ZERO
 	direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	direction.z = Input.get_action_strength("back") - Input.get_action_strength("forward")
@@ -63,15 +63,15 @@ func movement_process(delta):
 	
 	if Input.is_key_pressed(KEY_F):
 		_spells.cast_fireball(direction)
-		server.send_fireball(direction)
+		Server.send_fireball(direction)
 
 	assert(delta > 0)
 	_velocity = motion / delta
 	
-func define_state():
+func define_state() -> void:
 	player_state = {
-		"T": server.client_clock,
+		"T": Server.client_clock,
 		"P": position
 	}
 	
-	server.send_player_state(player_state)
+	Server.send_player_state(player_state)

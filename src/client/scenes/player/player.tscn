@@ -7,7 +7,7 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_60w8j"]
 
-[node name="player" type="Node3D"]
+[node name="Player" type="Node3D"]
 script = ExtResource( "1_xdp00" )
 speed = 6.0
 gravity = 40.0
@@ -27,7 +27,7 @@ mesh = SubResource( "CapsuleMesh_60w8j" )
 view_distance = 256
 requires_collisions = false
 
-[node name="spells" type="Node" parent="."]
+[node name="Spells" type="Node" parent="."]
 script = ExtResource( "3_lmmvh" )
 entity = NodePath("..")
 spell_list = [ExtResource( "4_wkfnu" )]

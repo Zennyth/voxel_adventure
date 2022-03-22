@@ -41,7 +41,7 @@ var _trees_min_y := 0
 var _trees_max_y := 0
 
 
-func _init():
+func _init() -> void:
 	# TODO Even this must be based on a seed, but I'm lazy
 	var tree_generator = TreeGenerator.new()
 	tree_generator.log_type = LOG
@@ -72,7 +72,7 @@ func _get_used_channels_mask() -> int:
 	return 1 << _CHANNEL
 
 
-func _generate_block(buffer: VoxelBuffer, origin_in_voxels: Vector3i, lod: int):
+func _generate_block(buffer: VoxelBuffer, origin_in_voxels: Vector3i, lod: int) -> void:
 	# Saves from this demo used 8-bit, which is no longer the default
 	# buffer.set_channel_depth(_CHANNEL, VoxelBuffer.DEPTH_8_BIT)
 
@@ -170,7 +170,7 @@ func _generate_block(buffer: VoxelBuffer, origin_in_voxels: Vector3i, lod: int):
 
 
 func _get_tree_instances_in_chunk(
-	cpos: Vector3, offset: Vector3, chunk_size: int, tree_instances: Array):
+	cpos: Vector3, offset: Vector3, chunk_size: int, tree_instances: Array) -> void:
 		
 	var rng := RandomNumberGenerator.new()
 	rng.seed = _get_chunk_seed_2d(cpos)

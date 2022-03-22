@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://50dlvrie8wlp"]
+[gd_scene load_steps=16 format=3 uid="uid://50dlvrie8wlp"]
 
 [ext_resource type="Script" path="res://scripts/main/main.gd" id="1_umhtm"]
 [ext_resource type="PackedScene" uid="uid://ihj8il2bhvo2" path="res://scenes/player/player.tscn" id="2_tkmtv"]
@@ -9,7 +9,8 @@
 [ext_resource type="Material" uid="uid://dbxnbxd6yr3fl" path="res://assets/terrain/blocks/terrain_material_foliage.tres" id="6_cll2m"]
 [ext_resource type="Script" path="res://scripts/main/terrain.gd" id="7_lo6l5"]
 [ext_resource type="Script" path="res://scripts/main/entities.gd" id="8_p5k02"]
-[ext_resource type="Script" path="res://scripts/main/other_players.gd" id="9_dgjd1"]
+[ext_resource type="Script" path="res://scripts/entities/entity_manager.gd" id="9_v2ess"]
+[ext_resource type="PackedScene" uid="uid://c3cqam2isda3p" path="res://scenes/player/player_template.tscn" id="10_2f0y8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0pf2j"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -23,12 +24,13 @@ background_mode = 2
 sky = SubResource( "Sky_o7e76" )
 tonemap_mode = 2
 glow_enabled = true
+glow_bloom = 0.24
 volumetric_fog_density = 0.0114
 
 [sub_resource type="VoxelStreamRegionFiles" id="VoxelStreamRegionFiles_e8hl1"]
 directory = "res://save/terrain"
 
-[node name="main" type="Node"]
+[node name="Main" type="Node"]
 script = ExtResource( "1_umhtm" )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -46,13 +48,14 @@ material/1 = ExtResource( "5_3lg35" )
 material/2 = ExtResource( "6_cll2m" )
 script = ExtResource( "7_lo6l5" )
 
-[node name="entities" type="Node" parent="."]
+[node name="Entities" type="Node" parent="."]
 script = ExtResource( "8_p5k02" )
 
-[node name="otherPlayers" type="Node" parent="entities"]
-script = ExtResource( "9_dgjd1" )
+[node name="OtherPlayers" type="Node" parent="Entities"]
+script = ExtResource( "9_v2ess" )
+entity_type = ExtResource( "10_2f0y8" )
 
-[node name="player" parent="." instance=ExtResource( "2_tkmtv" )]
+[node name="Player" parent="." instance=ExtResource( "2_tkmtv" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 64, 0)
 gravity = 9.8
 terrain = NodePath("../VoxelTerrain")

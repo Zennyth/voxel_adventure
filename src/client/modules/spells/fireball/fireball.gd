@@ -8,10 +8,10 @@ var init_velocity: float = 35
 var direction: Vector3 = Vector3.UP * 20
 var velocity = Vector3.ZERO
 
-func _ready():
+func _ready() -> void:
 	set_physics_process(false)
 
-func launch(start_position: Vector3, start_direction: Vector3):
+func launch(start_position: Vector3, start_direction: Vector3) -> void:
 	transform.origin = start_position
 	direction = start_direction
 	velocity = direction * init_velocity
@@ -22,13 +22,9 @@ func launch(start_position: Vector3, start_direction: Vector3):
 	timer.connect("timeout", destroy)
 	timer.start()
 
-func destroy():
+func destroy() -> void:
 	queue_free()
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	velocity += direction * delta
 	global_translate(velocity * delta)
-
-func _on_Shell_body_entered(body):
-	emit_signal("exploded", transform.origin)
-	queue_free()

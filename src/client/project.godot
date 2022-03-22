@@ -8,6 +8,22 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "Node3D",
+"class": &"Entity",
+"language": &"GDScript",
+"path": "res://scripts/entities/entity.gd"
+}, {
+"base": "Node",
+"class": &"EntityManager",
+"language": &"GDScript",
+"path": "res://scripts/entities/entity_manager.gd"
+}]
+_global_script_class_icons={
+"Entity": "",
+"EntityManager": ""
+}
+
 [application]
 
 config/name="client"
@@ -17,7 +33,7 @@ config/features=PackedStringArray("4.0", "Vulkan Clustered")
 
 [autoload]
 
-server="*res://scenes/singletons/server.tscn"
+Server="*res://scenes/singletons/server.tscn"
 random="*res://scripts/singletons/random.gd"
 
 [input]
