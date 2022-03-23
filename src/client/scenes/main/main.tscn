@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://v0r7yqx0ypk8"]
+[gd_scene load_steps=16 format=3 uid="uid://v0r7yqx0ypk8"]
 
 [ext_resource type="Script" path="res://scripts/main/main.gd" id="1_umhtm"]
 [ext_resource type="PackedScene" uid="uid://5g86tfj8xxk2" path="res://scenes/player/player.tscn" id="2_tkmtv"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scripts/main/terrain.gd" id="7_lo6l5"]
 [ext_resource type="Script" path="res://scripts/main/entities.gd" id="8_p5k02"]
 [ext_resource type="Script" path="res://scripts/entities/entities_manager.gd" id="9_v2ess"]
+[ext_resource type="PackedScene" uid="uid://cfdor0eg1pfi7" path="res://scenes/player/player_template.tscn" id="10_npty4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0pf2j"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -52,6 +53,7 @@ script = ExtResource( "8_p5k02" )
 
 [node name="OtherPlayers" type="Node" parent="Entities"]
 script = ExtResource( "9_v2ess" )
+entity_scene = ExtResource( "10_npty4" )
 
 [node name="Player" parent="." instance=ExtResource( "2_tkmtv" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 64, 0)

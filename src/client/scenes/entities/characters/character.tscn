@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://dq4mysmm1couy"]
+
+[ext_resource type="PackedScene" uid="uid://d4i040s14nryd" path="res://scenes/entities/characters/human_1/head.tscn" id="1_5xn4v"]
+[ext_resource type="PackedScene" uid="uid://cr46wao5vy130" path="res://scenes/entities/characters/human_1/chest.tscn" id="2_677ih"]
+[ext_resource type="PackedScene" uid="uid://bxjlgqy10mvq6" path="res://scenes/entities/characters/human_1/hand_left.tscn" id="3_a71dv"]
+[ext_resource type="PackedScene" uid="uid://saujikkkuk2v" path="res://scenes/entities/characters/human_1/hand_right.tscn" id="4_0umta"]
+[ext_resource type="PackedScene" uid="uid://hh3y7fe75wj1" path="res://scenes/entities/characters/human_1/foot_left.tscn" id="5_5o52v"]
+[ext_resource type="PackedScene" uid="uid://d1mo1340q0no1" path="res://scenes/entities/characters/human_1/foot_right.tscn" id="6_tdybf"]
+
+[node name="Character" type="Node3D"]
+
+[node name="Head" parent="." instance=ExtResource( "1_5xn4v" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.052048, 1.03438, 0)
+
+[node name="Chest" parent="." instance=ExtResource( "2_677ih" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.052048, 0.232829, 0)
+
+[node name="HandLeft" parent="." instance=ExtResource( "3_a71dv" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.752932, 0.573889, 0)
+
+[node name="HandRight" parent="." instance=ExtResource( "4_0umta" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.669103, 0.575765, 0)
+
+[node name="FootLeft" parent="." instance=ExtResource( "5_5o52v" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.303498, 0, 0)
+
+[node name="FootRight" parent="." instance=ExtResource( "6_tdybf" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.402048, 0, 0)

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://saujikkkuk2v"]
+
+[ext_resource type="ArrayMesh" uid="uid://blxfxwbt1mn4v" path="res://assets/entities/characters/human_1/hand/hand.obj" id="1_13o6m"]
+
+[node name="HandRight" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource( "1_13o6m" )

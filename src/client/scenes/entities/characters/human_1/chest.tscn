@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cr46wao5vy130"]
+
+[ext_resource type="ArrayMesh" uid="uid://dq70ptuh8j0yo" path="res://assets/entities/characters/human_1/chest/chest.obj" id="1_yy7bk"]
+
+[node name="Chest" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource( "1_yy7bk" )
