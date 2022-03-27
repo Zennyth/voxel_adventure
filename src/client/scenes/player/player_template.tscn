@@ -1,14 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfdor0eg1pfi7"]
+[gd_scene load_steps=6 format=3 uid="uid://cfdor0eg1pfi7"]
 
 [ext_resource type="Script" path="res://scripts/entities/characters/player_template.gd" id="1_4bo06"]
 [ext_resource type="Script" path="res://modules/spells/spells_manager.gd" id="2_1ay81"]
 [ext_resource type="PackedScene" uid="uid://yrtrholbjjs" path="res://modules/spells/fireball/fireball.tscn" id="2_uupyd"]
-[ext_resource type="PackedScene" uid="uid://dq4mysmm1couy" path="res://scenes/entities/characters/character.tscn" id="4_eumg1"]
+[ext_resource type="PackedScene" uid="uid://bcuw5ry88hnya" path="res://scenes/entities/characters/health_bar.tscn" id="5_2gouh"]
+[ext_resource type="PackedScene" uid="uid://cpymd8gjqxktm" path="res://scenes/entities/characters/modular_character.tscn" id="5_ulx8u"]
 
 [node name="PlayerTemplate" type="Node3D"]
 script = ExtResource( "1_4bo06" )
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
+visible = false
 light_color = Color(0.952941, 1, 0.160784, 1)
 omni_range = 10.0
 omni_attenuation = 2.54
@@ -18,4 +20,7 @@ script = ExtResource( "2_1ay81" )
 entity = NodePath("..")
 spell_list = [ExtResource( "2_uupyd" )]
 
-[node name="Character" parent="." instance=ExtResource( "4_eumg1" )]
+[node name="HealthDisplay" parent="." instance=ExtResource( "5_2gouh" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.68706, 0)
+
+[node name="Modular" parent="." instance=ExtResource( "5_ulx8u" )]

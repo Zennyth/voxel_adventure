@@ -59,11 +59,16 @@ func movement_process(delta: float) -> void:
 			_grounded = true
 		if abs(motion.y) > 0.001:
 			_grounded = false
-		global_translate(motion)
+	
+	global_translate(motion)
 	
 	if Input.is_key_pressed(KEY_F):
 		_spells.cast_fireball(direction)
 		Server.send_fireball(direction)
+	
+	if _velocity.length():
+		var look_direction = Vector2(_velocity.z, _velocity.x)
+		$Modular.rotation.y = look_direction.angle()
 
 	assert(delta > 0)
 	_velocity = motion / delta

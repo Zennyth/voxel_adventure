@@ -6,6 +6,7 @@ class_name Entity
 ####
 
 var state: Dictionary = {}
+var properties: Dictionary = {}
 
 # Constructor in godot can't take parameters -> custom constructor init
 func init(id: int, initial_position: Vector3) -> void:
@@ -37,3 +38,11 @@ func set_state(new_state: Dictionary) -> void:
 func get_state() -> Dictionary:
 	# state["T"] = Server.client_clock
 	return state
+
+
+func update_properties(updated_properties: Dictionary) -> void:
+	for key in updated_properties.keys():
+		properties[key] = updated_properties[key]
+
+func get_properties() -> Dictionary:
+	return properties

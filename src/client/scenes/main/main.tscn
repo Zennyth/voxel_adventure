@@ -40,8 +40,7 @@ environment = SubResource( "Environment_pfdmh" )
 stream = SubResource( "VoxelStreamRegionFiles_e8hl1" )
 generator = ExtResource( "3_dd4ir" )
 mesher = ExtResource( "4_uv825" )
-max_view_distance = 256
-generate_collisions = false
+automatic_loading_enabled = false
 run_stream_in_editor = false
 material/0 = ExtResource( "4_5kgk7" )
 material/1 = ExtResource( "5_3lg35" )
@@ -55,11 +54,10 @@ script = ExtResource( "8_p5k02" )
 script = ExtResource( "9_v2ess" )
 entity_scene = ExtResource( "10_npty4" )
 
-[node name="Player" parent="." instance=ExtResource( "2_tkmtv" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 64, 0)
-gravity = 9.8
-terrain = NodePath("../VoxelTerrain")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.973146, 0.172529, -0.152385, -0.047778, 0.496193, 0.866897, 0.225177, 0.850897, -0.474625, 1.52, 19.7, 14.088)
 shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource( "2_tkmtv" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 64, 0)
+terrain = NodePath("../VoxelTerrain")

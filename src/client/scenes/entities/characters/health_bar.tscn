@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcuw5ry88hnya"]
+
+[ext_resource type="Script" path="res://scripts/entities/characters/health_bar.gd" id="1_221dv"]
+[ext_resource type="Texture2D" uid="uid://cnaak03ne4hwv" path="res://assets/entities/characters/health_bar/barHorizontal_green.png" id="2_vgot5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cvagn"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource( "2_vgot5" )
+billboard_mode = 1
+
+[node name="HealthDisplay" type="Sprite3D"]
+material_override = SubResource( "StandardMaterial3D_cvagn" )
+texture = ExtResource( "2_vgot5" )
+script = ExtResource( "1_221dv" )
+
+[node name="SubViewportContainer" type="SubViewport" parent="."]
+size = Vector2i(200, 26)
+
+[node name="HealthBar" type="TextureProgressBar" parent="SubViewportContainer"]
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 201.0
+offset_bottom = 24.0
+value = 100.0
+texture_progress = ExtResource( "2_vgot5" )

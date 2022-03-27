@@ -5,6 +5,7 @@ var port = 1909
 var max_players = 100
 
 var player_state_collection = {}
+var player_static_collection = {}
 
 @onready
 var _players = $Players

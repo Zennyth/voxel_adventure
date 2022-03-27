@@ -35,7 +35,10 @@ func _connection_failed() -> void:
 func _connection_succeeded() -> void:
 	print("Succefully connected")
 	start_sync_clock()
-
+	
+	var player_static = {
+		"name": "test name"
+	}
 
 
 ### Clock synchro
@@ -88,6 +91,18 @@ func send_player_state(player_state: Dictionary) -> void:
 @rpc(any_peer, unreliable)
 func receive_player_state(_player_state: Dictionary) -> void:
 	pass
+
+### Static data
+#func send_player_static(player_static: Dictionary) -> void:
+#	rpc_id(1, "receive_player_static", player_static)
+## declare this function for the client to know how to call (any_peer, unreliable)
+#@rpc(any_peer)
+#func receive_player_static(player_static: Dictionary) -> void:
+#	pass
+#
+#@rpc
+#func sync_player_static(player_static: Dictionary, player_id: int) -> void:
+#	pass
 
 @rpc(unreliable)
 func receive_world_state(world_state: Dictionary) -> void:
