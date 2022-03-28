@@ -82,11 +82,11 @@ func receive_world_state(_world_state: Dictionary):
 	pass
 	
 @rpc(any_peer)
-func receive_fireball(direction: Vector3) -> void:
+func receive_fireball(direction: Vector3, client_clock: int) -> void:
 	var player_id = get_tree().multiplayer.get_remote_sender_id()
-	rpc_id(0, "sync_fireball", direction, player_id)
+	rpc_id(0, "sync_fireball", direction, player_id, client_clock)
 @rpc
-func sync_fireball(_direction: Vector3, _player_id: int) -> void:
+func sync_fireball(_direction: Vector3, _player_id: int, _spawn_time: int) -> void:
 	pass
 	
 

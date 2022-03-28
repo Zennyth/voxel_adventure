@@ -33,4 +33,4 @@ script = ExtResource( "4_x7wvw" )
 current = true
 
 [node name="Modular" parent="." instance=ExtResource( "5_vqm1t" )]
-collision_mask = 1
+collision_layer = 512

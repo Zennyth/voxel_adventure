@@ -7,6 +7,8 @@ var _terrain = $VoxelTerrain
 @onready
 var _entities = $Entities
 
+var fireball_collection = {}
+
 var last_world_state = 0
 var world_state_buffer = []
 const interpolation_offset = 100
@@ -46,7 +48,12 @@ func despawn_player(player_id: int) -> void:
 	_entities._other_players.despawn_entity(player_id)
 	
 func _physics_process(_delta: float) -> void:
+	handle_world_buffer()
+	handle_fireball()
+
+func handle_world_buffer():
 	var render_time = Server.client_clock - interpolation_offset
+	
 	if world_state_buffer.size() > 1:
 		while world_state_buffer.size() > 2 and render_time > world_state_buffer[2].T:
 			world_state_buffer.remove_at(0)
@@ -87,16 +94,27 @@ func _physics_process(_delta: float) -> void:
 						"R": world_state_buffer[1]["players"][player]["R"] + (rotation_delta * extrapolation_factor)
 					})
 
-
 func update_world_state(world_state: Dictionary) -> void:
 	if world_state["T"] > last_world_state:
 		last_world_state = world_state["T"]
 		world_state_buffer.append(world_state)
 
-func sync_fireball(direction: Vector3, player_id: int) -> void:
-	if _entities._other_players.has_entity(player_id):
-		var character: Character = _entities._other_players.get_entity(player_id)
-		character._spells_manager.cast_fireball(direction)
+func handle_fireball():
+	for launch_time in fireball_collection.keys():
+		if launch_time <= Server.client_clock:
+			var fireball = fireball_collection[launch_time]
+			
+			if _entities._other_players.has_entity(fireball['player_id']):
+				var character: Character = _entities._other_players.get_entity(fireball['player_id'])
+				character._spells_manager.cast_fireball(fireball['direction'])
+			
+			fireball_collection.erase(launch_time)
+
+func sync_fireball(direction: Vector3, player_id: int, spawn_time: int) -> void:
+	fireball_collection[spawn_time] = {
+		"player_id": player_id,
+		"direction": direction
+	}
 
 func sync_chunk(data_array: PackedByteArray, size: int, voxels_position: Vector3i) -> void:
 	_terrain.sync_chunk(data_array, size, voxels_position)

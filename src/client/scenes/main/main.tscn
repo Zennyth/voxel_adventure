@@ -1,16 +1,17 @@
-[gd_scene load_steps=16 format=3 uid="uid://v0r7yqx0ypk8"]
+[gd_scene load_steps=17 format=3 uid="uid://bcle3dpi5kvx5"]
 
 [ext_resource type="Script" path="res://scripts/main/main.gd" id="1_umhtm"]
 [ext_resource type="PackedScene" uid="uid://5g86tfj8xxk2" path="res://scenes/player/player.tscn" id="2_tkmtv"]
-[ext_resource type="VoxelGeneratorScript" uid="uid://ewt0qj8wnhce" path="res://assets/terrain/world_generator.tres" id="3_dd4ir"]
-[ext_resource type="Material" uid="uid://7r1svkyedsfu" path="res://assets/terrain/blocks/terrain_material.tres" id="4_5kgk7"]
-[ext_resource type="VoxelMesherBlocky" uid="uid://b6eict865kwe4" path="res://assets/terrain/voxel_mesher.tres" id="4_uv825"]
-[ext_resource type="Material" uid="uid://c3shdtpmda8fo" path="res://assets/terrain/blocks/terrain_material_transparent.tres" id="5_3lg35"]
-[ext_resource type="Material" uid="uid://dicb2hq2w0gwc" path="res://assets/terrain/blocks/terrain_material_foliage.tres" id="6_cll2m"]
+[ext_resource type="VoxelGeneratorScript" uid="uid://cbmy6vn12fqu4" path="res://assets/terrain/world_generator.tres" id="3_dd4ir"]
+[ext_resource type="Material" uid="uid://b71nckmk75b6i" path="res://assets/terrain/blocks/terrain_material.tres" id="4_5kgk7"]
+[ext_resource type="VoxelMesherBlocky" uid="uid://c3cyuawpuqd1i" path="res://assets/terrain/voxel_mesher.tres" id="4_uv825"]
+[ext_resource type="Material" uid="uid://bi5wwotip21un" path="res://assets/terrain/blocks/terrain_material_transparent.tres" id="5_3lg35"]
+[ext_resource type="Material" uid="uid://bxp2l6f6w48id" path="res://assets/terrain/blocks/terrain_material_foliage.tres" id="6_cll2m"]
 [ext_resource type="Script" path="res://scripts/main/terrain.gd" id="7_lo6l5"]
 [ext_resource type="Script" path="res://scripts/main/entities.gd" id="8_p5k02"]
 [ext_resource type="Script" path="res://scripts/entities/entities_manager.gd" id="9_v2ess"]
 [ext_resource type="PackedScene" uid="uid://cfdor0eg1pfi7" path="res://scenes/player/player_template.tscn" id="10_npty4"]
+[ext_resource type="PackedScene" uid="uid://cshsvltboelh4" path="res://scenes/entities/enemies/blank.tscn" id="11_yc6px"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0pf2j"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -53,6 +54,13 @@ script = ExtResource( "8_p5k02" )
 [node name="OtherPlayers" type="Node" parent="Entities"]
 script = ExtResource( "9_v2ess" )
 entity_scene = ExtResource( "10_npty4" )
+
+[node name="Enemies" type="Node" parent="Entities"]
+script = ExtResource( "9_v2ess" )
+entity_scene = ExtResource( "10_npty4" )
+
+[node name="Blank" parent="Entities/Enemies" instance=ExtResource( "11_yc6px" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, -30)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.973146, 0.172529, -0.152385, -0.047778, 0.496193, 0.866897, 0.225177, 0.850897, -0.474625, 1.52, 19.7, 14.088)

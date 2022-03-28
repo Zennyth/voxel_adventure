@@ -78,8 +78,8 @@ func return_latency(client_time: int) -> void:
 				total_latency += latency_array[i]
 		delta_latency = ( total_latency / latency_array.size()) - latency
 		latency = total_latency / latency_array.size()
-		print("latency: " + str(latency))
-		print("delta_latency: " + str(delta_latency))
+#		print("latency: " + str(latency))
+#		print("delta_latency: " + str(delta_latency))
 		latency_array.clear()
 
 
@@ -111,14 +111,16 @@ func receive_world_state(world_state: Dictionary) -> void:
 	
 
 func send_fireball(direction: Vector3) -> void:
-	rpc_id(1, "receive_fireball", direction)
+	rpc_id(1, "receive_fireball", direction, client_clock)
 @rpc(any_peer)
-func receive_fireball(_direction: Vector3) -> void:
+func receive_fireball(_direction: Vector3, _client_clock: int) -> void:
 	pass
 
+# TODO: change to entity_id
 @rpc
-func sync_fireball(direction: Vector3, player_id: int) -> void:
-	get_node("../Main").sync_fireball(direction, player_id)
+func sync_fireball(direction: Vector3, player_id: int, spawn_time: int) -> void:
+	if player_id != get_tree().multiplayer.get_unique_id():
+		get_node("../Main").sync_fireball(direction, player_id, spawn_time)
 
 
 
