@@ -62,9 +62,10 @@ func _physics_process(_delta: float) -> void:
 					continue
 
 				if _entities._other_players.has_entity(player):
-					#print(world_state_buffer[1]["players"][player]["P"], world_state_buffer[2]["players"][player]["P"], interpolation_factor)
-					var new_position = world_state_buffer[1]["players"][player]["P"].lerp(world_state_buffer[2]["players"][player]["P"], interpolation_factor)
-					_entities._other_players.get_entity(player).set_position(new_position)
+					_entities._other_players.get_entity(player).set_state({
+						"P": world_state_buffer[1]["players"][player]["P"].lerp(world_state_buffer[2]["players"][player]["P"], interpolation_factor),
+						"R": world_state_buffer[1]["players"][player]["R"].lerp(world_state_buffer[2]["players"][player]["R"], interpolation_factor)
+					})
 				else:
 					_entities._other_players.spawn_entity(player, world_state_buffer[2]["players"][player])
 
@@ -79,8 +80,12 @@ func _physics_process(_delta: float) -> void:
 
 				if _entities._other_players.has_entity(player):
 					var position_delta = (world_state_buffer[1]["players"][player]["P"] - world_state_buffer[0]["players"][player]["P"])
-					var new_position = world_state_buffer[1]["players"][player]["P"] + (position_delta * extrapolation_factor)
-					_entities._other_players.get_entity(player).set_position(new_position)
+					var rotation_delta = (world_state_buffer[1]["players"][player]["R"] - world_state_buffer[0]["players"][player]["R"])
+					
+					_entities._other_players.get_entity(player).set_state({
+						"P": world_state_buffer[1]["players"][player]["P"] + (position_delta * extrapolation_factor),
+						"R": world_state_buffer[1]["players"][player]["R"] + (rotation_delta * extrapolation_factor)
+					})
 
 
 func update_world_state(world_state: Dictionary) -> void:

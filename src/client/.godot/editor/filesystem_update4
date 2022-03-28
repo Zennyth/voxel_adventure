@@ -4,6 +4,7 @@ res://assets/terrain/blocks/terrain_material_transparent.tres
 res://assets/terrain/blocks/voxel_library.tres
 res://assets/terrain/voxel_mesher.tres
 res://assets/terrain/world_generator.tres
+res://scenes/entities/characters/character.tscn
 res://scenes/entities/characters/modular_character.tscn
 res://scenes/main/main.tscn
 res://scenes/player/player.tscn
@@ -12,3 +13,4 @@ res://scripts/entities/characters/character.gd
 res://scripts/entities/entity.gd
 res://scripts/main/main.gd
 res://scripts/player/player.gd
+res://scripts/singletons/server.gd

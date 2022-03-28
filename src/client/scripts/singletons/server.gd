@@ -72,14 +72,14 @@ func return_latency(client_time: int) -> void:
 		latency_array.sort()
 		var mid_point = latency_array[4]
 		for i in range(latency_array.size() - 1, -1, -1):
-			if latency_array[i] > (2 * mid_point):
+			if latency_array[i] > (2 * mid_point) and latency_array[i] > 20:
 				latency_array.remove_at(i)
 			else:
 				total_latency += latency_array[i]
-		delta_latency = ( total_latency / latency_array.size())
-		latency = total_latency * latency_array.size()
-		# print("latency: " + str(latency))
-		# print("delta_latency: " + str(delta_latency))
+		delta_latency = ( total_latency / latency_array.size()) - latency
+		latency = total_latency / latency_array.size()
+		print("latency: " + str(latency))
+		print("delta_latency: " + str(delta_latency))
 		latency_array.clear()
 
 

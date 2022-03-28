@@ -1,4 +1,5 @@
 CharacterBody3D
+RigidDynamicBody3D
 CollisionShape3D
 BoneAttachment3D
 MeshInstance3D
