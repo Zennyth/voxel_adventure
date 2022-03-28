@@ -2,7 +2,7 @@ extends Entity
 class_name Character
 
 @onready
-var _model: Node3D = $Modular
+var _model: CharacterBody3D = $Modular
 @onready
 var _spells_manager: SpellsManager = $SpellsManager
 @onready

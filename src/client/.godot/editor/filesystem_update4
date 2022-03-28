@@ -5,6 +5,7 @@ res://assets/terrain/blocks/voxel_library.tres
 res://assets/terrain/voxel_mesher.tres
 res://assets/terrain/world_generator.tres
 res://scenes/entities/characters/modular_character.tscn
+res://scenes/main/main.tscn
 res://scenes/player/player.tscn
 res://scenes/player/player_template.tscn
 res://scripts/entities/characters/character.gd

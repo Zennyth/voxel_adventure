@@ -8,8 +8,8 @@
 
 [node name="Player" type="Node3D"]
 script = ExtResource( "1_xdp00" )
+speed = 10.0
 jump_force = 10.0
-head = NodePath("SpringArm3D/Camera3D")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 visible = false
@@ -18,7 +18,6 @@ omni_range = 10.0
 omni_attenuation = 2.54
 
 [node name="VoxelViewer" type="VoxelViewer" parent="."]
-requires_collisions = false
 
 [node name="SpellsManager" type="Node" parent="."]
 script = ExtResource( "2_1q5mf" )
@@ -26,13 +25,14 @@ entity = NodePath("..")
 spell_list = [ExtResource( "4_wkfnu" )]
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.571873, 0)
 spring_length = 4.0
 margin = 0.02
 script = ExtResource( "4_x7wvw" )
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.705587, 0)
 current = true
 
 [node name="Modular" parent="." instance=ExtResource( "5_vqm1t" )]
 transform = Transform3D(-0.6, 0, -9.05975e-08, 0, 0.6, 0, 9.05975e-08, 0, -0.6, 0, -0.9, 0)
+collision_mask = 1
