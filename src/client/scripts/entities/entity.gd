@@ -36,7 +36,8 @@ func set_state(new_state: Dictionary) -> void:
 	state = new_state
 
 func get_state() -> Dictionary:
-	# state["T"] = Server.client_clock
+	state["T"] = Server.client_clock
+	state["P"] = position
 	return state
 
 

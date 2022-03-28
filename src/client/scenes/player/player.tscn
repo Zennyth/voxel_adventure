@@ -20,7 +20,7 @@ omni_attenuation = 2.54
 [node name="VoxelViewer" type="VoxelViewer" parent="."]
 requires_collisions = false
 
-[node name="Spells" type="Node" parent="."]
+[node name="SpellsManager" type="Node" parent="."]
 script = ExtResource( "2_1q5mf" )
 entity = NodePath("..")
 spell_list = [ExtResource( "4_wkfnu" )]

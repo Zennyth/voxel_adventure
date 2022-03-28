@@ -2,12 +2,13 @@ extends Entity
 class_name Character
 
 @onready
-var model: Node3D = $Modular
+var _model: Node3D = $Modular
 @onready
-var spells_manager: SpellsManager = $SpellsManager
+var _spells_manager: SpellsManager = $SpellsManager
 @onready
-var hp_bar: Sprite3D = $HealthDisplay
+var _hp_bar: Sprite3D = $HealthDisplay
 
+@export
 var max_hp: int = 100
 var hp: int = 100
 

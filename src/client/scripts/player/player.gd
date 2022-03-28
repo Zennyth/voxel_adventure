@@ -1,4 +1,5 @@
-extends Node3D
+extends Character
+class_name Player
 
 @export
 var speed: float = 5.0
@@ -13,21 +14,18 @@ var terrain: NodePath
 
 @onready
 var _spring_arm: SpringArm3D = $SpringArm3D
-@onready
-var _spells = $Spells
 
 var _velocity = Vector3()
 var _grounded = false
 var _head = null
 var _box_mover = VoxelBoxMover.new()
 
-# networking
-var player_state
-
-
 func _ready() -> void:
 	_box_mover.set_collision_mask(1) # Excludes rails
 	_head = get_node(head)
+	
+	_spells_manager = $SpellsManager
+	_model = $Modular
 
 func _physics_process(delta: float) -> void:
 	movement_process(delta)
@@ -63,20 +61,15 @@ func movement_process(delta: float) -> void:
 	global_translate(motion)
 	
 	if Input.is_key_pressed(KEY_F):
-		_spells.cast_fireball(direction)
+		_spells_manager.cast_fireball(direction)
 		Server.send_fireball(direction)
 	
 	if _velocity.length():
 		var look_direction = Vector2(_velocity.z, _velocity.x)
-		$Modular.rotation.y = look_direction.angle()
+		_model.rotation.y = look_direction.angle()
 
 	assert(delta > 0)
 	_velocity = motion / delta
 	
 func define_state() -> void:
-	player_state = {
-		"T": Server.client_clock,
-		"P": position
-	}
-	
-	Server.send_player_state(player_state)
+	Server.send_player_state(get_state())

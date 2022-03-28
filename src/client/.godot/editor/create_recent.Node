@@ -1,3 +1,5 @@
+CharacterBody3D
+CollisionShape3D
 BoneAttachment3D
 MeshInstance3D
 Node3D
@@ -5,8 +7,6 @@ SubViewport
 Sprite3D
 SubViewportContainer
 TextureProgressBar
-CharacterBody3D
-CollisionShape3D
 SpringArm3D
 Timer
 Node

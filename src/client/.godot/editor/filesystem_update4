@@ -5,15 +5,9 @@ res://assets/terrain/blocks/voxel_library.tres
 res://assets/terrain/voxel_mesher.tres
 res://assets/terrain/world_generator.tres
 res://scenes/entities/characters/modular_character.tscn
-res://scenes/entities/characters/myExample/equipments/chest.tscn
-res://scenes/entities/characters/myExample/equipments/head.tscn
-res://scenes/entities/characters/myExample/equipments/left_foot.tscn
-res://scenes/entities/characters/myExample/equipments/left_hand.tscn
-res://scenes/entities/characters/myExample/equipments/right_foot.tscn
-res://scenes/entities/characters/myExample/equipments/right_hand.tscn
-res://scenes/entities/characters/myExample/modular.tscn
-res://scenes/entities/characters/myExample/my_example.tscn
 res://scenes/player/player.tscn
 res://scenes/player/player_template.tscn
 res://scripts/entities/characters/character.gd
+res://scripts/entities/entity.gd
+res://scripts/main/main.gd
 res://scripts/player/player.gd
