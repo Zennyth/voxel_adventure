@@ -30,6 +30,9 @@ func get_rotation() -> Vector3:
 func set_rotation(new_rotation: Vector3) -> void:
 	rotation = new_rotation
 
+func set_id(id: int):
+	name = str(id)
+
 
 ####
 ## Network
@@ -49,9 +52,17 @@ func get_state() -> Dictionary:
 	return state
 
 
-func update_properties(updated_properties: Dictionary) -> void:
-	for key in updated_properties.keys():
-		properties[key] = updated_properties[key]
+func set_properties(new_properties: Dictionary) -> void:
+	for key in new_properties.keys():
+		properties[key] = new_properties[key]
+		
+		match key:
+			"id":
+				set_id(properties[key])
+			"R":
+				set_rotation(properties[key])
+			"P":
+				set_position(properties[key])
 
 func get_properties() -> Dictionary:
 	return properties

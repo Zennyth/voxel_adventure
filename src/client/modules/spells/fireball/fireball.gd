@@ -34,6 +34,5 @@ func _physics_process(delta: float) -> void:
 
 func _on_fireball_body_entered(node):
 	if node.get_parent() is Character:
-		node.get_parent().hit(5)
-		
+		# node.get_parent().hit(5)
 		destroy()

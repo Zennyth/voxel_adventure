@@ -22,14 +22,12 @@ func _unhandled_input(event: InputEvent) -> void:
 #				# Toggle shadows
 #				_light.shadow_enabled = not _light.shadow_enabled
 
-
 func _notification(what: int) -> void:
 	pass
 #	match what:
 #		NOTIFICATION_WM_QUIT_REQUEST:
 #			# Save game when the user closes the window
 #			_save_world()
-
 
 func _save_world() -> void:
 	# _terrain.save_modified_blocks()
@@ -44,7 +42,7 @@ func spawn_player(player_id: int, spawn_position: Vector3) -> void:
 		})
 
 func despawn_player(player_id: int) -> void:
-	await get_tree().create_timer(.2)
+	await get_tree().create_timer(.2).timeout
 	_entities._other_players.despawn_entity(player_id)
 	
 func _physics_process(_delta: float) -> void:
@@ -57,47 +55,69 @@ func handle_world_buffer():
 	if world_state_buffer.size() > 1:
 		while world_state_buffer.size() > 2 and render_time > world_state_buffer[2].T:
 			world_state_buffer.remove_at(0)
-
+		
+		# Interpolation
 		if world_state_buffer.size() > 2:
 			var interpolation_factor = float(render_time - world_state_buffer[1]["T"]) / float(world_state_buffer[2]["T"] - world_state_buffer[1]["T"])
-
-
-			for player in world_state_buffer[2]["players"].keys():
-				if player == get_tree().multiplayer.get_unique_id():
-					continue
-				if not world_state_buffer[1]["players"].has(player):
-					continue
-
-				if _entities._other_players.has_entity(player):
-					_entities._other_players.get_entity(player).set_state({
-						"P": world_state_buffer[1]["players"][player]["P"].lerp(world_state_buffer[2]["players"][player]["P"], interpolation_factor),
-						"R": world_state_buffer[1]["players"][player]["R"].lerp(world_state_buffer[2]["players"][player]["R"], interpolation_factor)
-					})
-				else:
-					_entities._other_players.spawn_entity(player, world_state_buffer[2]["players"][player])
-
+			
+			# Update Entities via the managers
+			for entity_type in world_state_buffer[2]["E"].keys():
+				var entities_manager: EntitiesManager = _entities.get_entities_manager(entity_type)
+				if not entities_manager: continue
+				
+				for entity_id in world_state_buffer[2]["E"][entity_type].keys():
+					if entity_id == get_tree().multiplayer.get_unique_id():
+						continue
+					var entities_next_state: Dictionary = world_state_buffer[2]["E"][entity_type][entity_id]
+					if not world_state_buffer[1]["E"][entity_type].has(entity_id):
+						continue
+					var entities_last_state: Dictionary = world_state_buffer[1]["E"][entity_type][entity_id]
+					
+					if entities_manager.has_entity(entity_id):
+						var duplicate_state: Dictionary = entities_next_state.duplicate(true)
+						duplicate_state["P"] = entities_last_state["P"].lerp(entities_next_state["P"], interpolation_factor)
+						duplicate_state["R"] = entities_last_state["R"].lerp(entities_next_state["R"], interpolation_factor)
+						entities_manager.get_entity(entity_id).set_state(duplicate_state)
+					else:
+						entities_manager.spawn_entity(entity_id, entities_next_state)
+		# Extrapolation
 		elif render_time > world_state_buffer[1].T:
 			var extrapolation_factor = float(render_time - world_state_buffer[0]["T"]) / float(world_state_buffer[1]["T"] - world_state_buffer[0]["T"]) - 1.0
-
-			for player in world_state_buffer[1]["players"].keys():
-				if player == get_tree().multiplayer.get_unique_id():
-					continue
-				if not world_state_buffer[0]["players"].has(player):
-					continue
-
-				if _entities._other_players.has_entity(player):
-					var position_delta = (world_state_buffer[1]["players"][player]["P"] - world_state_buffer[0]["players"][player]["P"])
-					var rotation_delta = (world_state_buffer[1]["players"][player]["R"] - world_state_buffer[0]["players"][player]["R"])
+			
+			# Update Entities via the managers
+			for entity_type in world_state_buffer[1]["E"].keys():
+				var entities_manager: EntitiesManager = _entities.get_entities_manager(entity_type)
+				if not entities_manager: continue
+				
+				for entity_id in world_state_buffer[1]["E"][entity_type].keys():
+					if entity_id == get_tree().multiplayer.get_unique_id():
+						continue
+					var entities_next_state: Dictionary = world_state_buffer[1]["E"][entity_type][entity_id]
+					if not world_state_buffer[0]["E"][entity_type].has(entity_id):
+						continue
+					var entities_last_state: Dictionary = world_state_buffer[0]["E"][entity_type][entity_id]
 					
-					_entities._other_players.get_entity(player).set_state({
-						"P": world_state_buffer[1]["players"][player]["P"] + (position_delta * extrapolation_factor),
-						"R": world_state_buffer[1]["players"][player]["R"] + (rotation_delta * extrapolation_factor)
-					})
+					if entities_manager.has_entity(entity_id):
+						var duplicate_state: Dictionary = entities_next_state.duplicate(true)
+						var position_delta = (duplicate_state["P"] - entities_last_state["P"])
+						var rotation_delta = (duplicate_state["R"] - entities_last_state["R"])
+						
+						duplicate_state["P"] += position_delta * extrapolation_factor
+						duplicate_state["R"] += rotation_delta * extrapolation_factor
+						entities_manager.get_entity(entity_id).set_state(duplicate_state)
 
 func update_world_state(world_state: Dictionary) -> void:
 	if world_state["T"] > last_world_state:
 		last_world_state = world_state["T"]
 		world_state_buffer.append(world_state)
+
+func sync_world_properties(world_properties: Dictionary):
+	for entity_type in world_properties["E"].keys():
+		var entities_manager: EntitiesManager = _entities.get_entities_manager(entity_type)
+		if not entities_manager: continue
+		
+		for entity_id in world_properties["E"][entity_type].keys():
+			entities_manager.update_or_spawn_entity_with_properties(entity_id, world_properties["E"][entity_type][entity_id])
 
 func handle_fireball():
 	for launch_time in fireball_collection.keys():

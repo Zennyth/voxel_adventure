@@ -57,10 +57,7 @@ entity_scene = ExtResource( "10_npty4" )
 
 [node name="Enemies" type="Node" parent="Entities"]
 script = ExtResource( "9_v2ess" )
-entity_scene = ExtResource( "10_npty4" )
-
-[node name="Blank" parent="Entities/Enemies" instance=ExtResource( "11_yc6px" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, -30)
+entity_scene = ExtResource( "11_yc6px" )
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.973146, 0.172529, -0.152385, -0.047778, 0.496193, 0.866897, 0.225177, 0.850897, -0.474625, 1.52, 19.7, 14.088)

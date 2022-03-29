@@ -8,6 +8,34 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "Entity",
+"class": &"Character",
+"language": &"GDScript",
+"path": "res://scripts/entities/characters/character.gd"
+}, {
+"base": "Node",
+"class": &"EntitiesManager",
+"language": &"GDScript",
+"path": "res://scripts/entities/entities_manager.gd"
+}, {
+"base": "Node3D",
+"class": &"Entity",
+"language": &"GDScript",
+"path": "res://scripts/entities/entity.gd"
+}, {
+"base": "Node",
+"class": &"SpellsManager",
+"language": &"GDScript",
+"path": "res://modules/spells/spells_manager.gd"
+}]
+_global_script_class_icons={
+"Character": "",
+"EntitiesManager": "",
+"Entity": "",
+"SpellsManager": ""
+}
+
 [application]
 
 config/name="server"

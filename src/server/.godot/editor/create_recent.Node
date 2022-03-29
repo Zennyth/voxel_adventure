@@ -1,3 +1,10 @@
+MeshInstance3D
+DirectionalLight3D
+WorldEnvironment
+Node
+StaticBody3D
+CollisionShape3D
+Timer
 Camera3D
 VoxelTerrain
 VoxelViewer

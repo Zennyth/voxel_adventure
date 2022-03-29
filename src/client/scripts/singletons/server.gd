@@ -36,9 +36,7 @@ func _connection_succeeded() -> void:
 	print("Succefully connected")
 	start_sync_clock()
 	
-	var player_static = {
-		"name": "test name"
-	}
+	send_player_properties(get_node("../Main/Player").properties)
 
 
 ### Clock synchro
@@ -84,6 +82,9 @@ func return_latency(client_time: int) -> void:
 
 
 ### Game events
+@rpc
+func despawn_player(player_id: int) -> void:
+	get_node("../Main").despawn_player(player_id)
 
 func send_player_state(player_state: Dictionary) -> void:
 	rpc_id(1, "receive_player_state", player_state)
@@ -92,17 +93,21 @@ func send_player_state(player_state: Dictionary) -> void:
 func receive_player_state(_player_state: Dictionary) -> void:
 	pass
 
-### Static data
-#func send_player_static(player_static: Dictionary) -> void:
-#	rpc_id(1, "receive_player_static", player_static)
-## declare this function for the client to know how to call (any_peer, unreliable)
-#@rpc(any_peer)
-#func receive_player_static(player_static: Dictionary) -> void:
-#	pass
-#
-#@rpc
-#func sync_player_static(player_static: Dictionary, player_id: int) -> void:
-#	pass
+### Properties
+@rpc
+func sync_world_properties(world_properties: Dictionary):
+	get_node("../Main").sync_world_properties(world_properties)
+
+func send_player_properties(player_properties: Dictionary):
+	rpc_id(1, "receive_player_properties", player_properties)
+@rpc(any_peer)
+func receive_player_properties(_player_properties: Dictionary):
+	pass
+
+@rpc
+func receive_entity_properties(entity_id: int, entity_type: String, entity_properties: Dictionary):
+	var entities_manager: EntitiesManager = get_node("../Main")._entities.get_entities_manager(entity_type)
+	entities_manager.update_or_spawn_entity_with_properties(entity_id, entity_properties)
 
 @rpc(unreliable)
 func receive_world_state(world_state: Dictionary) -> void:

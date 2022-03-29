@@ -14,3 +14,9 @@ res://scenes/player/player.tscn
 res://scenes/player/player_template.tscn
 res://scripts/entities/characters/character.gd
 res://scripts/entities/characters/health_bar.gd
+res://scripts/entities/entities_manager.gd
+res://scripts/entities/entity.gd
+res://scripts/main/entities.gd
+res://scripts/main/main.gd
+res://scripts/player/player.gd
+res://scripts/singletons/server.gd

@@ -34,6 +34,17 @@ func spawn_entity(entity_id: int, entity_state: Dictionary) -> Entity:
 	add_child(new_entity)
 	return new_entity
 
+func update_or_spawn_entity_with_properties(entity_id: int, entity_properties: Dictionary) -> void:
+	var entity: Entity
+	if has_entity(entity_id):
+		entity = get_entity(entity_id)
+	else:
+		entity = entity_scene.instantiate()
+	
+	entity.set_properties(entity_properties)
+
+
+
 func despawn_entity(entity_id: int) -> void:
 	if not has_entity(entity_id): return
 	

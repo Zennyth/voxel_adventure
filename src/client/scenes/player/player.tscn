@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://5g86tfj8xxk2"]
+[gd_scene load_steps=7 format=3 uid="uid://5g86tfj8xxk2"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_xdp00"]
 [ext_resource type="Script" path="res://modules/spells/spells_manager.gd" id="2_1q5mf"]
 [ext_resource type="PackedScene" uid="uid://yrtrholbjjs" path="res://modules/spells/fireball/fireball.tscn" id="4_wkfnu"]
 [ext_resource type="Script" path="res://scripts/player/spring_arm.gd" id="4_x7wvw"]
 [ext_resource type="PackedScene" uid="uid://cpymd8gjqxktm" path="res://scenes/entities/characters/modular_character.tscn" id="5_vqm1t"]
+[ext_resource type="PackedScene" uid="uid://bcuw5ry88hnya" path="res://scenes/entities/characters/health_bar.tscn" id="6_wf5k4"]
 
 [node name="Player" type="Node3D"]
 script = ExtResource( "1_xdp00" )
@@ -34,3 +35,6 @@ current = true
 
 [node name="Modular" parent="." instance=ExtResource( "5_vqm1t" )]
 collision_layer = 512
+
+[node name="HealthBar" parent="." instance=ExtResource( "6_wf5k4" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.972994, 0)

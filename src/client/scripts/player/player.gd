@@ -12,16 +12,20 @@ extends Character
 
 var _velocity = Vector3()
 var _grounded = false
-var _head = null
 var _box_mover = VoxelBoxMover.new()
 
 
 func _ready() -> void:
+	super()
 	_box_mover.set_collision_mask(1) # Excludes rails
-	_head = get_node(head)
 
 	_model = $Modular
 	_spells_manager = $SpellsManager
+	
+	max_hp = 400
+	properties['max_hp'] = max_hp
+	hp = 50
+	properties['hp'] = hp
 
 func _physics_process(delta: float) -> void:
 	movement_process(delta)

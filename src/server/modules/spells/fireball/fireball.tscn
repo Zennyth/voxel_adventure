@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://yrtrholbjjs"]
+
+[ext_resource type="Script" path="res://modules/spells/fireball/fireball.gd" id="1_n1uec"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hscyl"]
+radius = 1.361
+
+[node name="Fireball" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.21103)
+collision_layer = 0
+collision_mask = 2048
+script = ExtResource( "1_n1uec" )
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource( "SphereShape3D_hscyl" )
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_fireball_body_entered"]

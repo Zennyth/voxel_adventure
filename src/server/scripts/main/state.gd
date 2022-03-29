@@ -6,7 +6,8 @@ func _physics_process(_delta: float) -> void:
 	if get_parent().player_state_collection.keys().size() > 0:
 		world_state = {
 			"T": Time.get_ticks_msec(),
-			"players": get_parent().player_state_collection.duplicate(true)
+			"players": get_parent().player_state_collection.duplicate(true),
+			"Enemies": get_node("../Enemies").enemy_list
 		}
 		
 		#print(world_state)

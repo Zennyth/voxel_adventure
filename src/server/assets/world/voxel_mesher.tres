@@ -1,6 +1,6 @@
-[gd_resource type="VoxelMesherBlocky" load_steps=2 format=3 uid="uid://yejbqnyvrof3"]
+[gd_resource type="VoxelMesherBlocky" load_steps=2 format=3 uid="uid://xcj0x4mjgwuy"]
 
-[ext_resource type="VoxelBlockyLibrary" uid="uid://o8tc2pxbdvwt" path="res://assets/world/blocks/voxel_library.tres" id="1_fluo4"]
+[ext_resource type="VoxelBlockyLibrary" path="res://assets/world/blocks/voxel_library.tres" id="1_fluo4"]
 
 [resource]
 library = ExtResource( "1_fluo4" )

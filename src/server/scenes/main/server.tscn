@@ -1,20 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1785m64s0tta"]
+[gd_scene load_steps=11 format=3 uid="uid://bmhgtn3d4ed2l"]
 
 [ext_resource type="Script" path="res://scripts/main/server.gd" id="1_jh01i"]
-[ext_resource type="Script" path="res://scripts/main/state.gd" id="2_fgfcn"]
-[ext_resource type="Script" path="res://scripts/main/players.gd" id="3_ydn1c"]
-[ext_resource type="VoxelMesherBlocky" uid="uid://yejbqnyvrof3" path="res://assets/world/voxel_mesher.tres" id="4_6r63b"]
+[ext_resource type="VoxelMesherBlocky" uid="uid://xcj0x4mjgwuy" path="res://assets/world/voxel_mesher.tres" id="4_6r63b"]
 [ext_resource type="VoxelGeneratorScript" uid="uid://clho6802og8u0" path="res://assets/world/world_generator.tres" id="4_my1s0"]
 [ext_resource type="Script" path="res://scripts/world/terrain.gd" id="5_3ddrg"]
+[ext_resource type="Script" path="res://scripts/entities/entities.gd" id="6_ijwst"]
+[ext_resource type="Script" path="res://scripts/entities/enemies/enemies_manager.gd" id="7_4jrly"]
+[ext_resource type="Script" path="res://scripts/entities/players/players_manager.gd" id="7_faant"]
+[ext_resource type="PackedScene" uid="uid://blgy56mwskela" path="res://scenes/entities/player/player.tscn" id="8_luti8"]
+[ext_resource type="PackedScene" uid="uid://brmag4ux45h03" path="res://scenes/entities/enemies/blank.tscn" id="9_t6rup"]
 
 [sub_resource type="VoxelStreamRegionFiles" id="VoxelStreamRegionFiles_ekqiu"]
 directory = "res://save/world"
 
 [node name="Server" type="Node3D"]
 script = ExtResource( "1_jh01i" )
-
-[node name="State" type="Node3D" parent="."]
-script = ExtResource( "2_fgfcn" )
 
 [node name="VoxelTerrain" type="VoxelTerrain" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0193325, 0)
@@ -26,5 +26,20 @@ block_enter_notification_enabled = true
 run_stream_in_editor = false
 script = ExtResource( "5_3ddrg" )
 
-[node name="Players" type="Node3D" parent="."]
-script = ExtResource( "3_ydn1c" )
+[node name="Entities" type="Node" parent="."]
+script = ExtResource( "6_ijwst" )
+
+[node name="Players" type="Node3D" parent="Entities"]
+script = ExtResource( "7_faant" )
+entity_scene = ExtResource( "8_luti8" )
+type = "players"
+
+[node name="Enemies" type="Node3D" parent="Entities"]
+script = ExtResource( "7_4jrly" )
+entity_scene = ExtResource( "9_t6rup" )
+type = "enemies"
+
+[node name="Timer" type="Timer" parent="Entities/Enemies"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.972328, 0.17523, -0.154509, -0.0479229, 0.497698, 0.866025, 0.228652, 0.849465, -0.475528, 1.52, 19.7, 14)
