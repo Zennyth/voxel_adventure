@@ -1,11 +1,10 @@
-extends Sprite3D
+extends Node3D
 
 var bar_red = preload("res://assets/entities/characters/health_bar/barHorizontal_red.png")
 var bar_green = preload("res://assets/entities/characters/health_bar/barHorizontal_green.png")
 var bar_yellow = preload("res://assets/entities/characters/health_bar/barHorizontal_yellow.png")
 
-@onready 
-var healthbar = $SubViewportContainer/HealthBar
+@onready var healthbar = $SubViewportContainer/HealthBar
 
 func _ready():
 	# hide()

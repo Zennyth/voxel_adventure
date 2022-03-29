@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bxp2l6f6w48id"]
 
-[ext_resource type="Texture2D" path="res://assets/terrain/blocks/terrain.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bmhhvftrjc5m5" path="res://assets/terrain/blocks/terrain.png" id="1"]
 
 [resource]
 transparency = 1

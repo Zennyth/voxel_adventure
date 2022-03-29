@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	global_translate(velocity * delta)
 
 func _on_fireball_body_entered(node):
-	print(node.get_parent().name)
-	node.get_parent().hit(10)
 	if node.get_parent() is Character:
-		node.get_parent().hit(1)
+		node.get_parent().hit(5)
+		
+		destroy()

@@ -20,8 +20,8 @@ script = ExtResource( "2_1ay81" )
 entity = NodePath("..")
 spell_list = [ExtResource( "2_uupyd" )]
 
-[node name="HealthDisplay" parent="." instance=ExtResource( "5_2gouh" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01465, 0)
-
 [node name="Modular" parent="." instance=ExtResource( "5_ulx8u" )]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, -0.9, 0)
+
+[node name="HealthBar" parent="." instance=ExtResource( "5_2gouh" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.972994, 0)

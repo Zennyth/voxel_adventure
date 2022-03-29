@@ -1,12 +1,12 @@
+Node3D
+Sprite3D
 Area3D
 CharacterBody3D
 RigidDynamicBody3D
 CollisionShape3D
 BoneAttachment3D
 MeshInstance3D
-Node3D
 SubViewport
-Sprite3D
 SubViewportContainer
 TextureProgressBar
 SpringArm3D

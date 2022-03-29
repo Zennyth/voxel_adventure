@@ -3,4 +3,3 @@ res://assets/world/heightmap_curve.tres
 res://assets/world/voxel_mesher.tres
 res://scenes/main/server.tscn
 res://scenes/player/player.tscn
-res://scripts/main/server.gd

@@ -3,24 +3,23 @@
 [ext_resource type="Script" path="res://scripts/entities/characters/health_bar.gd" id="1_221dv"]
 [ext_resource type="Texture2D" uid="uid://cnaak03ne4hwv" path="res://assets/entities/characters/health_bar/barHorizontal_green.png" id="2_vgot5"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cvagn"]
-transparency = 1
-shading_mode = 0
-albedo_texture = ExtResource( "2_vgot5" )
-billboard_mode = 1
+[sub_resource type="ViewportTexture" id="ViewportTexture_jie1f"]
+viewport_path = NodePath("SubViewportContainer")
 
-[node name="HealthDisplay" type="Sprite3D"]
-material_override = SubResource( "StandardMaterial3D_cvagn" )
-texture = ExtResource( "2_vgot5" )
+[node name="HealthBar" type="Node3D"]
 script = ExtResource( "1_221dv" )
 
+[node name="HealthDisplay" type="Sprite3D" parent="."]
+billboard = 1
+texture = SubResource( "ViewportTexture_jie1f" )
+
 [node name="SubViewportContainer" type="SubViewport" parent="."]
-size = Vector2i(200, 26)
+transparent_bg = true
+size = Vector2i(200, 30)
+render_target_update_mode = 4
 
 [node name="HealthBar" type="TextureProgressBar" parent="SubViewportContainer"]
-offset_left = 1.0
-offset_top = -2.0
-offset_right = 201.0
-offset_bottom = 24.0
+offset_right = 200.0
+offset_bottom = 26.0
 value = 100.0
 texture_progress = ExtResource( "2_vgot5" )

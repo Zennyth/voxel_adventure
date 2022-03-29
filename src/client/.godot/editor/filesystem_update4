@@ -6,7 +6,6 @@ res://assets/terrain/voxel_mesher.tres
 res://assets/terrain/world_generator.tres
 res://modules/spells/fireball/fireball.gd
 res://modules/spells/fireball/fireball.tscn
-res://scenes/entities/characters/character.tscn
 res://scenes/entities/characters/health_bar.tscn
 res://scenes/entities/characters/modular_character.tscn
 res://scenes/entities/enemies/blank.tscn
@@ -14,8 +13,4 @@ res://scenes/main/main.tscn
 res://scenes/player/player.tscn
 res://scenes/player/player_template.tscn
 res://scripts/entities/characters/character.gd
-res://scripts/entities/entity.gd
-res://scripts/main/entities.gd
-res://scripts/main/main.gd
-res://scripts/player/player.gd
-res://scripts/singletons/server.gd
+res://scripts/entities/characters/health_bar.gd

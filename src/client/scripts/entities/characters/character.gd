@@ -6,7 +6,7 @@ var _model: Node3D = $Modular
 @onready
 var _spells_manager: SpellsManager = $SpellsManager
 @onready
-var hp_bar: Sprite3D = $HealthDisplay
+var hp_bar: Node3D = $HealthBar
 
 @export
 var max_hp: int = 100
