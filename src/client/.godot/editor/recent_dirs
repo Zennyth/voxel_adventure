@@ -1,9 +1,7 @@
 res://scenes/entities/characters/myExample
-res://scenes/entities/characters/example
 res://assets/entities/characters/human_1/head
 res://assets/terrain
 res://assets/terrain/blocks
 res://scripts/singletons
-res://save/terrain
 res://scenes/main
 res://scenes/singletons

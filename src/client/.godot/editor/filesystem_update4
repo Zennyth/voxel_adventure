@@ -5,6 +5,7 @@ res://assets/terrain/blocks/voxel_library.tres
 res://assets/terrain/voxel_mesher.tres
 res://assets/terrain/world_generator.tres
 res://modules/spells/fireball/fireball.tscn
+res://scenes/entities/characters/human_2/model.tscn
 res://scenes/entities/characters/modular_character.tscn
 res://scenes/entities/characters/stats/health_bar.tscn
 res://scenes/entities/characters/stats/stats.tscn
@@ -20,4 +21,5 @@ res://scripts/entities/entities_manager.gd
 res://scripts/main/entities.gd
 res://scripts/main/main.gd
 res://scripts/player/player.gd
+res://scripts/player/spring_arm.gd
 res://scripts/singletons/server.gd

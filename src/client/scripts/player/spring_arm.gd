@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and not lock:
-		rotation.x = clamp(rotation.x - event.relative.y * mouse_sensibilty, - PI, PI)
+		rotation.x = clamp(rotation.x - event.relative.y * mouse_sensibilty, - PI / 2, PI / 2)
 		rotation.y = wrapf(rotation.y - event.relative.x * mouse_sensibilty, - PI, PI)
 	
 	elif event is InputEventKey:
