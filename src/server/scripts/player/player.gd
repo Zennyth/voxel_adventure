@@ -4,7 +4,7 @@ extends Character
 var _viewer: VoxelViewer = $VoxelViewer
 
 func _ready() -> void:
-	
+	super()
 	_spells_manager = $SpellsManager
 	if id != -1: set_viewer_id(id)
 

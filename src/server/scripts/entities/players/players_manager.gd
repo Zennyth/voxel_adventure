@@ -11,7 +11,7 @@ func receive_player_state(player_id: int, player_state: Dictionary) -> void:
 	else:
 		# new player has connect
 		entity_state_collection[player_id] = player_state
-		spawn_entity(player_id).set_state(player_state)
+		# spawn_entity(player_id).set_state(player_state)
 
 func get_entity_state_collection() -> Dictionary:
 	var entity_state_collection_clone: Dictionary = entity_state_collection.duplicate(true)

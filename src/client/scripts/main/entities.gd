@@ -1,6 +1,6 @@
 extends Node
 
-@onready var _other_players: EntitiesManager = $OtherPlayers
+@onready var _other_players: EntitiesManager = $Players
 @onready var _enemies: EntitiesManager = $Enemies
 
 func get_entities_manager(entity_type: String) -> EntitiesManager:

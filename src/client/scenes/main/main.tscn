@@ -10,8 +10,8 @@
 [ext_resource type="Script" path="res://scripts/main/terrain.gd" id="7_lo6l5"]
 [ext_resource type="Script" path="res://scripts/main/entities.gd" id="8_p5k02"]
 [ext_resource type="Script" path="res://scripts/entities/entities_manager.gd" id="9_v2ess"]
-[ext_resource type="PackedScene" uid="uid://cfdor0eg1pfi7" path="res://scenes/player/player_template.tscn" id="10_npty4"]
-[ext_resource type="PackedScene" uid="uid://cshsvltboelh4" path="res://scenes/entities/enemies/blank.tscn" id="11_yc6px"]
+[ext_resource type="PackedScene" uid="uid://hg7n7fyt4gek" path="res://scenes/player/player_template.tscn" id="10_npty4"]
+[ext_resource type="PackedScene" uid="uid://bomc4mf0bxlp5" path="res://scenes/entities/enemies/blank.tscn" id="11_yc6px"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0pf2j"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -51,9 +51,13 @@ script = ExtResource( "7_lo6l5" )
 [node name="Entities" type="Node" parent="."]
 script = ExtResource( "8_p5k02" )
 
-[node name="OtherPlayers" type="Node" parent="Entities"]
+[node name="Players" type="Node" parent="Entities"]
 script = ExtResource( "9_v2ess" )
 entity_scene = ExtResource( "10_npty4" )
+
+[node name="Player" parent="Entities/Players" instance=ExtResource( "2_tkmtv" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 64, 0)
+terrain = NodePath("../../../VoxelTerrain")
 
 [node name="Enemies" type="Node" parent="Entities"]
 script = ExtResource( "9_v2ess" )
@@ -62,7 +66,3 @@ entity_scene = ExtResource( "11_yc6px" )
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.973146, 0.172529, -0.152385, -0.047778, 0.496193, 0.866897, 0.225177, 0.850897, -0.474625, 1.52, 19.7, 14.088)
 shadow_enabled = true
-
-[node name="Player" parent="." instance=ExtResource( "2_tkmtv" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 64, 0)
-terrain = NodePath("../VoxelTerrain")

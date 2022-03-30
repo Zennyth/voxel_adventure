@@ -3,6 +3,7 @@ extends Node3D
 var network = ENetMultiplayerPeer.new()
 var ip = "127.0.0.1"
 var port = 1909
+var is_connected = false
 
 var decimal_collector: float = 0
 var latency_array = []
@@ -36,7 +37,10 @@ func _connection_succeeded() -> void:
 	print("Succefully connected")
 	start_sync_clock()
 	
-	send_player_properties(get_node("../Main/Player").properties)
+	var entities_manager: EntitiesManager = get_node("../Main")._entities.get_entities_manager("players")
+	var player = entities_manager.get_entity(multiplayer.get_unique_id())
+	send_player_properties(player.get_properties())
+	is_connected = true
 
 
 ### Clock synchro
@@ -87,7 +91,7 @@ func despawn_player(player_id: int) -> void:
 	get_node("../Main").despawn_player(player_id)
 
 func send_player_state(player_state: Dictionary) -> void:
-	rpc_id(1, "receive_player_state", player_state)
+	if is_connected: rpc_id(1, "receive_player_state", player_state)
 # declare this function for the client to know how to call (any_peer, unreliable)
 @rpc(any_peer, unreliable)
 func receive_player_state(_player_state: Dictionary) -> void:
@@ -99,6 +103,7 @@ func sync_world_properties(world_properties: Dictionary):
 	get_node("../Main").sync_world_properties(world_properties)
 
 func send_player_properties(player_properties: Dictionary):
+	print(player_properties)
 	rpc_id(1, "receive_player_properties", player_properties)
 @rpc(any_peer)
 func receive_player_properties(_player_properties: Dictionary):

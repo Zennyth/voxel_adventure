@@ -28,12 +28,18 @@ _global_script_classes=[{
 "class": &"SpellsManager",
 "language": &"GDScript",
 "path": "res://modules/spells/spells_manager.gd"
+}, {
+"base": "Node",
+"class": &"Stats",
+"language": &"GDScript",
+"path": "res://scripts/entities/characters/stats/stats.gd"
 }]
 _global_script_class_icons={
 "Character": "",
 "EntitiesManager": "",
 "Entity": "",
-"SpellsManager": ""
+"SpellsManager": "",
+"Stats": ""
 }
 
 [application]

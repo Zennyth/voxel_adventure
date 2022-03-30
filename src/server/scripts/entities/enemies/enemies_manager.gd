@@ -22,7 +22,6 @@ func spawn_enemy():
 	var enemy_state = {"P": Vector3(-5, 4, -41), "R": Vector3(0, 0, 0)}
 	
 	var enemy: Character = spawn_entity(next_enemy_id) 
-	enemy.set_properties(enemy_properties)
 	enemy.set_state(enemy_state)
 	enemy.update_properties()
 	entity_state_collection[next_enemy_id] = enemy_state

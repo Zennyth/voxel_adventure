@@ -17,15 +17,8 @@ var _box_mover = VoxelBoxMover.new()
 
 func _ready() -> void:
 	super()
+	name = str(Server.multiplayer.get_unique_id())
 	_box_mover.set_collision_mask(1) # Excludes rails
-
-	_model = $Modular
-	_spells_manager = $SpellsManager
-	
-	max_hp = 400
-	properties['max_hp'] = max_hp
-	hp = 50
-	properties['hp'] = hp
 
 func _physics_process(delta: float) -> void:
 	movement_process(delta)
@@ -75,3 +68,6 @@ func define_state() -> void:
 	var state = get_state()
 	state["R"] = _model.rotation
 	Server.send_player_state(state)
+
+func _on_stats_hp_depleted():
+	queue_free()

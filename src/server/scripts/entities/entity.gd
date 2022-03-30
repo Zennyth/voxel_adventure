@@ -66,4 +66,4 @@ func get_properties() -> Dictionary:
 	return properties
 
 func update_properties() -> void:
-	get_node("/root/Server").send_entity_properties(id, get_parent().type, properties)
+	get_node("/root/Server").send_entity_properties(id, get_parent().type, get_properties())

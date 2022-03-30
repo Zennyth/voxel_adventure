@@ -78,8 +78,8 @@ func handle_world_buffer():
 						duplicate_state["P"] = entities_last_state["P"].lerp(entities_next_state["P"], interpolation_factor)
 						duplicate_state["R"] = entities_last_state["R"].lerp(entities_next_state["R"], interpolation_factor)
 						entities_manager.get_entity(entity_id).set_state(duplicate_state)
-					else:
-						entities_manager.spawn_entity(entity_id, entities_next_state)
+#					else:
+#						entities_manager.spawn_entity(entity_id, entities_next_state)
 		# Extrapolation
 		elif render_time > world_state_buffer[1].T:
 			var extrapolation_factor = float(render_time - world_state_buffer[0]["T"]) / float(world_state_buffer[1]["T"] - world_state_buffer[0]["T"]) - 1.0

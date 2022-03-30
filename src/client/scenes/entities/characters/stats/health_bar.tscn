@@ -3,15 +3,11 @@
 [ext_resource type="Script" path="res://scripts/entities/characters/health_bar.gd" id="1_221dv"]
 [ext_resource type="Texture2D" uid="uid://cnaak03ne4hwv" path="res://assets/entities/characters/health_bar/barHorizontal_green.png" id="2_vgot5"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_jie1f"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_kxaw8"]
 viewport_path = NodePath("SubViewportContainer")
 
 [node name="HealthBar" type="Node3D"]
 script = ExtResource( "1_221dv" )
-
-[node name="HealthDisplay" type="Sprite3D" parent="."]
-billboard = 1
-texture = SubResource( "ViewportTexture_jie1f" )
 
 [node name="SubViewportContainer" type="SubViewport" parent="."]
 transparent_bg = true
@@ -23,3 +19,7 @@ offset_right = 200.0
 offset_bottom = 26.0
 value = 100.0
 texture_progress = ExtResource( "2_vgot5" )
+
+[node name="HealthDisplay" type="Sprite3D" parent="."]
+billboard = 1
+texture = SubResource( "ViewportTexture_kxaw8" )

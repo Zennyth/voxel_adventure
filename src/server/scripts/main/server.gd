@@ -22,6 +22,7 @@ func _peer_connected(player_id: int) -> void:
 	print("User " + str(player_id) + " is connected !")
 	
 	await get_tree().create_timer(.3).timeout
+	print(_entities.get_world_properties())
 	rpc_id(player_id, "sync_world_properties", _entities.get_world_properties())
 
 func _peer_disconnected(player_id: int) -> void:

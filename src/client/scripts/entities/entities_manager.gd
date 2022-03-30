@@ -5,8 +5,7 @@ class_name EntitiesManager
 ## Init
 ####
 
-@export
-var entity_scene: PackedScene
+@export var entity_scene: PackedScene
 
 func get_entity(entity_id: int) -> Entity:
 	if not has_entity(entity_id): return null
@@ -40,7 +39,9 @@ func update_or_spawn_entity_with_properties(entity_id: int, entity_properties: D
 		entity = get_entity(entity_id)
 	else:
 		entity = entity_scene.instantiate()
-	
+		entity.init(entity_id, Vector3.ZERO)
+		add_child(entity)
+	print(entity_id,entity_properties)
 	entity.set_properties(entity_properties)
 
 

@@ -6,15 +6,9 @@ var bar_yellow = preload("res://assets/entities/characters/health_bar/barHorizon
 
 @onready var healthbar = $SubViewportContainer/HealthBar
 
-func _ready():
-	# hide()
-	if get_parent() and get_parent().get("max_health"):
-		healthbar.max_value = get_parent().max_health
-	
-	# texture = $SubViewportContainer.get_texture()
-
-func update_healthbar(value):
+func update_healthbar(value, max_value):
 	healthbar.texture_progress = bar_green
+	healthbar.max_value = max_value
 	if value < healthbar.max_value * 0.7:
 		healthbar.texture_progress = bar_yellow
 	if value < healthbar.max_value * 0.35:

@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cshsvltboelh4"]
+[gd_scene load_steps=5 format=3 uid="uid://bomc4mf0bxlp5"]
 
 [ext_resource type="Script" path="res://scripts/entities/characters/character.gd" id="1_srj02"]
-[ext_resource type="PackedScene" uid="uid://bcuw5ry88hnya" path="res://scenes/entities/characters/health_bar.tscn" id="2_vtgjr"]
 [ext_resource type="PackedScene" uid="uid://cpymd8gjqxktm" path="res://scenes/entities/characters/modular_character.tscn" id="3_6tkft"]
 [ext_resource type="Script" path="res://modules/spells/spells_manager.gd" id="4_6bowv"]
+[ext_resource type="PackedScene" uid="uid://ddn4jiotva85p" path="res://scenes/entities/characters/stats/stats.tscn" id="4_skcta"]
 
 [node name="Blank" type="Node3D"]
 script = ExtResource( "1_srj02" )
@@ -16,5 +16,6 @@ collision_layer = 2560
 script = ExtResource( "4_6bowv" )
 entity = NodePath("..")
 
-[node name="HealthBar" parent="." instance=ExtResource( "2_vtgjr" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80532, 0)
+[node name="Stats" parent="." instance=ExtResource( "4_skcta" )]
+
+[connection signal="hp_depleted" from="Stats" to="." method="_on_stats_hp_depleted"]

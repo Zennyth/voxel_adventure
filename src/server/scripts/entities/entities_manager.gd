@@ -54,7 +54,11 @@ func update_entity_state(entity_id: int, entity_state: Dictionary) -> void:
 var entity_properties_collection: Dictionary = {}
 
 func get_entity_properties_collection() -> Dictionary:
-	return entity_properties_collection
+	var entity_properties_collection_clone: Dictionary = {}
+	for node in get_children():
+		if node is Entity:
+			entity_properties_collection_clone[node.id] = node.properties
+	return entity_properties_collection_clone
 
 func update_entity_properties(entity_id: int, entity_properties: Dictionary) -> void:
 	if not has_entity(entity_id): return 
