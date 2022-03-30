@@ -25,6 +25,7 @@ func spawn_entity(entity_id: int) -> Entity:
 	
 	var new_entity: Entity = entity_scene.instantiate()
 	new_entity.init(entity_id, Vector3.ZERO)
+	new_entity.connect("destroyed", destroy_entity)
 	add_child(new_entity)
 	return new_entity
 
@@ -32,6 +33,12 @@ func despawn_entity(entity_id: int) -> void:
 	if not has_entity(entity_id): return
 	
 	get_entity(entity_id).queue_free()
+
+func destroy_entity(entity_id: int) -> void:
+	entity_state_collection.erase(entity_id)
+	entity_properties_collection.erase(entity_id)
+	
+	despawn_entity(entity_id)
 
 ####
 ## States

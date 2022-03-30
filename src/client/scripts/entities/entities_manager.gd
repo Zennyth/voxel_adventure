@@ -30,6 +30,7 @@ func spawn_entity(entity_id: int, entity_state: Dictionary) -> Entity:
 	
 	var new_entity: Entity = entity_scene.instantiate()
 	new_entity.init(entity_id, entity_state["P"])
+	new_entity.connect("destroyed", destroy_entity)
 	add_child(new_entity)
 	return new_entity
 
@@ -40,8 +41,8 @@ func update_or_spawn_entity_with_properties(entity_id: int, entity_properties: D
 	else:
 		entity = entity_scene.instantiate()
 		entity.init(entity_id, Vector3.ZERO)
+		entity.connect("destroyed", destroy_entity)
 		add_child(entity)
-	print(entity_id,entity_properties)
 	entity.set_properties(entity_properties)
 
 
@@ -51,3 +52,5 @@ func despawn_entity(entity_id: int) -> void:
 	
 	get_entity(entity_id).queue_free()
 
+func destroy_entity(entity_id: int) -> void:
+	despawn_entity(entity_id)

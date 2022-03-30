@@ -37,13 +37,13 @@ func spawn_player(player_id: int, spawn_position: Vector3) -> void:
 	if get_tree().multiplayer.get_unique_id() == player_id:
 		pass
 	else:
-		_entities._other_players.spawn_entity(player_id, {
+		_entities._players.spawn_entity(player_id, {
 			"P": spawn_position
 		})
 
 func despawn_player(player_id: int) -> void:
 	await get_tree().create_timer(.2).timeout
-	_entities._other_players.despawn_entity(player_id)
+	_entities._players.despawn_entity(player_id)
 	
 func _physics_process(_delta: float) -> void:
 	handle_world_buffer()
@@ -124,8 +124,8 @@ func handle_fireball():
 		if launch_time <= Server.client_clock:
 			var fireball = fireball_collection[launch_time]
 			
-			if _entities._other_players.has_entity(fireball['player_id']):
-				var character: Character = _entities._other_players.get_entity(fireball['player_id'])
+			if _entities._players.has_entity(fireball['player_id']):
+				var character: Character = _entities._players.get_entity(fireball['player_id'])
 				character._spells_manager.cast_fireball(fireball['direction'])
 			
 			fireball_collection.erase(launch_time)

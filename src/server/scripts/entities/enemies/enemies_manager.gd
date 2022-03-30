@@ -25,5 +25,3 @@ func spawn_enemy():
 	enemy.set_state(enemy_state)
 	enemy.update_properties()
 	entity_state_collection[next_enemy_id] = enemy_state
-	entity_properties_collection[next_enemy_id] = enemy_properties
-	

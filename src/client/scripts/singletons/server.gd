@@ -103,7 +103,6 @@ func sync_world_properties(world_properties: Dictionary):
 	get_node("../Main").sync_world_properties(world_properties)
 
 func send_player_properties(player_properties: Dictionary):
-	print(player_properties)
 	rpc_id(1, "receive_player_properties", player_properties)
 @rpc(any_peer)
 func receive_player_properties(_player_properties: Dictionary):

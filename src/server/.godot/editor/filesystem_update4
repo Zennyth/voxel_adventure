@@ -6,6 +6,7 @@ res://scenes/entities/enemies/blank.tscn
 res://scenes/entities/player/player.tscn
 res://scenes/entities/stats.tscn
 res://scenes/main/server.tscn
+res://scenes/player/player.tscn
 res://scripts/entities/characters/character.gd
 res://scripts/entities/characters/stats/stats.gd
 res://scripts/entities/enemies/enemies_manager.gd

@@ -1,6 +1,13 @@
 extends Node3D
 class_name Entity
 
+
+####
+## Signals
+####
+signal destroyed(entity_id: int)
+
+
 ####
 ## Init
 ####

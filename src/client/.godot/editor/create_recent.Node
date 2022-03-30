@@ -1,3 +1,4 @@
+Timer
 Node3D
 Node
 Sprite3D
@@ -11,7 +12,6 @@ SubViewport
 SubViewportContainer
 TextureProgressBar
 SpringArm3D
-Timer
 VoxelViewer
 VoxelTerrain
 DirectionalLight3D

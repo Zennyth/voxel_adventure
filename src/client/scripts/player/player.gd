@@ -78,8 +78,8 @@ func movement_process(delta: float) -> void:
 	if Input.is_key_pressed(KEY_F):
 		var direction_test: Vector3 = Vector3.FORWARD.rotated(Vector3.UP, _spring_arm.rotation.y)
 		direction_test = direction_test.rotated(Vector3.LEFT, - _spring_arm.rotation.x)
-		_spells_manager.cast_fireball(direction_test)
-		Server.send_fireball(direction_test)
+		var ok = _spells_manager.cast_fireball(direction_test)
+		if ok: Server.send_fireball(direction_test)
 #
 	assert(delta > 0)
 	_velocity = motion / delta

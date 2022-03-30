@@ -2,15 +2,22 @@ extends Node3D
 class_name Entity
 
 ####
+## Signals
+####
+signal destroyed(entity_id: int)
+
+
+####
 ## Init
 ####
 
 var state: Dictionary = {}
 var properties: Dictionary = {}
+var id: int = 0
 
 # Constructor in godot can't take parameters -> custom constructor init
-func init(id: int, initial_position: Vector3) -> void:
-	name = str(id)
+func init(entity_id: int, initial_position: Vector3) -> void:
+	set_id(entity_id)
 	set_position(initial_position)
 
 
@@ -30,8 +37,9 @@ func get_rotation() -> Vector3:
 func set_rotation(new_rotation: Vector3) -> void:
 	rotation = new_rotation
 
-func set_id(id: int):
-	name = str(id)
+func set_id(entity_id: int):
+	name = str(entity_id)
+	id = entity_id
 
 
 ####

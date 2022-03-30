@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcuw5ry88hnya"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://scripts/entities/characters/health_bar.gd" id="1_221dv"]
+[ext_resource type="Script" path="res://scripts/entities/characters/stats/health_bar.gd" id="1_221dv"]
 [ext_resource type="Texture2D" uid="uid://cnaak03ne4hwv" path="res://assets/entities/characters/health_bar/barHorizontal_green.png" id="2_vgot5"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_kxaw8"]

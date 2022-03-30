@@ -1,6 +1,17 @@
 extends Entity
 class_name Character
 
+####
+## Signals
+####
+func _on_stats_hp_depleted():
+	emit_signal("destroyed", id)
+
+
+####
+## Main
+####
+
 @onready var _spells_manager: SpellsManager = $SpellsManager
 @onready var _stats: Stats = $Stats
 
@@ -23,6 +34,3 @@ func on_hit(damage: int):
 
 func set_health(new_hp: int):
 	_stats.hp = new_hp
-
-func _on_stats_hp_depleted():
-	queue_free()

@@ -39,3 +39,6 @@ func despawn_player(player_id: int):
 	if entity_state_collection.has(player_id): 
 		entity_state_collection.erase(player_id)
 	despawn_entity(player_id)
+
+func destroy_entity(_entity_id: int):
+	pass

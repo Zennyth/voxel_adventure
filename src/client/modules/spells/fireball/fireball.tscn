@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://yrtrholbjjs"]
+[gd_scene load_steps=20 format=3 uid="uid://yrtrholbjjs"]
 
 [ext_resource type="Curve" uid="uid://bch42iwtdxwn7" path="res://modules/spells/fireball/fireball_cycle.tres" id="1_ixc3e"]
 [ext_resource type="Script" path="res://modules/spells/fireball/fireball.gd" id="1_n1uec"]
@@ -20,7 +20,7 @@ gradient = SubResource( "Gradient_iygms" )
 
 [sub_resource type="NoiseTexture" id="NoiseTexture_g521r"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0mnek"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jpnug"]
 transparency = 1
 blend_mode = 1
 shading_mode = 0
@@ -51,11 +51,43 @@ curve = SubResource( "Curve_r86tu" )
 [sub_resource type="CurveTexture" id="CurveTexture_3r4yk"]
 curve = ExtResource( "1_ixc3e" )
 
+[sub_resource type="ParticlesMaterial" id="ParticlesMaterial_uo7sk"]
+emission_shape = 1
+emission_sphere_radius = 0.8
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+radial_accel_curve = SubResource( "CurveTexture_ey617" )
+angle_max = 180.0
+scale_min = 0.75
+scale_curve = SubResource( "CurveTexture_3r4yk" )
+color_ramp = SubResource( "GradientTexture1D_rifyu" )
+
+[sub_resource type="BoxMesh" id="BoxMesh_khacw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0mnek"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.298039, 0, 1)
+detail_mask = SubResource( "GradientTexture1D_bi0jl" )
+detail_blend_mode = 1
+detail_uv_layer = 1
+detail_albedo = SubResource( "GradientTexture1D_wfq0u" )
+detail_normal = SubResource( "NoiseTexture_g521r" )
+grow_amount = 16.0
+proximity_fade_distance = 10.0
+
 [sub_resource type="ParticlesMaterial" id="ParticlesMaterial_xai4p"]
 emission_shape = 1
 emission_sphere_radius = 0.8
+direction = Vector3(0, 0, 0)
+spread = 180.0
 gravity = Vector3(0, 0, 0)
-angular_velocity_max = 15.0
+initial_velocity_min = 1.0
+initial_velocity_max = 10.0
+linear_accel_min = 10.0
+linear_accel_max = 10.0
 radial_accel_curve = SubResource( "CurveTexture_ey617" )
 angle_max = 180.0
 scale_min = 0.75
@@ -63,23 +95,37 @@ scale_curve = SubResource( "CurveTexture_3r4yk" )
 color_ramp = SubResource( "GradientTexture1D_rifyu" )
 
 [sub_resource type="BoxMesh" id="BoxMesh_gyug8"]
+size = Vector3(0.2, 0.2, 0.2)
 
 [node name="Fireball" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.21103)
 collision_layer = 0
 collision_mask = 2048
 script = ExtResource( "1_n1uec" )
+cooldown = 1.0
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource( "SphereShape3D_hscyl" )
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-material_override = SubResource( "StandardMaterial3D_0mnek" )
+[node name="Trail" type="GPUParticles3D" parent="."]
+material_override = SubResource( "StandardMaterial3D_jpnug" )
 amount = 80
 local_coords = false
+process_material = SubResource( "ParticlesMaterial_uo7sk" )
+draw_pass_1 = SubResource( "BoxMesh_khacw" )
+
+[node name="TTL" type="Timer" parent="."]
+
+[node name="Explosion" type="GPUParticles3D" parent="."]
+material_override = SubResource( "StandardMaterial3D_0mnek" )
+emitting = false
+amount = 80
+one_shot = true
+explosiveness = 0.5
+randomness = 0.5
 process_material = SubResource( "ParticlesMaterial_xai4p" )
 draw_pass_1 = SubResource( "BoxMesh_gyug8" )
 
-[node name="Timer" type="Timer" parent="."]
+[node name="ExplosionTimer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_fireball_body_entered"]

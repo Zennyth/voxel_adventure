@@ -4,7 +4,9 @@ res://assets/terrain/blocks/terrain_material_transparent.tres
 res://assets/terrain/blocks/voxel_library.tres
 res://assets/terrain/voxel_mesher.tres
 res://assets/terrain/world_generator.tres
+res://modules/spells/fireball/fireball.gd
 res://modules/spells/fireball/fireball.tscn
+res://modules/spells/spells_manager.gd
 res://scenes/entities/characters/human_2/model.tscn
 res://scenes/entities/characters/modular_character.tscn
 res://scenes/entities/characters/stats/health_bar.tscn
@@ -18,6 +20,7 @@ res://scripts/entities/characters/health_bar.gd
 res://scripts/entities/characters/player_template.gd
 res://scripts/entities/characters/stats/stats.gd
 res://scripts/entities/entities_manager.gd
+res://scripts/entities/entity.gd
 res://scripts/main/entities.gd
 res://scripts/main/main.gd
 res://scripts/player/player.gd

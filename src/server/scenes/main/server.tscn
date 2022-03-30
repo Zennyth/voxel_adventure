@@ -1,13 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://bmhgtn3d4ed2l"]
+[gd_scene load_steps=11 format=3 uid="uid://cy1edde8tmkyb"]
 
 [ext_resource type="Script" path="res://scripts/main/server.gd" id="1_jh01i"]
-[ext_resource type="VoxelMesherBlocky" uid="uid://xcj0x4mjgwuy" path="res://assets/world/voxel_mesher.tres" id="4_6r63b"]
+[ext_resource type="VoxelMesherBlocky" uid="uid://d2dqa5xnmqaef" path="res://assets/world/voxel_mesher.tres" id="4_6r63b"]
 [ext_resource type="VoxelGeneratorScript" uid="uid://clho6802og8u0" path="res://assets/world/world_generator.tres" id="4_my1s0"]
 [ext_resource type="Script" path="res://scripts/world/terrain.gd" id="5_3ddrg"]
 [ext_resource type="Script" path="res://scripts/entities/entities.gd" id="6_ijwst"]
 [ext_resource type="Script" path="res://scripts/entities/enemies/enemies_manager.gd" id="7_4jrly"]
 [ext_resource type="Script" path="res://scripts/entities/players/players_manager.gd" id="7_faant"]
-[ext_resource type="PackedScene" uid="uid://blgy56mwskela" path="res://scenes/entities/player/player.tscn" id="8_luti8"]
+[ext_resource type="PackedScene" uid="uid://blgy56mwskela" path="res://scenes/player/player.tscn" id="8_luti8"]
 [ext_resource type="PackedScene" uid="uid://brmag4ux45h03" path="res://scenes/entities/enemies/blank.tscn" id="9_t6rup"]
 
 [sub_resource type="VoxelStreamRegionFiles" id="VoxelStreamRegionFiles_ekqiu"]

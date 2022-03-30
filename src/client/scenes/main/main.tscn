@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://scripts/main/terrain.gd" id="7_lo6l5"]
 [ext_resource type="Script" path="res://scripts/main/entities.gd" id="8_p5k02"]
 [ext_resource type="Script" path="res://scripts/entities/entities_manager.gd" id="9_v2ess"]
-[ext_resource type="PackedScene" uid="uid://hg7n7fyt4gek" path="res://scenes/player/player_template.tscn" id="10_npty4"]
+[ext_resource type="PackedScene" path="res://scenes/player/player_template.tscn" id="10_npty4"]
 [ext_resource type="PackedScene" uid="uid://bomc4mf0bxlp5" path="res://scenes/entities/enemies/blank.tscn" id="11_yc6px"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0pf2j"]

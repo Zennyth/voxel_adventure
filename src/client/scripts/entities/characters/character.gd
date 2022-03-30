@@ -1,6 +1,14 @@
 extends Entity
 class_name Character
 
+####
+## Signals
+####
+func _on_stats_hp_depleted():
+	emit_signal("destroyed", id)
+
+
+
 @onready var _model: Node3D = $Modular
 @onready var _spells_manager: SpellsManager = $SpellsManager
 @onready var _stats: Stats = $Stats
@@ -21,6 +29,3 @@ func get_properties() -> Dictionary:
 		_stats.get_to_dict(properties)
 	
 	return properties
-
-func _on_stats_hp_depleted():
-	queue_free()
