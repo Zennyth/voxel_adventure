@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bcle3dpi5kvx5"]
+[gd_scene load_steps=19 format=3 uid="uid://bcle3dpi5kvx5"]
 
 [ext_resource type="Script" path="res://scripts/main/main.gd" id="1_umhtm"]
 [ext_resource type="PackedScene" uid="uid://5g86tfj8xxk2" path="res://scenes/player/player.tscn" id="2_tkmtv"]
@@ -7,10 +7,11 @@
 [ext_resource type="VoxelMesherBlocky" uid="uid://c3cyuawpuqd1i" path="res://assets/terrain/voxel_mesher.tres" id="4_uv825"]
 [ext_resource type="Material" uid="uid://bi5wwotip21un" path="res://assets/terrain/blocks/terrain_material_transparent.tres" id="5_3lg35"]
 [ext_resource type="Material" uid="uid://bxp2l6f6w48id" path="res://assets/terrain/blocks/terrain_material_foliage.tres" id="6_cll2m"]
+[ext_resource type="Texture2D" uid="uid://vk8abqsdxut3" path="res://assets/entities/characters/human_1/chest/chest.png" id="7_dxwaa"]
 [ext_resource type="Script" path="res://scripts/main/terrain.gd" id="7_lo6l5"]
 [ext_resource type="Script" path="res://scripts/main/entities.gd" id="8_p5k02"]
 [ext_resource type="Script" path="res://scripts/entities/entities_manager.gd" id="9_v2ess"]
-[ext_resource type="PackedScene" path="res://scenes/player/player_template.tscn" id="10_npty4"]
+[ext_resource type="PackedScene" uid="uid://b5pdkhkbmpfd2" path="res://scenes/player/player_template.tscn" id="10_npty4"]
 [ext_resource type="PackedScene" uid="uid://bomc4mf0bxlp5" path="res://scenes/entities/enemies/blank.tscn" id="11_yc6px"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0pf2j"]
@@ -31,6 +32,9 @@ volumetric_fog_density = 0.0114
 [sub_resource type="VoxelStreamRegionFiles" id="VoxelStreamRegionFiles_e8hl1"]
 directory = "res://save/terrain"
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_msgnt"]
+albedo_texture = ExtResource( "7_dxwaa" )
+
 [node name="Main" type="Node"]
 script = ExtResource( "1_umhtm" )
 
@@ -46,6 +50,7 @@ run_stream_in_editor = false
 material/0 = ExtResource( "4_5kgk7" )
 material/1 = ExtResource( "5_3lg35" )
 material/2 = ExtResource( "6_cll2m" )
+material/3 = SubResource( "StandardMaterial3D_msgnt" )
 script = ExtResource( "7_lo6l5" )
 
 [node name="Entities" type="Node" parent="."]
@@ -57,7 +62,6 @@ entity_scene = ExtResource( "10_npty4" )
 
 [node name="Player" parent="Entities/Players" instance=ExtResource( "2_tkmtv" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 64, 0)
-terrain = NodePath("../../../VoxelTerrain")
 
 [node name="Enemies" type="Node" parent="Entities"]
 script = ExtResource( "9_v2ess" )

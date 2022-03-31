@@ -19,6 +19,7 @@ func launch(start_position: Vector3, start_direction: Vector3) -> void:
 	transform.origin = start_position
 	direction = start_direction
 	velocity = direction * init_velocity
+	rotation = direction
 	
 	show()
 	set_physics_process(true)

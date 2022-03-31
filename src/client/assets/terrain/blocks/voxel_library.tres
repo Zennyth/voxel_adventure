@@ -1,4 +1,4 @@
-[gd_resource type="VoxelBlockyLibrary" load_steps=54 format=3 uid="uid://dbnuxvyuo2aul"]
+[gd_resource type="VoxelBlockyLibrary" load_steps=56 format=3 uid="uid://dbnuxvyuo2aul"]
 
 [ext_resource type="ArrayMesh" uid="uid://4yeq3ug58aj7" path="res://assets/terrain/blocks/grass/grass.obj" id="1"]
 [ext_resource type="ArrayMesh" uid="uid://bonr3rq01xyt3" path="res://assets/terrain/blocks/dirt/dirt.obj" id="2"]
@@ -20,6 +20,7 @@
 [ext_resource type="ArrayMesh" uid="uid://c8xfx6qes5x6i" path="res://assets/terrain/blocks/rail/rail_turn_px.obj" id="18"]
 [ext_resource type="ArrayMesh" uid="uid://dpcjm8y5ysoma" path="res://assets/terrain/blocks/rail/rail_turn_nz.obj" id="19"]
 [ext_resource type="ArrayMesh" uid="uid://b8ndttwa70u4k" path="res://assets/terrain/blocks/rail/rail_x.obj" id="20"]
+[ext_resource type="ArrayMesh" uid="uid://dq70ptuh8j0yo" path="res://assets/entities/characters/human_1/chest/chest.obj" id="20_ov6yg"]
 [ext_resource type="ArrayMesh" uid="uid://dtv2pugfak6cv" path="res://assets/terrain/blocks/rail/rail_z.obj" id="21"]
 [ext_resource type="ArrayMesh" uid="uid://ctdlrswabdpph" path="res://assets/terrain/blocks/rail/rail_turn_nx.obj" id="22"]
 [ext_resource type="ArrayMesh" uid="uid://bq4ih7xghmftt" path="res://assets/terrain/blocks/rail/rail_turn_pz.obj" id="23"]
@@ -195,6 +196,13 @@ material_id = 2
 geometry_type = 2
 custom_mesh = ExtResource( "26" )
 
+[sub_resource type="VoxelBlockyModel" id="VoxelBlockyModel_0q22e"]
+voxel_name = &"flower_3"
+material_id = 3
+geometry_type = 2
+custom_mesh = ExtResource( "20_ov6yg" )
+collision_mask = 0
+
 [sub_resource type="VoxelBlockyModel" id="21"]
 voxel_name = &"log_x"
 random_tickable = true
@@ -268,3 +276,4 @@ voxels/23 = SubResource( "17" )
 voxels/24 = SubResource( "18" )
 voxels/25 = SubResource( "19" )
 voxels/26 = SubResource( "20" )
+voxels/27 = SubResource( "VoxelBlockyModel_0q22e" )
