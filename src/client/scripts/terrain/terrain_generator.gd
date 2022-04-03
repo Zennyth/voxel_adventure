@@ -124,7 +124,7 @@ func _generate_block(buffer: VoxelBuffer, origin_in_voxels: Vector3i, lod: int) 
 							var foliage = FLOWER
 #							if rng.randf() < 0.1:
 #								foliage = DEAD_SHRUB
-							# buffer.set_voxel(foliage, x, relative_height, z, _CHANNEL)
+							buffer.set_voxel(foliage, x, relative_height, z, _CHANNEL)
 				
 				# Water
 				if height < 0 and oy < 0:

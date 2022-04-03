@@ -6,11 +6,9 @@ extends Character
 @export var gravity: float = 9.8 / 5
 @export var jump_force: float = 15
 
-@export var head: NodePath
-# Not used in this script, but might be useful for child nodes because
-# this controller will most likely be on the root
 @export var terrain: NodePath
 @onready var _spring_arm: SpringArm3D = $SpringArm3D
+@onready var _animation_tree: AnimationTree = $Modular/Animation
 
 var _velocity = Vector3()
 var _vertical_velocity: float = 0
@@ -41,6 +39,8 @@ func movement_process(delta: float) -> void:
 	
 	_velocity = _velocity.lerp(direction * speed, delta * accelaration)
 	_velocity += Vector3.DOWN * _vertical_velocity
+	
+	_animation_tree.set("parameters/Blend2/blend_amount", abs(_velocity.z / 8) + abs(_velocity.x / 8))
 
 	if _grounded and Input.is_key_pressed(KEY_SPACE):
 		_velocity.y = jump_force

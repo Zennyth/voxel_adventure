@@ -1,7 +1,7 @@
 extends EntitiesManager
 
 var next_enemy_id := 1 # entity_id
-var max_enemy := 0
+var max_enemy := 1
 var enemy_types := ["Blank"]
 
 @onready var _timer: Timer = $Timer

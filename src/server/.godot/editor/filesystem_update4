@@ -3,5 +3,3 @@ res://assets/world/heightmap_curve.tres
 res://assets/world/voxel_mesher.tres
 res://scenes/main/server.tscn
 res://scenes/player/player.tscn
-res://scripts/entities/enemies/enemies_manager.gd
-res://scripts/world/terrain.gd

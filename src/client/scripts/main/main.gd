@@ -137,4 +137,5 @@ func sync_fireball(direction: Vector3, player_id: int, spawn_time: int) -> void:
 	}
 
 func sync_chunk(data_array: PackedByteArray, size: int, voxels_position: Vector3i) -> void:
-	_terrain.sync_chunk(data_array, size, voxels_position)
+	# _terrain.sync_chunk(data_array, size, voxels_position)
+	pass
