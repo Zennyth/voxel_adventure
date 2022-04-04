@@ -51,7 +51,6 @@ config/features=PackedStringArray("4.0", "Vulkan Clustered")
 
 [autoload]
 
-Server="*res://scenes/singletons/server.tscn"
 random="*res://scripts/singletons/random.gd"
 
 [input]

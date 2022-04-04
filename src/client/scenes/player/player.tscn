@@ -17,6 +17,7 @@ omni_range = 10.0
 omni_attenuation = 2.54
 
 [node name="VoxelViewer" type="VoxelViewer" parent="."]
+view_distance = 512
 
 [node name="SpellsManager" type="Node" parent="."]
 script = ExtResource( "2_1q5mf" )

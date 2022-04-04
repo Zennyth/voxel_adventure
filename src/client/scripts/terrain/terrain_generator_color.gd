@@ -1,44 +1,71 @@
 #tool
 extends VoxelGeneratorScript
 
-const Structure = preload("./structure.gd")
-const TreeGenerator = preload("./tree_generator.gd")
-const HeightmapCurve = preload("res://assets/terrain/heightmap_curve.tres")
+const _continentalness_heightmap = preload("res://assets/terrain/generation/heightmap_continentalness.tres")
+const _erosion_heightmap = preload("res://assets/terrain/generation/heightmap_erosion.tres")
+const _peaks_and_valleys_heightmap = preload("res://assets/terrain/generation/heightmap_peaks_and_valleys.tres")
 
 ## Colors
 const _CHANNEL = VoxelBuffer.CHANNEL_COLOR
 
-const _moore_dirs = [
-	Vector3(-1, 0, -1),
-	Vector3(0, 0, -1),
-	Vector3(1, 0, -1),
-	Vector3(-1, 0, 0),
-	Vector3(1, 0, 0),
-	Vector3(-1, 0, 1),
-	Vector3(0, 0, 1),
-	Vector3(1, 0, 1)
-]
+## Blocks
+const AIR = 0
+const OCEAN = 1
+const BEACH = 2
+const SCORCHED = 3
+const BARE = 4
+const TUNDRA = 5
+const SNOW = 6
+const TEMPERATE_DESERT = 7
+const SHRUBLAND = 8
+const TAIGA = 9
+const GRASSLAND = 10
+const TEMPERATE_DECIDUOUS_DESERT = 11
+const TEMPERATE_RAIN_FOREST = 12
+const SUBTROPICAL_DESERT = 13
+const TROPICAL_SEASONAL_FOREST = 14
 
-var _heightmap_min_y := int(HeightmapCurve.min_value)
-var _heightmap_max_y := int(HeightmapCurve.max_value)
-var _heightmap_range := 0
-var _heightmap_noise := FastNoiseLite.new()
 
-var _frequency := .1
-var _amplitude := 10
+var _heightmap_min_y := 0
+var _heightmap_max_y := 240
+var _heightmap_range := _heightmap_max_y - _heightmap_min_y
+
+var _continentalness_noise := OpenSimplexNoise.new()
+var _erosion_noise := OpenSimplexNoise.new()
+var _peaks_and_valleys_noise := OpenSimplexNoise.new()
+
+func get_noise(noise: OpenSimplexNoise, x: float, y: float) -> float:
+	return noise.get_noise_2d(x, y) / 2 + .5
+
+func get_height_map(heightmap, noise: OpenSimplexNoise, x: float, y: float) -> int:
+	return int(heightmap.interpolate_baked(get_noise(noise, x, y)) * _heightmap_range)
+
+func _get_height_at(x: int, z: int) -> int:
+	var erosion = get_height_map(_erosion_heightmap, _erosion_noise, x, z)
+	var continentalness = get_height_map(_continentalness_heightmap, _continentalness_noise, x, z)
+	var peaks_and_valleys = get_height_map(_peaks_and_valleys_heightmap, _peaks_and_valleys_noise, x, z)
+	
+	return (erosion + continentalness + peaks_and_valleys) / 3
+
+func get_block(height: int) -> int:
+	return GRASSLAND
 
 
 func _init() -> void:
-
-	_heightmap_noise.seed = 131131
-	_heightmap_noise.period = 128
-	_heightmap_noise.noise_type = FastNoiseLite.TYPE_VALUE_CUBIC  
-	# _heightmap_noise.octaves = 4
-
-	# IMPORTANT
-	# If we don't do this `Curve` could bake itself when interpolated,
-	# and this causes crashes when used in multiple threads
-	HeightmapCurve.bake()
+	_continentalness_noise.seed = randi()
+	_continentalness_noise.octaves = 2
+	_continentalness_noise.period = 128
+	_continentalness_heightmap.bake()
+	
+	_erosion_noise.seed = randi()
+	_erosion_noise.octaves = 6
+	_erosion_noise.period = 128
+	_erosion_heightmap.bake()
+	
+	_peaks_and_valleys_noise.seed = randi()
+	_peaks_and_valleys_noise.octaves = 4
+	_peaks_and_valleys_noise.period = 128
+	_peaks_and_valleys_heightmap.bake()
 
 
 func _get_used_channels_mask() -> int:
@@ -58,7 +85,7 @@ static func color_to_16(c: Color) -> int:
 
 func _generate_block(buffer: VoxelBuffer, origin_in_voxels: Vector3i, lod: int) -> void:
 	# Saves from this demo used 8-bit, which is no longer the default
-	buffer.set_channel_depth(_CHANNEL, VoxelBuffer.DEPTH_8_BIT)
+	# buffer.set_channel_depth(_CHANNEL, VoxelBuffer.DEPTH_8_BIT)
 
 	# Assuming input is cubic in our use case (it doesn't have to be!)
 	var block_size := int(buffer.get_size().x)
@@ -73,31 +100,26 @@ func _generate_block(buffer: VoxelBuffer, origin_in_voxels: Vector3i, lod: int) 
 	_heightmap_range = _heightmap_max_y - _heightmap_min_y
 
 	# Ground
-#	if origin_in_voxels.y > _heightmap_max_y:
-#		buffer.fill(0, _CHANNEL)
-#	elif origin_in_voxels.y + block_size < _heightmap_min_y:
-#		buffer.fill(1, _CHANNEL)
+	if origin_in_voxels.y > _heightmap_max_y:
+		buffer.fill(AIR, _CHANNEL)
+	elif origin_in_voxels.y + block_size < _heightmap_min_y:
+		buffer.fill(BARE, _CHANNEL)
+	else:
 		
-	for x in block_size:
-		var gx = origin_in_voxels.x + x
-		for z in block_size:
-			var gz = origin_in_voxels.z + z
-#			var x_offset = sin(gx * _frequency) * _amplitude
-#			var z_offset = sin(gz * _frequency) * _amplitude
-			var surface_y = _heightmap_min_y + _heightmap_noise.get_noise_2d(gx, gz) * _amplitude
-			for y in block_size:
-				buffer.set_voxel(1 if origin_in_voxels.y + y < surface_y else 0, x, y, z, _CHANNEL)
+		for x in block_size:
+			var gx = origin_in_voxels.x + x
+			for z in block_size:
+				var gz = origin_in_voxels.z + z
+				
+				var height = _get_height_at(gx, gz)
+				var block = get_block(height)
+				
+				for y in block_size:
+					buffer.set_voxel(AIR if y + origin_in_voxels.y > height else block, x, y, z, _CHANNEL)
 
 	buffer.compress_uniform_channels()
 
 
 
-
-
 static func _get_chunk_seed_2d(cpos: Vector3) -> int:
 	return int(cpos.x) ^ (31 * int(cpos.z))
-
-
-func _get_height_at(x: int, z: int) -> int:
-	var t = 0.5 + 0.5 * _heightmap_noise.get_noise_2d(x, z)
-	return int(HeightmapCurve.interpolate_baked(t))

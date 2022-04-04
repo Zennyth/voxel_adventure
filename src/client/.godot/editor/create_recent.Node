@@ -1,13 +1,13 @@
 VoxelTerrain
 VoxelLodTerrain
+CollisionShape3D
 MeshInstance3D
+CharacterBody3D
 Camera3D
 SubViewport
 SubViewportContainer
 AnimationTree
 Node3D
-CollisionShape3D
-CharacterBody3D
 VoxelInstancer
 Timer
 Node
