@@ -26,6 +26,7 @@ sky = SubResource( "Sky_o7e76" )
 tonemap_mode = 2
 glow_enabled = true
 glow_bloom = 0.24
+volumetric_fog_enabled = true
 volumetric_fog_density = 0.0114
 
 [sub_resource type="VoxelStreamRegionFiles" id="VoxelStreamRegionFiles_e8hl1"]
@@ -125,11 +126,13 @@ transform = Transform3D(-0.973146, 0.172529, -0.152385, -0.047778, 0.496193, 0.8
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource( "12_c82px" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 250, 0)
+jump_force = 45.0
 
 [node name="VoxelTerrain2" type="VoxelTerrain" parent="."]
 stream = SubResource( "VoxelStreamRegionFiles_rfev8" )
 generator = ExtResource( "17_hk1cd" )
 mesher = SubResource( "VoxelMesherCubes_ihx01" )
+max_view_distance = 256
 run_stream_in_editor = false
 material/0 = SubResource( "StandardMaterial3D_t30o4" )

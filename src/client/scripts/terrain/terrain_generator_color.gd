@@ -19,23 +19,24 @@ const SNOW = 6
 const TEMPERATE_DESERT = 7
 const SHRUBLAND = 8
 const TAIGA = 9
-const GRASSLAND = 10
+const GRASSLAND = 12
 const TEMPERATE_DECIDUOUS_DESERT = 11
 const TEMPERATE_RAIN_FOREST = 12
 const SUBTROPICAL_DESERT = 13
 const TROPICAL_SEASONAL_FOREST = 14
 
-
+var _offset := 1.5
 var _heightmap_min_y := 0
 var _heightmap_max_y := 240
 var _heightmap_range := _heightmap_max_y - _heightmap_min_y
+var _ocean_level := 100
 
 var _continentalness_noise := OpenSimplexNoise.new()
 var _erosion_noise := OpenSimplexNoise.new()
 var _peaks_and_valleys_noise := OpenSimplexNoise.new()
 
 func get_noise(noise: OpenSimplexNoise, x: float, y: float) -> float:
-	return noise.get_noise_2d(x, y) / 2 + .5
+	return noise.get_noise_2d(x / _offset, y / _offset) / 2 + .5
 
 func get_height_map(heightmap, noise: OpenSimplexNoise, x: float, y: float) -> int:
 	return int(heightmap.interpolate_baked(get_noise(noise, x, y)) * _heightmap_range)
@@ -45,10 +46,10 @@ func _get_height_at(x: int, z: int) -> int:
 	var continentalness = get_height_map(_continentalness_heightmap, _continentalness_noise, x, z)
 	var peaks_and_valleys = get_height_map(_peaks_and_valleys_heightmap, _peaks_and_valleys_noise, x, z)
 	
-	return (erosion + continentalness + peaks_and_valleys) / 3
+	return int((erosion * 0.33 + continentalness * 0.34 + peaks_and_valleys * 0.33))
 
 func get_block(height: int) -> int:
-	return GRASSLAND
+	return GRASSLAND if height > _ocean_level else OCEAN
 
 
 func _init() -> void:
@@ -115,7 +116,7 @@ func _generate_block(buffer: VoxelBuffer, origin_in_voxels: Vector3i, lod: int) 
 				var block = get_block(height)
 				
 				for y in block_size:
-					buffer.set_voxel(AIR if y + origin_in_voxels.y > height else block, x, y, z, _CHANNEL)
+					buffer.set_voxel(AIR if y + origin_in_voxels.y > height and y + origin_in_voxels.y > _ocean_level else block, x, y, z, _CHANNEL)
 
 	buffer.compress_uniform_channels()
 
