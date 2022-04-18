@@ -9,8 +9,8 @@ const _peaks_and_valleys_heightmap = preload("res://assets/terrain/generation/he
 const _CHANNEL = VoxelBuffer.CHANNEL_COLOR
 
 ## Blocks
-const AIR = 0
-const OCEAN = 1
+var AIR = 0 #color_to_16(Color(0, 0, 0, 0))
+var OCEAN = 1 #color_to_16(Color(0, 0, 255, 0.5))
 const BEACH = 2
 const SCORCHED = 3
 const BARE = 4
@@ -19,7 +19,7 @@ const SNOW = 6
 const TEMPERATE_DESERT = 7
 const SHRUBLAND = 8
 const TAIGA = 9
-const GRASSLAND = 12
+var GRASSLAND = 10 #color_to_16(Color(0, 255, 0, 1))
 const TEMPERATE_DECIDUOUS_DESERT = 11
 const TEMPERATE_RAIN_FOREST = 12
 const SUBTROPICAL_DESERT = 13
@@ -27,26 +27,26 @@ const TROPICAL_SEASONAL_FOREST = 14
 
 var _offset := 1.5
 var _heightmap_min_y := 0
-var _heightmap_max_y := 240
+var _heightmap_max_y := 100
 var _heightmap_range := _heightmap_max_y - _heightmap_min_y
-var _ocean_level := 100
+var _ocean_level := 0
 
-var _continentalness_noise := OpenSimplexNoise.new()
-var _erosion_noise := OpenSimplexNoise.new()
-var _peaks_and_valleys_noise := OpenSimplexNoise.new()
+var _continentalness_noise := FastNoiseLite.new()
+var _erosion_noise := FastNoiseLite.new()
+var _peaks_and_valleys_noise := FastNoiseLite.new()
 
-func get_noise(noise: OpenSimplexNoise, x: float, y: float) -> float:
+func get_noise(noise: FastNoiseLite, x: float, y: float) -> float:
 	return noise.get_noise_2d(x / _offset, y / _offset) / 2 + .5
 
-func get_height_map(heightmap, noise: OpenSimplexNoise, x: float, y: float) -> int:
+func get_height_map(heightmap, noise: FastNoiseLite, x: float, y: float) -> int:
 	return int(heightmap.interpolate_baked(get_noise(noise, x, y)) * _heightmap_range)
 
 func _get_height_at(x: int, z: int) -> int:
-	var erosion = get_height_map(_erosion_heightmap, _erosion_noise, x, z)
+	# var erosion = get_height_map(_erosion_heightmap, _erosion_noise, x, z)
 	var continentalness = get_height_map(_continentalness_heightmap, _continentalness_noise, x, z)
-	var peaks_and_valleys = get_height_map(_peaks_and_valleys_heightmap, _peaks_and_valleys_noise, x, z)
-	
-	return int((erosion * 0.33 + continentalness * 0.34 + peaks_and_valleys * 0.33))
+	# var peaks_and_valleys = get_height_map(_peaks_and_valleys_heightmap, _peaks_and_valleys_noise, x, z)
+	return continentalness
+	# return int((erosion * 0.33 + continentalness * 0.34 + peaks_and_valleys * 0.33))
 
 func get_block(height: int) -> int:
 	return GRASSLAND if height > _ocean_level else OCEAN
@@ -54,18 +54,18 @@ func get_block(height: int) -> int:
 
 func _init() -> void:
 	_continentalness_noise.seed = randi()
-	_continentalness_noise.octaves = 2
-	_continentalness_noise.period = 128
+	# _continentalness_noise.octaves = 2
+	# _continentalness_noise.period = 128.0
 	_continentalness_heightmap.bake()
 	
 	_erosion_noise.seed = randi()
-	_erosion_noise.octaves = 6
-	_erosion_noise.period = 128
+	# _erosion_noise.octaves = 6
+	# _erosion_noise.period = 128.0
 	_erosion_heightmap.bake()
 	
 	_peaks_and_valleys_noise.seed = randi()
-	_peaks_and_valleys_noise.octaves = 4
-	_peaks_and_valleys_noise.period = 128
+	# _peaks_and_valleys_noise.octaves = 4
+	# _peaks_and_valleys_noise.period = 128.0
 	_peaks_and_valleys_heightmap.bake()
 
 
@@ -86,7 +86,7 @@ static func color_to_16(c: Color) -> int:
 
 func _generate_block(buffer: VoxelBuffer, origin_in_voxels: Vector3i, lod: int) -> void:
 	# Saves from this demo used 8-bit, which is no longer the default
-	# buffer.set_channel_depth(_CHANNEL, VoxelBuffer.DEPTH_8_BIT)
+	# buffer.set_channel_depth(_CHANNEL, VoxelBuffer.DEPTH_16_BIT)
 
 	# Assuming input is cubic in our use case (it doesn't have to be!)
 	var block_size := int(buffer.get_size().x)

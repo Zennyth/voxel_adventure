@@ -1,15 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://bcle3dpi5kvx5"]
+[gd_scene load_steps=18 format=3 uid="uid://bcle3dpi5kvx5"]
 
 [ext_resource type="Script" path="res://scripts/main/main.gd" id="1_umhtm"]
-[ext_resource type="VoxelGeneratorScript" uid="uid://cbmy6vn12fqu4" path="res://assets/terrain/world_generator.tres" id="3_dd4ir"]
-[ext_resource type="Material" uid="uid://b71nckmk75b6i" path="res://assets/terrain/blocks/terrain_material.tres" id="4_5kgk7"]
-[ext_resource type="VoxelMesherBlocky" uid="uid://c3cyuawpuqd1i" path="res://assets/terrain/voxel_mesher.tres" id="4_uv825"]
-[ext_resource type="Material" uid="uid://bi5wwotip21un" path="res://assets/terrain/blocks/terrain_material_transparent.tres" id="5_3lg35"]
-[ext_resource type="Material" uid="uid://bxp2l6f6w48id" path="res://assets/terrain/blocks/terrain_material_foliage.tres" id="6_cll2m"]
-[ext_resource type="Texture2D" uid="uid://vk8abqsdxut3" path="res://assets/entities/characters/human_1/chest/chest.png" id="7_dxwaa"]
-[ext_resource type="Script" path="res://scripts/main/terrain.gd" id="7_lo6l5"]
+[ext_resource type="ArrayMesh" uid="uid://dq6876qvjikpc" path="res://assets/terrain/environment/Flower1.obj" id="5_4rd7j"]
 [ext_resource type="PackedScene" uid="uid://duxwlo2ahx4qs" path="res://scenes/player/player_controller.tscn" id="12_c82px"]
-[ext_resource type="Texture2D" uid="uid://bmhhvftrjc5m5" path="res://assets/terrain/blocks/terrain.png" id="16_rrjq1"]
 [ext_resource type="Script" path="res://scripts/minimap/minimap.gd" id="16_xwvpx"]
 [ext_resource type="VoxelGeneratorScript" uid="uid://c10do2t5vg38v" path="res://assets/terrain/world_generator_color.tres" id="17_hk1cd"]
 
@@ -24,16 +17,8 @@ sky_material = SubResource( "ProceduralSkyMaterial_0pf2j" )
 background_mode = 2
 sky = SubResource( "Sky_o7e76" )
 tonemap_mode = 2
-glow_enabled = true
 glow_bloom = 0.24
-volumetric_fog_enabled = true
 volumetric_fog_density = 0.0114
-
-[sub_resource type="VoxelStreamRegionFiles" id="VoxelStreamRegionFiles_e8hl1"]
-directory = "res://save/terrain"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_msgnt"]
-albedo_texture = ExtResource( "7_dxwaa" )
 
 [sub_resource type="VoxelStreamRegionFiles" id="VoxelStreamRegionFiles_rfev8"]
 directory = "res://save/terrain"
@@ -50,23 +35,27 @@ vertex_color_use_as_albedo = true
 metallic_specular = 0.0
 texture_filter = 0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5n5b"]
-render_priority = 1
-transparency = 1
-cull_mode = 2
-albedo_color = Color(0.7, 0.7, 0.7, 1)
-albedo_texture = ExtResource( "16_rrjq1" )
-roughness = 0.0
-texture_filter = 0
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6cbuj"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8sk0f"]
-transparency = 1
-cull_mode = 2
-albedo_texture = ExtResource( "16_rrjq1" )
-texture_filter = 0
+[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_e3dav"]
+density = 0.15
+offset_along_normal = -1.0
+noise = SubResource( "FastNoiseLite_6cbuj" )
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aatmf"]
-albedo_texture = ExtResource( "7_dxwaa" )
+[sub_resource type="ParticlesMaterial" id="ParticlesMaterial_wd2du"]
+
+[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_f347u"]
+generator = SubResource( "VoxelInstanceGenerator_e3dav" )
+mesh = ExtResource( "5_4rd7j" )
+mesh_lod1 = ExtResource( "5_4rd7j" )
+mesh_lod2 = ExtResource( "5_4rd7j" )
+mesh_lod3 = ExtResource( "5_4rd7j" )
+material_override = SubResource( "ParticlesMaterial_wd2du" )
+collision_layer = 0
+collision_mask = 0
+
+[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_acx3b"]
+item_1 = SubResource( "VoxelInstanceLibraryMultiMeshItem_f347u" )
 
 [node name="Main" type="Node"]
 script = ExtResource( "1_umhtm" )
@@ -74,38 +63,24 @@ script = ExtResource( "1_umhtm" )
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( "Environment_pfdmh" )
 
-[node name="VoxelTerrain" type="VoxelTerrain" parent="."]
-process_mode = 4
-stream = SubResource( "VoxelStreamRegionFiles_e8hl1" )
-generator = ExtResource( "3_dd4ir" )
-mesher = ExtResource( "4_uv825" )
-run_stream_in_editor = false
-material/0 = ExtResource( "4_5kgk7" )
-material/1 = ExtResource( "5_3lg35" )
-material/2 = ExtResource( "6_cll2m" )
-material/3 = SubResource( "StandardMaterial3D_msgnt" )
-script = ExtResource( "7_lo6l5" )
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.973146, 0.172529, -0.152385, -0.047778, 0.496193, 0.866897, 0.225177, 0.850897, -0.474625, 1.52, 19.7, 14.088)
 shadow_enabled = true
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 process_mode = 4
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
-grow_horizontal = 0
-__meta__ = {
-"_edit_use_custom_anchors": false
-}
+visible = false
+clip_contents = true
+offset_right = 200.0
+offset_bottom = 200.0
+metadata/_edit_use_custom_anchors = false
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 own_world_3d = true
+transparent_bg = true
 handle_input_locally = false
 size = Vector2i(200, 200)
-render_target_update_mode = 4
+render_target_update_mode = 0
 script = ExtResource( "16_xwvpx" )
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
@@ -115,11 +90,9 @@ transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 
 stream = SubResource( "VoxelStreamRegionFiles_rfev8" )
 generator = ExtResource( "17_hk1cd" )
 mesher = SubResource( "VoxelMesherCubes_ihx01" )
+generate_collisions = false
 run_stream_in_editor = false
 material/0 = SubResource( "StandardMaterial3D_t30o4" )
-material/1 = SubResource( "StandardMaterial3D_f5n5b" )
-material/2 = SubResource( "StandardMaterial3D_8sk0f" )
-material/3 = SubResource( "StandardMaterial3D_aatmf" )
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(-0.973146, 0.172529, -0.152385, -0.047778, 0.496193, 0.866897, 0.225177, 0.850897, -0.474625, 1.52, 19.7, 14.088)
@@ -127,12 +100,15 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource( "12_c82px" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 250, 0)
+gravity = 1.0
 jump_force = 45.0
 
 [node name="VoxelTerrain2" type="VoxelTerrain" parent="."]
 stream = SubResource( "VoxelStreamRegionFiles_rfev8" )
 generator = ExtResource( "17_hk1cd" )
 mesher = SubResource( "VoxelMesherCubes_ihx01" )
-max_view_distance = 256
 run_stream_in_editor = false
 material/0 = SubResource( "StandardMaterial3D_t30o4" )
+
+[node name="VoxelInstancer" type="VoxelInstancer" parent="VoxelTerrain2"]
+library = SubResource( "VoxelInstanceLibrary_acx3b" )
