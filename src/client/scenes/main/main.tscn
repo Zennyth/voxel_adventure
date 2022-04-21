@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://bcle3dpi5kvx5"]
+[gd_scene load_steps=16 format=3 uid="uid://bcle3dpi5kvx5"]
 
 [ext_resource type="Script" path="res://scripts/main/main.gd" id="1_umhtm"]
-[ext_resource type="ArrayMesh" uid="uid://dq6876qvjikpc" path="res://assets/terrain/environment/Flower1.obj" id="5_4rd7j"]
+[ext_resource type="Script" path="res://scripts/main/terrain.gd" id="5_cpvo7"]
+[ext_resource type="ArrayMesh" uid="uid://dq6876qvjikpc" path="res://assets/terrain/environment/Flower1.obj" id="6_548yg"]
 [ext_resource type="PackedScene" uid="uid://duxwlo2ahx4qs" path="res://scenes/player/player_controller.tscn" id="12_c82px"]
 [ext_resource type="Script" path="res://scripts/minimap/minimap.gd" id="16_xwvpx"]
 [ext_resource type="VoxelGeneratorScript" uid="uid://c10do2t5vg38v" path="res://assets/terrain/world_generator_color.tres" id="17_hk1cd"]
@@ -24,38 +25,29 @@ volumetric_fog_density = 0.0114
 directory = "res://save/terrain"
 
 [sub_resource type="VoxelColorPalette" id="VoxelColorPalette_vfond"]
-data = PackedInt32Array(0, 1616969691, -1750914817, 2084966655, -3055873, -9497089, -16843009, -5549057, -2128641, 1251240447, -1778415105, -1874177, 1016544511, -6993153, -5739009, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255)
+data = PackedInt32Array(0, 1616969624, 597891071, -1, -3055873, -9497089, -16843009, -5549057, -2128641, 1251240447, -1778415105, -1874177, 1016544511, -6993153, -5739009, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255)
 
 [sub_resource type="VoxelMesherCubes" id="VoxelMesherCubes_ihx01"]
-color_mode = 1
 palette = SubResource( "VoxelColorPalette_vfond" )
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t30o4"]
+transparency = 1
 vertex_color_use_as_albedo = true
+albedo_tex_force_srgb = true
 metallic_specular = 0.0
 texture_filter = 0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_6cbuj"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpux4"]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+vertex_color_use_as_albedo = true
 
-[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_e3dav"]
-density = 0.15
-offset_along_normal = -1.0
-noise = SubResource( "FastNoiseLite_6cbuj" )
-
-[sub_resource type="ParticlesMaterial" id="ParticlesMaterial_wd2du"]
-
-[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_f347u"]
-generator = SubResource( "VoxelInstanceGenerator_e3dav" )
-mesh = ExtResource( "5_4rd7j" )
-mesh_lod1 = ExtResource( "5_4rd7j" )
-mesh_lod2 = ExtResource( "5_4rd7j" )
-mesh_lod3 = ExtResource( "5_4rd7j" )
-material_override = SubResource( "ParticlesMaterial_wd2du" )
-collision_layer = 0
-collision_mask = 0
-
-[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_acx3b"]
-item_1 = SubResource( "VoxelInstanceLibraryMultiMeshItem_f347u" )
+[sub_resource type="MultiMesh" id="MultiMesh_ord3r"]
+instance_count = 1
+visible_instance_count = 0
+mesh = ExtResource( "6_548yg" )
+buffer = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
 
 [node name="Main" type="Node"]
 script = ExtResource( "1_umhtm" )
@@ -99,7 +91,7 @@ transform = Transform3D(-0.973146, 0.172529, -0.152385, -0.047778, 0.496193, 0.8
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource( "12_c82px" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 250, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 500, 0)
 gravity = 1.0
 jump_force = 45.0
 
@@ -107,8 +99,11 @@ jump_force = 45.0
 stream = SubResource( "VoxelStreamRegionFiles_rfev8" )
 generator = ExtResource( "17_hk1cd" )
 mesher = SubResource( "VoxelMesherCubes_ihx01" )
+max_view_distance = 256
 run_stream_in_editor = false
-material/0 = SubResource( "StandardMaterial3D_t30o4" )
+material/0 = SubResource( "StandardMaterial3D_mpux4" )
+script = ExtResource( "5_cpvo7" )
 
-[node name="VoxelInstancer" type="VoxelInstancer" parent="VoxelTerrain2"]
-library = SubResource( "VoxelInstanceLibrary_acx3b" )
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, 0)
+multimesh = SubResource( "MultiMesh_ord3r" )

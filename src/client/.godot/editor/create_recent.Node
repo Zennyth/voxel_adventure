@@ -1,8 +1,10 @@
+MultiMeshInstance3D
+MeshInstance3D
 VoxelInstancer
+MultiplayerSynchronizer
 VoxelTerrain
 VoxelLodTerrain
 CollisionShape3D
-MeshInstance3D
 CharacterBody3D
 Camera3D
 SubViewport

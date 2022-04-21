@@ -1,0 +1,25 @@
+================================================================
+CrashHandlerException: Program crashed
+Engine version: Godot Engine v4.0.alpha.custom_build (3d8c971ff8936a7c57bdae536d050207077a9427)
+Dumping the backtrace. Please include this when reporting the bug on https://github.com/godotengine/godot/issues
+[0] <couldn't map PC to fn name>
+[1] <couldn't map PC to fn name>
+[2] <couldn't map PC to fn name>
+[3] <couldn't map PC to fn name>
+[4] <couldn't map PC to fn name>
+[5] <couldn't map PC to fn name>
+[6] <couldn't map PC to fn name>
+[7] <couldn't map PC to fn name>
+[8] <couldn't map PC to fn name>
+[9] oidnUnmapBuffer
+[10] oidnUnmapBuffer
+[11] oidnUnmapBuffer
+[12] <couldn't map PC to fn name>
+[13] <couldn't map PC to fn name>
+[14] <couldn't map PC to fn name>
+[15] <couldn't map PC to fn name>
+[16] <couldn't map PC to fn name>
+[17] oidnUnmapBuffer
+[18] BaseThreadInitThunk
+-- END OF BACKTRACE --
+================================================================

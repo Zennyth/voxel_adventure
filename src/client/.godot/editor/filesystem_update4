@@ -1,8 +1,4 @@
-res://assets/terrain/generation/heightmap_peaks_and_valleys.tres
 res://assets/terrain/world_generator_color.tres
-res://modules/spells/fireball/fireball.gd
-res://scenes/main/grass.gdshader
-res://scenes/main/main.gdshader
 res://scenes/main/main.tscn
-res://scenes/player/player.tscn
 res://scenes/player/player_controller.tscn
+res://scripts/terrain/terrain_generator_color.gd

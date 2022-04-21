@@ -9,3 +9,6 @@ func sync_chunk(data_array: PackedByteArray, size: int, voxels_position: Vector3
 	serializer.deserialize(buffer, voxels, size, true)
 	
 	try_set_block_data(voxels_position, voxels)
+	
+func _on_data_block_entered(info: VoxelDataBlockEnterInfo):
+	pass

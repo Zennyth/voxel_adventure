@@ -1,4 +1,7 @@
 res://assets/terrain/environment
+res://scenes/entities/characters
+res://scenes/player
+res://assets/terrain/blocks/dirt
 res://assets/entities/characters/human_2
 res://scenes/entities/characters/myExample
 res://assets/entities/characters/human_1/head
