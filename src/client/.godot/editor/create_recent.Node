@@ -1,6 +1,8 @@
-MultiMeshInstance3D
-MeshInstance3D
 VoxelInstancer
+MeshInstance3D
+WorldEnvironment
+DirectionalLight3D
+MultiMeshInstance3D
 MultiplayerSynchronizer
 VoxelTerrain
 VoxelLodTerrain
@@ -20,5 +22,4 @@ BoneAttachment3D
 TextureProgressBar
 SpringArm3D
 VoxelViewer
-DirectionalLight3D
 OmniLight3D

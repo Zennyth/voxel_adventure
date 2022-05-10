@@ -1,3 +1,11 @@
+ShaderMaterial
+ZN_FastNoiseLite
+FastNoise2
+FastNoiseLite
+MultiMesh
+Gradient
+Biome
+HeightMap
 ImageTexture
 VoxelGeneratorScript
 GDScript

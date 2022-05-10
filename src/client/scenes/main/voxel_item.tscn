@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgjhyrw7qp6v3"]
+
+[ext_resource type="PackedScene" uid="uid://de4l2s6ctp6t6" path="res://assets/terrain/environment/Bush.vox" id="1_050qg"]
+
+[node name="VoxelItem" type="Node3D"]
+
+[node name="Bush" parent="." instance=ExtResource( "1_050qg" )]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)

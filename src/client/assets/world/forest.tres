@@ -1,0 +1,29 @@
+[gd_resource type="Biome" load_steps=8 format=3 uid="uid://8xt5x03wuorg"]
+
+[ext_resource type="Curve" uid="uid://cveslv0bbu2wm" path="res://assets/terrain/generation/heightmap_continentalness.tres" id="1_bmnnk"]
+[ext_resource type="Curve" uid="uid://bouri3xtpcp8i" path="res://assets/terrain/generation/heightmap_erosion.tres" id="2_lqdul"]
+[ext_resource type="Curve" uid="uid://ja65in81qra6" path="res://assets/terrain/generation/heightmap_peaks_and_valleys.tres" id="3_aoygo"]
+
+[sub_resource type="HeightMap" id="HeightMap_cgbmw"]
+curve = ExtResource( "1_bmnnk" )
+weight = 1.0
+
+[sub_resource type="HeightMap" id="HeightMap_h266f"]
+curve = ExtResource( "2_lqdul" )
+weight = 0.0001
+
+[sub_resource type="Gradient" id="Gradient_tov43"]
+colors = PackedColorArray(0.455218, 0.460938, 0.442576, 1, 0, 0.34375, 0.103414, 1)
+
+[sub_resource type="HeightMap" id="HeightMap_hm6m8"]
+curve = ExtResource( "3_aoygo" )
+weight = 0.0001
+
+[resource]
+biome_name = "Forest"
+continentalness = SubResource( "HeightMap_cgbmw" )
+erosion = SubResource( "HeightMap_h266f" )
+peaks_and_valleys = SubResource( "HeightMap_hm6m8" )
+gradient = SubResource( "Gradient_tov43" )
+min_temperature = 0.5
+min_moisture = 0.5

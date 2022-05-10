@@ -1,4 +1,8 @@
 res://assets/terrain/environment
+res://scenes/main
+res://addons/voxel-core/classes
+res://scenes/tests
+res://assets/world
 res://scenes/entities/characters
 res://scenes/player
 res://assets/terrain/blocks/dirt
@@ -8,5 +12,4 @@ res://assets/entities/characters/human_1/head
 res://assets/terrain
 res://assets/terrain/blocks
 res://scripts/singletons
-res://scenes/main
 res://scenes/singletons

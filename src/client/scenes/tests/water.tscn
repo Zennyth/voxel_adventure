@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://cleju4apqpg1"]
+
+[ext_resource type="Material" uid="uid://ewybx8qxku8" path="res://scenes/main/new_shader_material.tres" id="1_ypaso"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ma83o"]
+
+[sub_resource type="Sky" id="Sky_o7e76"]
+sky_material = SubResource( "ProceduralSkyMaterial_ma83o" )
+
+[sub_resource type="Environment" id="Environment_wjfgm"]
+background_mode = 2
+sky = SubResource( "Sky_o7e76" )
+ambient_light_source = 3
+reflected_light_source = 2
+sdfgi_use_occlusion = true
+glow_bloom = 0.24
+volumetric_fog_density = 0.0114
+adjustment_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mqkyh"]
+material = ExtResource( "1_ypaso" )
+size = Vector2(64, 64)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0nja0"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.3058, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( "Environment_wjfgm" )
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource( "PlaneMesh_mqkyh" )
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0159092, 0)
+mesh = SubResource( "BoxMesh_0nja0" )

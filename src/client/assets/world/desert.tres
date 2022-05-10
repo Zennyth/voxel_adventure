@@ -1,0 +1,30 @@
+[gd_resource type="Biome" load_steps=8 format=3 uid="uid://8xt5x03wuorp"]
+
+[ext_resource type="Curve" uid="uid://bouri3xtpcp8i" path="res://assets/terrain/generation/heightmap_erosion.tres" id="2_et81v"]
+[ext_resource type="Curve" uid="uid://ja65in81qra6" path="res://assets/terrain/generation/heightmap_peaks_and_valleys.tres" id="3_qvb0t"]
+
+[sub_resource type="Curve" id="Curve_25w07"]
+_data = [Vector2(0, 0.490909), 0.0, 0.0, 0, 0, Vector2(0.347709, 0.463636), 0.0, 0.0, 0, 0, Vector2(0.495957, 1), 0.0, 0.0, 0, 0, Vector2(0.638814, 0.481818), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
+
+[sub_resource type="HeightMap" id="HeightMap_74w3e"]
+curve = SubResource( "Curve_25w07" )
+weight = 1.0
+
+[sub_resource type="HeightMap" id="HeightMap_h266f"]
+curve = ExtResource( "2_et81v" )
+
+[sub_resource type="Gradient" id="Gradient_tov43"]
+offsets = PackedFloat32Array(0.00230415, 0.997696)
+colors = PackedColorArray(0.460938, 0.381247, 0.132449, 1, 1, 0.817596, 0.0592504, 1)
+
+[sub_resource type="HeightMap" id="HeightMap_hm6m8"]
+curve = ExtResource( "3_qvb0t" )
+
+[resource]
+biome_name = "Desert"
+continentalness = SubResource( "HeightMap_74w3e" )
+erosion = SubResource( "HeightMap_h266f" )
+peaks_and_valleys = SubResource( "HeightMap_hm6m8" )
+gradient = SubResource( "Gradient_tov43" )
+min_temperature = 0.5
+max_moisture = 0.5

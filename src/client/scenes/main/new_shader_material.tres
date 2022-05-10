@@ -1,0 +1,45 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://ewybx8qxku8"]
+
+[ext_resource type="Shader" path="res://scenes/main/water.gdshader" id="1_bsrss"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_y4n7k"]
+fractal_lacunarity = 4.0
+
+[sub_resource type="NoiseTexture" id="NoiseTexture_lrp2x"]
+seamless = true
+noise = SubResource( "FastNoiseLite_y4n7k" )
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5csdi"]
+
+[sub_resource type="NoiseTexture" id="NoiseTexture_amtoh"]
+seamless = true
+noise = SubResource( "FastNoiseLite_5csdi" )
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_k0gv4"]
+noise_type = 3
+frequency = 0.001
+
+[sub_resource type="NoiseTexture" id="NoiseTexture_y6sy5"]
+seamless = true
+as_normal_map = true
+bump_strength = 4.0
+noise = SubResource( "FastNoiseLite_k0gv4" )
+
+[resource]
+render_priority = 20
+shader = ExtResource( "1_bsrss" )
+shader_param/speed = 0.001
+shader_param/color = Color(0.054902, 0.827451, 0.929412, 0.784314)
+shader_param/deep_water = Color(0.109804, 0.462745, 0.878431, 1)
+shader_param/beer_law_factor = 0.025
+shader_param/_distance = -0.031
+shader_param/edge_color = Color(1, 1, 1, 1)
+shader_param/edge_scale = 2.242
+shader_param/near = 2.242
+shader_param/far = 30000.0
+shader_param/wave_strength = Vector2(0.001, 0.001)
+shader_param/wave_frequ = Vector2(140, 120)
+shader_param/time_factor = Vector2(1.1, 2)
+shader_param/noise1 = SubResource( "NoiseTexture_lrp2x" )
+shader_param/noise2 = SubResource( "NoiseTexture_amtoh" )
+shader_param/normalmap = SubResource( "NoiseTexture_y6sy5" )

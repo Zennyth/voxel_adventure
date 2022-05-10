@@ -1,4 +1,9 @@
+res://assets/terrain/environment/bush.tres
+res://assets/terrain/generation/heightmap_peaks_and_valleys.tres
 res://assets/terrain/world_generator_color.tres
+res://assets/world/desert.tres
+res://assets/world/forest.tres
+res://assets/world/mountain.tres
+res://assets/world/plain.tres
 res://scenes/main/main.tscn
-res://scenes/player/player_controller.tscn
-res://scripts/terrain/terrain_generator_color.gd
+res://scenes/main/new_shader_material.tres

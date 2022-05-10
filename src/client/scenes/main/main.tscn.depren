@@ -1,0 +1,112 @@
+[gd_scene load_steps=18 format=3]
+
+[ext_resource type="Script" path="res://scripts/main/main.gd" id="1_umhtm"]
+[ext_resource type="Biome" path="res://assets/world/desert.tres" id="5_812kc"]
+[ext_resource type="Script" path="res://scripts/main/terrain.gd" id="5_cpvo7"]
+[ext_resource type="PackedScene" uid="uid://duxwlo2ahx4qs" path="res://scenes/player/player_controller.tscn" id="12_c82px"]
+[ext_resource type="Script" path="res://scripts/minimap/minimap.gd" id="16_xwvpx"]
+[ext_resource type="VoxelGeneratorScript" uid="uid://c10do2t5vg38v" path="res://assets/terrain/world_generator_color.tres" id="17_hk1cd"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0pf2j"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_o7e76"]
+sky_material = SubResource( "ProceduralSkyMaterial_0pf2j" )
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_pfdmh"]
+background_mode = 2
+sky = SubResource( "Sky_o7e76" )
+ambient_light_source = 3
+reflected_light_source = 2
+sdfgi_use_occlusion = true
+glow_bloom = 0.24
+volumetric_fog_density = 0.0114
+
+[sub_resource type="VoxelStreamRegionFiles" id="VoxelStreamRegionFiles_rfev8"]
+directory = "res://save/terrain"
+
+[sub_resource type="VoxelColorPalette" id="VoxelColorPalette_vfond"]
+data = PackedInt32Array(0, 1616969624, 597891071, -1, -3055873, -9497089, -16843009, -5549057, -2128641, 1251240447, -1778415105, -1874177, 1016544511, -6993153, -5739009, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255)
+
+[sub_resource type="VoxelMesherCubes" id="VoxelMesherCubes_ihx01"]
+palette = SubResource( "VoxelColorPalette_vfond" )
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t30o4"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_tex_force_srgb = true
+metallic_specular = 0.0
+texture_filter = 0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vq6yx"]
+noise_type = 3
+seed = 400
+frequency = 0.126
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_glpq7"]
+noise_type = 3
+seed = 20
+frequency = 0.203
+
+[sub_resource type="VoxelGeneratorWorld" id="VoxelGeneratorWorld_4hvge"]
+biomes = [ExtResource( "5_812kc" )]
+temperature_noise = SubResource( "FastNoiseLite_glpq7" )
+moisture_noise = SubResource( "FastNoiseLite_vq6yx" )
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpux4"]
+vertex_color_use_as_albedo = true
+
+[node name="Main" type="Node"]
+script = ExtResource( "1_umhtm" )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( "Environment_pfdmh" )
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.973146, 0.172529, -0.152385, -0.047778, 0.496193, 0.866897, 0.225177, 0.850897, -0.474625, 1.52, 19.7, 14.088)
+shadow_enabled = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+process_mode = 4
+visible = false
+clip_contents = true
+offset_right = 200.0
+offset_bottom = 200.0
+metadata/_edit_use_custom_anchors = false
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(200, 200)
+render_target_update_mode = 0
+script = ExtResource( "16_xwvpx" )
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 60, 150)
+
+[node name="VoxelTerrain2" type="VoxelTerrain" parent="SubViewportContainer/SubViewport"]
+stream = SubResource( "VoxelStreamRegionFiles_rfev8" )
+generator = ExtResource( "17_hk1cd" )
+mesher = SubResource( "VoxelMesherCubes_ihx01" )
+generate_collisions = false
+run_stream_in_editor = false
+material/0 = SubResource( "StandardMaterial3D_t30o4" )
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.973146, 0.172529, -0.152385, -0.047778, 0.496193, 0.866897, 0.225177, 0.850897, -0.474625, 1.52, 19.7, 14.088)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource( "12_c82px" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 300, 0)
+gravity = 1.0
+jump_force = 45.0
+
+[node name="VoxelTerrain2" type="VoxelTerrain" parent="."]
+stream = SubResource( "VoxelStreamRegionFiles_rfev8" )
+generator = SubResource( "VoxelGeneratorWorld_4hvge" )
+mesher = SubResource( "VoxelMesherCubes_ihx01" )
+max_view_distance = 256
+material/0 = SubResource( "StandardMaterial3D_mpux4" )
+script = ExtResource( "5_cpvo7" )

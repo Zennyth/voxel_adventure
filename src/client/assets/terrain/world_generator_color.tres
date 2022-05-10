@@ -1,4 +1,4 @@
-[gd_resource type="VoxelGeneratorScript" load_steps=2 format=3 uid="uid://c10do2t5vg38v"]
+[gd_resource type="VoxelGeneratorScript" load_steps=2 format=3 uid="uid://dl1sp0ing66r7"]
 
 [ext_resource type="Script" path="res://scripts/terrain/terrain_generator_color.gd" id="1_kbvg8"]
 
