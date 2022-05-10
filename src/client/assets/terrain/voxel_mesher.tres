@@ -1,6 +1,0 @@
-[gd_resource type="VoxelMesherBlocky" load_steps=2 format=3 uid="uid://c3cyuawpuqd1i"]
-
-[ext_resource type="VoxelBlockyLibrary" uid="uid://dbnuxvyuo2aul" path="res://assets/terrain/blocks/voxel_library.tres" id="1_fluo4"]
-
-[resource]
-library = ExtResource( "1_fluo4" )

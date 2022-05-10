@@ -1,3 +1,0 @@
-ImageTexture
-VoxelGeneratorScript
-GDScript

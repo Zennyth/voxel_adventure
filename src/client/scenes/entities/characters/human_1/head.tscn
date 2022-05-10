@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://d4i040s14nryd"]
-
-[ext_resource type="ArrayMesh" uid="uid://bc8kbas82p8fb" path="res://assets/entities/characters/human_1/head/head.obj" id="1_rnms0"]
-
-[node name="Head" type="Node3D"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = ExtResource( "1_rnms0" )

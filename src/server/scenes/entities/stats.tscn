@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://celbrucdoi1v6"]
-
-[ext_resource type="Script" path="res://scripts/entities/characters/stats/stats.gd" id="1_x7gns"]
-
-[node name="Stats" type="Node3D"]
-script = ExtResource( "1_x7gns" )

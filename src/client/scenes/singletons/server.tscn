@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbe0wa3ls4qkr"]
-
-[ext_resource type="Script" path="res://scripts/singletons/server.gd" id="1_qjddb"]
-
-[node name="server" type="Node3D"]
-script = ExtResource( "1_qjddb" )
