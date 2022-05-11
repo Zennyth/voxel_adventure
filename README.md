@@ -37,10 +37,10 @@ The ```assets```, ```scenes``` and ```scripts``` folders store content according
 >     └── terrain/
 > ```
 
-The ```addons``` folder store every outside plugins used in the game.
+The ```addons``` folder stores every outside plugins used in the game.
 > Example: **Voxel-Core**
 
-The ```modules``` folder store every custom plugins used in the game. Custom plugins doesn't follow the separation rule.
+The ```modules``` folder stores every custom plugins used in the game. Custom plugins don't follow the separation rule.
 > Example: **Spells**
 
 ## Code guidelines
