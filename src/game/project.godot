@@ -8,8 +8,76 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "RefCounted",
+"class": &"GPLReader",
+"language": &"GDScript",
+"path": "res://addons/voxel-core/classes/readers/gpl.gd"
+}, {
+"base": "RefCounted",
+"class": &"ImageReader",
+"language": &"GDScript",
+"path": "res://addons/voxel-core/classes/readers/image.gd"
+}, {
+"base": "RefCounted",
+"class": &"Reader",
+"language": &"GDScript",
+"path": "res://addons/voxel-core/classes/reader.gd"
+}, {
+"base": "RefCounted",
+"class": &"VarReader",
+"language": &"GDScript",
+"path": "res://addons/voxel-core/classes/readers/var.gd"
+}, {
+"base": "RefCounted",
+"class": &"VoxReader",
+"language": &"GDScript",
+"path": "res://addons/voxel-core/classes/readers/vox.gd"
+}, {
+"base": "Object",
+"class": &"Voxel",
+"language": &"GDScript",
+"path": "res://addons/voxel-core/classes/voxel.gd"
+}, {
+"base": "EditorImportPlugin",
+"class": &"VoxelImporter",
+"language": &"GDScript",
+"path": "res://addons/voxel-core/engine/importers/voxel_importer.gd"
+}, {
+"base": "MeshInstance3D",
+"class": &"VoxelMesh",
+"language": &"GDScript",
+"path": "res://addons/voxel-core/classes/voxel_mesh.gd"
+}, {
+"base": "Resource",
+"class": &"VoxelSet",
+"language": &"GDScript",
+"path": "res://addons/voxel-core/classes/voxel_set.gd"
+}, {
+"base": "RefCounted",
+"class": &"VoxelToolPlugin",
+"language": &"GDScript",
+"path": "res://addons/voxel-core/classes/voxel_tool.gd"
+}]
+_global_script_class_icons={
+"GPLReader": "",
+"ImageReader": "res://addons/voxel-core/assets/logos/MagicaVoxel.png",
+"Reader": "",
+"VarReader": "",
+"VoxReader": "res://addons/voxel-core/assets/logos/MagicaVoxel.png",
+"Voxel": "res://addons/voxel-core/assets/classes/voxel.png",
+"VoxelImporter": "",
+"VoxelMesh": "res://addons/voxel-core/assets/classes/voxel_mesh.png",
+"VoxelSet": "res://addons/voxel-core/assets/classes/voxel_set.png",
+"VoxelToolPlugin": ""
+}
+
 [application]
 
 config/name="game"
 config/icon="res://icon.png"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/voxel-core/plugin.cfg")
