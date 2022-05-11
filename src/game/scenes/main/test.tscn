@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bd7r6y8u145q7"]
+[gd_scene load_steps=7 format=3 uid="uid://bd7r6y8u145q7"]
+
+[ext_resource type="PackedScene" uid="uid://b31yqa8gh8tst" path="res://scenes/characters/character.tscn" id="1_k5doi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0mbe7"]
 
@@ -9,6 +11,12 @@ sky_material = SubResource( "ProceduralSkyMaterial_0mbe7" )
 background_mode = 2
 sky = SubResource( "Sky_sqjdi" )
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_aqf5h"]
+size = Vector2(10, 10)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_od1pu"]
+data = PackedVector3Array(5, 0, 5, -5, 0, 5, 5, 0, -5, -5, 0, 5, -5, 0, -5, 5, 0, -5)
+
 [node name="Test" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -17,3 +25,14 @@ environment = SubResource( "Environment_0q6lw" )
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 10, 0)
 shadow_enabled = true
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+mesh = SubResource( "PlaneMesh_aqf5h" )
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource( "ConcavePolygonShape3D_od1pu" )
+
+[node name="CharacterBody3D" parent="." instance=ExtResource( "1_k5doi" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.302021, 0)

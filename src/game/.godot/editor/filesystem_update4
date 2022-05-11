@@ -1,1 +1,3 @@
+res://scenes/characters/character.tscn
 res://scenes/main/test.tscn
+res://scripts/characters/character.gd
