@@ -28,7 +28,7 @@ The ```assets```, ```scenes``` and ```scripts``` folders store content according
 > └── assets/
 >     ├── characters/
 >     ├── environement/
->     ├── terrain/
+>     ├── items/
 >     └── terrain/
 > ```
 
@@ -41,7 +41,8 @@ The ```modules``` folder store every custom plugins used in the game. Custom plu
 ## Code guidelines
 
 Syntax
-- Class and struct names PascalCase
+- Node, Resources, Class and struct names PascalCase
 - Constants, enums and macros CAPSLOCK_CASE
 - Other names snake_case
 - Prefer comments with # only
+- Use ```script_templates/comments``` for large scripts
