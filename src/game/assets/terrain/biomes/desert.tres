@@ -1,0 +1,31 @@
+[gd_resource type="Biome" load_steps=8 format=3 uid="uid://dstvuyu342bbs"]
+
+[sub_resource type="Curve" id="Curve_t327v"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.998162, 0.227273), 0.0, 0.0, 0, 0]
+
+[sub_resource type="HeightMap" id="HeightMap_mr4w5"]
+curve = SubResource( "Curve_t327v" )
+weight = 1.0
+
+[sub_resource type="Curve" id="Curve_c511p"]
+
+[sub_resource type="HeightMap" id="HeightMap_17rm6"]
+curve = SubResource( "Curve_c511p" )
+
+[sub_resource type="Gradient" id="Gradient_xobt5"]
+offsets = PackedFloat32Array(0.00189753, 1)
+colors = PackedColorArray(0.596078, 0.423529, 0.278431, 1, 0.835294, 0.635294, 0.407843, 1)
+
+[sub_resource type="Curve" id="Curve_5o6i0"]
+
+[sub_resource type="HeightMap" id="HeightMap_3x4h2"]
+curve = SubResource( "Curve_5o6i0" )
+
+[resource]
+biome_name = "Desert"
+continentalness = SubResource( "HeightMap_mr4w5" )
+erosion = SubResource( "HeightMap_17rm6" )
+peaks_and_valleys = SubResource( "HeightMap_3x4h2" )
+gradient = SubResource( "Gradient_xobt5" )
+min_temperature = 0.5
+max_moisture = 0.5

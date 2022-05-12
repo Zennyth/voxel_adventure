@@ -1,0 +1,31 @@
+[gd_resource type="Biome" load_steps=8 format=3 uid="uid://d3ltdehtqak0o"]
+
+[sub_resource type="Curve" id="Curve_jjgka"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.551471, 1), 0.0, 0.0, 0, 0]
+
+[sub_resource type="HeightMap" id="HeightMap_1jqwy"]
+curve = SubResource( "Curve_jjgka" )
+weight = 1.0
+
+[sub_resource type="Curve" id="Curve_7oanh"]
+
+[sub_resource type="HeightMap" id="HeightMap_0bwnb"]
+curve = SubResource( "Curve_7oanh" )
+
+[sub_resource type="Gradient" id="Gradient_gh5d6"]
+offsets = PackedFloat32Array(0.00189753, 1)
+colors = PackedColorArray(0.694118, 0.694118, 0.741176, 1, 1, 1, 1, 1)
+
+[sub_resource type="Curve" id="Curve_t8qn2"]
+
+[sub_resource type="HeightMap" id="HeightMap_rwem4"]
+curve = SubResource( "Curve_t8qn2" )
+
+[resource]
+biome_name = "Tundra"
+continentalness = SubResource( "HeightMap_1jqwy" )
+erosion = SubResource( "HeightMap_0bwnb" )
+peaks_and_valleys = SubResource( "HeightMap_rwem4" )
+gradient = SubResource( "Gradient_gh5d6" )
+max_temperature = 0.5
+min_moisture = 0.5

@@ -1,3 +1,6 @@
-res://scenes/characters/character.tscn
-res://scenes/main/test.tscn
-res://scripts/characters/character.gd
+res://assets/environment/common/bush.mesh
+res://assets/terrain/biomes/desert.tres
+res://assets/terrain/biomes/seasonal_forest.tres
+res://assets/terrain/biomes/temperate_rainforest.tres
+res://assets/terrain/biomes/tundra.tres
+res://scenes/terrain/test.tscn

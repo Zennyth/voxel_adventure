@@ -1,0 +1,30 @@
+[gd_resource type="Biome" load_steps=8 format=3 uid="uid://dh6x74ji0c4ay"]
+
+[sub_resource type="Curve" id="Curve_ilisb"]
+_data = [Vector2(0.0056391, 0), 0.0, 0.0, 0, 0, Vector2(0.554511, 0.436364), 0.0, 0.0, 0, 0, Vector2(0.996241, 0.354545), 0.0, 0.0, 0, 0]
+
+[sub_resource type="HeightMap" id="HeightMap_eylw5"]
+curve = SubResource( "Curve_ilisb" )
+weight = 1.0
+
+[sub_resource type="Curve" id="Curve_8vg7x"]
+
+[sub_resource type="HeightMap" id="HeightMap_16wyo"]
+curve = SubResource( "Curve_8vg7x" )
+
+[sub_resource type="Gradient" id="Gradient_0beau"]
+colors = PackedColorArray(0.501961, 0.470588, 0.152941, 1, 0.243137, 0.443137, 0, 1)
+
+[sub_resource type="Curve" id="Curve_qn1f4"]
+
+[sub_resource type="HeightMap" id="HeightMap_k5v1f"]
+curve = SubResource( "Curve_qn1f4" )
+
+[resource]
+biome_name = "Seasonal Forest"
+continentalness = SubResource( "HeightMap_eylw5" )
+erosion = SubResource( "HeightMap_16wyo" )
+peaks_and_valleys = SubResource( "HeightMap_k5v1f" )
+gradient = SubResource( "Gradient_0beau" )
+max_temperature = 0.5
+max_moisture = 0.5

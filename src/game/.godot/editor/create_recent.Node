@@ -1,3 +1,6 @@
+VoxelInstancer
+VoxelTerrain
+VoxelViewer
 Camera3D
 CollisionShape3D
 StaticBody3D

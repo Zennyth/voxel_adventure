@@ -5,6 +5,10 @@
 
 # Rules for contributing to the game
 
+## Godot version
+This game is built on top of a custom version of godot. Download the latest one from this CI:
+> <a href="https://github.com/Zennyth/voxel-engine/actions" title="Godot custom build">Godot</a>
+
 ## File architecture
 ```text
 voxel/
