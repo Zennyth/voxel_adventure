@@ -1,0 +1,35 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://bst8d8555b7i8"]
+
+[ext_resource type="Shader" path="res://scripts/terrain/wind.gdshader" id="1_i1o8n"]
+
+[sub_resource type="Curve" id="Curve_tx3ow"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+
+[sub_resource type="CurveTexture" id="CurveTexture_woiv0"]
+curve = SubResource( "Curve_tx3ow" )
+
+[sub_resource type="Gradient" id="Gradient_euteu"]
+colors = PackedColorArray(0, 0.745098, 0, 1, 0, 0.572549, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cip6h"]
+gradient = SubResource( "Gradient_euteu" )
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pwxer"]
+
+[sub_resource type="NoiseTexture" id="NoiseTexture_v8hwh"]
+noise = SubResource( "FastNoiseLite_pwxer" )
+
+[resource]
+render_priority = 0
+shader = ExtResource( "1_i1o8n" )
+shader_param/wind_speed = 0.2
+shader_param/wind_strength = 2.0
+shader_param/wind_texture_tile_size = 20.0
+shader_param/wind_vertical_strength = 0.3
+shader_param/wind_horizontal_direction = Vector2(1, 0.5)
+shader_param/character_position = null
+shader_param/character_radius = 3.0
+shader_param/character_push_strength = 1.0
+shader_param/color_ramp = SubResource( "GradientTexture2D_cip6h" )
+shader_param/wind_noise = SubResource( "NoiseTexture_v8hwh" )
+shader_param/character_distance_falloff_curve = SubResource( "CurveTexture_woiv0" )

@@ -53,5 +53,6 @@ Syntax
 - Node, Resources, Class and struct names PascalCase
 - Constants, enums and macros CAPSLOCK_CASE
 - Other names snake_case
+- Events always prefix with ```_on```, ```_on_state_change```
 - Prefer comments with # only
 - Use ```script_templates/comments``` for large scripts

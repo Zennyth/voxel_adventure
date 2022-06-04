@@ -1,6 +1,9 @@
-res://assets/environment/common/bush.mesh
+res://assets/environment/common/grass/Grass.tres
 res://assets/terrain/biomes/desert.tres
 res://assets/terrain/biomes/seasonal_forest.tres
 res://assets/terrain/biomes/temperate_rainforest.tres
 res://assets/terrain/biomes/tundra.tres
+res://assets/terrain/common/water/water.tres
+res://scenes/entities/characters/character.tscn
 res://scenes/terrain/test.tscn
+res://scripts/entities/entity.gd

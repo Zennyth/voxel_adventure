@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://41i4fuk5m7fk"]
+
+[ext_resource type="Script" path="res://scripts/entities/components/physics/character_body.gd" id="1_3uyhd"]
+[ext_resource type="Script" path="res://scripts/entities/entity.gd" id="1_tyedw"]
+[ext_resource type="Script" path="res://scripts/entities/characters/players/spring_arm.gd" id="2_du8kd"]
+[ext_resource type="Script" path="res://scripts/entities/components/state_machine/state_manager.gd" id="3_tflcg"]
+[ext_resource type="Script" path="res://scripts/entities/components/state_machine/states/idle.gd" id="4_da5md"]
+[ext_resource type="Script" path="res://scripts/entities/components/state_machine/states/move/walk.gd" id="5_nqkt1"]
+[ext_resource type="Script" path="res://scripts/entities/components/state_machine/states/move/jump.gd" id="6_kdbf0"]
+[ext_resource type="Script" path="res://scripts/entities/components/state_machine/states/fall.gd" id="7_m4jsa"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6yiv5"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_omj3h"]
+
+[node name="Character" type="Node3D"]
+script = ExtResource( "1_tyedw" )
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource( "1_3uyhd" )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01909, 0)
+shape = SubResource( "CapsuleShape3D_6yiv5" )
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D"]
+collision_mask = 0
+spring_length = 8.0
+margin = 0.02
+script = ExtResource( "2_du8kd" )
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.69508, 0)
+current = true
+
+[node name="BodyShape" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.019, 0)
+mesh = SubResource( "CapsuleMesh_omj3h" )
+skeleton = NodePath("../..")
+
+[node name="VoxelViewer" type="VoxelViewer" parent="CharacterBody3D"]
+
+[node name="StateManager" type="Node" parent="."]
+script = ExtResource( "3_tflcg" )
+starting_state = NodePath("IdleState")
+physics_component_node = NodePath("../CharacterBody3D")
+
+[node name="IdleState" type="Node" parent="StateManager"]
+script = ExtResource( "4_da5md" )
+jump_node = NodePath("../JumpState")
+fall_node = NodePath("../FallState")
+walk_node = NodePath("../WalkState")
+
+[node name="WalkState" type="Node" parent="StateManager"]
+script = ExtResource( "5_nqkt1" )
+idle_node = NodePath("../IdleState")
+jump_node = NodePath("../JumpState")
+fall_node = NodePath("../FallState")
+walk_node = NodePath(".")
+
+[node name="JumpState" type="Node" parent="StateManager"]
+script = ExtResource( "6_kdbf0" )
+idle_node = NodePath("../IdleState")
+jump_node = NodePath(".")
+fall_node = NodePath("../FallState")
+walk_node = NodePath("../WalkState")
+
+[node name="FallState" type="Node" parent="StateManager"]
+script = ExtResource( "7_m4jsa" )
+idle_node = NodePath("../IdleState")
+walk_node = NodePath("../WalkState")

@@ -1,11 +1,14 @@
-[gd_scene load_steps=24 format=3 uid="uid://bdd1xa1bk6qy0"]
+[gd_scene load_steps=25 format=3 uid="uid://o3h1whqowhix"]
 
-[ext_resource type="PackedScene" uid="uid://b31yqa8gh8tst" path="res://scenes/characters/character.tscn" id="1_cpu2h"]
-[ext_resource type="Biome" uid="uid://dh6x74ji0c4ay" path="res://assets/terrain/biomes/seasonal_forest.tres" id="2_4k83k"]
-[ext_resource type="Biome" uid="uid://dstvuyu342bbs" path="res://assets/terrain/biomes/desert.tres" id="3_fe87q"]
-[ext_resource type="Biome" uid="uid://g6q44gf55tn1" path="res://assets/terrain/biomes/temperate_rainforest.tres" id="4_m6ts3"]
-[ext_resource type="Biome" uid="uid://d3ltdehtqak0o" path="res://assets/terrain/biomes/tundra.tres" id="5_svd0x"]
-[ext_resource type="ArrayMesh" uid="uid://2w57tfyvsmtc" path="res://assets/environment/common/bush.mesh" id="6_mabk3"]
+[ext_resource type="Biome" uid="uid://cku6scldg8hvt" path="res://assets/terrain/biomes/seasonal_forest.tres" id="3_44bv1"]
+[ext_resource type="Biome" uid="uid://b40bm5c1q32c0" path="res://assets/terrain/biomes/temperate_rainforest.tres" id="4_kx02e"]
+[ext_resource type="Biome" uid="uid://cv5kpg873kgsd" path="res://assets/terrain/biomes/tundra.tres" id="5_w0cao"]
+[ext_resource type="Material" uid="uid://bst8d8555b7i8" path="res://assets/environment/common/grass/Grass.tres" id="6_7470x"]
+[ext_resource type="ArrayMesh" uid="uid://d1djonn5mlr2i" path="res://assets/environment/common/grass/Grass.vox" id="6_goijs"]
+[ext_resource type="Biome" uid="uid://c63kd01mimsco" path="res://assets/terrain/biomes/desert.tres" id="6_n4676"]
+[ext_resource type="Material" uid="uid://c1foqps5t8w1d" path="res://assets/terrain/common/water/water.tres" id="6_qjbgy"]
+[ext_resource type="Script" path="res://scripts/multiplayer/entity_manager.gd" id="8_g3enr"]
+[ext_resource type="PackedScene" uid="uid://41i4fuk5m7fk" path="res://scenes/entities/characters/character.tscn" id="9_epl1a"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8m7th"]
 
@@ -16,63 +19,55 @@ sky_material = SubResource( "ProceduralSkyMaterial_8m7th" )
 background_mode = 2
 sky = SubResource( "Sky_sqjdi" )
 
-[sub_resource type="VoxelStreamRegionFiles" id="VoxelStreamRegionFiles_04ayc"]
-save_generator_output = true
-directory = "res://save/terrain"
+[sub_resource type="VoxelStreamRegionFiles" id="VoxelStreamRegionFiles_byu7p"]
+directory = "res://save/terrain/regions"
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_c0pf6"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_n8vxe"]
 seed = 10
-frequency = 1.0
-fractal_octaves = 1
-fractal_lacunarity = 1.0
+frequency = 0.003
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_rwvc0"]
-frequency = 0.001
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pfgw4"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_n7gmk"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q5o7r"]
 seed = 1
 frequency = 0.001
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_wvnue"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_url8d"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fwsue"]
 frequency = 0.001
+fractal_octaves = 1
+fractal_lacunarity = 1.0
+fractal_gain = 0.1
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_1mluh"]
-frequency = 0.001
+[sub_resource type="VoxelGeneratorWorld" id="VoxelGeneratorWorld_6k361"]
+biomes = [ExtResource( "3_44bv1" ), ExtResource( "4_kx02e" ), ExtResource( "5_w0cao" ), ExtResource( "6_n4676" )]
+temperature_noise = SubResource( "FastNoiseLite_fwsue" )
+moisture_noise = SubResource( "FastNoiseLite_q5o7r" )
+continentalness_noise = SubResource( "FastNoiseLite_n8vxe" )
+peaks_and_valleys_noise = SubResource( "FastNoiseLite_url8d" )
+erosion_noise = SubResource( "FastNoiseLite_pfgw4" )
 
-[sub_resource type="VoxelGeneratorWorld" id="VoxelGeneratorWorld_imeuw"]
-biomes = [ExtResource( "2_4k83k" ), ExtResource( "3_fe87q" ), ExtResource( "4_m6ts3" ), ExtResource( "5_svd0x" )]
-temperature_noise = SubResource( "FastNoiseLite_1mluh" )
-moisture_noise = SubResource( "FastNoiseLite_n7gmk" )
-continentalness_noise = SubResource( "FastNoiseLite_c0pf6" )
-peaks_and_valleys_noise = SubResource( "FastNoiseLite_wvnue" )
-erosion_noise = SubResource( "FastNoiseLite_rwvc0" )
-
-[sub_resource type="VoxelMesherCubes" id="VoxelMesherCubes_gplnc"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_umuar"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6tquh"]
 vertex_color_use_as_albedo = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gaqmv"]
-transparency = 1
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.470588, 0.733333, 0.847059, 1)
+[sub_resource type="VoxelMesherCubes" id="VoxelMesherCubes_p8y6y"]
+opaque_material = SubResource( "StandardMaterial3D_6tquh" )
+transparent_material = ExtResource( "6_qjbgy" )
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_xesgv"]
-
-[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_qrbk0"]
-density = 0.01
+[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_o8co0"]
 min_scale = 0.1
 max_scale = 0.1
-noise = SubResource( "FastNoiseLite_xesgv" )
 
-[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_c1pk1"]
-generator = SubResource( "VoxelInstanceGenerator_qrbk0" )
-mesh = ExtResource( "6_mabk3" )
+[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_hs0xq"]
+generator = SubResource( "VoxelInstanceGenerator_o8co0" )
+mesh = ExtResource( "6_goijs" )
+material_override = ExtResource( "6_7470x" )
 
-[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_8xw1b"]
-item_1 = SubResource( "VoxelInstanceLibraryMultiMeshItem_c1pk1" )
+[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_f20yk"]
+item_1 = SubResource( "VoxelInstanceLibraryMultiMeshItem_hs0xq" )
 
-[node name="test" type="Node3D"]
+[node name="World" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( "Environment_qq5gn" )
@@ -81,20 +76,15 @@ environment = SubResource( "Environment_qq5gn" )
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 10, 0)
 shadow_enabled = true
 
-[node name="CharacterBody3D" parent="." instance=ExtResource( "1_cpu2h" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 300, 0)
-
-[node name="VoxelViewer" type="VoxelViewer" parent="CharacterBody3D"]
-view_distance = 256
-
 [node name="VoxelTerrain" type="VoxelTerrain" parent="."]
-stream = SubResource( "VoxelStreamRegionFiles_04ayc" )
-generator = SubResource( "VoxelGeneratorWorld_imeuw" )
-mesher = SubResource( "VoxelMesherCubes_gplnc" )
+stream = SubResource( "VoxelStreamRegionFiles_byu7p" )
+generator = SubResource( "VoxelGeneratorWorld_6k361" )
+mesher = SubResource( "VoxelMesherCubes_p8y6y" )
 max_view_distance = 256
-run_stream_in_editor = false
-material/0 = SubResource( "StandardMaterial3D_umuar" )
-material/1 = SubResource( "StandardMaterial3D_gaqmv" )
 
 [node name="VoxelInstancer" type="VoxelInstancer" parent="VoxelTerrain"]
-library = SubResource( "VoxelInstanceLibrary_8xw1b" )
+library = SubResource( "VoxelInstanceLibrary_f20yk" )
+
+[node name="EntityManager" type="Node3D" parent="."]
+script = ExtResource( "8_g3enr" )
+entity_scene = ExtResource( "9_epl1a" )

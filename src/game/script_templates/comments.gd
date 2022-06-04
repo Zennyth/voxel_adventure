@@ -25,3 +25,7 @@
 ###
 # SIGNALS RESPONSES
 ###
+
+###
+# STATIC
+###

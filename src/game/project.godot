@@ -9,20 +9,85 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "ConnectionStrategy",
+"class": &"ClientConnectionStrategy",
+"language": &"GDScript",
+"path": "res://scripts/multiplayer/connection_strategies/client/client.gd"
+}, {
+"base": "Node",
+"class": &"ConnectionStrategy",
+"language": &"GDScript",
+"path": "res://scripts/multiplayer/connection_strategies/connection_strategy.gd"
+}, {
+"base": "Network",
+"class": &"ENet",
+"language": &"GDScript",
+"path": "res://scripts/multiplayer/networks/ENet.gd"
+}, {
+"base": "Node3D",
+"class": &"Entity",
+"language": &"GDScript",
+"path": "res://scripts/entities/entity.gd"
+}, {
+"base": "Node3D",
+"class": &"EntityManager",
+"language": &"GDScript",
+"path": "res://scripts/multiplayer/entity_manager.gd"
+}, {
+"base": "State",
+"class": &"FallState",
+"language": &"GDScript",
+"path": "res://scripts/entities/components/state_machine/states/fall.gd"
+}, {
 "base": "RefCounted",
 "class": &"GPLReader",
 "language": &"GDScript",
 "path": "res://addons/voxel-core/classes/readers/gpl.gd"
+}, {
+"base": "State",
+"class": &"IdleState",
+"language": &"GDScript",
+"path": "res://scripts/entities/components/state_machine/states/idle.gd"
 }, {
 "base": "RefCounted",
 "class": &"ImageReader",
 "language": &"GDScript",
 "path": "res://addons/voxel-core/classes/readers/image.gd"
 }, {
+"base": "MoveState",
+"class": &"JumpState",
+"language": &"GDScript",
+"path": "res://scripts/entities/components/state_machine/states/move/jump.gd"
+}, {
+"base": "State",
+"class": &"MoveState",
+"language": &"GDScript",
+"path": "res://scripts/entities/components/state_machine/states/move/move.gd"
+}, {
+"base": "Node",
+"class": &"Network",
+"language": &"GDScript",
+"path": "res://scripts/multiplayer/networks/network.gd"
+}, {
 "base": "RefCounted",
 "class": &"Reader",
 "language": &"GDScript",
 "path": "res://addons/voxel-core/classes/reader.gd"
+}, {
+"base": "ConnectionStrategy",
+"class": &"ServerConnectionStrategy",
+"language": &"GDScript",
+"path": "res://scripts/multiplayer/connection_strategies/server/server.gd"
+}, {
+"base": "Node",
+"class": &"State",
+"language": &"GDScript",
+"path": "res://scripts/entities/components/state_machine/states/state.gd"
+}, {
+"base": "Node",
+"class": &"StateManager",
+"language": &"GDScript",
+"path": "res://scripts/entities/components/state_machine/state_manager.gd"
 }, {
 "base": "RefCounted",
 "class": &"VarReader",
@@ -58,27 +123,85 @@ _global_script_classes=[{
 "class": &"VoxelToolPlugin",
 "language": &"GDScript",
 "path": "res://addons/voxel-core/classes/voxel_tool.gd"
+}, {
+"base": "MoveState",
+"class": &"WalkState",
+"language": &"GDScript",
+"path": "res://scripts/entities/components/state_machine/states/move/walk.gd"
+}, {
+"base": "Node",
+"class": &"WorldStateBuffer",
+"language": &"GDScript",
+"path": "res://scripts/multiplayer/connection_strategies/client/world_state_buffer.gd/world_state_buffer.gd"
+}, {
+"base": "Node",
+"class": &"WorldStateManager",
+"language": &"GDScript",
+"path": "res://scripts/multiplayer/connection_strategies/server/world_state_managers/world_state_manager.gd"
 }]
 _global_script_class_icons={
+"ClientConnectionStrategy": "",
+"ConnectionStrategy": "",
+"ENet": "",
+"Entity": "",
+"EntityManager": "",
+"FallState": "",
 "GPLReader": "",
+"IdleState": "",
 "ImageReader": "res://addons/voxel-core/assets/logos/MagicaVoxel.png",
+"JumpState": "",
+"MoveState": "",
+"Network": "",
 "Reader": "",
+"ServerConnectionStrategy": "",
+"State": "",
+"StateManager": "",
 "VarReader": "",
 "VoxReader": "res://addons/voxel-core/assets/logos/MagicaVoxel.png",
 "Voxel": "res://addons/voxel-core/assets/classes/voxel.png",
 "VoxelImporter": "",
 "VoxelMesh": "res://addons/voxel-core/assets/classes/voxel_mesh.png",
 "VoxelSet": "res://addons/voxel-core/assets/classes/voxel_set.png",
-"VoxelToolPlugin": ""
+"VoxelToolPlugin": "",
+"WalkState": "",
+"WorldStateBuffer": "",
+"WorldStateManager": ""
 }
 
 [application]
 
 config/name="game"
-run/main_scene="res://scenes/main/test.tscn"
+run/main_scene="res://scenes/terrain/test.tscn"
 config/icon="res://icon.png"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
+
+[autoload]
+
+Multiplayer="*res://scripts/multiplayer/multiplayer.gd"
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/voxel-core/plugin.cfg")
+
+[input]
+
+controls_left={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"unicode":0,"echo":false,"script":null)
+]
+}
+controls_right={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"unicode":0,"echo":false,"script":null)
+]
+}
+controls_forward={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":87,"unicode":0,"echo":false,"script":null)
+]
+}
+controls_backward={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"unicode":0,"echo":false,"script":null)
+]
+}

@@ -1,0 +1,1 @@
+C:\Users\mathi\Desktop\godot\bin\godot.windows.opt.tools.64 --path ..\src\game --server

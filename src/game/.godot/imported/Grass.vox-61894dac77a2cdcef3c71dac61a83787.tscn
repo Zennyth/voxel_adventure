@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/Grass.vox-61894dac77a2cdcef3c71dac61a83787.model0.mesh" id="1_hje0l"]
+
+[node name="Grass" type="Node3D"]
+
+[node name="@@18660" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -17)
+gi_mode = 2
+mesh = ExtResource( "1_hje0l" )

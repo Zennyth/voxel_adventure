@@ -1,7 +1,7 @@
-[gd_resource type="Biome" load_steps=8 format=3 uid="uid://dstvuyu342bbs"]
+[gd_resource type="Biome" load_steps=8 format=3 uid="uid://c63kd01mimsco"]
 
 [sub_resource type="Curve" id="Curve_t327v"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.998162, 0.227273), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.109091), 0.0, 0.0, 0, 0, Vector2(1, 0.318182), 0.0, 0.0, 0, 0]
 
 [sub_resource type="HeightMap" id="HeightMap_mr4w5"]
 curve = SubResource( "Curve_t327v" )
