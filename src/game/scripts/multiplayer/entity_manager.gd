@@ -21,12 +21,13 @@ func has_entity(entity_id: int) -> bool:
 
 func spawn_entity(entity_id: int) -> Entity:
 	if has_entity(entity_id): return get_entity(entity_id)
-	
+
+		
 	var new_entity: Entity = entity_scene.instantiate()
 	add_child(new_entity)
 	new_entity.init(entity_id)
 	new_entity.connect("destroyed", destroy_entity)
-	new_entity.position.y = 200
+	new_entity.position.y = 300
 	return new_entity
 
 func despawn_entity(entity_id: int) -> void:
@@ -41,8 +42,15 @@ func destroy_entity(entity_id: int) -> void:
 ## States
 ####
 
-func update_entity_state(entity_id: int, entity_state: Dictionary) -> void:
+func update_entity_unstable_state(entity_id: int, entity_state: Dictionary) -> void:
 	if not has_entity(entity_id): return 
 	
 	var entity: Entity = get_entity(entity_id)
-	entity.set_unreliable_state(entity_state)
+	entity.set_unstable_state(entity_state)
+
+
+func update_entity_stable_state(entity_id: int, entity_state: Dictionary) -> void:
+	if not has_entity(entity_id): return 
+	
+	var entity: Entity = get_entity(entity_id)
+	entity.set_stable_state(entity_state)

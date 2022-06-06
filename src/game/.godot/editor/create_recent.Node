@@ -1,6 +1,8 @@
-VoxelViewer
-EntityManager (entity_manager.gd)
 CharacterBody3D
+Label3D
+EntityManager (entity_manager.gd)
+Entity (entity.gd)
+VoxelViewer
 Node3D
 JumpState (jump.gd)
 FallState (fall.gd)

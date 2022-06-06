@@ -2,27 +2,29 @@ extends Node
 class_name WorldStateManager
 
 ###
-# STATIC
-###
-enum EntityUpdateResult {
-	OUTDATED_ENTITY = 0,
-	NOT_PRESENT_ENTITY = 1,
-	UPDATED_ENTITY = 2,
-}
-func has_entity_been_updated(result: EntityUpdateResult) -> bool:
-	return result > 0
-
-###
 # BUILT-IN
 ###
 
+var entity_manager: EntityManager
+var clock_synchronizer: ClockSynchronizer
+
+func init(manager: EntityManager, clock: ClockSynchronizer):
+	entity_manager = manager
+	clock_synchronizer = clock
+
 var world_state := {}
 
-func update_entity(entity_state: Dictionary) -> int:
-	return EntityUpdateResult.OUTDATED_ENTITY
+func update_entity(entity_state: Dictionary):
+	pass
 
-func get_clean_world_state() -> Dictionary:
+func despawn_entity(entity_id: int):
+	world_state.erase(entity_id)
+
+func get_world_state() -> Dictionary:
 	return world_state
 
-func is_entity_updated(entity_state: Dictionary) -> bool:
-	return has_entity_been_updated(update_entity(entity_state))
+func get_clean_world_state() -> Dictionary:
+	return {
+		't': clock_synchronizer.get_unit(),
+		'e': get_world_state()
+	}

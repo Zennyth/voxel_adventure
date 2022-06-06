@@ -1,42 +1,63 @@
 extends Node
 class_name ConnectionStrategy
 
+###
+# BUILT-IN
+###
+
+func _ready():
+	entity_manager = get_node("/root/Test/EntityManager") as EntityManager
+
 var _network: Network
 
 func init_connection(network: Network, _args: Dictionary):
 	_network = network
 	_network._clock_synchronization.connect(_clock_synchronization)
-	_network._update_entity_unreliable_state.connect(_update_entity_unreliable_state)
-	_network._update_entity_reliable_state.connect(_update_entity_reliable_state)
+	_network._update_entity_unstable_state.connect(_update_entity_unstable_state)
+	_network._update_entity_stable_state.connect(_update_entity_stable_state)
+	_network._update_world_stable_state.connect(_update_world_stable_state)
+	_network._global_requests.connect(_global_requests)
 	add_child(network)
 
 func _clock_synchronization(_data: Dictionary):
 	pass
 
-func _update_entity_unreliable_state(_data: Dictionary):
+func _update_entity_unstable_state(_data: Dictionary):
 	pass
-func update_entity_unreliable_state(_data):
-	pass
-
-func _update_entity_reliable_state(_data: Dictionary):
+func update_entity_unstable_state(_data):
 	pass
 
-func get_clock_unit() -> int:
-	return Time.get_ticks_msec()
+func _update_entity_stable_state(_data: Dictionary):
+	pass
+func update_entity_stable_state(_data):
+	pass
+
+func _update_world_stable_state(_data: Dictionary):
+	pass
+func update_world_stable_state(_data):
+	pass
+
+
+func _global_requests(_data: Dictionary):
+	pass
+func global_requests(_data: Dictionary):
+	pass
+
+###
+# BUILT-IN
+# Entity management
+###
+var entity_manager: EntityManager
 
 func spawn_player(id: int = _network.get_id()):
-	var entity_manager := get_node("/root/World/EntityManager") as EntityManager
 	entity_manager.spawn_entity(id)
+
+
 
 
 ###
 # STATIC
 ###
-
-enum ConnectionMode {
-	CLIENT,
-	SERVER
-}
 
 enum Destination {
 	ALL = 0,
@@ -45,13 +66,8 @@ enum Destination {
 
 const Channel = {
 	CLOCK_SYNCHRONIZATION = "clock_synchronization",
-	UPDATE_ENTITY_UNRELIABLE_STATE = "update_entity_unreliable_state",
-	UPDATE_ENTITY_RELIABLE_STATE = "update_entity_reliable_state",
+	UPDATE_ENTITY_UNSTABLE_STATE = "update_entity_unstable_state",
+	UPDATE_ENTITY_STABLE_STATE = "update_entity_stable_state",
+	UPDATE_WORLD_STABLE_STATE = "update_world_stable_state",
+	GLOBAL_REQUESTS = "global_requests",
 }
-
-static func get_strategy(mode: ConnectionMode) -> ConnectionStrategy:
-	match mode:
-		ConnectionMode.SERVER:
-			return ServerConnectionStrategy.new()
-		_, ConnectionMode.CLIENT:
-			return ClientConnectionStrategy.new()

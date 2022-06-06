@@ -4,9 +4,12 @@ class_name Network
 ###
 # SIGNALS DEFINITION
 ###
-signal _update_entity_unreliable_state
-signal _update_entity_reliable_state
+signal _update_entity_unstable_state
+signal _update_entity_stable_state
+signal _update_world_stable_state
 signal _clock_synchronization
+
+signal _global_requests
 
 
 ###

@@ -9,10 +9,20 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "Entity",
+"class": &"Character",
+"language": &"GDScript",
+"path": "res://scripts/entities/characters/character.gd"
+}, {
 "base": "ConnectionStrategy",
 "class": &"ClientConnectionStrategy",
 "language": &"GDScript",
 "path": "res://scripts/multiplayer/connection_strategies/client/client.gd"
+}, {
+"base": "Node",
+"class": &"ClockSynchronizer",
+"language": &"GDScript",
+"path": "res://scripts/multiplayer/connection_strategies/clock_synchronizer.gd"
 }, {
 "base": "Node",
 "class": &"ConnectionStrategy",
@@ -24,7 +34,7 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/multiplayer/networks/ENet.gd"
 }, {
-"base": "Node3D",
+"base": "Node",
 "class": &"Entity",
 "language": &"GDScript",
 "path": "res://scripts/entities/entity.gd"
@@ -80,6 +90,16 @@ _global_script_classes=[{
 "path": "res://scripts/multiplayer/connection_strategies/server/server.gd"
 }, {
 "base": "Node",
+"class": &"StableWorldStateBuffer",
+"language": &"GDScript",
+"path": "res://scripts/multiplayer/connection_strategies/client/world_state_buffer/stable_world_state_buffer.gd"
+}, {
+"base": "WorldStateManager",
+"class": &"StableWorldStateManager",
+"language": &"GDScript",
+"path": "res://scripts/multiplayer/connection_strategies/server/world_state_managers/stable_world_state_manager.gd"
+}, {
+"base": "Node",
 "class": &"State",
 "language": &"GDScript",
 "path": "res://scripts/entities/components/state_machine/states/state.gd"
@@ -88,6 +108,16 @@ _global_script_classes=[{
 "class": &"StateManager",
 "language": &"GDScript",
 "path": "res://scripts/entities/components/state_machine/state_manager.gd"
+}, {
+"base": "Node",
+"class": &"UnstableWorldStateBuffer",
+"language": &"GDScript",
+"path": "res://scripts/multiplayer/connection_strategies/client/world_state_buffer/unstable_world_state_buffer.gd"
+}, {
+"base": "WorldStateManager",
+"class": &"UnstableWorldStateManager",
+"language": &"GDScript",
+"path": "res://scripts/multiplayer/connection_strategies/server/world_state_managers/unstable_world_state_manager.gd"
 }, {
 "base": "RefCounted",
 "class": &"VarReader",
@@ -130,17 +160,14 @@ _global_script_classes=[{
 "path": "res://scripts/entities/components/state_machine/states/move/walk.gd"
 }, {
 "base": "Node",
-"class": &"WorldStateBuffer",
-"language": &"GDScript",
-"path": "res://scripts/multiplayer/connection_strategies/client/world_state_buffer.gd/world_state_buffer.gd"
-}, {
-"base": "Node",
 "class": &"WorldStateManager",
 "language": &"GDScript",
 "path": "res://scripts/multiplayer/connection_strategies/server/world_state_managers/world_state_manager.gd"
 }]
 _global_script_class_icons={
+"Character": "",
 "ClientConnectionStrategy": "",
+"ClockSynchronizer": "",
 "ConnectionStrategy": "",
 "ENet": "",
 "Entity": "",
@@ -154,8 +181,12 @@ _global_script_class_icons={
 "Network": "",
 "Reader": "",
 "ServerConnectionStrategy": "",
+"StableWorldStateBuffer": "",
+"StableWorldStateManager": "",
 "State": "",
 "StateManager": "",
+"UnstableWorldStateBuffer": "",
+"UnstableWorldStateManager": "",
 "VarReader": "",
 "VoxReader": "res://addons/voxel-core/assets/logos/MagicaVoxel.png",
 "Voxel": "res://addons/voxel-core/assets/classes/voxel.png",
@@ -164,14 +195,13 @@ _global_script_class_icons={
 "VoxelSet": "res://addons/voxel-core/assets/classes/voxel_set.png",
 "VoxelToolPlugin": "",
 "WalkState": "",
-"WorldStateBuffer": "",
 "WorldStateManager": ""
 }
 
 [application]
 
 config/name="game"
-run/main_scene="res://scenes/terrain/test.tscn"
+run/main_scene="res://scenes/main/test.tscn"
 config/icon="res://icon.png"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
 

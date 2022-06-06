@@ -27,13 +27,13 @@ func update():
 	if Multiplayer.is_entity_authoritative((get_parent() as Entity).id): 
 		move_and_slide()
 
-		Multiplayer.update_entity_unreliable_state((get_parent() as Entity).get_unreliable_state())
+		Multiplayer.update_entity_unstable_state((get_parent() as Entity).get_unstable_state())
 	
-func get_unreliable_state(state: Dictionary):
+func get_unstable_state(state: Dictionary):
 	state['p'] = position
 	state['r'] = rotation
 
-func set_unreliable_state(state: Dictionary):
+func set_unstable_state(state: Dictionary):
 	for key in state.keys():
 		match key:
 			'r':

@@ -2,6 +2,7 @@
 
 [sub_resource type="Curve" id="Curve_ilisb"]
 _data = [Vector2(0.0056391, 0), 0.0, 0.0, 0, 0, Vector2(0.554511, 0.436364), 0.0, 0.0, 0, 0, Vector2(0.996241, 0.354545), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="HeightMap" id="HeightMap_eylw5"]
 curve = SubResource( "Curve_ilisb" )

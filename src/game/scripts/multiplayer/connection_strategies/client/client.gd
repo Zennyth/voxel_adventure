@@ -1,13 +1,13 @@
 extends ConnectionStrategy
 class_name ClientConnectionStrategy
 
+func _ready():
+	super._ready()
+	add_child(clock_synchronizer)
+
 ###
 # OVERRIDE
 ###
-
-func _physics_process(delta):
-	clock_synchronizer._physics_process(delta)
-
 func init_connection(network: Network, args: Dictionary):
 	super.init_connection(network, args)
 	
@@ -17,9 +17,14 @@ func init_connection(network: Network, args: Dictionary):
 	_network.connection_failed.connect(_connection_failed)
 	_network.connection_succeeded.connect(_connection_succeeded)
 
-	world_state_buffer = WorldStateBuffer.new()
-	world_state_buffer.init(get_node("/root/World/EntityManager") as EntityManager, clock_synchronizer)
-	add_child(world_state_buffer)
+	unstable_world_state_buffer = UnstableWorldStateBuffer.new()
+	unstable_world_state_buffer.init(entity_manager, clock_synchronizer)
+	add_child(unstable_world_state_buffer)
+
+	stable_world_state_buffer = StableWorldStateBuffer.new()
+	stable_world_state_buffer.init(entity_manager, clock_synchronizer)
+	add_child(stable_world_state_buffer)
+
 
 func _connection_failed() -> void:
 	print("Failed to connect")
@@ -29,7 +34,7 @@ func _connection_succeeded() -> void:
 	is_connected = true
 	
 	init_sync_clock()
-	spawn_player()
+	request_world_stable_state()
 	
 	
 ###
@@ -37,29 +42,66 @@ func _connection_succeeded() -> void:
 ###
 var ip = "127.0.0.1"
 var is_connected = false
-var world_state_buffer: WorldStateBuffer
+
+
+###
+# BUILT-IN
+# Global requests
+###
+func _global_requests(data: Dictionary):
+	match data['request']:
+		'world_stable_state':
+			print(data['state'])
+			stable_world_state_buffer.update_world_state_buffer(data['state'])
+			spawn_player()
+		_:
+			print("[CLIENT] wrong global request: ", data['request'])
+func global_requests(data: Dictionary):
+	_network.send(Destination.SERVER, Channel.GLOBAL_REQUESTS, data)
+
+func request_world_stable_state():
+	global_requests({
+		'request': 'world_stable_state'
+	})
 
 ###
 # BUILT-IN
 # Entities and WorldState
 ###
-func update_entity_unreliable_state(entity_state: Dictionary):
+
+var unstable_world_state_buffer: UnstableWorldStateBuffer
+
+func update_entity_unstable_state(entity_state: Dictionary):
 	entity_state['t'] = clock_synchronizer.client_clock
-	_network.send(Destination.SERVER, Channel.UPDATE_ENTITY_UNRELIABLE_STATE, entity_state)
-func _update_entity_unreliable_state(world_state: Dictionary):	
-	world_state_buffer.update_world_state_buffer(world_state)
+	_network.send(Destination.SERVER, Channel.UPDATE_ENTITY_UNSTABLE_STATE, entity_state)
+	
+func _update_entity_unstable_state(world_state: Dictionary):	
+	unstable_world_state_buffer.update_world_state_buffer(world_state)
+
+
+var stable_world_state_buffer: StableWorldStateBuffer
+
+func update_entity_stable_state(entity_state: Dictionary):
+	entity_state['t'] = clock_synchronizer.client_clock
+	_network.send(Destination.SERVER, Channel.UPDATE_ENTITY_STABLE_STATE, entity_state)
+
+func _update_entity_stable_state(entity_state: Dictionary):	
+	stable_world_state_buffer.update_entity_stable_state(entity_state['id'], entity_state)
+	
+func _update_world_stable_state(world_state: Dictionary):	
+	stable_world_state_buffer.update_world_state_buffer(world_state)
 
 ###
 # BUILT-IN
 # Clock synchro
 ###
-const ClockSynchronizer = preload("res://scripts/multiplayer/connection_strategies/client/clock_synchronizer.gd")
-var clock_synchronizer := ClockSynchronizer.new()
+const ClientClockSynchronizer = preload("res://scripts/multiplayer/connection_strategies/client/client_clock_synchronizer.gd")
+var clock_synchronizer := ClientClockSynchronizer.new()
 
 func send_clock_synchronization_request(request: String):
 	_network.send(Destination.SERVER, Channel.CLOCK_SYNCHRONIZATION, {
 		'request': request, 
-		'client': get_clock_unit()
+		'client': clock_synchronizer.get_unit()
 	})
 func fetch_server_time() -> void:
 	send_clock_synchronization_request('server_time')

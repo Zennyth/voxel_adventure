@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://41i4fuk5m7fk"]
+[gd_scene load_steps=12 format=3 uid="uid://41i4fuk5m7fk"]
 
 [ext_resource type="Script" path="res://scripts/entities/components/physics/character_body.gd" id="1_3uyhd"]
 [ext_resource type="Script" path="res://scripts/entities/entity.gd" id="1_tyedw"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/entities/components/state_machine/states/move/walk.gd" id="5_nqkt1"]
 [ext_resource type="Script" path="res://scripts/entities/components/state_machine/states/move/jump.gd" id="6_kdbf0"]
 [ext_resource type="Script" path="res://scripts/entities/components/state_machine/states/fall.gd" id="7_m4jsa"]
+[ext_resource type="Script" path="res://scripts/entities/components/ui/label.gd" id="9_iss3i"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6yiv5"]
 
@@ -18,6 +19,8 @@ script = ExtResource( "1_tyedw" )
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 script = ExtResource( "1_3uyhd" )
+SPEED = 10.0
+JUMP_VELOCITY = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01909, 0)
@@ -31,7 +34,6 @@ script = ExtResource( "2_du8kd" )
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.69508, 0)
-current = true
 
 [node name="BodyShape" type="MeshInstance3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.019, 0)
@@ -39,6 +41,11 @@ mesh = SubResource( "CapsuleMesh_omj3h" )
 skeleton = NodePath("../..")
 
 [node name="VoxelViewer" type="VoxelViewer" parent="CharacterBody3D"]
+
+[node name="Label3D" type="Label3D" parent="CharacterBody3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.62127, 0)
+text = "azeaze"
+script = ExtResource( "9_iss3i" )
 
 [node name="StateManager" type="Node" parent="."]
 script = ExtResource( "3_tflcg" )

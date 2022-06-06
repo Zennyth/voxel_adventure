@@ -62,11 +62,28 @@ var network := ENetMultiplayerPeer.new()
 
 ###
 # BUILT-IN
+# Global
+###
+@rpc(any_peer)
+func global_requests(data: Dictionary):
+	_global_requests.emit(data)
+
+
+###
+# BUILT-IN
 # State
 ###
 @rpc(any_peer)
-func update_entity_unreliable_state(data: Dictionary):
-	_update_entity_unreliable_state.emit(data)
+func update_entity_unstable_state(data: Dictionary):
+	_update_entity_unstable_state.emit(data)
+
+@rpc(any_peer)
+func update_entity_stable_state(data: Dictionary):
+	_update_entity_stable_state.emit(data)
+
+@rpc(any_peer)
+func update_world_stable_state(data: Dictionary):
+	_update_world_stable_state.emit(data)
 
 ###
 # BUILT-IN

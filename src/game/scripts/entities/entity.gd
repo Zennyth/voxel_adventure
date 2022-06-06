@@ -1,4 +1,4 @@
-extends Node3D
+extends Node
 class_name Entity
 
 ####
@@ -18,19 +18,40 @@ func init(entity_id: int) -> void:
 	id = entity_id
 	name = str(id)
 	
-	if not Multiplayer.is_entity_authoritative(id):
-		$CharacterBody3D/VoxelViewer.process_mode = Node.PROCESS_MODE_DISABLED
-
-func get_unreliable_state() -> Dictionary:
-	var state := { 'id': id }
-	
 	for component in get_children():
-		if component.has_method("get_unreliable_state"):
-			component.get_unreliable_state(state)
+		if component.has_method("init"):
+			component.init(self)
+
+
+func get_unstable_state(component: Node = self, state: Dictionary = { 'id': id }) -> Dictionary:
+	for child in component.get_children():
+		if child.has_method("get_unstable_state"):
+			child.get_unstable_state(state)
+		
+		get_unstable_state(child, state)
 			
 	return state
 
-func set_unreliable_state(new_state: Dictionary) -> void:
-	for component in get_children():
-		if component.has_method("set_unreliable_state"):
-			component.set_unreliable_state(new_state)
+func set_unstable_state(new_state: Dictionary, component: Node = self) -> void:
+	for child in component.get_children():
+		if child.has_method("set_unstable_state"):
+			child.set_unstable_state(new_state)
+		
+		set_unstable_state(new_state, child)
+
+
+func get_stable_state(component: Node = self, state: Dictionary = { 'id': id }) -> Dictionary:
+	for child in component.get_children():
+		if child.has_method("get_stable_state"):
+			child.get_stable_state(state)
+		
+		get_stable_state(child, state)
+			
+	return state
+
+func set_stable_state(new_state: Dictionary, component: Node = self) -> void:
+	for child in component.get_children():
+		if child.has_method("set_unstable_state"):
+			child.set_unstable_state(new_state)
+		
+		set_unstable_state(new_state, child)

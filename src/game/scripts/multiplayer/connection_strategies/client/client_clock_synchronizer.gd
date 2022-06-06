@@ -1,4 +1,4 @@
-extends Object
+extends ClockSynchronizer
 
 var decimal_collector: float = 0
 var latency_array = []
@@ -15,11 +15,11 @@ func _physics_process(delta: float) -> void:
 		decimal_collector -= 1.00
 
 func calc_client_clock(server_time: int, client_time: int):
-	latency = (Time.get_ticks_msec() - client_time) / 2
+	latency = (get_unit() - client_time) / 2
 	client_clock = server_time + latency
 
 func determine_latency(client_time: int):
-	latency_array.append((Time.get_ticks_msec() - client_time) / 2)
+	latency_array.append((get_unit() - client_time) / 2)
 	if latency_array.size() == 9:
 		var total_latency = 0
 		latency_array.sort()
@@ -31,6 +31,6 @@ func determine_latency(client_time: int):
 				total_latency += latency_array[i]
 		delta_latency = ( total_latency / latency_array.size()) - latency
 		latency = total_latency / latency_array.size()
-		print("latency: " + str(latency))
-		print("delta_latency: " + str(delta_latency))
+#		print("latency: " + str(latency))
+#		print("delta_latency: " + str(delta_latency))
 		latency_array.clear()
