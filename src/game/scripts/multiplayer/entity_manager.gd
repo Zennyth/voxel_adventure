@@ -5,8 +5,6 @@ class_name EntityManager
 ## Init
 ####
 
-@export var entity_scene: PackedScene
-
 func get_entity(entity_id: int) -> Entity:
 	if not has_entity(entity_id): return null
 	

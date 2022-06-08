@@ -1,81 +1,24 @@
-[gd_scene load_steps=13 format=3 uid="uid://sl0fvams5g61"]
+[gd_scene load_steps=5 format=3 uid="uid://dpedr0nrfawif"]
 
-[ext_resource type="Script" path="res://scripts/entities/characters/character.gd" id="1_lqo47"]
-[ext_resource type="Script" path="res://scripts/entities/components/state_machine/state_managers/physical_state_manager.gd" id="2_3yu43"]
-[ext_resource type="Script" path="res://scripts/entities/components/state_machine/states/character/idle.gd" id="3_5k04u"]
-[ext_resource type="Script" path="res://scripts/entities/components/state_machine/states/character/move/walk.gd" id="4_pfe7n"]
-[ext_resource type="Script" path="res://scripts/entities/components/state_machine/states/character/move/jump.gd" id="5_moe44"]
-[ext_resource type="Script" path="res://scripts/entities/components/state_machine/states/character/fall.gd" id="6_gjpcc"]
+[ext_resource type="PackedScene" uid="uid://tnw04chrcmb7" path="res://scenes/entities/characters/character.tscn" id="1_64u2w"]
 [ext_resource type="Script" path="res://scripts/entities/components/controllers/ai_controller.gd" id="7_1tsxp"]
-[ext_resource type="Script" path="res://scripts/entities/components/ui/label.gd" id="7_6iqjf"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_q50kw"]
-radius = 5.0
+[sub_resource type="SphereShape3D" id="SphereShape3D_oi32c"]
+radius = 4.0
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t767h"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fg1i2"]
+albedo_color = Color(1, 0.364706, 0.431373, 1)
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ol0mw"]
+[node name="Enemy" instance=ExtResource( "1_64u2w" )]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4khxn"]
-albedo_color = Color(1, 0.211765, 0.4, 1)
-
-[node name="Enemy" type="CharacterBody3D"]
-script = ExtResource( "1_lqo47" )
-
-[node name="AIController" type="Node3D" parent="."]
+[node name="Controller" parent="." index="0"]
 script = ExtResource( "7_1tsxp" )
 character_path = NodePath("..")
 
-[node name="Detection" type="Area3D" parent="AIController"]
-disable_mode = 2
+[node name="Detection" type="Area3D" parent="Controller" index="0"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AIController/Detection"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.916473, 0)
-shape = SubResource( "SphereShape3D_q50kw" )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Controller/Detection" index="0"]
+shape = SubResource( "SphereShape3D_oi32c" )
 
-[node name="StateManager" type="Node3D" parent="."]
-script = ExtResource( "2_3yu43" )
-starting_state = NodePath("IdleState")
-debug = true
-character_controller_path = NodePath("../AIController")
-
-[node name="IdleState" type="Node" parent="StateManager"]
-script = ExtResource( "3_5k04u" )
-jump_node = NodePath("../JumpState")
-fall_node = NodePath("../FallState")
-walk_node = NodePath("../WalkState")
-
-[node name="WalkState" type="Node" parent="StateManager"]
-script = ExtResource( "4_pfe7n" )
-idle_node = NodePath("../IdleState")
-jump_node = NodePath("../JumpState")
-fall_node = NodePath("../FallState")
-walk_node = NodePath(".")
-
-[node name="JumpState" type="Node" parent="StateManager"]
-script = ExtResource( "5_moe44" )
-idle_node = NodePath("../IdleState")
-jump_node = NodePath(".")
-fall_node = NodePath("../FallState")
-walk_node = NodePath("../WalkState")
-
-[node name="FallState" type="Node" parent="StateManager"]
-script = ExtResource( "6_gjpcc" )
-idle_node = NodePath("../IdleState")
-walk_node = NodePath("../WalkState")
-
-[node name="Debug" type="Label3D" parent="StateManager"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.62127, 0)
-billboard = 1
-double_sided = false
-script = ExtResource( "7_6iqjf" )
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01909, 0)
-shape = SubResource( "CapsuleShape3D_t767h" )
-
-[node name="BodyShape" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.019, 0)
-mesh = SubResource( "CapsuleMesh_ol0mw" )
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource( "StandardMaterial3D_4khxn" )
+[node name="BodyShape" parent="." index="3"]
+surface_material_override/0 = SubResource( "StandardMaterial3D_fg1i2" )

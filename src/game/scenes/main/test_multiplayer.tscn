@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dp4p14evhu4tm"]
+[gd_scene load_steps=7 format=3 uid="uid://b43e153lpdgeq"]
 
 [ext_resource type="Script" path="res://scripts/multiplayer/entity_manager.gd" id="1_v4eul"]
-[ext_resource type="PackedScene" uid="uid://cdqc6qw4ccomq" path="res://scenes/entities/characters/player.tscn" id="2_gfxce"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0mbe7"]
 
@@ -37,4 +36,3 @@ shape = SubResource( "ConcavePolygonShape3D_ee6kr" )
 
 [node name="EntityManager" type="Node3D" parent="."]
 script = ExtResource( "1_v4eul" )
-entity_scene = ExtResource( "2_gfxce" )

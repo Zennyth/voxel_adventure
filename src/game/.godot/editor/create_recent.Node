@@ -1,8 +1,9 @@
 Node3D
-CollisionShape3D
 Area3D
-AIController (ai_controller.gd)
+CollisionShape3D
+Controller (controller.gd)
 CharacterBody3D
+AIController (ai_controller.gd)
 PlayerController (player_controller.gd)
 Label3D
 EntityManager (entity_manager.gd)
