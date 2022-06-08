@@ -25,6 +25,9 @@ func init_connection(network: Network, args: Dictionary):
 	stable_world_state_buffer.init(entity_manager, clock_synchronizer)
 	add_child(stable_world_state_buffer)
 
+func is_entity_authoritative(entity_state: Dictionary) -> bool:
+	return _network.get_id() == entity_state[WorldState.STATE_KEYS.ID]
+
 
 func _connection_failed() -> void:
 	print("Failed to connect")
@@ -51,7 +54,6 @@ var is_connected = false
 func _global_requests(data: Dictionary):
 	match data['request']:
 		'world_stable_state':
-			print(data['state'])
 			stable_world_state_buffer.update_world_state_buffer(data['state'])
 			spawn_player()
 		_:
@@ -72,7 +74,7 @@ func request_world_stable_state():
 var unstable_world_state_buffer: UnstableWorldStateBuffer
 
 func update_entity_unstable_state(entity_state: Dictionary):
-	entity_state['t'] = clock_synchronizer.client_clock
+	entity_state[WorldState.STATE_KEYS.TIME] = clock_synchronizer.client_clock
 	_network.send(Destination.SERVER, Channel.UPDATE_ENTITY_UNSTABLE_STATE, entity_state)
 	
 func _update_entity_unstable_state(world_state: Dictionary):	
@@ -82,11 +84,11 @@ func _update_entity_unstable_state(world_state: Dictionary):
 var stable_world_state_buffer: StableWorldStateBuffer
 
 func update_entity_stable_state(entity_state: Dictionary):
-	entity_state['t'] = clock_synchronizer.client_clock
+	entity_state[WorldState.STATE_KEYS.TIME] = clock_synchronizer.client_clock
 	_network.send(Destination.SERVER, Channel.UPDATE_ENTITY_STABLE_STATE, entity_state)
 
 func _update_entity_stable_state(entity_state: Dictionary):	
-	stable_world_state_buffer.update_entity_stable_state(entity_state['id'], entity_state)
+	stable_world_state_buffer.update_entity_stable_state(entity_state[WorldState.STATE_KEYS.ID], entity_state)
 	
 func _update_world_stable_state(world_state: Dictionary):	
 	stable_world_state_buffer.update_world_state_buffer(world_state)

@@ -1,16 +1,9 @@
-extends Node
+extends WorldState
 class_name WorldStateManager
 
 ###
 # BUILT-IN
 ###
-
-var entity_manager: EntityManager
-var clock_synchronizer: ClockSynchronizer
-
-func init(manager: EntityManager, clock: ClockSynchronizer):
-	entity_manager = manager
-	clock_synchronizer = clock
 
 var world_state := {}
 
@@ -25,6 +18,6 @@ func get_world_state() -> Dictionary:
 
 func get_clean_world_state() -> Dictionary:
 	return {
-		't': clock_synchronizer.get_unit(),
-		'e': get_world_state()
+		STATE_KEYS.TIME: clock_synchronizer.get_unit(),
+		STATE_KEYS.ENTITIES: get_world_state()
 	}

@@ -9,3 +9,6 @@ func input(event: InputEvent) -> State:
 		return new_state
 
 	return null
+
+func can_transition_to() -> bool:
+	return character_controller.is_moving()

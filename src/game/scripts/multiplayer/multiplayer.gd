@@ -5,6 +5,7 @@ var port := 1909
 var is_online := false
 
 enum ConnectionMode {
+	SOLO,
 	CLIENT,
 	SERVER
 }
@@ -12,12 +13,15 @@ func get_strategy(mode: ConnectionMode) -> ConnectionStrategy:
 	match mode:
 		ConnectionMode.SERVER:
 			return ServerConnectionStrategy.new()
-		_, ConnectionMode.CLIENT:
+		ConnectionMode.CLIENT:
 			return ClientConnectionStrategy.new()
+		_, ConnectionMode.SOLO:
+			return SoloConnectionStrategy.new()
 
 var connection_mode: ConnectionMode
 var connection_strategy: ConnectionStrategy
 func set_connection_mode():
+	# connection_mode = ConnectionMode.SOLO
 	if "--server" in OS.get_cmdline_args():
 		connection_mode = ConnectionMode.SERVER
 	else:
@@ -31,10 +35,17 @@ func _ready():
 	connection_strategy.init_connection(network, {
 		'port': port,
 	})
-	is_online = true
+	is_online = connection_mode != ConnectionMode.SOLO
 
-func is_entity_authoritative(entity_id: int):
-	return not is_online or network.get_id() == entity_id
+func is_entity_authoritative(data):
+	var entity_state: Dictionary
+	
+	if data is int:
+		entity_state = connection_strategy.entity_manager.get_entity(data).get_stable_state()
+	else:
+		entity_state = data
+	
+	return connection_strategy.is_entity_authoritative(entity_state)
 
 func update_entity_unstable_state(entity_state: Dictionary) -> void:
 	connection_strategy.update_entity_unstable_state(entity_state)

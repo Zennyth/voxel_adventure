@@ -1,7 +1,5 @@
-class_name State
 extends Node
-
-var physics_component: Node
+class_name State
 
 func enter() -> void:
 	pass
@@ -17,3 +15,8 @@ func process(_delta: float) -> State:
 
 func physics_process(_delta: float) -> State:
 	return null
+
+
+
+func can_transition_to() -> bool:
+	return false

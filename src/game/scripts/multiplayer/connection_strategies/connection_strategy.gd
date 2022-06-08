@@ -19,6 +19,9 @@ func init_connection(network: Network, _args: Dictionary):
 	_network._global_requests.connect(_global_requests)
 	add_child(network)
 
+func is_entity_authoritative(entity_state: Dictionary) -> bool:
+	return false
+
 func _clock_synchronization(_data: Dictionary):
 	pass
 
@@ -50,7 +53,10 @@ func global_requests(_data: Dictionary):
 var entity_manager: EntityManager
 
 func spawn_player(id: int = _network.get_id()):
-	entity_manager.spawn_entity(id)
+	entity_manager.spawn_entity({
+		WorldState.STATE_KEYS.ID: id,
+		WorldState.STATE_KEYS.SCENE: "player"
+	})
 
 
 

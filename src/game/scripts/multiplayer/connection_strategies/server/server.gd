@@ -19,8 +19,15 @@ func init_connection(network: Network, args: Dictionary):
 	unstable_world_state_manager.init(entity_manager, clock_synchronizer)
 	add_child(unstable_world_state_manager)
 	
+	entity_manager.spawn_entity({
+		WorldState.STATE_KEYS.SCENE: "enemy"
+	})
+	
 	_network.peer_connected.connect(_peer_connected)
 	_network.peer_disconnected.connect(_peer_disconnected)
+
+func is_entity_authoritative(entity_state: Dictionary) -> bool:
+	return entity_state[WorldState.STATE_KEYS.SCENE] != "player"
 
 
 func _peer_connected(player_id: int) -> void:
@@ -66,14 +73,22 @@ func _global_requests(data: Dictionary):
 var stable_world_state_manager := StableWorldStateManager.new()
 var unstable_world_state_manager := UnstableWorldStateManager.new()
 
-func _physics_process(_delta: float) -> void:	
+func _physics_process(_delta: float) -> void:
 	_network.send(Destination.ALL, Channel.UPDATE_ENTITY_UNSTABLE_STATE, unstable_world_state_manager.get_clean_world_state())
 	
 
 func _update_entity_unstable_state(entity_state: Dictionary):
 	unstable_world_state_manager.update_entity(entity_state)
 
+func update_entity_unstable_state(entity_state: Dictionary):
+	entity_state[WorldState.STATE_KEYS.TIME] = clock_synchronizer.get_unit()
+	unstable_world_state_manager.update_entity(entity_state)
+
 func _update_entity_stable_state(entity_state: Dictionary):
+	stable_world_state_manager.update_entity(entity_state)
+	_network.send(Destination.ALL, Channel.UPDATE_ENTITY_STABLE_STATE, entity_state)
+
+func update_entity_stable_state(entity_state: Dictionary):
 	stable_world_state_manager.update_entity(entity_state)
 	_network.send(Destination.ALL, Channel.UPDATE_ENTITY_STABLE_STATE, entity_state)
 

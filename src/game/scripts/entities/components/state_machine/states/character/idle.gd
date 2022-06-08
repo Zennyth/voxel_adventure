@@ -1,4 +1,4 @@
-extends State
+extends CharacterState
 class_name IdleState
 
 @export var jump_node: NodePath
@@ -11,17 +11,16 @@ class_name IdleState
 
 
 func input(_event: InputEvent) -> State:
-	if Input.is_action_just_pressed("controls_left") or Input.is_action_just_pressed("controls_right") or Input.is_action_just_pressed("controls_forward") or Input.is_action_just_pressed("controls_backward"):
+	if walk_state.can_transition_to():
 		return walk_state
-	elif Input.is_action_just_pressed("ui_accept"):
+	elif jump_state.can_transition_to():
 		return jump_state
 	return null
 
 func physics_process(delta: float) -> State:
-	physics_component.add_gravity(delta)
-	physics_component.update()
+	character_body.move(null, delta)
 
-	if !physics_component.is_on_floor():
+	if !character_body.is_on_floor():
 		return fall_state
 	
 	return null

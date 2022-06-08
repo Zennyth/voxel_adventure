@@ -1,4 +1,4 @@
-extends Node
+extends Stateful
 class_name Entity
 
 ####
@@ -12,46 +12,46 @@ signal destroyed(entity_id: int)
 ####
 
 var id: int = 0
+var scene: String = "" 
 
 # Constructor in godot can't take parameters -> custom constructor init
-func init(entity_id: int) -> void:
-	id = entity_id
+func init(entity_state: Dictionary) -> void:
+	id = entity_state[WorldState.STATE_KEYS.ID]
+	scene = entity_state[WorldState.STATE_KEYS.SCENE]
 	name = str(id)
 	
 	for component in get_children():
 		if component.has_method("init"):
 			component.init(self)
 
+func _ready():
+	if is_authoritative():
+		# Spawn the entity
+		update_stable_state()
 
-func get_unstable_state(component: Node = self, state: Dictionary = { 'id': id }) -> Dictionary:
-	for child in component.get_children():
-		if child.has_method("get_unstable_state"):
-			child.get_unstable_state(state)
-		
-		get_unstable_state(child, state)
-			
-	return state
+
+func get_unstable_state(state: Dictionary = { }, component: Node = self) -> Dictionary:
+	state[WorldState.STATE_KEYS.ID] = id
+	return super.get_unstable_state(state, component)
 
 func set_unstable_state(new_state: Dictionary, component: Node = self) -> void:
-	for child in component.get_children():
-		if child.has_method("set_unstable_state"):
-			child.set_unstable_state(new_state)
-		
-		set_unstable_state(new_state, child)
+	super.set_unstable_state(new_state, component)
+
+func update_unstable_state() -> void:
+	Multiplayer.update_entity_unstable_state(get_unstable_state())
 
 
-func get_stable_state(component: Node = self, state: Dictionary = { 'id': id }) -> Dictionary:
-	for child in component.get_children():
-		if child.has_method("get_stable_state"):
-			child.get_stable_state(state)
-		
-		get_stable_state(child, state)
-			
-	return state
+func get_stable_state(state: Dictionary = { }, component: Node = self) -> Dictionary:
+	state[WorldState.STATE_KEYS.ID] = id
+	state[WorldState.STATE_KEYS.SCENE] = scene
+	return super.get_stable_state(state, component)
 
 func set_stable_state(new_state: Dictionary, component: Node = self) -> void:
-	for child in component.get_children():
-		if child.has_method("set_unstable_state"):
-			child.set_unstable_state(new_state)
-		
-		set_unstable_state(new_state, child)
+	super.set_stable_state(new_state, component)
+
+func update_stable_state() -> void:
+	Multiplayer.update_entity_stable_state(get_stable_state())
+
+
+func is_authoritative() -> bool:
+	return Multiplayer.is_entity_authoritative(get_stable_state())
