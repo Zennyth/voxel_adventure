@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://4mktbd54rkkh"]
+
+[ext_resource type="Script" path="res://scripts/entities/components/bodies/collection/collection.gd" id="1_5ngqf"]
+[ext_resource type="Resource" uid="uid://dbu0blxubrfbg" path="res://assets/entities/components/bodies/collection/races/foot.tres" id="1_na6hl"]
+
+[resource]
+script = ExtResource( "1_5ngqf" )
+body_part_collection = [ExtResource( "1_na6hl" ), null]

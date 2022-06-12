@@ -14,6 +14,26 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/entities/components/controllers/ai_controller.gd"
 }, {
+"base": "Component",
+"class": &"Body",
+"language": &"GDScript",
+"path": "res://scripts/entities/components/bodies/body.gd"
+}, {
+"base": "Resource",
+"class": &"BodyPartResource",
+"language": &"GDScript",
+"path": "res://scripts/entities/components/bodies/collection/body_part.gd"
+}, {
+"base": "Resource",
+"class": &"BodyPartsCollectionResource",
+"language": &"GDScript",
+"path": "res://scripts/entities/components/bodies/collection/collection.gd"
+}, {
+"base": "MeshInstance3D",
+"class": &"BodySlot",
+"language": &"GDScript",
+"path": "res://scripts/entities/components/bodies/slots/slot.gd"
+}, {
 "base": "Entity",
 "class": &"Character",
 "language": &"GDScript",
@@ -79,6 +99,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://addons/voxel-core/classes/readers/gpl.gd"
 }, {
+"base": "Body",
+"class": &"Humanoid",
+"language": &"GDScript",
+"path": "res://scripts/entities/components/bodies/humaoid.gd"
+}, {
 "base": "CharacterState",
 "class": &"IdleState",
 "language": &"GDScript",
@@ -88,6 +113,21 @@ _global_script_classes=[{
 "class": &"ImageReader",
 "language": &"GDScript",
 "path": "res://addons/voxel-core/classes/readers/image.gd"
+}, {
+"base": "Resource",
+"class": &"InventoryResource",
+"language": &"GDScript",
+"path": "res://scripts/items/inventories/inventory.gd"
+}, {
+"base": "Object",
+"class": &"InventoryStore",
+"language": &"GDScript",
+"path": "res://scripts/items/inventories/stores/store.gd"
+}, {
+"base": "Resource",
+"class": &"ItemResource",
+"language": &"GDScript",
+"path": "res://scripts/items/item.gd"
 }, {
 "base": "MoveState",
 "class": &"JumpState",
@@ -124,6 +164,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/entities/components/controllers/player_controller.gd"
 }, {
+"base": "Resource",
+"class": &"RaceResource",
+"language": &"GDScript",
+"path": "res://scripts/entities/components/bodies/collection/race.gd"
+}, {
 "base": "RefCounted",
 "class": &"Reader",
 "language": &"GDScript",
@@ -153,6 +198,11 @@ _global_script_classes=[{
 "class": &"StableWorldStateManager",
 "language": &"GDScript",
 "path": "res://scripts/multiplayer/connection_strategies/server/world_state_managers/stable_world_state_manager.gd"
+}, {
+"base": "Object",
+"class": &"Stack",
+"language": &"GDScript",
+"path": "res://scripts/items/stack.gd"
 }, {
 "base": "Node",
 "class": &"State",
@@ -231,6 +281,10 @@ _global_script_classes=[{
 }]
 _global_script_class_icons={
 "AIController": "",
+"Body": "",
+"BodyPartResource": "",
+"BodyPartsCollectionResource": "",
+"BodySlot": "",
 "Character": "",
 "CharacterState": "",
 "ClientConnectionStrategy": "",
@@ -244,8 +298,12 @@ _global_script_class_icons={
 "FallState": "",
 "FilesUtils": "",
 "GPLReader": "",
+"Humanoid": "",
 "IdleState": "",
 "ImageReader": "res://addons/voxel-core/assets/logos/MagicaVoxel.png",
+"InventoryResource": "",
+"InventoryStore": "",
+"ItemResource": "",
 "JumpState": "",
 "LabelComponent": "",
 "MoveState": "",
@@ -253,12 +311,14 @@ _global_script_class_icons={
 "PhysicalStateManager": "",
 "Player": "",
 "PlayerController": "",
+"RaceResource": "",
 "Reader": "",
 "ServerConnectionStrategy": "",
 "SoloConnectionStrategy": "",
 "SpringArmPlayer": "",
 "StableWorldStateBuffer": "",
 "StableWorldStateManager": "",
+"Stack": "",
 "State": "",
 "StateManager": "",
 "Stateful": "",
@@ -286,10 +346,19 @@ config/features=PackedStringArray("4.0", "Vulkan Clustered")
 [autoload]
 
 Multiplayer="*res://scripts/multiplayer/multiplayer.gd"
+ItemDatabase="*res://scripts/items/item_database.gd"
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/voxel-core/plugin.cfg")
+
+[importer_defaults]
+
+VoxelVoxMeshImporter={
+"pivot_mode": 1,
+"scale": 1.0,
+"store_colors_in_texture": false
+}
 
 [input]
 

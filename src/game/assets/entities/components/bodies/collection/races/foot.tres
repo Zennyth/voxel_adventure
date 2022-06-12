@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dbu0blxubrfbg"]
+
+[ext_resource type="ArrayMesh" uid="uid://fulaqlp56xy7" path="res://assets/entities/components/bodies/body_parts/foot.vox" id="1_cfs80"]
+[ext_resource type="Script" path="res://scripts/entities/components/bodies/collection/body_part.gd" id="1_lhiee"]
+
+[resource]
+script = ExtResource( "1_lhiee" )
+mesh = ExtResource( "1_cfs80" )

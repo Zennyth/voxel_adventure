@@ -7,11 +7,10 @@
 [ext_resource type="Script" path="res://scripts/entities/components/state_machine/states/character/move/jump.gd" id="4_y1x1r"]
 [ext_resource type="Script" path="res://scripts/entities/components/state_machine/states/character/fall.gd" id="5_p6pgr"]
 [ext_resource type="Script" path="res://scripts/entities/components/controllers/controller.gd" id="7_5sdow"]
+[ext_resource type="PackedScene" uid="uid://b78rgkgpj2sf7" path="res://scenes/entities/components/bodies/body.tscn" id="9_i3kkh"]
 [ext_resource type="Script" path="res://scripts/entities/components/ui/label.gd" id="9_iss3i"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eryfw"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_2not3"]
 
 [node name="Character" type="CharacterBody3D"]
 script = ExtResource( "1_c45gi" )
@@ -60,7 +59,4 @@ script = ExtResource( "9_iss3i" )
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01909, 0)
 shape = SubResource( "CapsuleShape3D_eryfw" )
 
-[node name="BodyShape" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.019, 0)
-mesh = SubResource( "CapsuleMesh_2not3" )
-skeleton = NodePath("../..")
+[node name="Body" parent="." instance=ExtResource( "9_i3kkh" )]

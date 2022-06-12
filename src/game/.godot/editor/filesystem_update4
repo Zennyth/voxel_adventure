@@ -1,4 +1,4 @@
-res://scenes/main/test_multiplayer.tscn
-res://scenes/entities/characters/character.tscn
-res://scenes/entities/characters/player.tscn
 res://scenes/entities/characters/enemy.tscn
+res://scripts/items/inventories/inventory.gd
+res://scripts/items/inventories/stores/array_store.gd
+res://scripts/items/inventories/stores/store.gd

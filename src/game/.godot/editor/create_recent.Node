@@ -1,4 +1,6 @@
+MeshInstance3D
 Node3D
+BoneAttachment3D
 Area3D
 CollisionShape3D
 Controller (controller.gd)
@@ -14,7 +16,6 @@ FallState (fall.gd)
 WalkState (walk.gd)
 IdleState (idle.gd)
 StateManager (state_manager.gd)
-MeshInstance3D
 VoxelInstancer
 SpringArm3D
 VoxelTerrain

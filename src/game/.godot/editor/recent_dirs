@@ -1,3 +1,7 @@
+res://scripts/items
+res://resources/items
+res://scenes/entities/components/bodies
+res://assets/entities/components/bodies/collection/races
 res://scenes/entities/characters
 res://scenes/main
 res://assets/terrain/common/water

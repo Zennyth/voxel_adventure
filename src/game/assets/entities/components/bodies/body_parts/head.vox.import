@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxMeshImporter"
+type="ArrayMesh"
+uid="uid://diamabspdqgpi"
+path="res://.godot/imported/head.vox-6bc11ac6185344643107ddceeb428724.mesh"
+
+[deps]
+
+source_file="res://assets/entities/components/bodies/body_parts/head.vox"
+dest_files=["res://.godot/imported/head.vox-6bc11ac6185344643107ddceeb428724.mesh"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+pivot_mode=1

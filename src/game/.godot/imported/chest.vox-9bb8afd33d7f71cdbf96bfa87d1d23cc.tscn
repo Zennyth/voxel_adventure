@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/chest.vox-9bb8afd33d7f71cdbf96bfa87d1d23cc.model0.mesh" id="1_dn4o1"]
+
+[node name="chest" type="Node3D"]
+
+[node name="@@86801" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -20)
+gi_mode = 2
+mesh = ExtResource( "1_dn4o1" )

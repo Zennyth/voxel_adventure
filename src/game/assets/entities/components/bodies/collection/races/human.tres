@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cstqtmr7xdi3x"]
+
+[ext_resource type="Script" path="res://scripts/entities/components/bodies/collection/race.gd" id="1_735by"]
+[ext_resource type="Resource" uid="uid://4mktbd54rkkh" path="res://assets/entities/components/bodies/collection/races/human_body_parts_collection.tres" id="1_sbkh2"]
+
+[resource]
+script = ExtResource( "1_735by" )
+race_name = "human"
+face_body_parts = ExtResource( "1_sbkh2" )

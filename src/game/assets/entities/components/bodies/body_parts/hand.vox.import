@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxMeshImporter"
+type="ArrayMesh"
+uid="uid://dnkw4mnj8rp8t"
+path="res://.godot/imported/hand.vox-aea83a295c665f00e814aa40ca2b8d19.mesh"
+
+[deps]
+
+source_file="res://assets/entities/components/bodies/body_parts/hand.vox"
+dest_files=["res://.godot/imported/hand.vox-aea83a295c665f00e814aa40ca2b8d19.mesh"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+pivot_mode=1
