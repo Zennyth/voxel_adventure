@@ -1,5 +1,5 @@
 extends Body
-class_name Humanoid
+class_name HumanoidBody
 
 var chest_plate
 var chest_amulet
@@ -19,9 +19,20 @@ var left_hand_weapon
 var right_hand_glove
 var right_hand_weapon
 
-func _init():
-	super._init()
+var slots: Dictionary = {}
+
 	
+func _ready():
+	if entity is not Humanoid:
+		print("Entity: ", entity, " is not a Humanoid !")
+	
+	for equipment: Slot in get_nodes_in_group(Slot.Slots.EQUIPMENT):
+		if not slots[Slot.Slots.EQUIPMENT]:
+			slots[Slot.Slots.EQUIPMENT] = {}
+		
+		slots[Slot.Slots.EQUIPMENT][equipment.name] = equipment
+
+
 	
 
 func get_stable_state(state: Dictionary = { }, component: Node = self) -> Dictionary:

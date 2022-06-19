@@ -2,6 +2,7 @@ extends Resource
 class_name InventoryResource
 
 signal inventory_changed
+signal stack_changed
 
 var _stacks: InventoryStore:
 	set(stacks):

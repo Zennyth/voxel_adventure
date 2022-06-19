@@ -14,7 +14,6 @@ signal destroyed(entity_id: int)
 var id: int = 0
 var scene: String = "" 
 
-# Constructor in godot can't take parameters -> custom constructor init
 func init(entity_state: Dictionary) -> void:
 	id = entity_state[WorldState.STATE_KEYS.ID]
 	scene = entity_state[WorldState.STATE_KEYS.SCENE]

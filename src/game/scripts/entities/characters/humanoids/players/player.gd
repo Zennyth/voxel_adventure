@@ -1,4 +1,4 @@
-extends Character
+extends Humanoid
 class_name Player
 
 @onready var springArmPlayer: SpringArmPlayer = $SpringArmPlayer
