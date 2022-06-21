@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0d40wje031co"]
+
+[ext_resource type="Texture2D" uid="uid://gy4lro5aj6vi" path="res://assets/items/inventories/item_slot_default_background.png" id="1_hcbi0"]
+[ext_resource type="Script" path="res://scripts/items/inventories/slots/slot.gd" id="2_g204o"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hab1x"]
+texture = ExtResource( "1_hcbi0" )
+region_rect = Rect2(0, 0, 18, 18)
+
+[node name="Slot" type="Panel"]
+minimum_size = Vector2(18, 18)
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_styles/panel = SubResource( "StyleBoxTexture_hab1x" )
+script = ExtResource( "2_g204o" )
+
+[node name="ItemTexture" type="TextureRect" parent="."]
+offset_right = 18.0
+offset_bottom = 18.0

@@ -5,8 +5,6 @@ class_name Player
 @onready var voxelViewer: VoxelViewer = $VoxelViewer
 # @onready var label: LabelComponent = $Label3D
 
-var equipement_inventory := InventoryResource.new(DictionaryInventoryStore.new())
-
 func _ready():
 	super._ready()
 	

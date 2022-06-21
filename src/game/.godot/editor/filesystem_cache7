@@ -1,5 +1,5 @@
 b9aaf25a0b00e68c6e7119c6c3e5ea46
-::res://::1655024142
+::res://::1655833942
 icon.png::CompressedTexture2D::5256332323926316912::1652205982::1652205989::1::::<><>::
 ::res://addons/::1653211539
 ::res://addons/voxel-core/::1652293204
@@ -135,7 +135,13 @@ voxel_set_editor.tscn::PackedScene::-1::1652293204::0::1::::<><>::res://addons/v
 ::res://assets/::1654706359
 Bush_Dead.vox::PackedScene::4905517826914494422::1654706359::1654706359::1::::<><>::res://.godot/imported/Bush_Dead.vox-4d472cbf904bb81404a800e6f9dea602.model0.mesh
 ::res://assets/entities/::1654706346
-::res://assets/entities/characters/::1652207404
+::res://assets/entities/characters/::1655749927
+Blue Jeans.png::CompressedTexture2D::977746602264052926::1655749927::1655749914::1::::<><>::
+Brown Boots.png::CompressedTexture2D::3013751006421230524::1655749913::1655749914::1::::<><>::
+Brown Shirt.png::CompressedTexture2D::6308664447966757398::1655749913::1655749914::1::::<><>::
+Iron Sword.png::CompressedTexture2D::3193999374293990026::1655749913::1655749914::1::::<><>::
+Slime Potion.png::CompressedTexture2D::4145181019527653655::1655749913::1655749914::1::::<><>::
+Tree Branch.png::CompressedTexture2D::2110210142582819954::1655749913::1655749914::1::::<><>::
 ::res://assets/entities/components/::1654706592
 ::res://assets/entities/components/bodies/::1654957755
 Char1.glb::PackedScene::9116182313937818581::1654957746::1654957755::1::::<><>::
@@ -158,7 +164,13 @@ Bush.vox::PackedScene::5826515496181062704::1652604778::1652604764::1::::<><>::r
 Grass.tres::ShaderMaterial::3691053845665744345::1654676143::0::1::::<><>::res://scripts/terrain/wind.gdshader
 Grass.tscn::PackedScene::3201700021531766473::1653148514::0::1::::<><>::uid://d1djonn5mlr2i<>uid://cxh0w5ia75krk
 Grass.vox::ArrayMesh::8990937277245452154::1652604406::1652605003::1::::<><>::
-::res://assets/items/::1652207424
+::res://assets/items/::1655750928
+Blue Jeans.png::CompressedTexture2D::6419740434960265522::1655749931::1655750708::1::::<><>::
+Brown Shirt.png::CompressedTexture2D::3353178867408432334::1655750918::1655750928::1::::<><>::
+::res://assets/items/inventories/::1655747864
+default_inventory_background.png::CompressedTexture2D::2280775291409239338::1655747863::1655747864::1::::<><>::
+item_slot_default_background.png::CompressedTexture2D::472459480336477526::1655747831::1655747831::1::::<><>::
+item_slot_empty_background.png::CompressedTexture2D::8705712238658316594::1655747835::1655747835::1::::<><>::
 ::res://assets/terrain/::1652383845
 ::res://assets/terrain/biomes/::1654676143
 desert.tres::Biome::7007111978393335802::1654676143::0::1::::<><>::
@@ -174,10 +186,10 @@ water.tres::ShaderMaterial::6608952618393059911::1654676143::0::1::::<><>::res:/
 ::res://resources/::1654962186
 ::res://resources/entities/::1654962162
 ::res://resources/entities/components/::1654962162
-::res://resources/items/::1654973128
-basic_warrior_chest_plate.tres::Resource::6859923696591455897::1654973113::0::1::::<><>::uid://ctrsllic5j83v<>res://scripts/items/item.gd
+::res://resources/items/::1655750933
+basic_warrior_chest_plate.tres::Resource::6859923696591455897::1655750824::0::1::::<><>::uid://ctrsllic5j83v<>res://scripts/items/item.gd<>uid://cxp1gmg7htbmo
 basic_warrior_glove.tres::Resource::3737417106297202629::1654973118::0::1::::<><>::uid://dnkw4mnj8rp8t<>res://scripts/items/item.gd
-basic_warrior_shoe.tres::Resource::9100361892428504897::1654973124::0::1::::<><>::uid://fulaqlp56xy7<>res://scripts/items/item.gd
+basic_warrior_shoe.tres::Resource::9100361892428504897::1655750933::0::1::::<><>::uid://fulaqlp56xy7<>res://scripts/items/item.gd<>uid://bn1kmpe4kjqag
 human_face_1.tres::Resource::5231863918880393298::1654973128::0::1::::<><>::uid://diamabspdqgpi<>res://scripts/items/item.gd
 ::res://save/::1652382636
 ::res://save/terrain/::1652469997
@@ -185,45 +197,46 @@ human_face_1.tres::Resource::5231863918880393298::1654973128::0::1::::<><>::uid:
 ::res://save/terrain/regions/lod0/::1652469436
 ::res://scenes/::1654704300
 ::res://scenes/entities/::1654704300
-::res://scenes/entities/characters/::1654974487
+::res://scenes/entities/characters/::1655658343
 character.tscn::PackedScene::1361806885221498226::1654966405::0::1::::<><>::res://scripts/entities/components/state_machine/state_managers/physical_state_manager.gd<>res://scripts/entities/characters/character.gd<>res://scripts/entities/components/state_machine/states/character/idle.gd<>res://scripts/entities/components/state_machine/states/character/move/walk.gd<>res://scripts/entities/components/state_machine/states/character/move/jump.gd<>res://scripts/entities/components/state_machine/states/character/fall.gd<>res://scripts/entities/components/controllers/controller.gd<>uid://b78rgkgpj2sf7<>res://scripts/entities/components/ui/label.gd
-enemy.tscn::PackedScene::8220566060086031261::1654966405::0::1::::<><>::uid://tnw04chrcmb7<>res://scripts/entities/components/controllers/ai_controller.gd
-player.tscn::PackedScene::1422676382530953419::1654974487::0::1::::<><>::uid://tnw04chrcmb7<>res://scripts/entities/characters/players/player.gd<>res://scripts/entities/components/controllers/player_controller.gd<>res://scripts/entities/characters/players/spring_arm.gd
+enemy.tscn::PackedScene::8220566060086031261::1655024421::0::1::::<><>::uid://tnw04chrcmb7<>res://scripts/entities/components/controllers/ai_controller.gd
+player.tscn::PackedScene::1422676382530953419::1655658343::0::1::::<><>::uid://tnw04chrcmb7<>res://scripts/entities/components/controllers/player_controller.gd<>res://scripts/entities/characters/humanoids/players/player.gd<>res://scripts/entities/characters/humanoids/players/spring_arm.gd
 ::res://scenes/entities/components/::1654704304
-::res://scenes/entities/components/bodies/::1654966405
-body.tscn::PackedScene::4701631584831537754::1654966405::0::1::::<><>::res://scripts/entities/components/bodies/slots/slot.gd<>uid://diamabspdqgpi<>uid://ctrsllic5j83v<>uid://c4y8683ptnuvh<>uid://btioyjbfk2ckr<>uid://fulaqlp56xy7<>uid://dnkw4mnj8rp8t<>uid://cgsmbfypjff6i<>uid://d2wjvpgr06def
+::res://scenes/entities/components/bodies/::1655749007
+body.tscn::PackedScene::-1::1655749007::0::1::::<><>::res://scripts/entities/components/bodies/bindable_slots/bindable_slot.gd<>res://scripts/entities/components/bodies/humanoid.gd<>uid://diamabspdqgpi<>uid://ctrsllic5j83v<>uid://c4y8683ptnuvh<>uid://btioyjbfk2ckr<>uid://fulaqlp56xy7<>uid://dnkw4mnj8rp8t<>uid://cgsmbfypjff6i<>uid://d2wjvpgr06def
 ::res://scenes/entities/components/bodies/body_parts/::1654705463
 ::res://scenes/entities/components/bodies/body_parts/1/::1654705479
 ::res://scenes/entities/components/bodies/body_parts/1/parts/::1654705565
 ::res://scenes/environment/::1652207345
 ::res://scenes/items/::1652207424
-::res://scenes/main/::1654966404
+::res://scenes/main/::1655833226
 test.tscn::PackedScene::799558558846879465::1654677108::0::1::::<><>::uid://sl0fvams5g61<>uid://dvl5bidtjm06s
-test_multiplayer.tscn::PackedScene::4479990644397294744::1654966404::0::1::::<><>::res://scripts/multiplayer/entity_manager.gd
+test_multiplayer.tscn::PackedScene::4479990644397294744::1655833226::0::1::::<><>::res://scripts/multiplayer/entity_manager.gd
 ::res://scenes/terrain/::1654631722
 test.tscn::PackedScene::1040919004710902291::1654631722::0::1::::<><>::uid://cku6scldg8hvt<>uid://b40bm5c1q32c0<>uid://cv5kpg873kgsd<>uid://bst8d8555b7i8<>uid://d1djonn5mlr2i<>uid://c63kd01mimsco<>uid://c1foqps5t8w1d<>res://scripts/multiplayer/entity_manager.gd<>uid://41i4fuk5m7fk
 ::res://scripts/::1654704095
-::res://scripts/entities/::1654704014
-entity.gd::GDScript::-1::1654694866::0::1::::Entity<>Stateful<>::
+::res://scripts/entities/::1655657894
+entity.gd::GDScript::-1::1655657894::0::1::::Entity<>Stateful<>::
 stateful.gd::GDScript::-1::1654609589::0::1::::Stateful<>Node<>::
-::res://scripts/entities/characters/::1654694524
+::res://scripts/entities/characters/::1655657894
 character.gd::GDScript::-1::1654694524::0::1::::Character<>Entity<>::
-::res://scripts/entities/characters/players/::1654696678
-player.gd::GDScript::-1::1654696678::0::1::::Player<>Character<>::
-spring_arm.gd::GDScript::-1::1654694961::0::1::::SpringArmPlayer<>SpringArm3D<>::
+::res://scripts/entities/characters/humanoids/::1655660289
+humanoid.gd::GDScript::-1::1655660289::0::1::::Humanoid<>Character<>::
+::res://scripts/entities/characters/humanoids/players/::1655658264
+player.gd::GDScript::-1::1655658264::0::1::::Player<>Humanoid<>::
+spring_arm.gd::GDScript::-1::1655657894::0::1::::SpringArmPlayer<>SpringArm3D<>::
 ::res://scripts/entities/components/::1654704112
 component.gd::GDScript::-1::1654704014::0::1::::Component<>Stateful<>::
-::res://scripts/entities/components/bodies/::1654960815
+::res://scripts/entities/components/bodies/::1655748962
 body.gd::GDScript::-1::1654960795::0::1::::Body<>Component<>::
-humaoid.gd::GDScript::-1::1654960800::0::1::::Humanoid<>Body<>::
+humanoid.gd::GDScript::-1::1655715059::0::1::::HumanoidBody<>Body<>::
+::res://scripts/entities/components/bodies/bindable_slots/::1655749034
+bindable_slot.gd::GDScript::-1::1655748875::0::1::::BindableSlot<>MeshInstance3D<>::
+bindable_slot_manager.gd::GDScript::-1::1655833926::0::1::::BindableSlotManager<>Object<>::
 ::res://scripts/entities/components/bodies/collection/::1654708963
 body_part.gd::GDScript::-1::1654708066::0::1::::BodyPartResource<>Resource<>::
 collection.gd::GDScript::-1::1654708963::0::1::::BodyPartsCollectionResource<>Resource<>::
 race.gd::GDScript::-1::1654708319::0::1::::RaceResource<>Resource<>::
-::res://scripts/entities/components/bodies/slots/::1654966281
-body_part_slot.gd::GDScript::-1::1654961568::0::1::::<>BodySlot<>::
-equipment_slot.gd::GDScript::-1::1654961357::0::1::::<>BodySlot<>::
-slot.gd::GDScript::-1::1654966281::0::1::::BodySlot<>MeshInstance3D<>::
 ::res://scripts/entities/components/controllers/::1654704014
 ai_controller.gd::GDScript::-1::1654704014::0::1::::AIController<>Controller<>::
 controller.gd::GDScript::-1::1654704014::0::1::::Controller<>Component<>::
@@ -245,15 +258,20 @@ state_manager.gd::GDScript::-1::1654704014::0::1::::StateManager<>Component<>::
 ::res://scripts/entities/components/ui/::1654704014
 label.gd::GDScript::-1::1654704014::0::1::::LabelComponent<>Component<>::
 ::res://scripts/environment/::1652207345
-::res://scripts/items/::1655023629
+::res://scripts/items/::1655833559
 item.gd::GDScript::-1::1654973137::0::1::::ItemResource<>Resource<>::
 item_database.gd::GDScript::-1::1654972245::0::1::::<>Node<>::
-stack.gd::GDScript::-1::1654974459::0::1::::Stack<>Object<>::
-::res://scripts/items/inventories/::1655023643
-inventory.gd::GDScript::-1::1655024111::0::1::::<><>::
-::res://scripts/items/inventories/stores/::1655023658
-array_store.gd::GDScript::-1::1655023907::0::1::::<>InventoryStore<>::
-store.gd::GDScript::-1::1655023839::0::1::::InventoryStore<>Object<>::
+stack.gd::GDScript::-1::1655833559::0::1::::StackResource<>Object<>::
+ui_stack.gd::GDScript::-1::1655833926::0::1::::StackResource<>Node2D<>::
+::res://scripts/items/inventories/::1655832745
+inventory.gd::GDScript::-1::1655833926::0::1::::InventoryResource<>Resource<>::
+ui_inventory.gd::GDScript::-1::1655832745::0::1::::Inventory<>Node2D<>::
+::res://scripts/items/inventories/slots/::1655833214
+slot.gd::GDScript::-1::1655833926::0::1::::Slot<>Panel<>::
+::res://scripts/items/inventories/stores/::1655660535
+array_store.gd::GDScript::-1::1655833926::0::1::::ArrayInventoryStore<>InventoryStore<>::
+dictionary_store.gd::GDScript::-1::1655833926::0::1::::DictionaryInventoryStore<>InventoryStore<>::
+store.gd::GDScript::-1::1655833926::0::1::::InventoryStore<>Object<>::
 ::res://scripts/multiplayer/::1654696964
 entity_manager.gd::GDScript::-1::1654696964::0::1::::EntityManager<>Node3D<>::
 multiplayer.gd::GDScript::-1::1654693465::0::1::::<>Node<>::
@@ -285,3 +303,9 @@ wind.gdshader::Shader::-1::1652630516::0::1::::<><>::
 files.gd::GDScript::-1::1654677171::0::1::::FilesUtils<>RefCounted<>::
 ::res://script_templates/::1653124063
 comments.gd::GDScript::-1::1653124063::0::1::::<>RefCounted<>::
+::res://ui/::1655747773
+::res://ui/items/::1655747773
+::res://ui/items/inventories/::1655833558
+player_inventory.tscn::PackedScene::7846338030934021216::1655833558::0::1::::<><>::uid://7q3bhoa82guc<>uid://b0d40wje031co
+::res://ui/items/inventories/slots/::1655833226
+slot.tscn::PackedScene::4149141515177163498::1655833226::0::1::::<><>::uid://gy4lro5aj6vi<>res://scripts/items/inventories/slots/slot.gd

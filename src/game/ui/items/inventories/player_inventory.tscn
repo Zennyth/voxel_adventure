@@ -1,0 +1,172 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj13bnnwwngs3"]
+
+[ext_resource type="Texture2D" uid="uid://7q3bhoa82guc" path="res://assets/items/inventories/default_inventory_background.png" id="1_fvgjh"]
+[ext_resource type="PackedScene" uid="uid://b0d40wje031co" path="res://ui/items/inventories/slots/slot.tscn" id="2_d0mfy"]
+
+[node name="Inventory" type="Node2D"]
+scale = Vector2(3, 3)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 66.0
+offset_top = 49.0
+offset_right = 273.0
+offset_bottom = 161.0
+texture = ExtResource( "1_fvgjh" )
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = 161.0
+offset_top = 73.0
+offset_right = 269.0
+offset_bottom = 165.0
+columns = 5
+
+[node name="Slot" parent="GridContainer" instance=ExtResource( "2_d0mfy" )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 18.0
+offset_bottom = 18.0
+
+[node name="Slot2" parent="GridContainer" instance=ExtResource( "2_d0mfy" )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 22.0
+offset_right = 40.0
+offset_bottom = 18.0
+
+[node name="Slot3" parent="GridContainer" instance=ExtResource( "2_d0mfy" )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 44.0
+offset_right = 62.0
+offset_bottom = 18.0
+
+[node name="Slot4" parent="GridContainer" instance=ExtResource( "2_d0mfy" )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 66.0
+offset_right = 84.0
+offset_bottom = 18.0
+
+[node name="Slot5" parent="GridContainer" instance=ExtResource( "2_d0mfy" )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 88.0
+offset_right = 106.0
+offset_bottom = 18.0
+
+[node name="Slot6" parent="GridContainer" instance=ExtResource( "2_d0mfy" )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 22.0
+offset_right = 18.0
+offset_bottom = 40.0
+
+[node name="Slot7" parent="GridContainer" instance=ExtResource( "2_d0mfy" )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 22.0
+offset_top = 22.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Slot8" parent="GridContainer" instance=ExtResource( "2_d0mfy" )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 44.0
+offset_top = 22.0
+offset_right = 62.0
+offset_bottom = 40.0
+
+[node name="Slot9" parent="GridContainer" instance=ExtResource( "2_d0mfy" )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 66.0
+offset_top = 22.0
+offset_right = 84.0
+offset_bottom = 40.0
+
+[node name="Slot10" parent="GridContainer" instance=ExtResource( "2_d0mfy" )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 88.0
+offset_top = 22.0
+offset_right = 106.0
+offset_bottom = 40.0
+
+[node name="Slot11" parent="GridContainer" instance=ExtResource( "2_d0mfy" )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 44.0
+offset_right = 18.0
+offset_bottom = 62.0
+
+[node name="Slot12" parent="GridContainer" instance=ExtResource( "2_d0mfy" )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 22.0
+offset_top = 44.0
+offset_right = 40.0
+offset_bottom = 62.0
+
+[node name="Slot13" parent="GridContainer" instance=ExtResource( "2_d0mfy" )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 44.0
+offset_top = 44.0
+offset_right = 62.0
+offset_bottom = 62.0
+
+[node name="Slot14" parent="GridContainer" instance=ExtResource( "2_d0mfy" )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 66.0
+offset_top = 44.0
+offset_right = 84.0
+offset_bottom = 62.0
+
+[node name="Slot15" parent="GridContainer" instance=ExtResource( "2_d0mfy" )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 88.0
+offset_top = 44.0
+offset_right = 106.0
+offset_bottom = 62.0
+
+[node name="Slot16" parent="GridContainer" instance=ExtResource( "2_d0mfy" )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 66.0
+offset_right = 18.0
+offset_bottom = 84.0
+
+[node name="Slot17" parent="GridContainer" instance=ExtResource( "2_d0mfy" )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 22.0
+offset_top = 66.0
+offset_right = 40.0
+offset_bottom = 84.0
+
+[node name="Slot18" parent="GridContainer" instance=ExtResource( "2_d0mfy" )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 44.0
+offset_top = 66.0
+offset_right = 62.0
+offset_bottom = 84.0
+
+[node name="Slot19" parent="GridContainer" instance=ExtResource( "2_d0mfy" )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 66.0
+offset_top = 66.0
+offset_right = 84.0
+offset_bottom = 84.0
+
+[node name="Slot20" parent="GridContainer" instance=ExtResource( "2_d0mfy" )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 88.0
+offset_top = 66.0
+offset_right = 106.0
+offset_bottom = 84.0

@@ -1,5 +1,5 @@
 extends Object
-class_name Stack
+class_name StackResource
 
 var item: ItemResource
 var quantity: int

@@ -1,3 +1,7 @@
+TextureRect
+Node2D
+Panel
+GridContainer
 MeshInstance3D
 Node3D
 BoneAttachment3D

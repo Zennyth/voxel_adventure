@@ -1,6 +1,12 @@
 extends Resource
 class_name InventoryResource
 
+enum Inventories {
+	COSMETIC,
+	EQUIPMENT,
+	ITEM
+}
+
 signal inventory_changed
 signal stack_changed
 
@@ -15,8 +21,11 @@ func _init(store: InventoryStore = ArrayInventoryStore.new()):
 func get_item(index) -> ItemResource:
 	return get_stack_item(index).item
 
-func get_stack_item(index) -> Stack:
+func get_stack_item(index) -> StackResource:
 	return _stacks.get(index)
+
+func set_stack(key, stack: StackResource):
+	_stacks.append(stack, key)
 
 
 func add_item(item_reference, quantity: int = 1):
@@ -41,7 +50,7 @@ func add_item(item_reference, quantity: int = 1):
 				remaining_quantity = stack.fill_to(remaining_quantity)
 	
 	while remaining_quantity > 0:
-		var stack := Stack.new(item)
+		var stack := StackResource.new(item)
 		remaining_quantity = stack.fill_to(remaining_quantity)
 		_stacks.append(stack)
 		inventory_changed.emit(_stacks)

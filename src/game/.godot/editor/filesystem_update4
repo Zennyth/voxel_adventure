@@ -1,4 +1,2 @@
-res://scenes/entities/characters/enemy.tscn
-res://scripts/items/inventories/inventory.gd
-res://scripts/items/inventories/stores/array_store.gd
-res://scripts/items/inventories/stores/store.gd
+res://ui/items/inventories/player_inventory.tscn
+res://scripts/items/ui_stack.gd
