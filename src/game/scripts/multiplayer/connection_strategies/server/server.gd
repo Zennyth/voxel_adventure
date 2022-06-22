@@ -23,8 +23,8 @@ func init_connection(network: Network, args: Dictionary):
 		WorldState.STATE_KEYS.SCENE: "enemy"
 	})
 	
-	_network.peer_connected.connect(_peer_connected)
-	_network.peer_disconnected.connect(_peer_disconnected)
+	_network._peer_connected.connect(_peer_connected)
+	_network._peer_disconnected.connect(_peer_disconnected)
 
 func is_entity_authoritative(entity_state: Dictionary) -> bool:
 	return entity_state[WorldState.STATE_KEYS.SCENE] != "player"

@@ -1,6 +1,6 @@
 extends Node
 
-var network := ENet.new()
+var network := ENetNetwork.new()
 var port := 1909
 var is_online := false
 

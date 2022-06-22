@@ -14,8 +14,8 @@ func init_connection(network: Network, args: Dictionary):
 	args['ip'] = ip
 	network.create_client(args)
 	
-	_network.connection_failed.connect(_connection_failed)
-	_network.connection_succeeded.connect(_connection_succeeded)
+	_network._connection_failed.connect(_connection_failed)
+	_network._connection_succeeded.connect(_connection_succeeded)
 
 	unstable_world_state_buffer = UnstableWorldStateBuffer.new()
 	unstable_world_state_buffer.init(entity_manager, clock_synchronizer)

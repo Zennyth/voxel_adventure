@@ -1,32 +1,22 @@
 extends Network
-class_name ENet
-
-###
-# SIGNALS DEFINITION
-###
-signal connection_failed
-signal connection_succeeded
-signal peer_connected
-signal peer_disconnected
-
+class_name ENetNetwork
 
 ###
 # SIGNALS RESPONSES
 ###
 func _connection_succeeded():
-	connection_succeeded.emit()
+	_connection_succeeded.emit()
 func _connection_failed():
-	connection_failed.emit()
+	_connection_failed.emit()
 func _peer_connected(peer_id: int) -> void:
-	peer_connected.emit(peer_id)
+	_peer_connected.emit(peer_id)
 func _peer_disconnected(peer_id: int) -> void:
-	peer_disconnected.emit(peer_id)
+	_peer_disconnected.emit(peer_id)
 
 
 ###
 # OVERRIDE
 ###
-
 func create_client(args: Dictionary):
 	network.create_client(args['ip'], args['port'])
 	multiplayer.set_multiplayer_peer(network)
@@ -57,7 +47,6 @@ func get_id() -> int:
 ###
 # BUILT-IN
 ###
-
 var network := ENetMultiplayerPeer.new()
 
 ###
@@ -73,7 +62,7 @@ func global_requests(data: Dictionary):
 # BUILT-IN
 # State
 ###
-@rpc(any_peer)
+@rpc(any_peer, unreliable)
 func update_entity_unstable_state(data: Dictionary):
 	_update_entity_unstable_state.emit(data)
 

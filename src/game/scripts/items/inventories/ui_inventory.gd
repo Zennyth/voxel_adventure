@@ -4,6 +4,8 @@ class_name Inventory
 @onready var slot_container = $GridContainer 
 var holding_item = null
 
+@export var inventory_type: InventoryResource.Inventories
+
 func _ready():
 	for slot in slot_container.get_tree().get_nodes_in_group('slots'):
 		slot_container.connect("gui_input", slot_gui_input, [slot])
@@ -11,7 +13,7 @@ func _ready():
 
 func slot_gui_input(event: InputEvent, slot: Slot):
 	if event is InputEventMouseButton:
-		if event.button_index == 1 && event.pressed:
+		if event.button_index == MOUSE_LEFT_BUTTON && event.pressed:
 			if holding_item != null:
 				if !slot.item:
 					left_click_empty_slot(slot)
