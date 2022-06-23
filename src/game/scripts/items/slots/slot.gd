@@ -1,33 +1,20 @@
-extends Panel
 class_name Slot
+extends Object
 
-var default_texture = preload("res://assets/items/inventories/item_slot_default_background.png")
-var empty_texture = preload("res://assets/items/inventories/item_slot_empty_background.png")
+signal stack_changed
 
-var default_style := StyleBoxTexture.new()
-var empty_style := StyleBoxTexture.new()
+var stack: Stack:
+  set(_stack):
+    stack = _stack
+    stack_changed.emit(stack)
+var id
 
-@onready var item_texture: TextureRect = $ItemTexture
+func _init(_id, initital_stack: Stack = null):
+  id = _id
+  stack = initital_stack
 
-var stack: StackResource = null:
-	set(_stack):
-		stack = _stack
-		
-		if stack != null:
-			var _item: ItemResource = stack.item
-			item_texture.texture = _item.icon if _item and _item.icon else null
-		
-		refresh_style()
+func set_stack(_stack: Stack):
+  stack = _stack
 
-func refresh_style():
-	set('theme_override_styles/panel', empty_style if stack == null else default_style)
-
-func _ready():
-	add_to_group("slots")
-	default_style.texture = default_texture
-	empty_style.texture = empty_texture
-	
-	if randi() % 2 == 0:
-		stack = StackResource.new(ItemDatabase.get_item("Basic Warrior Chest Plate"), 1)
-	else:
-		stack = null
+func is_empty() -> bool:
+  return stack == null or stack.is_empty()
