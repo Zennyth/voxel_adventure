@@ -57,3 +57,19 @@ func spawn_player(id: int = _network.get_id()):
 		WorldState.STATE_KEYS.ID: id,
 		WorldState.STATE_KEYS.SCENE: "player"
 	})
+
+###
+# STATIC
+###
+enum Destination {
+	ALL = 0,
+	SERVER = 1
+}
+
+const Channel = {
+	CLOCK_SYNCHRONIZATION = "clock_synchronization",
+	UPDATE_ENTITY_UNSTABLE_STATE = "update_entity_unstable_state",
+	UPDATE_ENTITY_STABLE_STATE = "update_entity_stable_state",
+	UPDATE_WORLD_STABLE_STATE = "update_world_stable_state",
+	GLOBAL_REQUESTS = "global_requests",
+}

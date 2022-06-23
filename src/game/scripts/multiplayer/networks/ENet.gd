@@ -4,13 +4,13 @@ class_name ENetNetwork
 ###
 # SIGNALS RESPONSES
 ###
-func _connection_succeeded():
+func connection_succeeded():
 	_connection_succeeded.emit()
-func _connection_failed():
+func connection_failed():
 	_connection_failed.emit()
-func _peer_connected(peer_id: int) -> void:
+func peer_connected(peer_id: int) -> void:
 	_peer_connected.emit(peer_id)
-func _peer_disconnected(peer_id: int) -> void:
+func peer_disconnected(peer_id: int) -> void:
 	_peer_disconnected.emit(peer_id)
 
 
@@ -21,15 +21,15 @@ func create_client(args: Dictionary):
 	network.create_client(args['ip'], args['port'])
 	multiplayer.set_multiplayer_peer(network)
 	
-	network.connection_succeeded.connect(_connection_succeeded)
-	network.connection_failed.connect(_connection_failed)
+	network.connection_succeeded.connect(connection_succeeded)
+	network.connection_failed.connect(connection_failed)
 
 func create_server(args: Dictionary):
 	network.create_server(args['port'], args['MAX_PLAYERS'])
 	multiplayer.set_multiplayer_peer(network)
 	
-	network.peer_connected.connect(_peer_connected)
-	network.peer_disconnected.connect(_peer_disconnected)
+	network.peer_connected.connect(peer_connected)
+	network.peer_disconnected.connect(peer_disconnected)
 
 func send(destination: int, channel: String, data):
 	rpc_id(destination, channel, data)

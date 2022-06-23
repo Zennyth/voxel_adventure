@@ -21,11 +21,12 @@ func get_strategy(mode: ConnectionMode) -> ConnectionStrategy:
 var connection_mode: ConnectionMode
 var connection_strategy: ConnectionStrategy
 func set_connection_mode():
-	# connection_mode = ConnectionMode.SOLO
 	if "--server" in OS.get_cmdline_args():
 		connection_mode = ConnectionMode.SERVER
 	else:
 		connection_mode = ConnectionMode.CLIENT
+	
+	connection_mode = ConnectionMode.SOLO
 
 func _ready():
 	set_connection_mode()

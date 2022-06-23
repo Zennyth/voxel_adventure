@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcttbvp5vaixd"]
+
+[ext_resource type="Script" path="res://scripts/items/stacks/ui_stack.gd" id="1_pq2cf"]
+[ext_resource type="PackedScene" uid="uid://dft4do6d20gkp" path="res://ui/items/item.tscn" id="2_maf0v"]
+
+[node name="StackContainer" type="Control"]
+offset_right = 18.0
+offset_bottom = 18.0
+script = ExtResource( "1_pq2cf" )
+
+[node name="ItemContainer" parent="." instance=ExtResource( "2_maf0v" )]
+
+[node name="Quantity" type="Label" parent="."]
+offset_left = 14.0
+offset_top = 12.0
+offset_right = 24.0
+offset_bottom = 38.0
+scale = Vector2(0.2, 0.2)
+text = "1
+"

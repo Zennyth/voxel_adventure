@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://lnku3hqte4v2"]
 
-[ext_resource type="PackedScene" uid="uid://sl0fvams5g61" path="res://scenes/entities/characters/enemy.tscn" id="2_0wpv6"]
-[ext_resource type="PackedScene" uid="uid://dvl5bidtjm06s" path="res://scenes/entities/characters/player.tscn" id="2_gfxce"]
+[ext_resource type="PackedScene" uid="uid://dpedr0nrfawif" path="res://scenes/entities/characters/enemy.tscn" id="2_0wpv6"]
+[ext_resource type="PackedScene" uid="uid://ujfjivfo53fb" path="res://scenes/entities/characters/player.tscn" id="2_gfxce"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0mbe7"]
 

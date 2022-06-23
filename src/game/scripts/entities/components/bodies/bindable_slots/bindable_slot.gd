@@ -19,7 +19,7 @@ enum Slots {
 static func get_slot_group(slot: Slots) -> String:
 	return "slot_" + str(slot)
 
-var _item: ItemResource = null:
+var _item: Item = null:
 	set(item):
 		if not item or not item.mesh:
 			return
@@ -27,7 +27,7 @@ var _item: ItemResource = null:
 		_item = item
 		mesh = _item.mesh
 
-func change_item(new_item: ItemResource):
+func change_item(new_item: Item):
 	_item = new_item
 
 @export var initial_item: Resource = null:

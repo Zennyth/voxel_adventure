@@ -4,7 +4,7 @@ extends Inventory
 var slots := {}
 
 func get_slot(index) -> Slot:
-  return slots[index]
+	return slots[index]
 
-func set_slot(index, slot: Slot)
-  slots[index] = slot
+func set_slot(index, slot: Slot):
+	slots[index] = slot

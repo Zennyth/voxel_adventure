@@ -32,11 +32,11 @@ func _ready():
 	empty_style.texture = empty_texture
 
 func is_empty() -> bool:
-	return stack == null or stack.is_empty()
+	return slot == null or slot.is_empty()
 
 func get_item_name() -> String:
-	if stack == null or stack.item == null:
+	if slot == null or slot.stack == null:
 		return ""
 	
-	return stack.item.name
+	return slot.stack.get_item_name()
 	

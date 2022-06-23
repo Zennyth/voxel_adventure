@@ -1,5 +1,5 @@
 extends Resource
-class_name ItemResource
+class_name Item
 
 @export var name: String = ""
 @export var is_collectable: bool = true

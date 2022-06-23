@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dft4do6d20gkp"]
+
+[ext_resource type="Script" path="res://scripts/items/ui_item.gd" id="1_umkjf"]
+[ext_resource type="Texture2D" uid="uid://cxp1gmg7htbmo" path="res://assets/items/Blue Jeans.png" id="2_lvorx"]
+
+[node name="ItemContainer" type="Node2D"]
+script = ExtResource( "1_umkjf" )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+minimum_size = Vector2(18, 18)
+offset_right = 18.0
+offset_bottom = 18.0
+texture = ExtResource( "2_lvorx" )

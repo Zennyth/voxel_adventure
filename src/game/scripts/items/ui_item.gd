@@ -6,12 +6,12 @@ class_name ItemContainer
 
 
 var item: Item = null:
-  set(_item):
-    item = _item
-    texture_rect.texture = item.icon if item and item.icon else null
+	set(_item):
+		item = _item
+		texture_rect.texture = item.icon if item and item.icon else null
 
 func set_item(_item: Item):
-  item = _item
+	item = _item
 
-func get_name() -> String:
-  return item.name
+func get_item_name() -> String:
+	return item.name

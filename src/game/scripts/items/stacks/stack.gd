@@ -6,12 +6,12 @@ signal stack_updated
 var item: Item:
 	set(_item):
 		item = _item
-		stack_updated(self)
+		stack_updated.emit(self)
 
 var quantity: int:
 	set(_quantity):
 		quantity = _quantity
-		stack_updated(self)
+		stack_updated.emit(self)
 
 func _init(item_reference, quantity_reference: int = 0):
 	item = item_reference if item_reference is Item else ItemDatabase.get_item(item_reference)
@@ -25,3 +25,9 @@ func fill_to(remaining_quantity: int) -> int:
 
 func is_empty() -> bool:
 	return item == null or quantity == 0
+
+func get_item_name() -> String:
+	if item == null:
+		return ""
+	
+	return item.name
