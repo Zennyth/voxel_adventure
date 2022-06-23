@@ -35,4 +35,8 @@ func is_empty() -> bool:
 	return stack == null or stack.is_empty()
 
 func get_item_name() -> String:
+	if stack == null or stack.item == null:
+		return ""
+	
 	return stack.item.name
+	

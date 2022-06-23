@@ -18,4 +18,4 @@ func _on_stack_updated(new_stack):
 
 func update_ui():
   item_container.set_item(stack.item)
-  quantity.text = str(stack.quantity)
+  quantity.text = str(stack.quantity) if stack else ""
