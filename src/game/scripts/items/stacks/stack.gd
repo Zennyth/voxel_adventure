@@ -14,8 +14,8 @@ var quantity: int:
 		stack_updated.emit(self)
 
 func _init(item_reference, quantity_reference: int = 0):
-	item = item_reference if item_reference is Item else ItemDatabase.get_item(item_reference)
 	
+	item = item_reference if item_reference is Item else ItemDatabase.get_item(item_reference)
 	quantity = quantity_reference
 
 func fill_to(remaining_quantity: int) -> int:

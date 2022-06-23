@@ -44,6 +44,8 @@ script = ExtResource( "1_v4eul" )
 [node name="UI" type="Node2D" parent="."]
 script = ExtResource( "2_ml0ye" )
 
+[node name="ArrayInventoryContainer" parent="UI" instance=ExtResource( "3_61gaq" )]
+
 [node name="DragPreview" type="Control" parent="UI"]
 offset_right = 40.0
 offset_bottom = 40.0
@@ -59,5 +61,3 @@ offset_bottom = 38.0
 scale = Vector2(0.2, 0.2)
 text = "1
 "
-
-[node name="ArrayInventoryContainer" parent="UI" instance=ExtResource( "3_61gaq" )]

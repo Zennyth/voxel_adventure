@@ -16,12 +16,11 @@ var inventory: ArrayInventory
 func _ready():
 	inventory = ArrayInventory.new(20)
 	inventory_container.inventory = inventory
+	inventory_container.init_inventory()
 	
 	for slot in inventory.slots:
 		if randf() > 0.5:
 			slot.set_stack(Stack.new(ItemDatabase.get_item("Basic Warrior Chest Plate"), 1))
-	
-	inventory_container.init_inventory()
 	var index := 0 
 	
 	for slot_container in inventory_container.get_slot_containers():

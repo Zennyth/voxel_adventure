@@ -4,6 +4,8 @@ class_name ItemContainer
 
 @onready var texture_rect: TextureRect = $TextureRect
 
+func _ready():
+	texture_rect.texture = null
 
 var item: Item = null:
 	set(_item):

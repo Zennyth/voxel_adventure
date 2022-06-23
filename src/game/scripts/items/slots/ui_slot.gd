@@ -13,7 +13,9 @@ var slot: Slot = null:
 	set(_slot):
 		slot = _slot
 
-		stack_container.set_stack(slot.stack)
+		if slot:
+			slot.connect("stack_changed", _on_stack_changed)
+		
 		update_ui()
 
 func set_slot(_slot: Slot):
@@ -24,6 +26,8 @@ func _on_stack_changed(_new_stack: Stack):
 
 
 func update_ui():
+	stack_container.set_stack(slot.stack)
+	
 	set('theme_override_styles/panel', empty_style if slot and slot.stack == null else default_style)
 
 func _ready():
