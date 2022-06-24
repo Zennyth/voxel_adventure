@@ -21,7 +21,8 @@ const STATE_KEYS = {
 	POSITION = 'p',
 	ROTATION = 'r',
 	
-	LABEL = 'la'
+	LABEL = 'la',
+    BINDALBE_SLOT = 'bs'
 }
 
 
