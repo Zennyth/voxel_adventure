@@ -1,57 +1,37 @@
 extends Resource
 class_name Inventory
 
-# enum Inventories {
-# 	COSMETIC,
-# 	EQUIPMENT,
-# 	ITEM
-# }
-
-# signal inventory_changed
-# signal slot_changed(slot)
-# signal stack_changed(stack)
-
-# var _stacks: InventoryStore:
-# 	set(stacks):
-# 		_stacks = stacks
-# 		inventory_changed.emit(_stacks)
-
-# func _init(store: InventoryStore = ArrayInventoryStore.new()):
-# 	_stacks = store
-
-# func get_item(index) -> ItemResource:
-# 	return get_stack_item(index).item
-
-# func get_stack_item(index) -> StackResource:
-# 	return _stacks.get(index)
-
-# func set_stack(key, stack: StackResource):
-# 	_stacks.append(stack, key)
+enum InventoryKey {
+    EQUIPMENT_INVENTORY,
+    COSMETIC_INVENTORY,
+    ITEM_INVENTORY
+}
 
 
-# func add_item(item_reference, quantity: int = 1):
-# 	if quantity <= 0:
-# 		return
-	
-# 	var item: ItemResource = item_reference if item_reference is ItemResource else ItemDatabase.get_item(item_reference) 
-# 	if not item:
-# 		return
-	
-# 	var remaining_quantity = quantity
-	
-# 	if item.is_stackable:
-# 		for stack in _stacks.list():
-# 			if remaining_quantity == 0:
-# 				break
-			
-# 			if stack.item.name != item.name:
-# 				continue
-			
-# 			if stack.quantity < item.max_stack_size:
-# 				remaining_quantity = stack.fill_to(remaining_quantity)
-	
-# 	while remaining_quantity > 0:
-# 		var stack := StackResource.new(item)
-# 		remaining_quantity = stack.fill_to(remaining_quantity)
-# 		_stacks.append(stack)
-# 		inventory_changed.emit(_stacks)
+func get_slot(index) -> Slot:
+    return null
+
+func get_slot_number() -> int:
+	return 0
+
+func get_indexes() -> List:
+    return []
+
+
+func set_stack(index: int, new_stack: Stack) -> Stack:
+    var slot: Slot = get_slot(index)
+
+    var previous_stack: Stack = slot.stack
+    slot.set_stack(new_stack)
+    return previous_stack
+
+func remove_stack(index: int) -> Stack:
+    var slot: Slot = get_slot(index)
+
+    var previous_stack: Stack = slot.stack
+    slot.set_stack(null)
+    return previous_stack
+
+func set_stack_quantity(index, amount: int) -> int:
+	var slot: Slot = get_slot(index)
+    return slot.stack.fill_to(amount)
