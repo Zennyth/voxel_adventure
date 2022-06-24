@@ -1,20 +1,26 @@
-extends Object
+extends Skeleton3D
 class_name BindableSlotManager
 
-var slots: Dictionary = {}
+var slot_keys: {}
 var inventory: DictionaryInventory
 
-func _init(inventory_reference: DictionaryInventory, slot_list: Array):
-	inventory = inventory_reference
-	inventory.connect("stack_changed", update_slot)
 
-	for slot in slot_list:
-		slots[slot.name] = slot
-		inventory.set_stack(slot.name, Stack.new(slot.item, 1))
+func _ready():
+    for bindable_slot in get_tree().get_nodes_by_groupe("bindable_slots"):
+        if not bindable_slot.inventory_key in slot_keys:
+            slot_keys[bindable_slot.inventory_key] = []
 
+        slot_keys[bindable_slot.inventory_key].append(bindable_slot.slot_key)
 
-func update_slot(stack: Stack):
-	if not stack.slot:
-		return
-	
-	stack.slot.change_item(stack.item)
+func init_inventories(key: Inventory.InventoryKey, entity: Character):
+    var inventory: DictionaryInventory = entity.inventories[key]
+    if not inventory:
+        inventory = DictionaryInventory.new(slot_keys[key])
+        entity.inventories[key] = inventory
+
+    for bindable_slot in get_tree().get_nodes_by_groupe("bindable_slots"):
+        if not bindable_slot.inventory_key or bindable_slot.inventory_key != key:
+            continue
+        
+        bindable_slot.slot = inventory.get(bindable_slot.slot_key)
+    

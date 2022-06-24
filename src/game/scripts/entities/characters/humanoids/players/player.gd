@@ -10,5 +10,7 @@ func _ready():
 	
 	if not is_authoritative():
 		voxelViewer.process_mode = Node.PROCESS_MODE_DISABLED
-
-	
+        return
+    
+    inventories[Inventory.InventoryKey.ITEM_INVENTORY] = ArrayInventory(20)
+    EventBus.player_initialized.emit(self)

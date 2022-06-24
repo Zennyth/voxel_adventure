@@ -7,6 +7,10 @@ func _init():
 	character = $"." as CharacterBody3D
 
 
+var inventories := {}
+
+
+
 @export var SPEED := 10.0
 @export var JUMP_VELOCITY := 8.0
 # Get the gravity from the project settings to be synced with CharacterBody3D nodes.

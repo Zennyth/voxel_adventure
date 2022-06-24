@@ -1,8 +1,8 @@
 extends InventoryContainer
-class_name ArrayInventoryContainer
+class_name DictionaryInventoryContainer
 
 func random_populate():
-    inventory = ArrayInventory.new(20)
+    inventory = DictionaryInventory.new(range(20))
 
     for slot in inventory.slots:
         if randf() > 0.5:

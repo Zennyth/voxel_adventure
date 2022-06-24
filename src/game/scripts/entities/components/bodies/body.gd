@@ -1,7 +1,4 @@
 extends Component
 class_name Body
 
-var skeleton: Skeleton3D
-
-func _init():
-	skeleton = $"Armature/Skeleton3D" as Skeleton3D
+@onready var bindable_slot_manager: BindableSlotManager = $"Armature/Skeleton3D"

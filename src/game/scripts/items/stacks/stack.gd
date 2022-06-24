@@ -31,3 +31,6 @@ func get_item_name() -> String:
 		return ""
 	
 	return item.name
+
+func is_item_stackable() -> bool:
+	return item != null and item.is_stackable

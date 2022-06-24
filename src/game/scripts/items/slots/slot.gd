@@ -18,3 +18,9 @@ func set_stack(_stack: Stack):
 
 func is_empty() -> bool:
 	return stack == null or stack.is_empty()
+
+func get_item_name() -> String:
+    return stack.get_item_name()
+
+func is_item_stackable() -> bool:
+    return stack.is_item_stackable()

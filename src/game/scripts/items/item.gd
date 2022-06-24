@@ -17,4 +17,5 @@ class_name Item
 enum ItemType {
 	EQUIPMENT,
 	COSMETIC,
+    MATERIAL,
 }
