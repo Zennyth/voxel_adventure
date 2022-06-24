@@ -1,9 +1,10 @@
+res://scenes/main
+res://scripts/main
 res://scripts/items
 res://resources/items
 res://scenes/entities/components/bodies
 res://assets/entities/components/bodies/collection/races
 res://scenes/entities/characters
-res://scenes/main
 res://assets/terrain/common/water
 res://assets/environment/common/grass
 res://assets/environment/common

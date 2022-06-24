@@ -11,10 +11,10 @@ func get_slot(index: int) -> Slot:
 	return slots[index]
 
 func set_slot(index: int, slot: Slot):
-    slots[index] = slot
+	slots[index] = slot
 
 func get_slot_number() -> int:
 	return len(slots)
 
-func get_indexes() -> List:
-    return range(get_slot_number())
+func get_indexes() -> Array:
+	return range(get_slot_number())

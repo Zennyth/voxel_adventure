@@ -1,9 +1,11 @@
+Label
+MarginContainer
+Tooltip (ui_tooltip.gd)
 ArrayInventoryContainer (ui_array_inventory.gd)
 DragPreview (drag_preview.gd)
 UI (player_ui.gd)
 TextureRect
 ItemContainer (ui_item.gd)
-Label
 StackContainer (ui_stack.gd)
 Node2D
 Panel
@@ -28,6 +30,3 @@ IdleState (idle.gd)
 StateManager (state_manager.gd)
 VoxelInstancer
 SpringArm3D
-VoxelTerrain
-Camera3D
-StaticBody3D

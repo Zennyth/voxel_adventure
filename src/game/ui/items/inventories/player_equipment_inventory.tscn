@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://ilqvq0f6ekn0"]
+
+[ext_resource type="Script" path="res://scripts/items/inventories/dictionaries/ui_dictionary_inventory.gd" id="1_82rfv"]
+[ext_resource type="Texture2D" uid="uid://7q3bhoa82guc" path="res://assets/items/inventories/default_inventory_background.png" id="1_fvgjh"]
+[ext_resource type="PackedScene" uid="uid://b0d40wje031co" path="res://ui/items/slots/slot.tscn" id="2_5u5m6"]
+
+[node name="EquipmentInventory" type="Node2D"]
+scale = Vector2(3, 3)
+script = ExtResource( "1_82rfv" )
+is_generating_slot_containers = false
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 66.0
+offset_top = 49.0
+offset_right = 273.0
+offset_bottom = 161.0
+texture = ExtResource( "1_fvgjh" )
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = 161.0
+offset_top = 73.0
+offset_right = 269.0
+offset_bottom = 165.0
+
+[node name="Slot" parent="GridContainer" instance=ExtResource( "2_5u5m6" )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 18.0
+offset_bottom = 18.0
+identifier = 2
+
+[node name="Slot2" parent="GridContainer" instance=ExtResource( "2_5u5m6" )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 22.0
+offset_right = 18.0
+offset_bottom = 40.0
+
+[node name="Slot3" parent="GridContainer" instance=ExtResource( "2_5u5m6" )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 44.0
+offset_right = 18.0
+offset_bottom = 62.0
+identifier = 6
+
+[node name="Slot4" parent="GridContainer" instance=ExtResource( "2_5u5m6" )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 66.0
+offset_right = 18.0
+offset_bottom = 84.0
+identifier = 5

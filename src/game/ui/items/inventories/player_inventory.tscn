@@ -8,6 +8,7 @@
 scale = Vector2(3, 3)
 script = ExtResource( "1_0qjb2" )
 slot_container_template = ExtResource( "2_5u5m6" )
+need_random_population = null
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = 66.0

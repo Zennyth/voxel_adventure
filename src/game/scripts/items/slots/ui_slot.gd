@@ -7,6 +7,8 @@ var empty_texture = preload("res://assets/items/inventories/item_slot_empty_back
 var default_style := StyleBoxTexture.new()
 var empty_style := StyleBoxTexture.new()
 
+@export var identifier: BindableSlot.BindableSlotKey = BindableSlot.BindableSlotKey.CHEST_PLATE
+
 @onready var stack_container: StackContainer = $StackContainer
 
 var slot: Slot = null:
@@ -21,7 +23,7 @@ var slot: Slot = null:
 func set_slot(_slot: Slot):
 	slot = _slot
 
-func _on_stack_changed(_new_stack: Stack):
+func _on_stack_changed():
 	update_ui()
 
 
