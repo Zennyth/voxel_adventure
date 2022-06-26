@@ -29,7 +29,7 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/entities/components/bodies/bindable_slots/bindable_slot.gd"
 }, {
-"base": "Skeleton3D",
+"base": "Component",
 "class": &"BindableSlotManager",
 "language": &"GDScript",
 "path": "res://scripts/entities/components/bodies/bindable_slots/bindable_slot_manager.gd"
@@ -114,6 +114,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/multiplayer/entity_manager.gd"
 }, {
+"base": "BindableSlot",
+"class": &"EquipmentBindableSlot",
+"language": &"GDScript",
+"path": "res://scripts/entities/components/bodies/bindable_slots/equipment_bindable_slot.gd"
+}, {
 "base": "CharacterState",
 "class": &"FallState",
 "language": &"GDScript",
@@ -164,7 +169,7 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/items/item.gd"
 }, {
-"base": "Node2D",
+"base": "SubViewportContainer",
 "class": &"ItemContainer",
 "language": &"GDScript",
 "path": "res://scripts/items/ui_item.gd"
@@ -366,6 +371,7 @@ _global_script_class_icons={
 "ENetNetwork": "",
 "Entity": "",
 "EntityManager": "",
+"EquipmentBindableSlot": "",
 "FallState": "",
 "FilesUtils": "",
 "GPLReader": "",

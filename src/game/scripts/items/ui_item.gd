@@ -1,16 +1,19 @@
-extends Node2D
+extends SubViewportContainer
 class_name ItemContainer
 
 
-@onready var texture_rect: TextureRect = $TextureRect
+# @onready var texture_rect: TextureRect = $TextureRect
+@onready var mesh_instance: MeshInstance3D = $SubViewport/MeshInstance3D
 
 func _ready():
-	texture_rect.texture = null
+	# texture_rect.texture = null
+	mesh_instance.mesh = null
+	pass
 
 var item: Item = null:
 	set(_item):
 		item = _item
-		texture_rect.texture = item.icon if item and item.icon else null
+		mesh_instance.mesh = item.mesh if item and item.mesh else null
 
 func set_item(_item: Item):
 	item = _item

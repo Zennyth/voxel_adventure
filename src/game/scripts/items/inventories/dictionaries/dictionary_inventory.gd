@@ -3,7 +3,7 @@ extends Inventory
 
 @export var slots := {}
 
-func _init(slot_keys: Array):
+func _init(slot_keys: Array = []):
 	for key in slot_keys:
 		set_slot(key, Slot.new(key))
 

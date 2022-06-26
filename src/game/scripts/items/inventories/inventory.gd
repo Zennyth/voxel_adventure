@@ -14,6 +14,9 @@ func get_slot(index) -> Slot:
 func get_slot_number() -> int:
 	return 0
 
+func get_slots() -> Array:
+	return []
+
 func get_indexes() -> Array:
 	return []
 

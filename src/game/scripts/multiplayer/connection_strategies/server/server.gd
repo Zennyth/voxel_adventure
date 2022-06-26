@@ -19,9 +19,9 @@ func init_connection(network: Network, args: Dictionary):
 	unstable_world_state_manager.init(entity_manager, clock_synchronizer)
 	add_child(unstable_world_state_manager)
 	
-	entity_manager.spawn_entity({
-		WorldState.STATE_KEYS.SCENE: "enemy"
-	})
+#	entity_manager.spawn_entity({
+#		WorldState.STATE_KEYS.SCENE: "enemy"
+#	})
 	
 	_network._peer_connected.connect(_peer_connected)
 	_network._peer_disconnected.connect(_peer_disconnected)

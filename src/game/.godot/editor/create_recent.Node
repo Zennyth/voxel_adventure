@@ -1,3 +1,10 @@
+SubViewportContainer
+DirectionalLight3D
+Control
+OmniLight3D
+Camera3D
+MeshInstance3D
+SubViewport
 Label
 MarginContainer
 Tooltip (ui_tooltip.gd)
@@ -10,7 +17,6 @@ StackContainer (ui_stack.gd)
 Node2D
 Panel
 GridContainer
-MeshInstance3D
 Node3D
 BoneAttachment3D
 Area3D
@@ -24,9 +30,3 @@ EntityManager (entity_manager.gd)
 Entity (entity.gd)
 VoxelViewer
 JumpState (jump.gd)
-FallState (fall.gd)
-WalkState (walk.gd)
-IdleState (idle.gd)
-StateManager (state_manager.gd)
-VoxelInstancer
-SpringArm3D

@@ -6,8 +6,8 @@ class_name UI
 var is_ready: bool = false
 
 @onready var drag_preview: DragPreview = $DragPreview
-# @onready var inventory_container: ArrayInventoryContainer = $ArrayInventoryContainer
-@onready var inventory_container: DictionaryInventoryContainer = $EquipmentInventory
+@onready var inventory_container: ArrayInventoryContainer = $Inventory
+# @onready var inventory_container: DictionaryInventoryContainer = $EquipmentInventory
 @onready var tooltip: Tooltip = $Tooltip
 
 var inventory: Inventory
@@ -28,20 +28,14 @@ func _init():
 func _on_player_initialized(player_reference: Player):
 	player = player_reference
 	
-	inventory_container.inventory = player.inventories[Inventory.InventoryKey.COSMETIC_INVENTORY]
+	inventory_container.inventory = player.inventories[Inventory.InventoryKey.ITEM_INVENTORY]
 	inventory = inventory_container.inventory
 	
-	for slot in inventory.get_slots():
-		if randf() > 0.5:
-			slot.set_stack(Stack.new(ItemDatabase.get_item("Basic Warrior Chest Plate"), 1))
-			
-	# var slot_index: int = 0 
 	for slot_container in inventory_container.get_slot_containers():
 		var slot_index = slot_container.slot.id
 		slot_container.stack_container.connect("gui_input", slot_container_gui_input, [slot_index])
 		slot_container.stack_container.connect("mouse_entered", show_item_tooltip, [slot_index])
 		slot_container.stack_container.connect("mouse_exited", hide_item_tooltip)
-		# slot_index += 1
 	
 	is_ready = true
 
@@ -54,10 +48,12 @@ func slot_container_gui_input(event, slot_index):
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			drag_stack_container(slot_index)
+			player.save()
 			hide_item_tooltip()
 		
 		elif event.button_index == MOUSE_BUTTON_RIGHT:
 			split_stack_container(slot_index)
+			player.save()
 			hide_item_tooltip()
 
 func drag_stack_container(slot_index):
@@ -73,9 +69,9 @@ func drag_stack_container(slot_index):
 	
 	elif not slot.is_empty() and not drag_preview.is_empty():
 		# stack item
-		if slot.get_item_name() == drag_preview.get_item_name() and slot.is_item_stackable():
+		if slot.get_item_name() == drag_preview.stack.get_item_name() and slot.is_item_stackable():
 			var remaining_quantity := inventory.set_stack_quantity(slot_index, drag_preview.stack.quantity)
-
+			
 			if remaining_quantity == 0:
 				drag_preview.set_stack(null)
 			else:
@@ -105,6 +101,8 @@ func split_stack_container(slot_index):
 	if drag_preview.is_empty():
 		var new_stack := Stack.new(slot.stack.item, split_amount)
 		slot.stack.fill_to(-split_amount)
+		if slot.stack.quantity == 0:
+			slot.set_stack(null)
 		drag_preview.set_stack(new_stack)
 		
 

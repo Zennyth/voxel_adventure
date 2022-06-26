@@ -3,7 +3,7 @@ extends Inventory
 
 @export var slots := []
 
-func _init(slot_number: int):
+func _init(slot_number: int = 0):
 	for i in range(slot_number):
 		slots.append(Slot.new(i))
 
@@ -15,6 +15,9 @@ func set_slot(index: int, slot: Slot):
 
 func get_slot_number() -> int:
 	return len(slots)
+
+func get_slots() -> Array:
+	return slots
 
 func get_indexes() -> Array:
 	return range(get_slot_number())

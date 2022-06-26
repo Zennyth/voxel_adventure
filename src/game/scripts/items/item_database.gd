@@ -7,5 +7,11 @@ func _ready():
 		var item: Item = load(file)
 		_items[item.name] = item
 
-func get_item(item_name: String):
-	return _items[item_name] 
+func get_item(item_name: String) -> Item:
+	if not item_name in _items:
+		return null
+	
+	return _items[item_name]
+
+func get_random_item() -> Item:
+	return null

@@ -11,8 +11,9 @@ class_name Item
 	set(size):
 		max_stack_size = size if is_stackable else 1
 
-@export var mesh: Resource
-@export var icon: Resource
+@export var mesh: Resource:
+	set(_mesh):
+		mesh = _mesh
 
 enum ItemType {
 	EQUIPMENT,

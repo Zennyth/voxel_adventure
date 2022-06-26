@@ -1,19 +1,39 @@
-[gd_scene load_steps=11 format=3 uid="uid://b43e153lpdgeq"]
+[gd_scene load_steps=12 format=3 uid="uid://b43e153lpdgeq"]
 
+[ext_resource type="Shader" path="res://scripts/environment/sky.gdshader" id="1_rvima"]
 [ext_resource type="Script" path="res://scripts/multiplayer/entity_manager.gd" id="1_v4eul"]
+[ext_resource type="PackedScene" uid="uid://dj13bnnwwngs3" path="res://ui/items/inventories/player_inventory.tscn" id="2_e0sd0"]
 [ext_resource type="Script" path="res://scripts/main/player_ui.gd" id="2_ml0ye"]
 [ext_resource type="PackedScene" uid="uid://cudwtavk8li6q" path="res://scenes/main/drag_preview.tscn" id="3_fp1ra"]
 [ext_resource type="PackedScene" uid="uid://e1hth0b0wqyl" path="res://scenes/main/tooltip.tscn" id="4_oljcv"]
-[ext_resource type="PackedScene" uid="uid://ilqvq0f6ekn0" path="res://ui/items/inventories/player_equipment_inventory.tscn" id="5_slbed"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0mbe7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_72lcx"]
+shader = ExtResource( "1_rvima" )
+shader_param/_AtmosDarkness = null
+shader_param/_AtmosDayTint = null
+shader_param/_AtmosHorizonTint = null
+shader_param/_AtmosLevelParams = null
+shader_param/_AtmosMie = null
+shader_param/_AtmosMieAnisotropy = null
+shader_param/_AtmosMieIntensity = null
+shader_param/_AtmosMieTint = null
+shader_param/_AtmosNightTint = null
+shader_param/_AtmosSunIntensity = null
+shader_param/_AtmosThickness = null
+shader_param/_ContrastLevel = null
+shader_param/_Exposure = null
+shader_param/_GroundColor = null
+shader_param/_SunDiskIntensity = null
+shader_param/_SunDiskSize = null
+shader_param/_SunDiskTint = null
+shader_param/_Tonemap = null
 
-[sub_resource type="Sky" id="Sky_rqwrk"]
-sky_material = SubResource( "ProceduralSkyMaterial_0mbe7" )
+[sub_resource type="Sky" id="Sky_prpta"]
+sky_material = SubResource( "ShaderMaterial_72lcx" )
 
 [sub_resource type="Environment" id="Environment_0q6lw"]
 background_mode = 2
-sky = SubResource( "Sky_rqwrk" )
+sky = SubResource( "Sky_prpta" )
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_aqf5h"]
 size = Vector2(100, 100)
@@ -27,13 +47,13 @@ data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0,
 environment = SubResource( "Environment_0q6lw" )
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 10, 0)
+transform = Transform3D(1, 0, 0, 0, 0.9933, 0.115561, 0, -0.115561, 0.9933, 0, 10, 0)
 shadow_enabled = true
 
 [node name="UI" type="Node2D" parent="."]
 script = ExtResource( "2_ml0ye" )
 
-[node name="EquipmentInventory" parent="UI" instance=ExtResource( "5_slbed" )]
+[node name="Inventory" parent="UI" instance=ExtResource( "2_e0sd0" )]
 
 [node name="DragPreview" parent="UI" instance=ExtResource( "3_fp1ra" )]
 

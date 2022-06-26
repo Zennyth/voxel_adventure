@@ -37,4 +37,4 @@ func update_stable_state() -> void:
 
 
 func is_authoritative() -> bool:
-	return entity.is_authoritative()
+	return entity and entity.is_authoritative()

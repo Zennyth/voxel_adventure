@@ -7,7 +7,7 @@ var empty_texture = preload("res://assets/items/inventories/item_slot_empty_back
 var default_style := StyleBoxTexture.new()
 var empty_style := StyleBoxTexture.new()
 
-@export var identifier: BindableSlot.BindableSlotKey = BindableSlot.BindableSlotKey.CHEST_PLATE
+var id
 
 @onready var stack_container: StackContainer = $StackContainer
 

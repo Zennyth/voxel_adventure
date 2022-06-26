@@ -35,7 +35,6 @@ func bind_slot_containers():
 		if not slot_container is SlotContainer:
 			continue
 		
-		print(slot_container)
 		slot_container.set_slot(inventory.get_slot(slot_container.identifier))
 
 

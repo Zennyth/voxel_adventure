@@ -3,15 +3,16 @@ extends Resource
 
 signal stack_changed()
 
-var stack: Stack:
+@export var stack: Resource:
 	set(_stack):
 		stack = _stack
 		stack_changed.emit()
-var id
 
-func _init(_id, initital_stack: Stack = null):
-	id = _id
-	stack = initital_stack
+@export var id: int
+
+func _init(_id = null, initital_stack: Stack = null):
+	if _id: id = _id
+	if initital_stack: stack = initital_stack
 
 func set_stack(_stack: Stack):
 	stack = _stack

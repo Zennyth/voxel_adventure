@@ -3,25 +3,32 @@ class_name Stack
 
 signal stack_updated
 
-var item: Item:
+@export var item: Resource:
 	set(_item):
 		item = _item
 		stack_updated.emit(self)
 
-var quantity: int:
+@export var quantity: int:
 	set(_quantity):
 		quantity = _quantity
 		stack_updated.emit(self)
 
-func _init(item_reference, quantity_reference: int = 0):
+func _init(item_reference = "", quantity_reference: int = -1):
 	
 	item = item_reference if item_reference is Item else ItemDatabase.get_item(item_reference)
-	quantity = quantity_reference
+	if quantity_reference != -1:
+		quantity = quantity_reference
 
-func fill_to(remaining_quantity: int) -> int:
+func fill_to(add_quantity: int) -> int:
 	var original_quantity := quantity
-	quantity = min(original_quantity + remaining_quantity, item.max_stack_size)
-	return remaining_quantity - quantity - original_quantity
+	var potential_quantity := original_quantity + add_quantity
+	
+	if potential_quantity > item.max_stack_size:
+		quantity = item.max_stack_size
+		return item.max_stack_size - potential_quantity
+	
+	quantity = potential_quantity
+	return 0
 
 func is_empty() -> bool:
 	return item == null or quantity == 0

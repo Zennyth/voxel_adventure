@@ -2,7 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://fulaqlp56xy7" path="res://assets/entities/components/bodies/body_parts/foot.vox" id="1_2jw3v"]
 [ext_resource type="Script" path="res://scripts/items/item.gd" id="1_ojs04"]
-[ext_resource type="Texture2D" uid="uid://bn1kmpe4kjqag" path="res://assets/items/Brown Shirt.png" id="1_vbjrs"]
+[ext_resource type="Texture2D" uid="uid://caj17q6hlcspx" path="res://assets/items/Brown Boots.png" id="1_vil84"]
 
 [resource]
 script = ExtResource( "1_ojs04" )
@@ -11,4 +11,4 @@ is_collectable = true
 is_stackable = false
 max_stack_size = 1
 mesh = ExtResource( "1_2jw3v" )
-icon = ExtResource( "1_vbjrs" )
+icon = ExtResource( "1_vil84" )
