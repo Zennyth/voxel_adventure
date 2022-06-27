@@ -12,7 +12,6 @@ func _ready():
 		voxelViewer.process_mode = Node.PROCESS_MODE_DISABLED
 		return
 	
-	init_item_inventory()
 	EventBus.player_initialized.emit(self)
 
 func init_item_inventory():

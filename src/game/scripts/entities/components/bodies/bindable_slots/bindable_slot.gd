@@ -2,8 +2,7 @@ extends Component
 class_name BindableSlot
 
 var slot_key
-
-@export var inventory_key: Inventory.InventoryKey = Inventory.InventoryKey.EQUIPMENT_INVENTORY
+@export var item_category: Item.ItemCategory
 
 var slot: Slot = null:
 	set(_slot):
@@ -31,9 +30,10 @@ func _init():
 	part = $"." as MeshInstance3D
 	part.mesh = null
 
+
+
 func get_sync_key() -> String:
 	return WorldState.STATE_KEYS.BINDALBE_SLOT + "_" + str(slot_key)
-
 
 func get_stable_state(state: Dictionary = { }, component: Node = self) -> Dictionary:
 	

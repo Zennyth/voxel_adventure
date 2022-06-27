@@ -1,6 +1,7 @@
+res://scenes/entities/components/bodies/body.tscn
 res://scenes/main/test_multiplayer.tscn
-res://ui/items/inventories/player_inventory.tscn
-res://scripts/entities/characters/humanoids/players/player.gd
-res://save/player/test.tres
-res://scripts/items/stacks/stack.gd
+res://ui/items/inventories/cosmetic_inventory.tscn
+res://scenes/entities/characters/player.tscn
 res://scripts/main/player_ui.gd
+res://scripts/entities/components/bodies/bindable_slots/bindable_slot_manager.gd
+res://scripts/entities/components/bodies/humanoid.gd

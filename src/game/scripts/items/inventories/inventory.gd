@@ -1,13 +1,6 @@
 extends Resource
 class_name Inventory
 
-enum InventoryKey {
-	EQUIPMENT_INVENTORY,
-	COSMETIC_INVENTORY,
-	ITEM_INVENTORY
-}
-
-
 func get_slot(index) -> Slot:
 	return null
 

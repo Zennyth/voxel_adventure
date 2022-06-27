@@ -20,12 +20,12 @@ func _ready():
 	for bindable_slot in bindable_slots:
 		bindable_slot.init(entity)
 		
-		if not bindable_slot.inventory_key in slot_keys:
-			slot_keys[bindable_slot.inventory_key] = []
+		if not bindable_slot.item_category in slot_keys:
+			slot_keys[bindable_slot.item_category] = []
 
-		slot_keys[bindable_slot.inventory_key].append(bindable_slot.slot_key)
+		slot_keys[bindable_slot.item_category].append(bindable_slot.slot_key)
 
-func init_inventory(key: Inventory.InventoryKey, entity: Character):
+func init_inventory(key: Item.ItemCategory, entity: Character):
 	if key in entity.inventories:
 		inventory = entity.inventories[key]
 	else:
@@ -33,7 +33,7 @@ func init_inventory(key: Inventory.InventoryKey, entity: Character):
 		entity.inventories[key] = inventory
 
 	for bindable_slot in bindable_slots:
-		if not bindable_slot.inventory_key or bindable_slot.inventory_key != key:
+		if not bindable_slot.item_category or bindable_slot.item_category != key:
 			continue
 		
 		bindable_slot.slot = inventory.get_slot(bindable_slot.slot_key)

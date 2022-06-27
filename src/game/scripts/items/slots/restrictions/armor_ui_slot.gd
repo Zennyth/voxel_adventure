@@ -10,4 +10,4 @@ func _init():
 
 
 func is_accepting_item(item: Item) -> bool:
-    return item is Armor and identifier == item.armor_category
+	return item is Armor and identifier == item.armor_category

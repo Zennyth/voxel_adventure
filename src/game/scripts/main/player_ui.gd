@@ -6,8 +6,8 @@ class_name UI
 var is_ready: bool = false
 
 @onready var drag_preview: DragPreview = $DragPreview
-@onready var inventory_container: ArrayInventoryContainer = $Inventory
-# @onready var inventory_container: DictionaryInventoryContainer = $EquipmentInventory
+# @onready var inventory_container: ArrayInventoryContainer = $Inventory
+@onready var inventory_container: DictionaryInventoryContainer = $CosmeticInventory
 @onready var tooltip: Tooltip = $Tooltip
 
 var inventory: Inventory
@@ -28,7 +28,7 @@ func _init():
 func _on_player_initialized(player_reference: Player):
 	player = player_reference
 	
-	inventory_container.inventory = player.inventories[Inventory.InventoryKey.ITEM_INVENTORY]
+	inventory_container.inventory = player.inventories[Item.ItemCategory.COSMETIC]
 	inventory = inventory_container.inventory
 	
 	for slot_container in inventory_container.get_slot_containers():
@@ -48,12 +48,12 @@ func slot_container_gui_input(event, slot_index):
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			drag_stack_container(slot_index)
-			player.save()
+			# player.save()
 			hide_item_tooltip()
 		
 		elif event.button_index == MOUSE_BUTTON_RIGHT:
 			split_stack_container(slot_index)
-			player.save()
+			# player.save()
 			hide_item_tooltip()
 
 func drag_stack_container(slot_index):

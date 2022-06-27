@@ -15,8 +15,10 @@ class_name Item
 	set(_mesh):
 		mesh = _mesh
 
-enum ItemType {
+
+enum ItemCategory {
 	EQUIPMENT,
 	COSMETIC,
 	MATERIAL,
 }
+@export var item_category: ItemCategory
