@@ -32,9 +32,8 @@ func _on_player_initialized(player_reference: Player):
 	inventory = inventory_container.inventory
 	
 	for slot_container in inventory_container.get_slot_containers():
-		var slot_index = slot_container.slot.id
-		slot_container.stack_container.connect("gui_input", slot_container_gui_input, [slot_index])
-		slot_container.stack_container.connect("mouse_entered", show_item_tooltip, [slot_index])
+		slot_container.stack_container.connect("gui_input", slot_container_gui_input, [slot_container])
+		slot_container.stack_container.connect("mouse_entered", show_item_tooltip, [slot_container])
 		slot_container.stack_container.connect("mouse_exited", hide_item_tooltip)
 	
 	is_ready = true
@@ -44,24 +43,29 @@ func _on_player_initialized(player_reference: Player):
 # BUILT-IN
 # DRAG AND DROP
 ###
-func slot_container_gui_input(event, slot_index):
+func slot_container_gui_input(event, slot_container: SlotContainer):
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			drag_stack_container(slot_index)
+			drag_stack_container(slot_container)
 			# player.save()
 			hide_item_tooltip()
 		
 		elif event.button_index == MOUSE_BUTTON_RIGHT:
-			split_stack_container(slot_index)
+			split_stack_container(slot_container)
 			# player.save()
 			hide_item_tooltip()
 
-func drag_stack_container(slot_index):
-	var slot: Slot = inventory.get_slot(slot_index)
+func drag_stack_container(slot_container: SlotContainer):
+    var slot_index = slot_container.slot.id
+	var slot: Slot = slot_container.slot
 
 	# pick item
 	if not slot.is_empty() and drag_preview.is_empty():
 		drag_preview.set_stack( inventory.remove_stack(slot_index) )
+
+    # check if slot accepts item
+    elif not slot_container.is_accepting_item(drag_preview.stack.item):
+        return
 	
 	# drop item
 	elif slot.is_empty() and not drag_preview.is_empty():
@@ -81,8 +85,8 @@ func drag_stack_container(slot_index):
 		else:
 			drag_preview.set_stack( inventory.set_stack(slot_index, drag_preview.stack) )
 
-func split_stack_container(slot_index):
-	var slot: Slot = inventory.get_slot(slot_index)
+func split_stack_container(slot_container: SlotContainer):
+	var slot: Slot = slot_container.slot
 
 	if slot.is_empty() or not slot.is_item_stackable():
 		return
@@ -110,8 +114,8 @@ func split_stack_container(slot_index):
 # BUILT-IN
 # TOOLTIP
 ###
-func show_item_tooltip(slot_index):
-	var slot: Slot = inventory.get_slot(slot_index)
+func show_item_tooltip(slot_container):
+	var slot: Slot = slot_container.slot
 
 	if not slot.is_empty() and drag_preview.is_empty():
 		tooltip.display_info(slot.get_item_name())

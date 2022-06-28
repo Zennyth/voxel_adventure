@@ -18,7 +18,7 @@ func update_slot():
 	if not slot or slot.is_empty():
 		part.mesh = null
 	else:
-		part.mesh = slot.stack.item.mesh
+		part.mesh = get_mesh(slot.stack.item)
 	
 	if is_authoritative():
 		update_stable_state()
@@ -30,6 +30,16 @@ func _init():
 	part = $"." as MeshInstance3D
 	part.mesh = null
 
+
+func get_mesh(item):
+    if not item:
+        return null
+
+    if item.secondary_mesh and "Left" in name:
+        return item.secondary_mesh
+
+    return item.mesh
+    
 
 
 func get_sync_key() -> String:
@@ -50,6 +60,6 @@ func set_stable_state(new_state: Dictionary, component: Node = self) -> void:
 			part.mesh = null
 		else:
 			var item: Item = ItemDatabase.get_item(new_state[identifier])
-			part.mesh = item.mesh
+			part.mesh = get_mesh(item)
 	
 	super.set_stable_state(new_state, component)
