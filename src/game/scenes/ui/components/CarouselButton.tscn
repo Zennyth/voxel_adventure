@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://btxagi4q3bv3q"]
+
+[ext_resource type="Texture2D" uid="uid://bwa7mc3qqe8p0" path="res://assets/ui/arrow-btn.png" id="1_3xjug"]
+[ext_resource type="Script" path="res://scripts/ui/components/carouse_button.gd" id="1_8srtw"]
+[ext_resource type="Texture2D" uid="uid://b6eumd7gy3f26" path="res://assets/ui/panel.png" id="2_337h4"]
+[ext_resource type="FontData" uid="uid://bwklioew1taaf" path="res://assets/fonts/PressStart2P.ttf" id="3_12hco"]
+
+[sub_resource type="Font" id="Font_wwfgv"]
+data/0 = ExtResource( "3_12hco" )
+
+[sub_resource type="Theme" id="Theme_kwbtu"]
+default_font = SubResource( "Font_wwfgv" )
+default_font_size = 8
+
+[node name="CarouselButton" type="HBoxContainer"]
+offset_right = 68.0
+offset_bottom = 17.0
+alignment = 1
+script = ExtResource( "1_8srtw" )
+
+[node name="LeftButton" type="TextureRect" parent="."]
+texture_filter = 1
+offset_right = 14.0
+offset_bottom = 20.0
+texture = ExtResource( "1_3xjug" )
+flip_h = true
+
+[node name="PanelControl" type="CenterContainer" parent="."]
+offset_left = 18.0
+offset_right = 64.0
+offset_bottom = 20.0
+
+[node name="Panel" type="TextureRect" parent="PanelControl"]
+texture_filter = 1
+minimum_size = Vector2(0, 20)
+offset_right = 46.0
+offset_bottom = 20.0
+size_flags_stretch_ratio = 0.0
+texture = ExtResource( "2_337h4" )
+
+[node name="Label" type="Label" parent="PanelControl"]
+modulate = Color(0.648551, 0.741125, 0.839844, 1)
+texture_filter = 1
+offset_left = 7.0
+offset_top = 4.0
+offset_right = 39.0
+offset_bottom = 15.0
+theme = SubResource( "Theme_kwbtu" )
+text = "Eyes"
+
+[node name="RightButton" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 68.0
+offset_right = 82.0
+offset_bottom = 20.0
+texture = ExtResource( "1_3xjug" )

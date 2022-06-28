@@ -1,7 +1,7 @@
 res://scenes/entities/components/bodies/body.tscn
-res://scenes/main/test_multiplayer.tscn
+res://scripts/entities/components/bodies/bindable_slots/bindable_slot.gd
 res://ui/items/inventories/cosmetic_inventory.tscn
-res://scenes/entities/characters/player.tscn
-res://scripts/main/player_ui.gd
-res://scripts/entities/components/bodies/bindable_slots/bindable_slot_manager.gd
-res://scripts/entities/components/bodies/humanoid.gd
+res://ui/items/slots/slot.tscn
+res://scenes/ui/components/CarouselButton.tscn
+res://scripts/ui/components/carouse_button.gd
+res://scenes/main/test_multiplayer.tscn

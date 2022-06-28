@@ -9,6 +9,7 @@ texture = ExtResource( "1_1i6vo" )
 region_rect = Rect2(0, 0, 18, 18)
 
 [node name="Slot" type="Panel"]
+texture_filter = 1
 minimum_size = Vector2(18, 18)
 anchor_right = 1.0
 anchor_bottom = 1.0

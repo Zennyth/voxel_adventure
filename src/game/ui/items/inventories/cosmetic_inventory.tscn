@@ -1,80 +1,113 @@
-[gd_scene load_steps=5 format=3 uid="uid://ilqvq0f6ekn0"]
+[gd_scene load_steps=4 format=3 uid="uid://ilqvq0f6ekn0"]
 
 [ext_resource type="Script" path="res://scripts/items/inventories/dictionaries/ui_dictionary_inventory.gd" id="1_82rfv"]
-[ext_resource type="Texture2D" uid="uid://7q3bhoa82guc" path="res://assets/items/inventories/default_inventory_background.png" id="1_fvgjh"]
-[ext_resource type="PackedScene" uid="uid://b0d40wje031co" path="res://ui/items/slots/slot.tscn" id="2_5u5m6"]
-[ext_resource type="Script" path="res://scripts/items/slots/restrictions/cosmetic_ui_slot.gd" id="4_pooao"]
+[ext_resource type="PackedScene" uid="uid://btxagi4q3bv3q" path="res://scenes/ui/components/CarouselButton.tscn" id="2_7qwmp"]
+[ext_resource type="Texture2D" uid="uid://63uhldd07h8t" path="res://assets/ui/square-panel.png" id="3_kol1x"]
 
-[node name="CosmeticInventory" type="Node2D"]
+[node name="CharacterCreation" type="Node2D"]
+texture_filter = 1
 scale = Vector2(3, 3)
 script = ExtResource( "1_82rfv" )
 is_generating_slot_containers = false
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = 66.0
-offset_top = 49.0
-offset_right = 273.0
-offset_bottom = 161.0
-texture = ExtResource( "1_fvgjh" )
-
-[node name="GridContainer" type="GridContainer" parent="."]
-offset_left = 161.0
-offset_top = 73.0
-offset_right = 269.0
-offset_bottom = 165.0
-columns = 2
-
-[node name="HairSlot" parent="GridContainer" instance=ExtResource( "2_5u5m6" )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 18.0
-offset_bottom = 18.0
-script = ExtResource( "4_pooao" )
-identifier = 0
-
-[node name="FaceSlot" parent="GridContainer" instance=ExtResource( "2_5u5m6" )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 22.0
-offset_right = 40.0
-offset_bottom = 18.0
-script = ExtResource( "4_pooao" )
-identifier = 1
-
-[node name="EyesSlot" parent="GridContainer" instance=ExtResource( "2_5u5m6" )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = 22.0
-offset_right = 18.0
-offset_bottom = 40.0
-script = ExtResource( "4_pooao" )
-identifier = 2
-
-[node name="ChestSlot" parent="GridContainer" instance=ExtResource( "2_5u5m6" )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 22.0
-offset_top = 22.0
+[node name="Customization" type="VBoxContainer" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource( "4_pooao" )
-identifier = 3
+scale = Vector2(0.8, 0.8)
 
-[node name="HandsSlot" parent="GridContainer" instance=ExtResource( "2_5u5m6" )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = 44.0
-offset_right = 18.0
-offset_bottom = 62.0
-script = ExtResource( "4_pooao" )
-identifier = 4
+[node name="Class" type="VBoxContainer" parent="Customization"]
+offset_right = 132.0
+offset_bottom = 54.0
 
-[node name="FeetSlot" parent="GridContainer" instance=ExtResource( "2_5u5m6" )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 22.0
-offset_top = 44.0
-offset_right = 40.0
-offset_bottom = 62.0
-script = ExtResource( "4_pooao" )
-identifier = 5
+[node name="Class" parent="Customization/Class" instance=ExtResource( "2_7qwmp" )]
+offset_right = 132.0
+offset_bottom = 20.0
+label = "Class"
+
+[node name="Choices" type="HBoxContainer" parent="Customization/Class"]
+offset_top = 24.0
+offset_right = 132.0
+offset_bottom = 54.0
+
+[node name="TextureRect" type="TextureRect" parent="Customization/Class/Choices"]
+offset_right = 30.0
+offset_bottom = 30.0
+texture = ExtResource( "3_kol1x" )
+
+[node name="TextureRect2" type="TextureRect" parent="Customization/Class/Choices"]
+offset_left = 34.0
+offset_right = 64.0
+offset_bottom = 30.0
+texture = ExtResource( "3_kol1x" )
+
+[node name="TextureRect3" type="TextureRect" parent="Customization/Class/Choices"]
+offset_left = 68.0
+offset_right = 98.0
+offset_bottom = 30.0
+texture = ExtResource( "3_kol1x" )
+
+[node name="TextureRect4" type="TextureRect" parent="Customization/Class/Choices"]
+offset_left = 102.0
+offset_right = 132.0
+offset_bottom = 30.0
+texture = ExtResource( "3_kol1x" )
+
+[node name="Race" type="VBoxContainer" parent="Customization"]
+offset_top = 58.0
+offset_right = 132.0
+offset_bottom = 112.0
+
+[node name="Race" parent="Customization/Race" instance=ExtResource( "2_7qwmp" )]
+offset_right = 132.0
+offset_bottom = 20.0
+label = "Race"
+
+[node name="Choices" type="HBoxContainer" parent="Customization/Race"]
+offset_top = 24.0
+offset_right = 132.0
+offset_bottom = 54.0
+
+[node name="TextureRect" type="TextureRect" parent="Customization/Race/Choices"]
+offset_right = 30.0
+offset_bottom = 30.0
+texture = ExtResource( "3_kol1x" )
+
+[node name="TextureRect2" type="TextureRect" parent="Customization/Race/Choices"]
+offset_left = 34.0
+offset_right = 64.0
+offset_bottom = 30.0
+texture = ExtResource( "3_kol1x" )
+
+[node name="TextureRect3" type="TextureRect" parent="Customization/Race/Choices"]
+offset_left = 68.0
+offset_right = 98.0
+offset_bottom = 30.0
+texture = ExtResource( "3_kol1x" )
+
+[node name="TextureRect4" type="TextureRect" parent="Customization/Race/Choices"]
+offset_left = 102.0
+offset_right = 132.0
+offset_bottom = 30.0
+texture = ExtResource( "3_kol1x" )
+
+[node name="Cosmetics" type="VBoxContainer" parent="Customization"]
+offset_top = 116.0
+offset_right = 132.0
+offset_bottom = 184.0
+
+[node name="Hair" parent="Customization/Cosmetics" instance=ExtResource( "2_7qwmp" )]
+offset_right = 132.0
+offset_bottom = 20.0
+label = "Hair"
+
+[node name="Eyes" parent="Customization/Cosmetics" instance=ExtResource( "2_7qwmp" )]
+offset_top = 24.0
+offset_right = 132.0
+offset_bottom = 44.0
+label = "Eyes"
+
+[node name="Face" parent="Customization/Cosmetics" instance=ExtResource( "2_7qwmp" )]
+offset_top = 48.0
+offset_right = 132.0
+offset_bottom = 68.0
+label = "Face"

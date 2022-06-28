@@ -1,17 +1,19 @@
+TextureRect
+HBoxContainer
+CenterContainer
+VBoxContainer
+Label
+Control
 SubViewportContainer
 DirectionalLight3D
-Control
 OmniLight3D
 Camera3D
 MeshInstance3D
 SubViewport
-Label
 MarginContainer
 Tooltip (ui_tooltip.gd)
 ArrayInventoryContainer (ui_array_inventory.gd)
 DragPreview (drag_preview.gd)
-UI (player_ui.gd)
-TextureRect
 ItemContainer (ui_item.gd)
 StackContainer (ui_stack.gd)
 Node2D
@@ -28,5 +30,3 @@ PlayerController (player_controller.gd)
 Label3D
 EntityManager (entity_manager.gd)
 Entity (entity.gd)
-VoxelViewer
-JumpState (jump.gd)

@@ -32,14 +32,13 @@ func _init():
 
 
 func get_mesh(item):
-    if not item:
-        return null
+	if not item:
+		return null
 
-    if item.secondary_mesh and "Left" in name:
-        return item.secondary_mesh
+	if item.secondary_mesh and "Left" in name:
+		return item.secondary_mesh
 
-    return item.mesh
-    
+	return item.mesh
 
 
 func get_sync_key() -> String:
