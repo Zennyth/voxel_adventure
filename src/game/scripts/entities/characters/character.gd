@@ -30,6 +30,10 @@ func move(direction, delta: float, gravity: float = default_gravity):
 	else:
 		character.velocity.x = move_toward(character.velocity.x, 0, SPEED)
 		character.velocity.z = move_toward(character.velocity.z, 0, SPEED)
+    
+    var look_direction = atan2(direction.x, - direction.z)
+    if look_direction != 0:
+        character.rotation.y = lerp_angle(character.rotation.y, - look_direction, delta * 7)
 	
 	update()
 		
