@@ -11,7 +11,7 @@ var inventories := {}
 
 
 
-@export var SPEED := 10.0
+@export var default_speed := 10.0
 @export var JUMP_VELOCITY := 8.0
 # Get the gravity from the project settings to be synced with CharacterBody3D nodes.
 var default_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -20,16 +20,16 @@ func jump():
 	if character.is_on_floor():
 		character.velocity.y = JUMP_VELOCITY
 
-func move(direction, delta: float, gravity: float = default_gravity):
+func move(direction, delta: float, gravity: float = default_gravity, speed: float = default_speed):
 	if not character.is_on_floor():
 		character.velocity.y -= gravity * delta
 
 	if direction:
-		character.velocity.x = direction.x * SPEED
-		character.velocity.z = direction.z * SPEED
+		character.velocity.x = direction.x * speed
+		character.velocity.z = direction.z * speed
 	else:
-		character.velocity.x = move_toward(character.velocity.x, 0, SPEED)
-		character.velocity.z = move_toward(character.velocity.z, 0, SPEED)
+		character.velocity.x = move_toward(character.velocity.x, 0, speed)
+		character.velocity.z = move_toward(character.velocity.z, 0, speed)
     
     var look_direction = atan2(direction.x, - direction.z)
     if look_direction != 0:
