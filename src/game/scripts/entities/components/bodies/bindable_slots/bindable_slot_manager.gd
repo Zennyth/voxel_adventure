@@ -1,7 +1,7 @@
 extends Component
 class_name BindableSlotManager
 
-var slot_keys := {}
+var inventory_keys := {}
 var inventory: DictionaryInventory
 
 var bindable_slots := []
@@ -20,23 +20,31 @@ func _ready():
 	for bindable_slot in bindable_slots:
 		bindable_slot.init(entity)
 		
-		if not bindable_slot.item_category in slot_keys:
-			slot_keys[bindable_slot.item_category] = []
+		if not bindable_slot.inventory_category in inventory_keys:
+			inventory_keys[bindable_slot.inventory_category] = []
 
-		slot_keys[bindable_slot.item_category].append(bindable_slot.slot_key)
+		inventory_keys[bindable_slot.inventory_category].append(bindable_slot.slot_key)
 
-func init_inventory(key: Item.ItemCategory, entity: Character):
-	if key in entity.inventories:
-		inventory = entity.inventories[key]
+
+
+func init_inventory(inventory_key: Inventory.InventoryCategory, item_key: Item.ItemCategory, entity: Character):
+	if inventory_key in entity.inventories:
+		inventory = entity.inventories[inventory_key]
 	else:
-		inventory = DictionaryInventory.new(slot_keys[key])
-		entity.inventories[key] = inventory
+		inventory = DictionaryInventory.new(inventory_keys[inventory_key])
+		entity.inventories[inventory_key] = inventory
+    
+    bind_slot(item_key, entity.inventories[key])
 
-	for bindable_slot in bindable_slots:
+	
+
+func bind_slot(key: Item.ItemCategory, inventory: Inventory):
+    for bindable_slot in bindable_slots:
 		if not bindable_slot.item_category or bindable_slot.item_category != key:
 			continue
 		
 		bindable_slot.slot = inventory.get_slot(bindable_slot.slot_key)
+
 
 func get_stable_state(state: Dictionary = { }, component: Node = self) -> Dictionary:
 	for bindable_slot in bindable_slots:

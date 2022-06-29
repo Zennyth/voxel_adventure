@@ -3,6 +3,7 @@ class_name BindableSlot
 
 var slot_key
 @export var item_category: Item.ItemCategory
+@export var inventory_category: Inventory.InventoryCategory
 
 var slot: Slot = null:
 	set(_slot):
@@ -58,7 +59,7 @@ func set_stable_state(new_state: Dictionary, component: Node = self) -> void:
 		if new_state[identifier] == "":
 			part.mesh = null
 		else:
-			var item: Item = ItemDatabase.get_item(new_state[identifier])
+			var item: Item = Database.item.get(new_state[identifier])
 			part.mesh = get_mesh(item)
 	
 	super.set_stable_state(new_state, component)

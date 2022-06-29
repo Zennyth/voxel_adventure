@@ -2,17 +2,17 @@ extends Node
 class_name SaveManager
 
 const ROOT_PATH := "res://save"
+var folder_path := ""
+var full_path := ""
 
+func set_save_path(save_identifier: int):
+    full_path = ROOT_PATH + folder_path + str(save_identifier) + "/"
 
-# var item_inventory_file_path := "res://save/player/test.tres"
+func reset_save_path():
+    full_path = ""
 
-# func save():
-# 	var result = ResourceSaver.save(item_inventory_file_path, inventories[Inventory.InventoryKey.ITEM_INVENTORY])
-# 	return result
+func is_ready() -> bool:
+    return full_path != ""
 
-# func load_inventory() -> ArrayInventory:
-# 	if ResourceLoader.exists(item_inventory_file_path):
-# 		var inventory = ResourceLoader.load(item_inventory_file_path)
-# 		return inventory as ArrayInventory
-	
-# 	return null
+static func generate_identifier() -> int:
+    return randi_range(0, 9999)

@@ -3,8 +3,8 @@ extends Inventory
 
 @export var slots := {}
 
-func _init(slot_keys: Array = []):
-	for key in slot_keys:
+func _init(inventory_keys: Array = []):
+	for key in inventory_keys:
 		set_slot(key, Slot.new(key))
 
 func get_slot(index) -> Slot:

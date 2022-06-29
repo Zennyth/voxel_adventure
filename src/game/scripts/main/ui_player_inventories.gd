@@ -28,7 +28,7 @@ func _init():
 func _on_player_initialized(player_reference: Player):
 	player = player_reference
 	
-	inventory_container.inventory = player.inventories[Item.ItemCategory.COSMETIC]
+	inventory_container.inventory = player.inventories[Inventory.InventoryCategory.CHARACTER_COSMETIC]
 	inventory = inventory_container.inventory
 	
 	for slot_container in inventory_container.get_slot_containers():

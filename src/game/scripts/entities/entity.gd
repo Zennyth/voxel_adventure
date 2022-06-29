@@ -11,13 +11,14 @@ signal destroyed(entity_id: int)
 ## BUILT-IN
 ####
 
-var id: int = 0
+var id: int = -1
 var scene: String = "" 
 
 func init(entity_state: Dictionary) -> void:
-	id = entity_state[WorldState.STATE_KEYS.ID]
-	scene = entity_state[WorldState.STATE_KEYS.SCENE]
-	name = str(id)
+    if WorldState.STATE_KEYS.ID in entity_state:
+        id = entity_state[WorldState.STATE_KEYS.ID]
+        scene = entity_state[WorldState.STATE_KEYS.SCENE]
+        name = str(id)
 	
 	for component in get_children():
 		if component.has_method("init"):

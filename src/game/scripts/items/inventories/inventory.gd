@@ -1,6 +1,11 @@
 extends Resource
 class_name Inventory
 
+enum InventoryCategory {
+    CHARACTER_COSMETIC,
+    CHARACTER_EQUIPMENTS
+}
+
 func get_slot(index) -> Slot:
 	return null
 

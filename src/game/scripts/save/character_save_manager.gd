@@ -1,12 +1,19 @@
 extends SaveManager
 class_name CharacterSaveManager
 
-var character_path := ""
+var folder_path := "characters/"
 
-func load_character_path(character_id: int):
-    character_path = ROOT_PATH + "characters/" + str(character_id)
+func get_inventory_path(category: Inventory.InventoryCategory) -> str:
+    return full_path + "inventories/" + str(category)
 
-enum CHARACTER_SAVE_CATEGORY {
-    INVENTORY,
-}
+func save_inventory(category: Inventory.InventoryCategory, inventory: Inventory):
+    ResourceSaver.save(get_inventory_path(category), inventory)
 
+func load_inventory(category: Inventory.InventoryCategory) -> Inventory:
+    var path := get_inventory_path(category)
+
+    if ResourceLoader.exists(path):
+        var inventory = ResourceLoader.load(path)
+        return inventory as Inventory
+    
+    return null
