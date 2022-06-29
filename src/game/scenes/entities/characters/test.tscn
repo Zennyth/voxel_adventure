@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://4n5ubxptst5o"]
+
+[node name="Humanoid" type="CharacterBody3D"]

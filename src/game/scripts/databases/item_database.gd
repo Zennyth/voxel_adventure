@@ -1,4 +1,4 @@
-extends Database
+extends ResourceDatabase
 
 var _items: Dictionary = {}
 
@@ -8,7 +8,9 @@ func init():
 		_items[item.name] = item
 
 
-func get(item_name: String) -> Item:
+func get_by_name(item_name: String) -> Item:
+	print(item_name)
+	
 	if not item_name in _items:
 		return null
 	
@@ -16,4 +18,4 @@ func get(item_name: String) -> Item:
 
 
 func get_all() -> Array:
-    return _races.values()
+	return _items.values()

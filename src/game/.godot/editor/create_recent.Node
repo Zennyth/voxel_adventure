@@ -1,15 +1,18 @@
-TextureRect
-HBoxContainer
-CenterContainer
-VBoxContainer
-Label
 Control
+Camera3D
+SubViewport
 SubViewportContainer
+Node3D
+HBoxContainer
+VBoxContainer
+TextureButton
+Button
+TextureRect
+CenterContainer
+Label
 DirectionalLight3D
 OmniLight3D
-Camera3D
 MeshInstance3D
-SubViewport
 MarginContainer
 Tooltip (ui_tooltip.gd)
 ArrayInventoryContainer (ui_array_inventory.gd)
@@ -19,7 +22,6 @@ StackContainer (ui_stack.gd)
 Node2D
 Panel
 GridContainer
-Node3D
 BoneAttachment3D
 Area3D
 CollisionShape3D
@@ -28,5 +30,3 @@ CharacterBody3D
 AIController (ai_controller.gd)
 PlayerController (player_controller.gd)
 Label3D
-EntityManager (entity_manager.gd)
-Entity (entity.gd)

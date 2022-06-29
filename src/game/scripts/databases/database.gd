@@ -1,15 +1,15 @@
-extends Object
-class_name Database
+extends Node
+class_name ResourceDatabase
 
 func init():
-    pass
+	pass
 
 func _init():
-    init()
+	init()
 
 
-func get(_identifier):
-    pass
+func get_by_name(_identifier):
+	pass
 
 func get_all() -> Array:
-    return []
+	return []

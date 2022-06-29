@@ -30,13 +30,13 @@ func set_connection_mode():
 
 func _ready():
 	set_connection_mode()
-	connection_strategy = get_strategy(connection_mode)
-	add_child(connection_strategy)
-	
-	connection_strategy.init_connection(network, {
-		'port': port,
-	})
-	is_online = connection_mode != ConnectionMode.SOLO
+#	connection_strategy = get_strategy(connection_mode)
+#	add_child(connection_strategy)
+#
+#	connection_strategy.init_connection(network, {
+#		'port': port,
+#	})
+#	is_online = connection_mode != ConnectionMode.SOLO
 
 func is_entity_authoritative(data):
 	var entity_state: Dictionary

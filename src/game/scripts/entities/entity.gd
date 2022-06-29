@@ -15,11 +15,11 @@ var id: int = -1
 var scene: String = "" 
 
 func init(entity_state: Dictionary) -> void:
-    if WorldState.STATE_KEYS.ID in entity_state:
-        id = entity_state[WorldState.STATE_KEYS.ID]
-        scene = entity_state[WorldState.STATE_KEYS.SCENE]
-        name = str(id)
-	
+	if WorldState.STATE_KEYS.ID in entity_state:
+		id = entity_state[WorldState.STATE_KEYS.ID]
+		scene = entity_state[WorldState.STATE_KEYS.SCENE]
+		name = str(id)
+
 	for component in get_children():
 		if component.has_method("init"):
 			component.init(self)
@@ -38,7 +38,7 @@ func set_unstable_state(new_state: Dictionary, component: Node = self) -> void:
 	super.set_unstable_state(new_state, component)
 
 func update_unstable_state() -> void:
-	Multiplayer.update_entity_unstable_state(get_unstable_state())
+	pass #Multiplayer.update_entity_unstable_state(get_unstable_state())
 
 
 func get_stable_state(state: Dictionary = { }, component: Node = self) -> Dictionary:
@@ -50,8 +50,9 @@ func set_stable_state(new_state: Dictionary, component: Node = self) -> void:
 	super.set_stable_state(new_state, component)
 
 func update_stable_state() -> void:
-	Multiplayer.update_entity_stable_state(get_stable_state())
+	pass # Multiplayer.update_entity_stable_state(get_stable_state())
 
 
 func is_authoritative() -> bool:
-	return Multiplayer.is_entity_authoritative(get_stable_state())
+	return false
+	# return Multiplayer.is_entity_authoritative(get_stable_state())

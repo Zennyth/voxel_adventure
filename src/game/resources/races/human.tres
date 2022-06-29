@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cmuih8bwvef8t"]
+
+[ext_resource type="Resource" uid="uid://cgsmbfypjff6i" path="res://resources/items/human_face_1.tres" id="1_1ednv"]
+[ext_resource type="Script" path="res://scripts/entities/characters/race.gd" id="1_6ulho"]
+
+[resource]
+script = ExtResource( "1_6ulho" )
+name = "Human"
+cosmetics = [ExtResource( "1_1ednv" )]

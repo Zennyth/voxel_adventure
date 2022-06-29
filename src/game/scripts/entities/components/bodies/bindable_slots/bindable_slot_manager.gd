@@ -27,23 +27,23 @@ func _ready():
 
 
 
-func init_inventory(inventory_key: Inventory.InventoryCategory, item_key: Item.ItemCategory, entity: Character):
-	if inventory_key in entity.inventories:
-		inventory = entity.inventories[inventory_key]
+func init_inventory(inventory_key: Inventory.InventoryCategory, item_key: Item.ItemCategory, binded_entity: Character):
+	if inventory_key in binded_entity.inventories:
+		inventory = binded_entity.inventories[inventory_key]
 	else:
 		inventory = DictionaryInventory.new(inventory_keys[inventory_key])
-		entity.inventories[inventory_key] = inventory
-    
-    bind_slot(item_key, entity.inventories[key])
+		binded_entity.inventories[inventory_key] = inventory
+	
+	bind_slot(item_key, binded_entity.inventories[inventory_key])
 
 	
 
-func bind_slot(key: Item.ItemCategory, inventory: Inventory):
-    for bindable_slot in bindable_slots:
+func bind_slot(key: Item.ItemCategory, binded_inventory: Inventory):
+	for bindable_slot in bindable_slots:
 		if not bindable_slot.item_category or bindable_slot.item_category != key:
 			continue
 		
-		bindable_slot.slot = inventory.get_slot(bindable_slot.slot_key)
+		bindable_slot.slot = binded_inventory.get_slot(bindable_slot.slot_key)
 
 
 func get_stable_state(state: Dictionary = { }, component: Node = self) -> Dictionary:

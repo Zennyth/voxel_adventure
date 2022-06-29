@@ -240,6 +240,16 @@ _global_script_classes=[{
 "path": "res://scripts/entities/components/controllers/player_controller.gd"
 }, {
 "base": "Resource",
+"class": &"Race",
+"language": &"GDScript",
+"path": "res://scripts/entities/characters/race.gd"
+}, {
+"base": "CarouselButton",
+"class": &"RaceCarouselButton",
+"language": &"GDScript",
+"path": "res://scripts/ui/screens/character_creation/race_carousel.gd"
+}, {
+"base": "Resource",
 "class": &"RaceResource",
 "language": &"GDScript",
 "path": "res://scripts/entities/components/bodies/collection/race.gd"
@@ -248,6 +258,11 @@ _global_script_classes=[{
 "class": &"Reader",
 "language": &"GDScript",
 "path": "res://addons/voxel-core/classes/reader.gd"
+}, {
+"base": "Node",
+"class": &"ResourceDatabase",
+"language": &"GDScript",
+"path": "res://scripts/databases/database.gd"
 }, {
 "base": "Node",
 "class": &"SaveManager",
@@ -431,8 +446,11 @@ _global_script_class_icons={
 "PhysicalStateManager": "",
 "Player": "",
 "PlayerController": "",
+"Race": "",
+"RaceCarouselButton": "",
 "RaceResource": "",
 "Reader": "",
+"ResourceDatabase": "",
 "SaveManager": "",
 "ServerConnectionStrategy": "",
 "Slot": "",
@@ -472,8 +490,8 @@ config/features=PackedStringArray("4.0", "Vulkan Clustered")
 [autoload]
 
 EventBus="*res://scripts/main/event_bus.gd"
-Multiplayer="*res://scripts/multiplayer/multiplayer.gd"
-ItemDatabase="*res://scripts/items/item_database.gd"
+Multiplayer="res://scripts/multiplayer/multiplayer.gd"
+Database="*res://scripts/databases/database_manager.gd"
 
 [editor_plugins]
 

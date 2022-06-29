@@ -53,6 +53,9 @@ func global_requests(_data: Dictionary):
 var entity_manager: EntityManager
 
 func spawn_player(id: int = _network.get_id()):
+	if not entity_manager:
+		return
+	
 	entity_manager.spawn_entity({
 		WorldState.STATE_KEYS.ID: id,
 		WorldState.STATE_KEYS.SCENE: "player"

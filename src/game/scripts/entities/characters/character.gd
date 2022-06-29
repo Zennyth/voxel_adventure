@@ -20,7 +20,7 @@ func jump():
 	if character.is_on_floor():
 		character.velocity.y = JUMP_VELOCITY
 
-func move(direction: Vector3, delta: float, gravity: float = default_gravity):
+func move(direction, delta: float, gravity: float = default_gravity):
 	if not character.is_on_floor():
 		character.velocity.y -= gravity * delta
 

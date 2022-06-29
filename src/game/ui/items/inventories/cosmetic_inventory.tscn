@@ -1,113 +1,126 @@
-[gd_scene load_steps=4 format=3 uid="uid://ilqvq0f6ekn0"]
+[gd_scene load_steps=12 format=3 uid="uid://dq65fyipidwxu"]
 
-[ext_resource type="Script" path="res://scripts/items/inventories/dictionaries/ui_dictionary_inventory.gd" id="1_82rfv"]
+[ext_resource type="Script" path="res://scripts/ui/screens/character_creation/character_creation.gd" id="1_06d56"]
 [ext_resource type="PackedScene" uid="uid://btxagi4q3bv3q" path="res://scenes/ui/components/CarouselButton.tscn" id="2_7qwmp"]
-[ext_resource type="Texture2D" uid="uid://63uhldd07h8t" path="res://assets/ui/square-panel.png" id="3_kol1x"]
+[ext_resource type="PackedScene" uid="uid://tnw04chrcmb7" path="res://scenes/entities/characters/humanoid.tscn" id="2_cjgm3"]
+[ext_resource type="Shader" path="res://scripts/environment/sky.gdshader" id="3_elsqh"]
+[ext_resource type="Script" path="res://scripts/ui/screens/character_creation/race_carousel.gd" id="4_kuiyq"]
+[ext_resource type="Script" path="res://scripts/ui/screens/character_creation/cosmetic_carousel.gd" id="5_d4ean"]
 
-[node name="CharacterCreation" type="Node2D"]
-texture_filter = 1
-scale = Vector2(3, 3)
-script = ExtResource( "1_82rfv" )
-is_generating_slot_containers = false
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ja5vv"]
+shader = ExtResource( "3_elsqh" )
+shader_param/_AtmosDarkness = null
+shader_param/_AtmosDayTint = null
+shader_param/_AtmosHorizonTint = null
+shader_param/_AtmosLevelParams = null
+shader_param/_AtmosMie = null
+shader_param/_AtmosMieAnisotropy = null
+shader_param/_AtmosMieIntensity = null
+shader_param/_AtmosMieTint = null
+shader_param/_AtmosNightTint = null
+shader_param/_AtmosSunIntensity = null
+shader_param/_AtmosThickness = null
+shader_param/_ContrastLevel = null
+shader_param/_Exposure = null
+shader_param/_GroundColor = null
+shader_param/_SunDiskIntensity = null
+shader_param/_SunDiskSize = null
+shader_param/_SunDiskTint = null
+shader_param/_Tonemap = null
 
-[node name="Customization" type="VBoxContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(0.8, 0.8)
+[sub_resource type="Sky" id="Sky_prpta"]
+sky_material = SubResource( "ShaderMaterial_ja5vv" )
 
-[node name="Class" type="VBoxContainer" parent="Customization"]
-offset_right = 132.0
-offset_bottom = 54.0
+[sub_resource type="Environment" id="Environment_m21bn"]
+background_mode = 2
+sky = SubResource( "Sky_prpta" )
 
-[node name="Class" parent="Customization/Class" instance=ExtResource( "2_7qwmp" )]
-offset_right = 132.0
+[sub_resource type="PlaneMesh" id="PlaneMesh_4oyo1"]
+size = Vector2(100, 100)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_nc881"]
+data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
+
+[node name="CharacterCreation" type="Node3D"]
+script = ExtResource( "1_06d56" )
+character_scene = ExtResource( "2_cjgm3" )
+
+[node name="Preview" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Preview"]
+environment = SubResource( "Environment_m21bn" )
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Preview"]
+transform = Transform3D(1, 0, 0, 0, 0.9933, 0.115561, 0, -0.115561, 0.9933, 0, 10, 0)
+shadow_enabled = true
+
+[node name="Ground" type="MeshInstance3D" parent="Preview"]
+mesh = SubResource( "PlaneMesh_4oyo1" )
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Preview/Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Preview/Ground/StaticBody3D"]
+shape = SubResource( "ConcavePolygonShape3D_nc881" )
+
+[node name="SubViewport" type="Control" parent="."]
+scale = Vector2(2, 2)
+
+[node name="VBoxContainer" type="HBoxContainer" parent="SubViewport"]
+offset_right = 82.0
+offset_bottom = 116.0
+
+[node name="Customization" type="VBoxContainer" parent="SubViewport/VBoxContainer"]
+offset_right = 82.0
+offset_bottom = 116.0
+
+[node name="Class" type="VBoxContainer" parent="SubViewport/VBoxContainer/Customization"]
+offset_right = 82.0
+offset_bottom = 20.0
+
+[node name="Class" parent="SubViewport/VBoxContainer/Customization/Class" instance=ExtResource( "2_7qwmp" )]
+offset_right = 82.0
 offset_bottom = 20.0
 label = "Class"
 
-[node name="Choices" type="HBoxContainer" parent="Customization/Class"]
+[node name="Race" type="VBoxContainer" parent="SubViewport/VBoxContainer/Customization"]
 offset_top = 24.0
-offset_right = 132.0
-offset_bottom = 54.0
+offset_right = 82.0
+offset_bottom = 44.0
 
-[node name="TextureRect" type="TextureRect" parent="Customization/Class/Choices"]
-offset_right = 30.0
-offset_bottom = 30.0
-texture = ExtResource( "3_kol1x" )
-
-[node name="TextureRect2" type="TextureRect" parent="Customization/Class/Choices"]
-offset_left = 34.0
-offset_right = 64.0
-offset_bottom = 30.0
-texture = ExtResource( "3_kol1x" )
-
-[node name="TextureRect3" type="TextureRect" parent="Customization/Class/Choices"]
-offset_left = 68.0
-offset_right = 98.0
-offset_bottom = 30.0
-texture = ExtResource( "3_kol1x" )
-
-[node name="TextureRect4" type="TextureRect" parent="Customization/Class/Choices"]
-offset_left = 102.0
-offset_right = 132.0
-offset_bottom = 30.0
-texture = ExtResource( "3_kol1x" )
-
-[node name="Race" type="VBoxContainer" parent="Customization"]
-offset_top = 58.0
-offset_right = 132.0
-offset_bottom = 112.0
-
-[node name="Race" parent="Customization/Race" instance=ExtResource( "2_7qwmp" )]
-offset_right = 132.0
+[node name="Race" parent="SubViewport/VBoxContainer/Customization/Race" instance=ExtResource( "2_7qwmp" )]
+offset_right = 82.0
 offset_bottom = 20.0
+script = ExtResource( "4_kuiyq" )
 label = "Race"
 
-[node name="Choices" type="HBoxContainer" parent="Customization/Race"]
-offset_top = 24.0
-offset_right = 132.0
-offset_bottom = 54.0
-
-[node name="TextureRect" type="TextureRect" parent="Customization/Race/Choices"]
-offset_right = 30.0
-offset_bottom = 30.0
-texture = ExtResource( "3_kol1x" )
-
-[node name="TextureRect2" type="TextureRect" parent="Customization/Race/Choices"]
-offset_left = 34.0
-offset_right = 64.0
-offset_bottom = 30.0
-texture = ExtResource( "3_kol1x" )
-
-[node name="TextureRect3" type="TextureRect" parent="Customization/Race/Choices"]
-offset_left = 68.0
-offset_right = 98.0
-offset_bottom = 30.0
-texture = ExtResource( "3_kol1x" )
-
-[node name="TextureRect4" type="TextureRect" parent="Customization/Race/Choices"]
-offset_left = 102.0
-offset_right = 132.0
-offset_bottom = 30.0
-texture = ExtResource( "3_kol1x" )
-
-[node name="Cosmetics" type="VBoxContainer" parent="Customization"]
-offset_top = 116.0
-offset_right = 132.0
-offset_bottom = 184.0
-
-[node name="Hair" parent="Customization/Cosmetics" instance=ExtResource( "2_7qwmp" )]
-offset_right = 132.0
-offset_bottom = 20.0
-label = "Hair"
-
-[node name="Eyes" parent="Customization/Cosmetics" instance=ExtResource( "2_7qwmp" )]
-offset_top = 24.0
-offset_right = 132.0
-offset_bottom = 44.0
-label = "Eyes"
-
-[node name="Face" parent="Customization/Cosmetics" instance=ExtResource( "2_7qwmp" )]
+[node name="Cosmetics" type="VBoxContainer" parent="SubViewport/VBoxContainer/Customization"]
 offset_top = 48.0
-offset_right = 132.0
+offset_right = 82.0
+offset_bottom = 116.0
+
+[node name="Hair" parent="SubViewport/VBoxContainer/Customization/Cosmetics" instance=ExtResource( "2_7qwmp" )]
+offset_right = 82.0
+offset_bottom = 20.0
+script = ExtResource( "5_d4ean" )
+label = "Hair"
+cosmetic_category = 0
+
+[node name="Eyes" parent="SubViewport/VBoxContainer/Customization/Cosmetics" instance=ExtResource( "2_7qwmp" )]
+offset_top = 24.0
+offset_right = 82.0
+offset_bottom = 44.0
+script = ExtResource( "5_d4ean" )
+label = "Eyes"
+cosmetic_category = 2
+
+[node name="Face" parent="SubViewport/VBoxContainer/Customization/Cosmetics" instance=ExtResource( "2_7qwmp" )]
+offset_top = 48.0
+offset_right = 82.0
 offset_bottom = 68.0
+script = ExtResource( "5_d4ean" )
 label = "Face"
+cosmetic_category = 1
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6.38462)
+current = true

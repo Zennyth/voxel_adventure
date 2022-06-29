@@ -3,7 +3,7 @@ class_name BindableSlot
 
 var slot_key
 @export var item_category: Item.ItemCategory
-@export var inventory_category: Inventory.InventoryCategory
+@export var inventory_category: Inventory.InventoryCategory = Inventory.InventoryCategory.CHARACTER_COSMETIC
 
 var slot: Slot = null:
 	set(_slot):
@@ -32,11 +32,11 @@ func _init():
 	part.mesh = null
 
 
-func get_mesh(item):
+func get_mesh(item: Item):
 	if not item:
 		return null
 
-	if item.secondary_mesh and "Left" in name:
+	if (item is Equipment or item is Cosmetic) and "Left" in name:
 		return item.secondary_mesh
 
 	return item.mesh

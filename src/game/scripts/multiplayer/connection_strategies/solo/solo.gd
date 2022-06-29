@@ -10,4 +10,4 @@ func init_connection(network: Network, args: Dictionary):
 	pass
 
 func is_entity_authoritative(entity_state: Dictionary) -> bool:
-	return true
+	return entity_state[WorldState.STATE_KEYS.ID] != -1

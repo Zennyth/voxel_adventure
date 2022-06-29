@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpedr0nrfawif"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="PackedScene" uid="uid://tnw04chrcmb7" path="res://scenes/entities/characters/character.tscn" id="1_64u2w"]
+[ext_resource type="PackedScene" path="res://scenes/entities/characters/humanoid.tscn" id="1_64u2w"]
 [ext_resource type="Script" path="res://scripts/entities/components/controllers/ai_controller.gd" id="7_1tsxp"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_oi32c"]

@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ujfjivfo53fb"]
+[gd_scene load_steps=5 format=3 uid="uid://chnogoitk7w8q"]
 
-[ext_resource type="PackedScene" uid="uid://tnw04chrcmb7" path="res://scenes/entities/characters/character.tscn" id="1_313ia"]
+[ext_resource type="PackedScene" uid="uid://tnw04chrcmb7" path="res://scenes/entities/characters/humanoid.tscn" id="1_313ia"]
 [ext_resource type="Script" path="res://scripts/entities/components/controllers/player_controller.gd" id="2_fjj0f"]
 [ext_resource type="Script" path="res://scripts/entities/characters/humanoids/players/player.gd" id="2_va62i"]
 [ext_resource type="Script" path="res://scripts/entities/characters/humanoids/players/spring_arm.gd" id="4_u71ax"]

@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://b43e153lpdgeq"]
+[gd_scene load_steps=11 format=3 uid="uid://b43e153lpdgeq"]
 
 [ext_resource type="Shader" path="res://scripts/environment/sky.gdshader" id="1_rvima"]
 [ext_resource type="Script" path="res://scripts/multiplayer/entity_manager.gd" id="1_v4eul"]
 [ext_resource type="Script" path="res://scripts/main/player_ui.gd" id="2_ml0ye"]
 [ext_resource type="PackedScene" uid="uid://cudwtavk8li6q" path="res://scenes/main/drag_preview.tscn" id="3_fp1ra"]
-[ext_resource type="PackedScene" uid="uid://ilqvq0f6ekn0" path="res://ui/items/inventories/cosmetic_inventory.tscn" id="3_rc8u4"]
 [ext_resource type="PackedScene" uid="uid://e1hth0b0wqyl" path="res://scenes/main/tooltip.tscn" id="4_oljcv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_72lcx"]
@@ -28,12 +27,12 @@ shader_param/_SunDiskSize = null
 shader_param/_SunDiskTint = null
 shader_param/_Tonemap = null
 
-[sub_resource type="Sky" id="Sky_prpta"]
+[sub_resource type="Sky" id="Sky_tq1nc"]
 sky_material = SubResource( "ShaderMaterial_72lcx" )
 
 [sub_resource type="Environment" id="Environment_0q6lw"]
 background_mode = 2
-sky = SubResource( "Sky_prpta" )
+sky = SubResource( "Sky_tq1nc" )
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_aqf5h"]
 size = Vector2(100, 100)
@@ -52,8 +51,6 @@ shadow_enabled = true
 
 [node name="UI" type="Node2D" parent="."]
 script = ExtResource( "2_ml0ye" )
-
-[node name="CosmeticInventory" parent="UI" instance=ExtResource( "3_rc8u4" )]
 
 [node name="DragPreview" parent="UI" instance=ExtResource( "3_fp1ra" )]
 

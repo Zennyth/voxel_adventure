@@ -18,11 +18,12 @@ offset_bottom = 17.0
 alignment = 1
 script = ExtResource( "1_8srtw" )
 
-[node name="LeftButton" type="TextureRect" parent="."]
+[node name="PreviousButton" type="TextureButton" parent="."]
 texture_filter = 1
 offset_right = 14.0
 offset_bottom = 20.0
-texture = ExtResource( "1_3xjug" )
+texture_normal = ExtResource( "1_3xjug" )
+stretch_mode = 0
 flip_h = true
 
 [node name="PanelControl" type="CenterContainer" parent="."]
@@ -41,16 +42,17 @@ texture = ExtResource( "2_337h4" )
 [node name="Label" type="Label" parent="PanelControl"]
 modulate = Color(0.648551, 0.741125, 0.839844, 1)
 texture_filter = 1
-offset_left = 7.0
-offset_top = 4.0
-offset_right = 39.0
-offset_bottom = 15.0
+offset_left = 22.0
+offset_top = 6.0
+offset_right = 23.0
+offset_bottom = 14.0
 theme = SubResource( "Theme_kwbtu" )
-text = "Eyes"
 
-[node name="RightButton" type="TextureRect" parent="."]
+[node name="NextButton" type="TextureButton" parent="."]
 texture_filter = 1
 offset_left = 68.0
 offset_right = 82.0
 offset_bottom = 20.0
-texture = ExtResource( "1_3xjug" )
+size_flags_horizontal = 3
+texture_normal = ExtResource( "1_3xjug" )
+stretch_mode = 0
