@@ -9,8 +9,6 @@ func init():
 
 
 func get_by_name(item_name: String) -> Item:
-	print(item_name)
-	
 	if not item_name in _items:
 		return null
 	

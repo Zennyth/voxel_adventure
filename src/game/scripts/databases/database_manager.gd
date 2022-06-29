@@ -5,7 +5,3 @@ const RaceDatabase = preload("res://scripts/databases/race_database.gd")
 
 var item: ItemDatabase = ItemDatabase.new()
 var race: RaceDatabase = RaceDatabase.new()
-
-func _ready():
-	add_child(item)
-	add_child(race)

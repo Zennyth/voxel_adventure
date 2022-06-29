@@ -7,6 +7,10 @@ class_name FallState
 @onready var idle_state: State = get_node(idle_node)
 @onready var walk_state: State = get_node(walk_node)
 
+
+var gravity: float = null
+
+
 #var direction_before_falling: Vector3 = Vector3.ZERO
 #
 #func enter() -> void:
@@ -19,7 +23,7 @@ class_name FallState
 func physics_process(delta: float) -> State:
 	var direction := character_controller.get_direction()
 	
-	character_body.move(direction, delta)
+	character_body.move(direction, delta, gravity)
 
 	if character_body.is_on_floor():
 		if direction.length_squared() == 0:
