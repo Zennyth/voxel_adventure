@@ -3,7 +3,7 @@ extends ResourceDatabase
 var _races: Dictionary = {}
 
 func init():
-	for file in FilesUtils.get_files_from_folder("res://resources/races/"):
+	for file in FilesUtils.get_files_from_folder(PATH + "races/"):
 		var race: Race = load(file)
 		_races[race.name] = race
 

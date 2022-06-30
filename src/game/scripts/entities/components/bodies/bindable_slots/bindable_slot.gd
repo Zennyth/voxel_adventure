@@ -59,7 +59,7 @@ func set_stable_state(new_state: Dictionary, component: Node = self) -> void:
 		if new_state[identifier] == "":
 			part.mesh = null
 		else:
-			var item: Item = Database.item.get(new_state[identifier])
+			var item: Item = Database.items.get(new_state[identifier])
 			part.mesh = get_mesh(item)
 	
 	super.set_stable_state(new_state, component)

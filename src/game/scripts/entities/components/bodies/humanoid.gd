@@ -15,7 +15,7 @@ func init_cosmetic_inventory():
 	
 	var inventory: Inventory = entity.inventories[key]
 	
-	# var db := Database.item
+	# var db := Database.items
 	# inventory.get_slot(Cosmetic.CosmeticCategory.FACE).set_stack(Stack.new(db.get("Human Face 1"), 1))
 	# inventory.get_slot(Cosmetic.CosmeticCategory.CHEST).set_stack(Stack.new(db.get("Basic Warrior Chest Plate"), 1))
 	# inventory.get_slot(Cosmetic.CosmeticCategory.HANDS).set_stack(Stack.new(db.get("Basic Warrior Glove"), 1))

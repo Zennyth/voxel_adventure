@@ -15,7 +15,7 @@ signal stack_updated
 
 func _init(item_reference = "", quantity_reference: int = -1):
 	
-	item = item_reference if item_reference is Item else Database.item.get(item_reference)
+	item = item_reference if item_reference is Item else Database.items.get(item_reference)
 	if quantity_reference != -1:
 		quantity = quantity_reference
 

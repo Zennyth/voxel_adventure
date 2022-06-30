@@ -1,6 +1,8 @@
 extends Object
 class_name ResourceDatabase
 
+const var PATH: String = "res://resources/"
+
 func init():
 	pass
 

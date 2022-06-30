@@ -1,15 +1,45 @@
 extends Entity
 class_name Character
 
+
+###
+# LOGIC
+# GAME
+###
+
+var inventories := {}
+
+signal _character_class_update(new_class: Class)
+var character_class: Class = null:
+    set(new_class: Class):
+        _character_class_update.emit(new_class)
+        character_class = new_class
+        update_cosmetics()
+
+signal _character_race_update(new_race: Race)
+var character_race: Race = null:
+    set(new_race: Class):
+        _character_race_update.emit(new_race)
+        character_race = new_race
+
+
+
+func update_cosmetics_by_class():
+    var cosmetics: Inventory = inventories[Inventory.InventoryCategory.CHARACTER_COSMETIC]
+    cosmetics.get_slot(Cosmetic.CosmeticCategory.CHEST).set_stack(Stack.new(character_class.default_chest), 1)
+    cosmetics.get_slot(Cosmetic.CosmeticCategory.HANDS).set_stack(Stack.new(character_class.default_hands), 1)
+    cosmetics.get_slot(Cosmetic.CosmeticCategory.FEET).set_stack(Stack.new(character_class.default_feet), 1)
+
+
+###
+# BUILT-IN
+# Character3D and movements
+###
+
 var character: CharacterBody3D
 	
 func _init():
 	character = $"." as CharacterBody3D
-
-
-var inventories := {}
-
-
 
 @export var default_speed := 10.0
 @export var JUMP_VELOCITY := 8.0
@@ -41,7 +71,12 @@ func update():
 	if is_authoritative(): 
 		character.move_and_slide()
 		update_unstable_state()
-	
+
+
+###
+# OVERRIDE
+###
+
 func get_unstable_state(state: Dictionary = { }, component: Node = self) -> Dictionary:
 	state[WorldState.STATE_KEYS.POSITION] = character.position
 	state[WorldState.STATE_KEYS.ROTATION] = character.rotation

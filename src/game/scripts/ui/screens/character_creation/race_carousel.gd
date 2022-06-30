@@ -9,7 +9,7 @@ var race: Race = null:
 		_race_changed.emit(race)
 
 func _init():
-	list = Database.race.get_all()
+	list = Database.races.get_all()
 
 func _on_index_changed(_index: int):
 	race = list[index]
