@@ -33,8 +33,8 @@ func physics_process(delta: float) -> State:
 			return idle_state
 		
 		return walk_state
-    
-    if hang_gliding_state.can_transition_to():
-        return hang_gliding_state
+	
+	if hang_gliding_state.can_transition_to():
+		return hang_gliding_state
 
 	return null

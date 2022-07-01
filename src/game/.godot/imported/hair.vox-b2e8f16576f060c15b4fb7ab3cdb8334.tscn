@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/hair.vox-b2e8f16576f060c15b4fb7ab3cdb8334.model0.mesh" id="1_13jyw"]
+
+[node name="hair" type="Node3D"]
+
+[node name="@@23029" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource( "1_13jyw" )

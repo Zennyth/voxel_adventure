@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/hand.vox-8a8cc21deb29fab451256c94d5abb8ee.model0.mesh" id="1_6ea48"]
+
+[node name="hand" type="Node3D"]
+
+[node name="@@23032" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -20)
+gi_mode = 2
+mesh = ExtResource( "1_6ea48" )

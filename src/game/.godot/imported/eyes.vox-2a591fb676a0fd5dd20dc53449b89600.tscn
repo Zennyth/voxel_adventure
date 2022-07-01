@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/eyes.vox-2a591fb676a0fd5dd20dc53449b89600.model0.mesh" id="1_vkpgu"]
+
+[node name="eyes" type="Node3D"]
+
+[node name="@@23028" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = ExtResource( "1_vkpgu" )

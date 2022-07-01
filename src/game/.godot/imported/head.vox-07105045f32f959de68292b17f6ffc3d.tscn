@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/head.vox-07105045f32f959de68292b17f6ffc3d.model0.mesh" id="1_wbol3"]
+
+[node name="head" type="Node3D"]
+
+[node name="@@23038" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -20)
+gi_mode = 2
+mesh = ExtResource( "1_wbol3" )

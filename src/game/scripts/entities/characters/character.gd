@@ -11,24 +11,24 @@ var inventories := {}
 
 signal _character_class_update(new_class: Class)
 var character_class: Class = null:
-    set(new_class: Class):
-        _character_class_update.emit(new_class)
-        character_class = new_class
-        update_cosmetics()
+	set(new_class):
+		_character_class_update.emit(new_class)
+		character_class = new_class
+		update_cosmetics_by_class()
 
 signal _character_race_update(new_race: Race)
 var character_race: Race = null:
-    set(new_race: Class):
-        _character_race_update.emit(new_race)
-        character_race = new_race
+	set(new_race):
+		_character_race_update.emit(new_race)
+		character_race = new_race
 
 
 
 func update_cosmetics_by_class():
-    var cosmetics: Inventory = inventories[Inventory.InventoryCategory.CHARACTER_COSMETIC]
-    cosmetics.get_slot(Cosmetic.CosmeticCategory.CHEST).set_stack(Stack.new(character_class.default_chest), 1)
-    cosmetics.get_slot(Cosmetic.CosmeticCategory.HANDS).set_stack(Stack.new(character_class.default_hands), 1)
-    cosmetics.get_slot(Cosmetic.CosmeticCategory.FEET).set_stack(Stack.new(character_class.default_feet), 1)
+	var cosmetics: Inventory = inventories[Inventory.InventoryCategory.CHARACTER_COSMETIC]
+	cosmetics.get_slot(Cosmetic.CosmeticCategory.CHEST).set_stack(Stack.new(character_class.default_chest, 1))
+	cosmetics.get_slot(Cosmetic.CosmeticCategory.HANDS).set_stack(Stack.new(character_class.default_hands, 1))
+	cosmetics.get_slot(Cosmetic.CosmeticCategory.FEET).set_stack(Stack.new(character_class.default_feet, 1))
 
 
 ###
@@ -60,10 +60,10 @@ func move(direction, delta: float, gravity: float = default_gravity, speed: floa
 	else:
 		character.velocity.x = move_toward(character.velocity.x, 0, speed)
 		character.velocity.z = move_toward(character.velocity.z, 0, speed)
-    
-    var look_direction = atan2(direction.x, - direction.z)
-    if look_direction != 0:
-        character.rotation.y = lerp_angle(character.rotation.y, - look_direction, delta * 7)
+	
+	var look_direction = atan2(direction.x, - direction.z)
+	if look_direction != 0:
+		character.rotation.y = lerp_angle(character.rotation.y, - look_direction, delta * 7)
 	
 	update()
 		

@@ -7,22 +7,22 @@ class_name HangGlidingState
 var hang_glider: Travel = null
 
 func _ready():
-    var slot: Slot = character.inventories[Inventory.InventoryCategory.CHARACTER_EQUIPMENTS].get_slot(Equipment.EquipmentCategory.TRAVEL)
-    if slot:
-        slot.stack_changed.connect(_on_travel_stack_change)
+	var slot: Slot = character_body.inventories[Inventory.InventoryCategory.CHARACTER_EQUIPMENTS].get_slot(Equipment.EquipmentCategory.TRAVEL)
+	if slot:
+		slot.stack_changed.connect(_on_travel_stack_change)
 
 func _on_travel_stack_change(stack: Stack):
-    hang_glider = stack.item as Travel
+	hang_glider = stack.item as Travel
 
-    if hang_glider:
-        speed = hang_glider.speed
-        gravity = hang_glider.gravity
+	if hang_glider:
+		speed = hang_glider.speed
+		gravity = hang_glider.gravity
 
 func can_transition_to() -> bool:
-    return hang_glider != null
+	return hang_glider != null
 
 func physics_process(delta: float):
-    if not hang_glider:
-        return fall_node
-    
-    super.physics_process(delta)
+	if not hang_glider:
+		return fall_node
+	
+	super.physics_process(delta)

@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxMeshImporter"
+type="ArrayMesh"
+uid="uid://f2amrk6vr3w6"
+path="res://.godot/imported/foot.vox-7e3f2cfde33f3a909ca4f7c3a7f06e57.mesh"
+
+[deps]
+
+source_file="res://assets/items/items/cosmetics/foot.vox"
+dest_files=["res://.godot/imported/foot.vox-7e3f2cfde33f3a909ca4f7c3a7f06e57.mesh"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+pivot_mode=1

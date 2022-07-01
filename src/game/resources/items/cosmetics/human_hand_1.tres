@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://chxskx5lm62oq"]
+
+[ext_resource type="Script" path="res://scripts/items/items/cosmetic.gd" id="1_n8lry"]
+[ext_resource type="ArrayMesh" uid="uid://bed73pokl8jum" path="res://assets/items/items/cosmetics/hand.vox" id="1_tuf77"]
+
+[resource]
+script = ExtResource( "1_n8lry" )
+name = "Human Hand 1"
+is_collectable = false
+is_stackable = false
+max_stack_size = 1
+mesh = ExtResource( "1_tuf77" )
+item_category = 1
+cosmetic_category = 4

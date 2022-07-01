@@ -31,8 +31,8 @@ func _ready():
 	for carousel in CosmeticCarousels.get_children():
 		RaceCarousel._race_changed.connect(carousel._on_race_changed)
 		carousel.init(inventory.get_slot(carousel.cosmetic_category))
-    
-    ClassCarousel._character_class_changed.connect(_on_class_changed)
+	
+	ClassCarousel._character_class_changed.connect(_on_class_changed)
 
 #func save():
 #	var save_manager := CharacterSaveManager.new() 
@@ -40,5 +40,5 @@ func _ready():
 #	save_manager.save_inventory(Inventory.InventoryCategory.CHARACTER_COSMETIC, inventory)
 
 func _on_class_changed(character_class: Class):
-    character.character_class = character_class
+	character.character_class = character_class
 

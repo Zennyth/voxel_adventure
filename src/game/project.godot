@@ -79,6 +79,16 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/entities/components/state_machine/states/character/character_state.gd"
 }, {
+"base": "Resource",
+"class": &"Class",
+"language": &"GDScript",
+"path": "res://scripts/entities/characters/classes/class.gd"
+}, {
+"base": "CarouselButton",
+"class": &"ClassCarouselButton",
+"language": &"GDScript",
+"path": "res://scripts/ui/screens/character_creation/class_carousel.gd"
+}, {
 "base": "ConnectionStrategy",
 "class": &"ClientConnectionStrategy",
 "language": &"GDScript",
@@ -152,7 +162,7 @@ _global_script_classes=[{
 "base": "CharacterState",
 "class": &"FallState",
 "language": &"GDScript",
-"path": "res://scripts/entities/components/state_machine/states/character/fall.gd"
+"path": "res://scripts/entities/components/state_machine/states/character/fall/fall.gd"
 }, {
 "base": "RefCounted",
 "class": &"FilesUtils",
@@ -163,6 +173,11 @@ _global_script_classes=[{
 "class": &"GPLReader",
 "language": &"GDScript",
 "path": "res://addons/voxel-core/classes/readers/gpl.gd"
+}, {
+"base": "FallState",
+"class": &"HangGlidingState",
+"language": &"GDScript",
+"path": "res://scripts/entities/components/state_machine/states/character/fall/hang_gliding.gd"
 }, {
 "base": "Character",
 "class": &"Humanoid",
@@ -259,7 +274,7 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://addons/voxel-core/classes/reader.gd"
 }, {
-"base": "Node",
+"base": "Object",
 "class": &"ResourceDatabase",
 "language": &"GDScript",
 "path": "res://scripts/databases/database.gd"
@@ -333,6 +348,11 @@ _global_script_classes=[{
 "class": &"Tooltip",
 "language": &"GDScript",
 "path": "res://scripts/items/ui_tooltip.gd"
+}, {
+"base": "Equipment",
+"class": &"Travel",
+"language": &"GDScript",
+"path": "res://scripts/items/items/equipments/travel.gd"
 }, {
 "base": "WorldState",
 "class": &"UnstableWorldStateBuffer",
@@ -414,6 +434,8 @@ _global_script_class_icons={
 "Character": "",
 "CharacterSaveManager": "",
 "CharacterState": "",
+"Class": "",
+"ClassCarouselButton": "",
 "ClientConnectionStrategy": "",
 "ClockSynchronizer": "",
 "Component": "",
@@ -431,6 +453,7 @@ _global_script_class_icons={
 "FallState": "",
 "FilesUtils": "",
 "GPLReader": "",
+"HangGlidingState": "",
 "Humanoid": "",
 "HumanoidBody": "",
 "IdleState": "",
@@ -465,6 +488,7 @@ _global_script_class_icons={
 "StateManager": "",
 "Stateful": "",
 "Tooltip": "",
+"Travel": "",
 "UnstableWorldStateBuffer": "",
 "UnstableWorldStateManager": "",
 "VarReader": "",
