@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cslqs3h15f722"]
+
+[ext_resource type="ArrayMesh" uid="uid://b75v8nura4mn0" path="res://assets/items/items/cosmetics/hair_2.vox" id="1_eehdk"]
+[ext_resource type="Script" path="res://scripts/items/items/cosmetic.gd" id="1_n8lry"]
+
+[resource]
+script = ExtResource( "1_n8lry" )
+name = "Human Hair 1"
+is_collectable = false
+is_stackable = false
+max_stack_size = 1
+mesh = ExtResource( "1_eehdk" )
+item_category = 1
+cosmetic_category = 0

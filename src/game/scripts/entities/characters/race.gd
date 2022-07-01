@@ -6,9 +6,12 @@ class_name Race
 
 var dictionary_cosmetics := {}
 
-
-func _init():
+func init():
+	dictionary_cosmetics = {}
 	for cosmetic in cosmetics:
+		if not cosmetic:
+			continue
+		
 		if not cosmetic.cosmetic_category in dictionary_cosmetics:
 			dictionary_cosmetics[cosmetic.cosmetic_category] = []
 

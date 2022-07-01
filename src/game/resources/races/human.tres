@@ -1,9 +1,13 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cmuih8bwvef8t"]
+[gd_resource type="Resource" load_steps=7 format=3 uid="uid://c7u6ols5q53d"]
 
-[ext_resource type="Resource" uid="uid://cgsmbfypjff6i" path="res://resources/items/human_face_1.tres" id="1_1ednv"]
+[ext_resource type="Resource" uid="uid://oyvsn2dpdnqw" path="res://resources/items/cosmetics/human_eyes_1.tres" id="1_1hbwu"]
 [ext_resource type="Script" path="res://scripts/entities/characters/race.gd" id="1_6ulho"]
+[ext_resource type="Resource" uid="uid://d11fvs0wickem" path="res://resources/items/cosmetics/human_face_1.tres" id="2_yjhmc"]
+[ext_resource type="Resource" uid="uid://b81y0h6se7o5o" path="res://resources/items/cosmetics/human_hair_1.tres" id="3_ee1cv"]
+[ext_resource type="Resource" uid="uid://cslqs3h15f722" path="res://resources/items/cosmetics/human_hair_2.tres" id="4_ldru4"]
+[ext_resource type="Resource" uid="uid://chxskx5lm62oq" path="res://resources/items/cosmetics/human_hand_1.tres" id="5_1xt5w"]
 
 [resource]
 script = ExtResource( "1_6ulho" )
 name = "Human"
-cosmetics = [ExtResource( "1_1ednv" )]
+cosmetics = [ExtResource( "1_1hbwu" ), ExtResource( "2_yjhmc" ), ExtResource( "3_ee1cv" ), ExtResource( "4_ldru4" ), ExtResource( "5_1xt5w" )]

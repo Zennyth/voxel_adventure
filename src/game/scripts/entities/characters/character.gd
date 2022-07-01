@@ -27,7 +27,6 @@ var character_race: Race = null:
 func update_cosmetics_by_class():
 	var cosmetics: Inventory = inventories[Inventory.InventoryCategory.CHARACTER_COSMETIC]
 	cosmetics.get_slot(Cosmetic.CosmeticCategory.CHEST).set_stack(Stack.new(character_class.default_chest, 1))
-	cosmetics.get_slot(Cosmetic.CosmeticCategory.HANDS).set_stack(Stack.new(character_class.default_hands, 1))
 	cosmetics.get_slot(Cosmetic.CosmeticCategory.FEET).set_stack(Stack.new(character_class.default_feet, 1))
 
 

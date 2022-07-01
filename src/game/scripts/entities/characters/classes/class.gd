@@ -5,7 +5,6 @@ class_name Class
 
 
 @export var default_chest: Resource = null
-@export var default_hands: Resource = null
 @export var default_feet: Resource = null
 
-@export var weapons: Array = []
+@export var weapons	:= Array()

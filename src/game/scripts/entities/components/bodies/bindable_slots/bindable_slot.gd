@@ -36,7 +36,7 @@ func get_mesh(item: Item):
 	if not item:
 		return null
 
-	if (item is Equipment or item is Cosmetic) and "Left" in name:
+	if (item is Equipment or item is Cosmetic) and item.secondary_mesh and "Left" in name:
 		return item.secondary_mesh
 
 	return item.mesh

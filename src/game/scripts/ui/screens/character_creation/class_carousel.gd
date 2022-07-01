@@ -13,3 +13,7 @@ func _init():
 
 func _on_index_changed(_index: int):
 	character_class = list[index]
+
+func init():
+	if len(list) > 0:
+		character_class = list[0]

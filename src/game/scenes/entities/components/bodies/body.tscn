@@ -547,13 +547,12 @@ cosmetic_key = 0
 transform = Transform3D(-2.12046e-27, 6.6004e-27, 0.2, 0, 0.2, -7.09612e-26, -0.2, 0, -2.01948e-28, -3.957, 0.0529666, 4.14746)
 mesh = ExtResource( "7_fx0b1" )
 script = ExtResource( "4_k5kgo" )
+item_category = 1
 cosmetic_key = 2
 
 [node name="HeadRightEye" type="MeshInstance3D" parent="Armature/Skeleton3D/HeadAttachment"]
 transform = Transform3D(1, 2.63616e-17, -1.57041e-18, -2.63616e-17, 0.992928, -0.118722, -1.57041e-18, 0.118722, 0.992928, -3.957, -2.21447, 3.80427)
 visible = false
-script = ExtResource( "4_k5kgo" )
-cosmetic_key = 2
 
 [node name="HeadHelmet" type="MeshInstance3D" parent="Armature/Skeleton3D/HeadAttachment"]
 transform = Transform3D(1, 2.63616e-17, -1.57041e-18, -2.63616e-17, 0.992928, -0.118722, -1.57041e-18, 0.118722, 0.992928, -5.79956e-17, -2.18444, -0.261189)

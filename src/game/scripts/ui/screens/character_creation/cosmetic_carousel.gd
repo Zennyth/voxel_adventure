@@ -6,6 +6,9 @@ var slot: Slot
 func init(_slot: Slot):
 	slot = _slot
 
+func _init():
+	_index_changed.connect(_on_index_changed)
+
 func _on_race_changed(race: Race):
 	list = race.dictionary_cosmetics[cosmetic_category]
 	index = 0

@@ -5,8 +5,8 @@
 [ext_resource type="Script" path="res://scripts/entities/components/state_machine/states/character/idle.gd" id="2_aiskc"]
 [ext_resource type="Script" path="res://scripts/entities/components/state_machine/states/character/move/walk.gd" id="3_e61vb"]
 [ext_resource type="Script" path="res://scripts/entities/components/state_machine/states/character/move/jump.gd" id="4_y1x1r"]
-[ext_resource type="Script" path="res://scripts/entities/components/state_machine/states/character/fall.gd" id="5_p6pgr"]
 [ext_resource type="Script" path="res://scripts/entities/components/controllers/controller.gd" id="7_5sdow"]
+[ext_resource type="Script" path="res://scripts/entities/components/state_machine/states/character/fall/fall.gd" id="7_bbhi8"]
 [ext_resource type="PackedScene" uid="uid://ldyevgu588h2" path="res://scenes/entities/components/bodies/body.tscn" id="9_i3kkh"]
 [ext_resource type="Script" path="res://scripts/entities/components/ui/label.gd" id="9_iss3i"]
 
@@ -47,7 +47,7 @@ fall_node = NodePath("../FallState")
 walk_node = NodePath("../WalkState")
 
 [node name="FallState" type="Node" parent="StateManager"]
-script = ExtResource( "5_p6pgr" )
+script = ExtResource( "7_bbhi8" )
 idle_node = NodePath("../IdleState")
 walk_node = NodePath("../WalkState")
 

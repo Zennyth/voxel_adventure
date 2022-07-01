@@ -22,17 +22,20 @@ func _ready():
 	inventory = character.inventories[Inventory.InventoryCategory.CHARACTER_COSMETIC]
 	
 	var db := Database.items
-	print(Database.items.get_by_name("Human Face 1"))
-	inventory.get_slot(Cosmetic.CosmeticCategory.FACE).set_stack(Stack.new(db.get_by_name("Human Face 1"), 1))
-	inventory.get_slot(Cosmetic.CosmeticCategory.CHEST).set_stack(Stack.new(db.get_by_name("Basic Warrior Chest Plate"), 1))
-	inventory.get_slot(Cosmetic.CosmeticCategory.HANDS).set_stack(Stack.new(db.get_by_name("Basic Warrior Glove"), 1))
-	inventory.get_slot(Cosmetic.CosmeticCategory.FEET).set_stack(Stack.new(db.get_by_name("Basic Warrior Shoe"), 1))
+#	inventory.get_slot(Cosmetic.CosmeticCategory.FACE).set_stack(Stack.new(db.get_by_name("Human Face 1"), 1))
+#	inventory.get_slot(Cosmetic.CosmeticCategory.CHEST).set_stack(Stack.new(db.get_by_name("Basic Warrior Chest Plate"), 1))
+#	inventory.get_slot(Cosmetic.CosmeticCategory.HANDS).set_stack(Stack.new(db.get_by_name("Basic Warrior Glove"), 1))
+#	inventory.get_slot(Cosmetic.CosmeticCategory.FEET).set_stack(Stack.new(db.get_by_name("Basic Warrior Shoe"), 1))
 
 	for carousel in CosmeticCarousels.get_children():
 		RaceCarousel._race_changed.connect(carousel._on_race_changed)
 		carousel.init(inventory.get_slot(carousel.cosmetic_category))
+	RaceCarousel._race_changed.connect(_on_race_changed)
 	
 	ClassCarousel._character_class_changed.connect(_on_class_changed)
+	
+	RaceCarousel.init()
+	ClassCarousel.init()
 
 #func save():
 #	var save_manager := CharacterSaveManager.new() 
@@ -41,4 +44,7 @@ func _ready():
 
 func _on_class_changed(character_class: Class):
 	character.character_class = character_class
+
+func _on_race_changed(race: Race):
+	inventory.get_slot(Cosmetic.CosmeticCategory.HANDS).set_stack(Stack.new(race.dictionary_cosmetics[Cosmetic.CosmeticCategory.HANDS][0], 1))
 

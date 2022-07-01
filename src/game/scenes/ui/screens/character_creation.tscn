@@ -1,14 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://dq65fyipidwxu"]
+[gd_scene load_steps=13 format=3 uid="uid://dq65fyipidwxu"]
 
-[ext_resource type="Script" path="res://scripts/ui/screens/character_creation/character_creation.gd" id="1_06d56"]
-[ext_resource type="PackedScene" uid="uid://btxagi4q3bv3q" path="res://scenes/ui/components/CarouselButton.tscn" id="2_7qwmp"]
-[ext_resource type="PackedScene" uid="uid://tnw04chrcmb7" path="res://scenes/entities/characters/humanoid.tscn" id="2_cjgm3"]
-[ext_resource type="Shader" path="res://scripts/environment/sky.gdshader" id="3_elsqh"]
-[ext_resource type="Script" path="res://scripts/ui/screens/character_creation/race_carousel.gd" id="4_kuiyq"]
-[ext_resource type="Script" path="res://scripts/ui/screens/character_creation/cosmetic_carousel.gd" id="5_d4ean"]
+[ext_resource type="Script" path="res://scripts/ui/screens/character_creation/character_creation.gd" id="1_14elu"]
+[ext_resource type="PackedScene" uid="uid://tnw04chrcmb7" path="res://scenes/entities/characters/humanoid.tscn" id="2_ru6sq"]
+[ext_resource type="Shader" path="res://scripts/environment/sky.gdshader" id="3_l561d"]
+[ext_resource type="PackedScene" uid="uid://btxagi4q3bv3q" path="res://scenes/ui/components/CarouselButton.tscn" id="4_m1646"]
+[ext_resource type="Script" path="res://scripts/ui/screens/character_creation/race_carousel.gd" id="5_kjeij"]
+[ext_resource type="Script" path="res://scripts/ui/screens/character_creation/class_carousel.gd" id="5_kspfo"]
+[ext_resource type="Script" path="res://scripts/ui/screens/character_creation/cosmetic_carousel.gd" id="6_rpddm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ja5vv"]
-shader = ExtResource( "3_elsqh" )
+shader = ExtResource( "3_l561d" )
 shader_param/_AtmosDarkness = null
 shader_param/_AtmosDayTint = null
 shader_param/_AtmosHorizonTint = null
@@ -42,8 +43,8 @@ size = Vector2(100, 100)
 data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
 
 [node name="CharacterCreation" type="Node3D"]
-script = ExtResource( "1_06d56" )
-character_scene = ExtResource( "2_cjgm3" )
+script = ExtResource( "1_14elu" )
+character_scene = ExtResource( "2_ru6sq" )
 
 [node name="Preview" type="Node3D" parent="."]
 
@@ -77,9 +78,10 @@ offset_bottom = 116.0
 offset_right = 82.0
 offset_bottom = 20.0
 
-[node name="Class" parent="SubViewport/VBoxContainer/Customization/Class" instance=ExtResource( "2_7qwmp" )]
+[node name="Class" parent="SubViewport/VBoxContainer/Customization/Class" instance=ExtResource( "4_m1646" )]
 offset_right = 82.0
 offset_bottom = 20.0
+script = ExtResource( "5_kspfo" )
 label = "Class"
 
 [node name="Race" type="VBoxContainer" parent="SubViewport/VBoxContainer/Customization"]
@@ -87,10 +89,10 @@ offset_top = 24.0
 offset_right = 82.0
 offset_bottom = 44.0
 
-[node name="Race" parent="SubViewport/VBoxContainer/Customization/Race" instance=ExtResource( "2_7qwmp" )]
+[node name="Race" parent="SubViewport/VBoxContainer/Customization/Race" instance=ExtResource( "4_m1646" )]
 offset_right = 82.0
 offset_bottom = 20.0
-script = ExtResource( "4_kuiyq" )
+script = ExtResource( "5_kjeij" )
 label = "Race"
 
 [node name="Cosmetics" type="VBoxContainer" parent="SubViewport/VBoxContainer/Customization"]
@@ -98,26 +100,26 @@ offset_top = 48.0
 offset_right = 82.0
 offset_bottom = 116.0
 
-[node name="Hair" parent="SubViewport/VBoxContainer/Customization/Cosmetics" instance=ExtResource( "2_7qwmp" )]
+[node name="Hair" parent="SubViewport/VBoxContainer/Customization/Cosmetics" instance=ExtResource( "4_m1646" )]
 offset_right = 82.0
 offset_bottom = 20.0
-script = ExtResource( "5_d4ean" )
+script = ExtResource( "6_rpddm" )
 label = "Hair"
 cosmetic_category = 0
 
-[node name="Eyes" parent="SubViewport/VBoxContainer/Customization/Cosmetics" instance=ExtResource( "2_7qwmp" )]
+[node name="Eyes" parent="SubViewport/VBoxContainer/Customization/Cosmetics" instance=ExtResource( "4_m1646" )]
 offset_top = 24.0
 offset_right = 82.0
 offset_bottom = 44.0
-script = ExtResource( "5_d4ean" )
+script = ExtResource( "6_rpddm" )
 label = "Eyes"
 cosmetic_category = 2
 
-[node name="Face" parent="SubViewport/VBoxContainer/Customization/Cosmetics" instance=ExtResource( "2_7qwmp" )]
+[node name="Face" parent="SubViewport/VBoxContainer/Customization/Cosmetics" instance=ExtResource( "4_m1646" )]
 offset_top = 48.0
 offset_right = 82.0
 offset_bottom = 68.0
-script = ExtResource( "5_d4ean" )
+script = ExtResource( "6_rpddm" )
 label = "Face"
 cosmetic_category = 1
 
