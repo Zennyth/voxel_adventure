@@ -1,4 +1,4 @@
-res://scenes/terrain/test.tscn
+res://scenes/main/test_multiplayer.tscn
 res://resources/ui/main_theme.tres
 res://assets/terrain/biomes/seasonal_forest.tres
 res://assets/terrain/biomes/temperate_rainforest.tres
@@ -6,6 +6,6 @@ res://assets/terrain/biomes/tundra.tres
 res://assets/environment/common/grass/Grass.tres
 res://assets/terrain/biomes/desert.tres
 res://assets/terrain/common/water/water.tres
-res://scenes/main/test_multiplayer.tscn
 res://scenes/ui/CharacterCreation.tscn
-res://scripts/terrain/wind.gdshader
+res://scenes/terrain/test.tscn
+res://scripts/entities/components/bodies/humanoid.gd

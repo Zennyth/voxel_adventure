@@ -5,13 +5,13 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.590074, 0.409091), 0.0, 0.0, 0
 point_count = 4
 
 [sub_resource type="HeightMap" id="HeightMap_mwhdw"]
-curve = SubResource( "Curve_s82o6" )
+curve = SubResource("Curve_s82o6")
 weight = 1.0
 
 [sub_resource type="Curve" id="Curve_kagnx"]
 
 [sub_resource type="HeightMap" id="HeightMap_l0pyn"]
-curve = SubResource( "Curve_kagnx" )
+curve = SubResource("Curve_kagnx")
 
 [sub_resource type="Gradient" id="Gradient_v4gxf"]
 colors = PackedColorArray(0.360784, 0.631373, 0.117647, 1, 0.686275, 0.854902, 0.109804, 1)
@@ -19,13 +19,13 @@ colors = PackedColorArray(0.360784, 0.631373, 0.117647, 1, 0.686275, 0.854902, 0
 [sub_resource type="Curve" id="Curve_c2ff1"]
 
 [sub_resource type="HeightMap" id="HeightMap_shn7p"]
-curve = SubResource( "Curve_c2ff1" )
+curve = SubResource("Curve_c2ff1")
 
 [resource]
 biome_name = "Temperate Rainforest"
-continentalness = SubResource( "HeightMap_mwhdw" )
-erosion = SubResource( "HeightMap_l0pyn" )
-peaks_and_valleys = SubResource( "HeightMap_shn7p" )
-gradient = SubResource( "Gradient_v4gxf" )
+continentalness = SubResource("HeightMap_mwhdw")
+erosion = SubResource("HeightMap_l0pyn")
+peaks_and_valleys = SubResource("HeightMap_shn7p")
+gradient = SubResource("Gradient_v4gxf")
 min_temperature = 0.5
 min_moisture = 0.5

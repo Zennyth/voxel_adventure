@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://e1hth0b0wqyl" path="res://scenes/items/tooltip.tscn" id="4_oljcv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_72lcx"]
-shader = ExtResource( "1_rvima" )
+shader = ExtResource("1_rvima")
 shader_param/_AtmosDarkness = null
 shader_param/_AtmosDayTint = null
 shader_param/_AtmosHorizonTint = null
@@ -28,11 +28,11 @@ shader_param/_SunDiskTint = null
 shader_param/_Tonemap = null
 
 [sub_resource type="Sky" id="Sky_tq1nc"]
-sky_material = SubResource( "ShaderMaterial_72lcx" )
+sky_material = SubResource("ShaderMaterial_72lcx")
 
 [sub_resource type="Environment" id="Environment_0q6lw"]
 background_mode = 2
-sky = SubResource( "Sky_tq1nc" )
+sky = SubResource("Sky_tq1nc")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_aqf5h"]
 size = Vector2(100, 100)
@@ -41,10 +41,10 @@ size = Vector2(100, 100)
 data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
 
 [node name="World" type="Node3D"]
-script = ExtResource( "1_fpupi" )
+script = ExtResource("1_fpupi")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( "Environment_0q6lw" )
+environment = SubResource("Environment_0q6lw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.9933, 0.115561, 0, -0.115561, 0.9933, 0, 10, 0)
@@ -54,17 +54,17 @@ shadow_enabled = true
 process_mode = 4
 visible = false
 
-[node name="DragPreview" parent="UI" instance=ExtResource( "3_fp1ra" )]
+[node name="DragPreview" parent="UI" instance=ExtResource("3_fp1ra")]
 
-[node name="Tooltip" parent="UI" instance=ExtResource( "4_oljcv" )]
+[node name="Tooltip" parent="UI" instance=ExtResource("4_oljcv")]
 
 [node name="Ground" type="MeshInstance3D" parent="."]
-mesh = SubResource( "PlaneMesh_aqf5h" )
+mesh = SubResource("PlaneMesh_aqf5h")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
-shape = SubResource( "ConcavePolygonShape3D_ee6kr" )
+shape = SubResource("ConcavePolygonShape3D_ee6kr")
 
 [node name="EntityManager" type="Node3D" parent="."]
-script = ExtResource( "1_v4eul" )
+script = ExtResource("1_v4eul")

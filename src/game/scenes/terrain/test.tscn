@@ -13,11 +13,11 @@
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8m7th"]
 
 [sub_resource type="Sky" id="Sky_sqjdi"]
-sky_material = SubResource( "ProceduralSkyMaterial_8m7th" )
+sky_material = SubResource("ProceduralSkyMaterial_8m7th")
 
 [sub_resource type="Environment" id="Environment_qq5gn"]
 background_mode = 2
-sky = SubResource( "Sky_sqjdi" )
+sky = SubResource("Sky_sqjdi")
 
 [sub_resource type="VoxelStreamRegionFiles" id="VoxelStreamRegionFiles_byu7p"]
 directory = "res://save/terrain/regions"
@@ -41,51 +41,51 @@ fractal_lacunarity = 1.0
 fractal_gain = 0.1
 
 [sub_resource type="VoxelGeneratorWorld" id="VoxelGeneratorWorld_6k361"]
-biomes = [ExtResource( "3_44bv1" ), ExtResource( "4_kx02e" ), ExtResource( "5_w0cao" ), ExtResource( "6_n4676" )]
-temperature_noise = SubResource( "FastNoiseLite_fwsue" )
-moisture_noise = SubResource( "FastNoiseLite_q5o7r" )
-continentalness_noise = SubResource( "FastNoiseLite_n8vxe" )
-peaks_and_valleys_noise = SubResource( "FastNoiseLite_url8d" )
-erosion_noise = SubResource( "FastNoiseLite_pfgw4" )
+biomes = [ExtResource("3_44bv1"), ExtResource("4_kx02e"), ExtResource("5_w0cao"), ExtResource("6_n4676")]
+temperature_noise = SubResource("FastNoiseLite_fwsue")
+moisture_noise = SubResource("FastNoiseLite_q5o7r")
+continentalness_noise = SubResource("FastNoiseLite_n8vxe")
+peaks_and_valleys_noise = SubResource("FastNoiseLite_url8d")
+erosion_noise = SubResource("FastNoiseLite_pfgw4")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6tquh"]
 vertex_color_use_as_albedo = true
 
 [sub_resource type="VoxelMesherCubes" id="VoxelMesherCubes_p8y6y"]
-opaque_material = SubResource( "StandardMaterial3D_6tquh" )
-transparent_material = ExtResource( "6_qjbgy" )
+opaque_material = SubResource("StandardMaterial3D_6tquh")
+transparent_material = ExtResource("6_qjbgy")
 
 [sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_o8co0"]
 min_scale = 0.1
 max_scale = 0.1
 
 [sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_hs0xq"]
-generator = SubResource( "VoxelInstanceGenerator_o8co0" )
-mesh = ExtResource( "6_goijs" )
-material_override = ExtResource( "6_7470x" )
+generator = SubResource("VoxelInstanceGenerator_o8co0")
+mesh = ExtResource("6_goijs")
+material_override = ExtResource("6_7470x")
 
 [sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_f20yk"]
-item_1 = SubResource( "VoxelInstanceLibraryMultiMeshItem_hs0xq" )
+item_1 = SubResource("VoxelInstanceLibraryMultiMeshItem_hs0xq")
 
 [node name="World" type="Node3D"]
-script = ExtResource( "1_hnd5j" )
+script = ExtResource("1_hnd5j")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( "Environment_qq5gn" )
+environment = SubResource("Environment_qq5gn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 10, 0)
 shadow_enabled = true
 
 [node name="VoxelTerrain" type="VoxelTerrain" parent="."]
-stream = SubResource( "VoxelStreamRegionFiles_byu7p" )
-generator = SubResource( "VoxelGeneratorWorld_6k361" )
-mesher = SubResource( "VoxelMesherCubes_p8y6y" )
+stream = SubResource("VoxelStreamRegionFiles_byu7p")
+generator = SubResource("VoxelGeneratorWorld_6k361")
+mesher = SubResource("VoxelMesherCubes_p8y6y")
 max_view_distance = 256
 
 [node name="VoxelInstancer" type="VoxelInstancer" parent="VoxelTerrain"]
-library = SubResource( "VoxelInstanceLibrary_f20yk" )
+library = SubResource("VoxelInstanceLibrary_f20yk")
 
 [node name="EntityManager" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 155.31, 0)
-script = ExtResource( "8_g3enr" )
+script = ExtResource("8_g3enr")

@@ -2,8 +2,6 @@ extends Body
 class_name HumanoidBody
 	
 func _ready():
-	super._ready()
-	
 	if is_authoritative():
 		bind_cosmetic_inventory()
 

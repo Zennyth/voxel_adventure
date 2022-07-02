@@ -10,7 +10,7 @@
 [ext_resource type="Theme" uid="uid://byewe1uxqyop1" path="res://resources/ui/main_theme.tres" id="8_ysnah"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ja5vv"]
-shader = ExtResource( "3_x2nol" )
+shader = ExtResource("3_x2nol")
 shader_param/_AtmosDarkness = null
 shader_param/_AtmosDayTint = null
 shader_param/_AtmosHorizonTint = null
@@ -31,11 +31,11 @@ shader_param/_SunDiskTint = null
 shader_param/_Tonemap = null
 
 [sub_resource type="Sky" id="Sky_prpta"]
-sky_material = SubResource( "ShaderMaterial_ja5vv" )
+sky_material = SubResource("ShaderMaterial_ja5vv")
 
 [sub_resource type="Environment" id="Environment_m21bn"]
 background_mode = 2
-sky = SubResource( "Sky_prpta" )
+sky = SubResource("Sky_prpta")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4oyo1"]
 size = Vector2(100, 100)
@@ -44,25 +44,25 @@ size = Vector2(100, 100)
 data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
 
 [node name="CharacterCreation" type="Node3D"]
-script = ExtResource( "1_sbihs" )
-character_scene = ExtResource( "2_aojek" )
+script = ExtResource("1_sbihs")
+character_scene = ExtResource("2_aojek")
 
 [node name="Preview" type="Node3D" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Preview"]
-environment = SubResource( "Environment_m21bn" )
+environment = SubResource("Environment_m21bn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Preview"]
 transform = Transform3D(1, 0, 0, 0, 0.9933, 0.115561, 0, -0.115561, 0.9933, 0, 10, 0)
 shadow_enabled = true
 
 [node name="Ground" type="MeshInstance3D" parent="Preview"]
-mesh = SubResource( "PlaneMesh_4oyo1" )
+mesh = SubResource("PlaneMesh_4oyo1")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Preview/Ground"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Preview/Ground/StaticBody3D"]
-shape = SubResource( "ConcavePolygonShape3D_nc881" )
+shape = SubResource("ConcavePolygonShape3D_nc881")
 
 [node name="SubViewport" type="Control" parent="."]
 offset_left = 20.0
@@ -83,10 +83,10 @@ offset_bottom = 116.0
 offset_right = 82.0
 offset_bottom = 20.0
 
-[node name="Class" parent="SubViewport/VBoxContainer/Customization/Class" instance=ExtResource( "4_7o6xd" )]
+[node name="Class" parent="SubViewport/VBoxContainer/Customization/Class" instance=ExtResource("4_7o6xd")]
 offset_right = 82.0
 offset_bottom = 20.0
-script = ExtResource( "5_mvg8h" )
+script = ExtResource("5_mvg8h")
 label = "Class"
 
 [node name="Race" type="VBoxContainer" parent="SubViewport/VBoxContainer/Customization"]
@@ -94,10 +94,10 @@ offset_top = 24.0
 offset_right = 82.0
 offset_bottom = 44.0
 
-[node name="Race" parent="SubViewport/VBoxContainer/Customization/Race" instance=ExtResource( "4_7o6xd" )]
+[node name="Race" parent="SubViewport/VBoxContainer/Customization/Race" instance=ExtResource("4_7o6xd")]
 offset_right = 82.0
 offset_bottom = 20.0
-script = ExtResource( "6_mys65" )
+script = ExtResource("6_mys65")
 label = "Race"
 
 [node name="Cosmetics" type="VBoxContainer" parent="SubViewport/VBoxContainer/Customization"]
@@ -105,26 +105,26 @@ offset_top = 48.0
 offset_right = 82.0
 offset_bottom = 116.0
 
-[node name="Hair" parent="SubViewport/VBoxContainer/Customization/Cosmetics" instance=ExtResource( "4_7o6xd" )]
+[node name="Hair" parent="SubViewport/VBoxContainer/Customization/Cosmetics" instance=ExtResource("4_7o6xd")]
 offset_right = 82.0
 offset_bottom = 20.0
-script = ExtResource( "7_tnus3" )
+script = ExtResource("7_tnus3")
 label = "Hair"
 cosmetic_category = 0
 
-[node name="Eyes" parent="SubViewport/VBoxContainer/Customization/Cosmetics" instance=ExtResource( "4_7o6xd" )]
+[node name="Eyes" parent="SubViewport/VBoxContainer/Customization/Cosmetics" instance=ExtResource("4_7o6xd")]
 offset_top = 24.0
 offset_right = 82.0
 offset_bottom = 44.0
-script = ExtResource( "7_tnus3" )
+script = ExtResource("7_tnus3")
 label = "Eyes"
 cosmetic_category = 2
 
-[node name="Face" parent="SubViewport/VBoxContainer/Customization/Cosmetics" instance=ExtResource( "4_7o6xd" )]
+[node name="Face" parent="SubViewport/VBoxContainer/Customization/Cosmetics" instance=ExtResource("4_7o6xd")]
 offset_top = 48.0
 offset_right = 82.0
 offset_bottom = 68.0
-script = ExtResource( "7_tnus3" )
+script = ExtResource("7_tnus3")
 label = "Face"
 cosmetic_category = 1
 
@@ -138,7 +138,7 @@ offset_bottom = 232.0
 texture_filter = 1
 offset_right = 136.0
 offset_bottom = 16.0
-theme = ExtResource( "8_ysnah" )
+theme = ExtResource("8_ysnah")
 placeholder_text = "Enter name"
 language = "en"
 
@@ -147,7 +147,7 @@ texture_filter = 1
 offset_top = 20.0
 offset_right = 136.0
 offset_bottom = 36.0
-theme = ExtResource( "8_ysnah" )
+theme = ExtResource("8_ysnah")
 text = "Create character"
 
 [node name="Camera3D" type="Camera3D" parent="."]
