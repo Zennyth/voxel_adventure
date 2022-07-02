@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://b43e153lpdgeq"]
+[gd_scene load_steps=11 format=3 uid="uid://c2otyrc5p71hr"]
 
+[ext_resource type="Script" path="res://scripts/main/world.gd" id="1_fpupi"]
 [ext_resource type="Shader" path="res://scripts/environment/sky.gdshader" id="1_rvima"]
 [ext_resource type="Script" path="res://scripts/multiplayer/entity_manager.gd" id="1_v4eul"]
-[ext_resource type="Script" path="res://scripts/main/player_ui.gd" id="2_ml0ye"]
-[ext_resource type="PackedScene" uid="uid://cudwtavk8li6q" path="res://scenes/main/drag_preview.tscn" id="3_fp1ra"]
-[ext_resource type="PackedScene" uid="uid://e1hth0b0wqyl" path="res://scenes/main/tooltip.tscn" id="4_oljcv"]
+[ext_resource type="PackedScene" path="res://scenes/items/inventories/drag_preview.tscn" id="3_fp1ra"]
+[ext_resource type="PackedScene" uid="uid://e1hth0b0wqyl" path="res://scenes/items/tooltip.tscn" id="4_oljcv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_72lcx"]
 shader = ExtResource( "1_rvima" )
@@ -40,7 +40,8 @@ size = Vector2(100, 100)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ee6kr"]
 data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
 
-[node name="Test" type="Node3D"]
+[node name="World" type="Node3D"]
+script = ExtResource( "1_fpupi" )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( "Environment_0q6lw" )
@@ -50,7 +51,8 @@ transform = Transform3D(1, 0, 0, 0, 0.9933, 0.115561, 0, -0.115561, 0.9933, 0, 1
 shadow_enabled = true
 
 [node name="UI" type="Node2D" parent="."]
-script = ExtResource( "2_ml0ye" )
+process_mode = 4
+visible = false
 
 [node name="DragPreview" parent="UI" instance=ExtResource( "3_fp1ra" )]
 

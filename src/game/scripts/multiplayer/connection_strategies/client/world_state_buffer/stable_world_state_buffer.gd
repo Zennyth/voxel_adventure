@@ -19,8 +19,8 @@ func update_world_state_buffer(world_state: Dictionary) -> void:
 
 func update_entity_stable_state(entity_id: int, entity_state: Dictionary):
 	
-	# if Multiplayer.is_entity_authoritative(entity_state):
-	# 	return
+	if Game.multiplayer_manager.is_entity_authoritative(entity_state):
+		return
 
 	if is_entity_state_outdated(entity_id, entity_state):
 		return

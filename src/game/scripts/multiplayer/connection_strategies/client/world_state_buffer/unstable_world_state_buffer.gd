@@ -24,8 +24,8 @@ func handle_world_state_buffer():
 
 			# Update Entities via the managers
 			for entity_id in world_state_buffer[2][STATE_KEYS.ENTITIES].keys():
-#				if Multiplayer.is_entity_authoritative(entity_id):
-#					continue
+				if Game.multiplayer_manager.is_entity_authoritative(entity_id):
+					continue
 				var entities_next_state: Dictionary = world_state_buffer[2][STATE_KEYS.ENTITIES][entity_id]
 				if not world_state_buffer[1][STATE_KEYS.ENTITIES].has(entity_id):
 					continue
@@ -42,8 +42,8 @@ func handle_world_state_buffer():
 
 			# Update Entities via the managers
 			for entity_id in world_state_buffer[1][STATE_KEYS.ENTITIES].keys():
-#				if Multiplayer.is_entity_authoritative(entity_id):
-#					continue
+				if Game.multiplayer_manager.is_entity_authoritative(entity_id):
+					continue
 				var entities_next_state: Dictionary = world_state_buffer[1][STATE_KEYS.ENTITIES][entity_id]
 				if not world_state_buffer[0][STATE_KEYS.ENTITIES].has(entity_id):
 					continue

@@ -1,44 +1,34 @@
 extends Node
+class_name MultiplayerManager
 
 var network := ENetNetwork.new()
 var port := 1909
-var is_online := false
+var is_ready := false
 
-enum ConnectionMode {
-	SOLO,
-	CLIENT,
-	SERVER
-}
-func get_strategy(mode: ConnectionMode) -> ConnectionStrategy:
-	match mode:
-		ConnectionMode.SERVER:
-			return ServerConnectionStrategy.new()
-		ConnectionMode.CLIENT:
-			return ClientConnectionStrategy.new()
-		_, ConnectionMode.SOLO:
-			return SoloConnectionStrategy.new()
-
-var connection_mode: ConnectionMode
 var connection_strategy: ConnectionStrategy
-func set_connection_mode():
-	if "--server" in OS.get_cmdline_args():
-		connection_mode = ConnectionMode.SERVER
-	else:
-		connection_mode = ConnectionMode.CLIENT
+func get_strategy() -> ConnectionStrategy:
+#	if "--server" in OS.get_cmdline_args():
+#		return ServerConnectionStrategy.new()
+#	else:
+#		return ClientConnectionStrategy.new()
 	
-	connection_mode = ConnectionMode.SOLO
+	return SoloConnectionStrategy.new()
+
+func init(entity_manager: EntityManager):
+	connection_strategy = get_strategy()
+	connection_strategy.init(entity_manager)
+	add_child(connection_strategy)
 
 func _ready():
-	set_connection_mode()
-#	connection_strategy = get_strategy(connection_mode)
-#	add_child(connection_strategy)
-#
-#	connection_strategy.init_connection(network, {
-#		'port': port,
-#	})
-#	is_online = connection_mode != ConnectionMode.SOLO
+	is_ready = true
+	connection_strategy.init_connection(network, {
+		'port': port,
+	})
 
-func is_entity_authoritative(data):
+func is_entity_authoritative(data) -> bool:
+	if not is_ready:
+		return false
+	
 	var entity_state: Dictionary
 	
 	if data is int:
@@ -49,7 +39,13 @@ func is_entity_authoritative(data):
 	return connection_strategy.is_entity_authoritative(entity_state)
 
 func update_entity_unstable_state(entity_state: Dictionary) -> void:
+	if not is_ready:
+		return
+	
 	connection_strategy.update_entity_unstable_state(entity_state)
 
 func update_entity_stable_state(entity_state: Dictionary) -> void:
+	if not is_ready:
+		return
+	
 	connection_strategy.update_entity_stable_state(entity_state)

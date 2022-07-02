@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://byewe1uxqyop1"]
+
+[ext_resource type="FontData" uid="uid://bwklioew1taaf" path="res://assets/fonts/PressStart2P.ttf" id="1_jvhnd"]
+
+[sub_resource type="Font" id="Font_wwfgv"]
+data/0 = ExtResource( "1_jvhnd" )
+
+[resource]
+default_font = SubResource( "Font_wwfgv" )
+default_font_size = 8

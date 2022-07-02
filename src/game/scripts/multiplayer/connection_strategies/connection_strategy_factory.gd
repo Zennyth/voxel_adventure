@@ -1,17 +1,13 @@
-extends Node
+extends Object
+class_name ConnectionStrategyFactory
 
 ###
 # STATIC
 ###
-
-enum ConnectionMode {
-	CLIENT,
-	SERVER
-}
-
-static func get_strategy(mode: ConnectionMode) -> ConnectionStrategy:
-	match mode:
-		ConnectionMode.SERVER:
-			return ServerConnectionStrategy.new()
-		_, ConnectionMode.CLIENT:
-			return ClientConnectionStrategy.new()
+static func get_strategy() -> ConnectionStrategy:
+	if "--server" in OS.get_cmdline_args():
+		return ServerConnectionStrategy.new()
+	else:
+		return ClientConnectionStrategy.new()
+	
+	return SoloConnectionStrategy.new()

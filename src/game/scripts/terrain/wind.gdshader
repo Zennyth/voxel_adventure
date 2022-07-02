@@ -9,9 +9,9 @@ uniform float wind_texture_tile_size = 20.0;
 uniform float wind_vertical_strength = 0.3;
 uniform vec2 wind_horizontal_direction = vec2(1.0,0.5);
 
-uniform sampler2D color_ramp : hint_black_albedo;
+uniform sampler2D color_ramp;
 // we need a tiling noise here!
-uniform sampler2D wind_noise : hint_black;
+uniform sampler2D wind_noise : hint_default_black;
 
 uniform vec3 character_position;
 uniform float character_radius = 3.0;

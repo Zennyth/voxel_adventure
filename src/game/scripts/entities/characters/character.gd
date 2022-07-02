@@ -6,35 +6,24 @@ class_name Character
 # LOGIC
 # GAME
 ###
+var data: DataManager = null:
+	set(_data_manager):
+		if data: 
+			data._character_class_update.disconnect(update_cosmetics_by_class)
+		data = _data_manager
+		if data: 
+			data._character_class_update.connect(update_cosmetics_by_class)
 
-var inventories := {}
-
-signal _character_class_update(new_class: Class)
-var character_class: Class = null:
-	set(new_class):
-		_character_class_update.emit(new_class)
-		character_class = new_class
-		update_cosmetics_by_class()
-
-signal _character_race_update(new_race: Race)
-var character_race: Race = null:
-	set(new_race):
-		_character_race_update.emit(new_race)
-		character_race = new_race
-
-
-
-func update_cosmetics_by_class():
-	var cosmetics: Inventory = inventories[Inventory.InventoryCategory.CHARACTER_COSMETIC]
-	cosmetics.get_slot(Cosmetic.CosmeticCategory.CHEST).set_stack(Stack.new(character_class.default_chest, 1))
-	cosmetics.get_slot(Cosmetic.CosmeticCategory.FEET).set_stack(Stack.new(character_class.default_feet, 1))
+func update_cosmetics_by_class(new_class: Class):
+	var inventory_key := Inventory.InventoryCategory.CHARACTER_COSMETIC
+	data.set_new_stack(inventory_key, Cosmetic.CosmeticCategory.CHEST, new_class.default_chest)
+	data.set_new_stack(inventory_key, Cosmetic.CosmeticCategory.FEET, new_class.default_feet)
 
 
 ###
 # BUILT-IN
 # Character3D and movements
 ###
-
 var character: CharacterBody3D
 	
 func _init():
@@ -56,16 +45,16 @@ func move(direction, delta: float, gravity: float = default_gravity, speed: floa
 	if direction:
 		character.velocity.x = direction.x * speed
 		character.velocity.z = direction.z * speed
+		
+		var look_direction = atan2(- direction.x, direction.z)
+		if look_direction != 0:
+			character.Body.rotation.y = lerp_angle(character.Body.rotation.y, - look_direction, delta * 7)
 	else:
 		character.velocity.x = move_toward(character.velocity.x, 0, speed)
 		character.velocity.z = move_toward(character.velocity.z, 0, speed)
-	
-	var look_direction = atan2(direction.x, - direction.z)
-	if look_direction != 0:
-		character.rotation.y = lerp_angle(character.rotation.y, - look_direction, delta * 7)
-	
-	update()
 		
+	update()
+
 func update():
 	if is_authoritative(): 
 		character.move_and_slide()
@@ -75,7 +64,6 @@ func update():
 ###
 # OVERRIDE
 ###
-
 func get_unstable_state(state: Dictionary = { }, component: Node = self) -> Dictionary:
 	state[WorldState.STATE_KEYS.POSITION] = character.position
 	state[WorldState.STATE_KEYS.ROTATION] = character.rotation

@@ -1,5 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://o3h1whqowhix"]
 
+[ext_resource type="Script" path="res://scripts/main/world.gd" id="1_hnd5j"]
 [ext_resource type="Biome" uid="uid://cku6scldg8hvt" path="res://assets/terrain/biomes/seasonal_forest.tres" id="3_44bv1"]
 [ext_resource type="Biome" uid="uid://b40bm5c1q32c0" path="res://assets/terrain/biomes/temperate_rainforest.tres" id="4_kx02e"]
 [ext_resource type="Biome" uid="uid://cv5kpg873kgsd" path="res://assets/terrain/biomes/tundra.tres" id="5_w0cao"]
@@ -8,7 +9,6 @@
 [ext_resource type="Biome" uid="uid://c63kd01mimsco" path="res://assets/terrain/biomes/desert.tres" id="6_n4676"]
 [ext_resource type="Material" uid="uid://c1foqps5t8w1d" path="res://assets/terrain/common/water/water.tres" id="6_qjbgy"]
 [ext_resource type="Script" path="res://scripts/multiplayer/entity_manager.gd" id="8_g3enr"]
-[ext_resource type="PackedScene" uid="uid://41i4fuk5m7fk" path="res://scenes/entities/characters/character.tscn" id="9_epl1a"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8m7th"]
 
@@ -68,6 +68,7 @@ material_override = ExtResource( "6_7470x" )
 item_1 = SubResource( "VoxelInstanceLibraryMultiMeshItem_hs0xq" )
 
 [node name="World" type="Node3D"]
+script = ExtResource( "1_hnd5j" )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( "Environment_qq5gn" )
@@ -86,5 +87,5 @@ max_view_distance = 256
 library = SubResource( "VoxelInstanceLibrary_f20yk" )
 
 [node name="EntityManager" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 155.31, 0)
 script = ExtResource( "8_g3enr" )
-entity_scene = ExtResource( "9_epl1a" )

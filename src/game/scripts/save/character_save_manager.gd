@@ -2,19 +2,16 @@ extends SaveManager
 class_name CharacterSaveManager
 
 func _init():
-	folder_path = "characters/"
+	folder_path = ROOT_PATH + "characters/"
+	set_save_path(generate_identifier())
 
-func get_inventory_path(category: Inventory.InventoryCategory) -> String:
-	return full_path + "inventories/" + str(category)
+func save_character(character_data: DataManager):
+	print(full_path + "character.tres")
+	ResourceSaver.save(full_path + "character.tres", character_data)
 
-func save_inventory(category: Inventory.InventoryCategory, inventory: Inventory):
-	ResourceSaver.save(get_inventory_path(category), inventory)
-
-func load_inventory(category: Inventory.InventoryCategory) -> Inventory:
-	var path := get_inventory_path(category)
-
-	if ResourceLoader.exists(path):
-		var inventory = ResourceLoader.load(path)
-		return inventory as Inventory
+func load_character() -> DataManager:
+	if ResourceLoader.exists(full_path + "character.tres"):
+		var character_data = ResourceLoader.load(full_path + "character.tres")
+		return character_data as DataManager
 	
 	return null

@@ -10,7 +10,6 @@ signal destroyed(entity_id: int)
 ####
 ## BUILT-IN
 ####
-
 var id: int = -1
 var scene: String = "" 
 
@@ -38,7 +37,7 @@ func set_unstable_state(new_state: Dictionary, component: Node = self) -> void:
 	super.set_unstable_state(new_state, component)
 
 func update_unstable_state() -> void:
-	pass #Multiplayer.update_entity_unstable_state(get_unstable_state())
+	Game.multiplayer_manager.update_entity_unstable_state(get_unstable_state())
 
 
 func get_stable_state(state: Dictionary = { }, component: Node = self) -> Dictionary:
@@ -50,9 +49,8 @@ func set_stable_state(new_state: Dictionary, component: Node = self) -> void:
 	super.set_stable_state(new_state, component)
 
 func update_stable_state() -> void:
-	pass # Multiplayer.update_entity_stable_state(get_stable_state())
+	Game.multiplayer_manager.update_entity_stable_state(get_stable_state())
 
 
 func is_authoritative() -> bool:
-	return false
-	# return Multiplayer.is_entity_authoritative(get_stable_state())
+	return Game.multiplayer_manager.is_entity_authoritative(get_stable_state())

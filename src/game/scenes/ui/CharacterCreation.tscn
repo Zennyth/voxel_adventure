@@ -1,15 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://dq65fyipidwxu"]
+[gd_scene load_steps=14 format=3 uid="uid://dq65fyipidwxu"]
 
-[ext_resource type="Script" path="res://scripts/ui/screens/character_creation/character_creation.gd" id="1_14elu"]
-[ext_resource type="PackedScene" uid="uid://tnw04chrcmb7" path="res://scenes/entities/characters/humanoid.tscn" id="2_ru6sq"]
-[ext_resource type="Shader" path="res://scripts/environment/sky.gdshader" id="3_l561d"]
-[ext_resource type="PackedScene" uid="uid://btxagi4q3bv3q" path="res://scenes/ui/components/CarouselButton.tscn" id="4_m1646"]
-[ext_resource type="Script" path="res://scripts/ui/screens/character_creation/race_carousel.gd" id="5_kjeij"]
-[ext_resource type="Script" path="res://scripts/ui/screens/character_creation/class_carousel.gd" id="5_kspfo"]
-[ext_resource type="Script" path="res://scripts/ui/screens/character_creation/cosmetic_carousel.gd" id="6_rpddm"]
+[ext_resource type="Script" path="res://scripts/ui/screens/character_creation/character_creation.gd" id="1_sbihs"]
+[ext_resource type="PackedScene" uid="uid://tnw04chrcmb7" path="res://scenes/entities/characters/humanoid.tscn" id="2_aojek"]
+[ext_resource type="Shader" path="res://scripts/environment/sky.gdshader" id="3_x2nol"]
+[ext_resource type="PackedScene" uid="uid://btxagi4q3bv3q" path="res://scenes/ui/components/CarouselButton.tscn" id="4_7o6xd"]
+[ext_resource type="Script" path="res://scripts/ui/screens/character_creation/class_carousel.gd" id="5_mvg8h"]
+[ext_resource type="Script" path="res://scripts/ui/screens/character_creation/race_carousel.gd" id="6_mys65"]
+[ext_resource type="Script" path="res://scripts/ui/screens/character_creation/cosmetic_carousel.gd" id="7_tnus3"]
+[ext_resource type="Theme" uid="uid://byewe1uxqyop1" path="res://resources/ui/main_theme.tres" id="8_ysnah"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ja5vv"]
-shader = ExtResource( "3_l561d" )
+shader = ExtResource( "3_x2nol" )
 shader_param/_AtmosDarkness = null
 shader_param/_AtmosDayTint = null
 shader_param/_AtmosHorizonTint = null
@@ -43,8 +44,8 @@ size = Vector2(100, 100)
 data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
 
 [node name="CharacterCreation" type="Node3D"]
-script = ExtResource( "1_14elu" )
-character_scene = ExtResource( "2_ru6sq" )
+script = ExtResource( "1_sbihs" )
+character_scene = ExtResource( "2_aojek" )
 
 [node name="Preview" type="Node3D" parent="."]
 
@@ -64,6 +65,10 @@ mesh = SubResource( "PlaneMesh_4oyo1" )
 shape = SubResource( "ConcavePolygonShape3D_nc881" )
 
 [node name="SubViewport" type="Control" parent="."]
+offset_left = 20.0
+offset_top = 100.0
+offset_right = 20.0
+offset_bottom = 100.0
 scale = Vector2(2, 2)
 
 [node name="VBoxContainer" type="HBoxContainer" parent="SubViewport"]
@@ -78,10 +83,10 @@ offset_bottom = 116.0
 offset_right = 82.0
 offset_bottom = 20.0
 
-[node name="Class" parent="SubViewport/VBoxContainer/Customization/Class" instance=ExtResource( "4_m1646" )]
+[node name="Class" parent="SubViewport/VBoxContainer/Customization/Class" instance=ExtResource( "4_7o6xd" )]
 offset_right = 82.0
 offset_bottom = 20.0
-script = ExtResource( "5_kspfo" )
+script = ExtResource( "5_mvg8h" )
 label = "Class"
 
 [node name="Race" type="VBoxContainer" parent="SubViewport/VBoxContainer/Customization"]
@@ -89,10 +94,10 @@ offset_top = 24.0
 offset_right = 82.0
 offset_bottom = 44.0
 
-[node name="Race" parent="SubViewport/VBoxContainer/Customization/Race" instance=ExtResource( "4_m1646" )]
+[node name="Race" parent="SubViewport/VBoxContainer/Customization/Race" instance=ExtResource( "4_7o6xd" )]
 offset_right = 82.0
 offset_bottom = 20.0
-script = ExtResource( "5_kjeij" )
+script = ExtResource( "6_mys65" )
 label = "Race"
 
 [node name="Cosmetics" type="VBoxContainer" parent="SubViewport/VBoxContainer/Customization"]
@@ -100,28 +105,50 @@ offset_top = 48.0
 offset_right = 82.0
 offset_bottom = 116.0
 
-[node name="Hair" parent="SubViewport/VBoxContainer/Customization/Cosmetics" instance=ExtResource( "4_m1646" )]
+[node name="Hair" parent="SubViewport/VBoxContainer/Customization/Cosmetics" instance=ExtResource( "4_7o6xd" )]
 offset_right = 82.0
 offset_bottom = 20.0
-script = ExtResource( "6_rpddm" )
+script = ExtResource( "7_tnus3" )
 label = "Hair"
 cosmetic_category = 0
 
-[node name="Eyes" parent="SubViewport/VBoxContainer/Customization/Cosmetics" instance=ExtResource( "4_m1646" )]
+[node name="Eyes" parent="SubViewport/VBoxContainer/Customization/Cosmetics" instance=ExtResource( "4_7o6xd" )]
 offset_top = 24.0
 offset_right = 82.0
 offset_bottom = 44.0
-script = ExtResource( "6_rpddm" )
+script = ExtResource( "7_tnus3" )
 label = "Eyes"
 cosmetic_category = 2
 
-[node name="Face" parent="SubViewport/VBoxContainer/Customization/Cosmetics" instance=ExtResource( "4_m1646" )]
+[node name="Face" parent="SubViewport/VBoxContainer/Customization/Cosmetics" instance=ExtResource( "4_7o6xd" )]
 offset_top = 48.0
 offset_right = 82.0
 offset_bottom = 68.0
-script = ExtResource( "6_rpddm" )
+script = ExtResource( "7_tnus3" )
 label = "Face"
 cosmetic_category = 1
+
+[node name="Actions" type="VBoxContainer" parent="SubViewport"]
+offset_left = 190.5
+offset_top = 196.0
+offset_right = 326.5
+offset_bottom = 232.0
+
+[node name="LineEdit" type="LineEdit" parent="SubViewport/Actions"]
+texture_filter = 1
+offset_right = 136.0
+offset_bottom = 16.0
+theme = ExtResource( "8_ysnah" )
+placeholder_text = "Enter name"
+language = "en"
+
+[node name="Button" type="Button" parent="SubViewport/Actions"]
+texture_filter = 1
+offset_top = 20.0
+offset_right = 136.0
+offset_bottom = 36.0
+theme = ExtResource( "8_ysnah" )
+text = "Create character"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6.38462)

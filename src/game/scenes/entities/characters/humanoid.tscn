@@ -16,11 +16,9 @@
 script = ExtResource( "1_f223l" )
 
 [node name="Controller" type="Node3D" parent="."]
-process_mode = 4
 script = ExtResource( "7_5sdow" )
 
 [node name="StateManager" type="Node3D" parent="."]
-process_mode = 4
 script = ExtResource( "1_2hpls" )
 starting_state = NodePath("IdleState")
 debug = true
@@ -58,9 +56,7 @@ double_sided = false
 script = ExtResource( "9_iss3i" )
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01909, 0)
 shape = SubResource( "CapsuleShape3D_eryfw" )
 
 [node name="Body" parent="." instance=ExtResource( "9_i3kkh" )]
-process_mode = 4

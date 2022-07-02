@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cudwtavk8li6q"]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scripts/main/drag_preview.gd" id="1_c8ac3"]
-[ext_resource type="PackedScene" uid="uid://dft4do6d20gkp" path="res://ui/items/item.tscn" id="2_rpnpv"]
+[ext_resource type="PackedScene" path="res://scenes/items/item.tscn" id="2_rpnpv"]
 
 [node name="DragPreview" type="Control"]
 offset_right = 40.0

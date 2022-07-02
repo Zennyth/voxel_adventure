@@ -56,16 +56,16 @@ func slot_container_gui_input(event, slot_container: SlotContainer):
 			hide_item_tooltip()
 
 func drag_stack_container(slot_container: SlotContainer):
-    var slot_index = slot_container.slot.id
+	var slot_index = slot_container.slot.id
 	var slot: Slot = slot_container.slot
 
 	# pick item
 	if not slot.is_empty() and drag_preview.is_empty():
 		drag_preview.set_stack( inventory.remove_stack(slot_index) )
 
-    # check if slot accepts item
-    elif not slot_container.is_accepting_item(drag_preview.stack.item):
-        return
+	# check if slot accepts item
+	elif not slot_container.is_accepting_item(drag_preview.stack.item):
+		return
 	
 	# drop item
 	elif slot.is_empty() and not drag_preview.is_empty():

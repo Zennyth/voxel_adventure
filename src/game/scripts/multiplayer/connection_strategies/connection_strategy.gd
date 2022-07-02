@@ -4,10 +4,6 @@ class_name ConnectionStrategy
 ###
 # BUILT-IN
 ###
-
-func _ready():
-	entity_manager = get_node("/root/Test/EntityManager") as EntityManager
-
 var _network: Network
 
 func init_connection(network: Network, _args: Dictionary):
@@ -52,14 +48,20 @@ func global_requests(_data: Dictionary):
 ###
 var entity_manager: EntityManager
 
+func init(entity_manager_reference):
+	entity_manager = entity_manager_reference
+
 func spawn_player(id: int = _network.get_id()):
 	if not entity_manager:
 		return
+		
+	var player: Player = entity_manager.scenes["player"].instantiate()
+	player.data = Game.character_save_manager.load_character()
 	
 	entity_manager.spawn_entity({
 		WorldState.STATE_KEYS.ID: id,
 		WorldState.STATE_KEYS.SCENE: "player"
-	})
+	}, player)
 
 ###
 # STATIC

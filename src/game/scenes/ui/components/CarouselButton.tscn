@@ -1,16 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://btxagi4q3bv3q"]
+[gd_scene load_steps=5 format=3 uid="uid://btxagi4q3bv3q"]
 
 [ext_resource type="Texture2D" uid="uid://bwa7mc3qqe8p0" path="res://assets/ui/arrow-btn.png" id="1_3xjug"]
 [ext_resource type="Script" path="res://scripts/ui/components/carouse_button.gd" id="1_8srtw"]
 [ext_resource type="Texture2D" uid="uid://b6eumd7gy3f26" path="res://assets/ui/panel.png" id="2_337h4"]
-[ext_resource type="FontData" uid="uid://bwklioew1taaf" path="res://assets/fonts/PressStart2P.ttf" id="3_12hco"]
-
-[sub_resource type="Font" id="Font_wwfgv"]
-data/0 = ExtResource( "3_12hco" )
-
-[sub_resource type="Theme" id="Theme_kwbtu"]
-default_font = SubResource( "Font_wwfgv" )
-default_font_size = 8
+[ext_resource type="Theme" uid="uid://byewe1uxqyop1" path="res://resources/ui/main_theme.tres" id="4_g1ctb"]
 
 [node name="CarouselButton" type="HBoxContainer"]
 offset_right = 68.0
@@ -46,7 +39,7 @@ offset_left = 22.0
 offset_top = 6.0
 offset_right = 23.0
 offset_bottom = 14.0
-theme = SubResource( "Theme_kwbtu" )
+theme = ExtResource( "4_g1ctb" )
 
 [node name="NextButton" type="TextureButton" parent="."]
 texture_filter = 1

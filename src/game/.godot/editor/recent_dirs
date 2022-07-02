@@ -1,3 +1,5 @@
+res://scripts/main
+res://resources/ui
 res://resources/classes
 res://resources/races
 res://resources/items/cosmetics
@@ -5,7 +7,6 @@ res://scripts/databases
 res://scenes/ui/components
 C:/Users/mathi/Desktop/Voxel/src/game/scripts/environment
 res://scenes/main
-res://scripts/main
 res://scripts/items
 res://resources/items
 res://scenes/entities/components/bodies

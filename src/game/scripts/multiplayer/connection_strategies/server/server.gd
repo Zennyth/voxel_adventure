@@ -2,7 +2,6 @@ extends ConnectionStrategy
 class_name ServerConnectionStrategy
 
 func _ready():
-	super._ready()
 	add_child(clock_synchronizer)
 
 

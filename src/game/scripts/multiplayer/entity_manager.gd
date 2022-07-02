@@ -16,7 +16,6 @@ func has_entity(entity_id: int) -> bool:
 ####
 ## Scenes
 ####
-
 var scenes: Dictionary
 const dont_load: Array = [
 	"res://scenes/entities/characters/character.tscn"
@@ -41,10 +40,9 @@ func fetch_scenes() -> void:
 ####
 ## Main
 ####
-
 var random := RandomNumberGenerator.new()
 
-func spawn_entity(entity_state: Dictionary) -> Entity:
+func spawn_entity(entity_state: Dictionary, entity: Entity = null) -> Entity:
 	random.randomize()
 	
 	if WorldState.STATE_KEYS.ID not in entity_state:
@@ -62,7 +60,10 @@ func spawn_entity(entity_state: Dictionary) -> Entity:
 	if entity_scene not in scenes:
 		return null
 	
-	var new_entity: Entity = scenes[entity_scene].instantiate()
+	var new_entity: Entity = entity
+	if not new_entity:
+		new_entity = scenes[entity_scene].instantiate()
+	
 	new_entity.init(entity_state)
 	add_child(new_entity)
 	new_entity.connect("destroyed", destroy_entity)
@@ -80,10 +81,10 @@ func despawn_entity(entity_id: int) -> void:
 func destroy_entity(entity_id: int) -> void:
 	despawn_entity(entity_id)
 
+
 ####
 ## States
 ####
-
 func update_entity_unstable_state(entity_id: int, entity_state: Dictionary) -> void:
 	if not has_entity(entity_id): return 
 	

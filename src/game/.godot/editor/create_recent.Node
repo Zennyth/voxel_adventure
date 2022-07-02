@@ -1,12 +1,13 @@
+Button
+VBoxContainer
+LineEdit
 Control
 Camera3D
 SubViewport
 SubViewportContainer
 Node3D
 HBoxContainer
-VBoxContainer
 TextureButton
-Button
 TextureRect
 CenterContainer
 Label
@@ -29,4 +30,3 @@ Controller (controller.gd)
 CharacterBody3D
 AIController (ai_controller.gd)
 PlayerController (player_controller.gd)
-Label3D
