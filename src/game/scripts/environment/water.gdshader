@@ -7,15 +7,15 @@ uniform sampler2D noise1;
 uniform sampler2D noise2;
 uniform sampler2D normalmap: hint_normal;
 
-uniform vec4 color : hint_color;
-uniform vec4 deep_water: hint_color;
+uniform vec4 color : source_color;
+uniform vec4 deep_water: source_color;
 
 //depth-fade var
 uniform float beer_law_factor = 2.0;
 uniform float _distance = 0.0;
 
 //foam var
-uniform vec4 edge_color: hint_color;
+uniform vec4 edge_color: source_color;
 uniform float edge_scale = 0.25;
 uniform float near = 0.1;
 uniform float far = 100.0f;
@@ -30,7 +30,10 @@ float waves(vec2 pos, float time) {
 }
 
 void vertex() {
-	VERTEX.y += waves(VERTEX.xy, TIME);
+	vec4 vertex = vec4(VERTEX, 1.0);
+	vec3 VERTEX_WORLD = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	vertex.y += waves(VERTEX_WORLD.xy, TIME);
+	VERTEX = vertex.xyz;
 }
 
 float rim(float depth) {

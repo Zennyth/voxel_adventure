@@ -1,7 +1,7 @@
 extends ConnectionStrategy
 class_name SoloConnectionStrategy
 
-func init_connection(network: Network, args: Dictionary):
+func init_connection(_network_reference: Network, _args: Dictionary):
 	spawn_player(0)
 
 func is_entity_authoritative(entity_state: Dictionary) -> bool:

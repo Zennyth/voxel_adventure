@@ -1,20 +1,24 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://b70hiideifj4x"]
 
 [ext_resource type="Script" path="res://scripts/items/stacks/ui_stack.gd" id="1_pq2cf"]
-[ext_resource type="PackedScene" path="res://scenes/items/item.tscn" id="2_maf0v"]
+[ext_resource type="PackedScene" uid="uid://dft4do6d20gkp" path="res://scenes/items/item.tscn" id="2_maf0v"]
+[ext_resource type="Theme" uid="uid://byewe1uxqyop1" path="res://resources/ui/main_theme.tres" id="3_ckeba"]
 
 [node name="StackContainer" type="Control"]
 offset_right = 18.0
 offset_bottom = 18.0
-script = ExtResource( "1_pq2cf" )
+script = ExtResource("1_pq2cf")
 
-[node name="ItemContainer" parent="." instance=ExtResource( "2_maf0v" )]
+[node name="ItemContainer" parent="." instance=ExtResource("2_maf0v")]
 
 [node name="Quantity" type="Label" parent="."]
-offset_left = 14.0
+texture_filter = 1
+offset_left = 12.0
 offset_top = 12.0
-offset_right = 24.0
+offset_right = 32.0
 offset_bottom = 38.0
 scale = Vector2(0.2, 0.2)
+theme = ExtResource("3_ckeba")
+theme_override_font_sizes/font_size = 20
 text = "1
 "

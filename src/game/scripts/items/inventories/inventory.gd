@@ -6,7 +6,7 @@ enum InventoryCategory {
 	CHARACTER_EQUIPMENTS
 }
 
-func get_slot(index) -> Slot:
+func get_slot(_index) -> Slot:
 	return null
 
 func get_slot_number() -> int:

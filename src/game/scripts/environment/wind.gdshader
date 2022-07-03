@@ -15,7 +15,7 @@ uniform sampler2D wind_noise : hint_default_black;
 
 uniform vec3 character_position;
 uniform float character_radius = 3.0;
-uniform sampler2D character_distance_falloff_curve : hint_black_albedo;
+uniform sampler2D character_distance_falloff_curve : hint_default_black;
 uniform float character_push_strength = 1.0;
 
 varying float debug_wind;

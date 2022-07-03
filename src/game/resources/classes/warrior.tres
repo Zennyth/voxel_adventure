@@ -5,8 +5,8 @@
 [ext_resource type="Resource" uid="uid://colik32qdf235" path="res://resources/items/cosmetics/default_warrior_shoe.tres" id="2_ipqse"]
 
 [resource]
-script = ExtResource( "1_6dqwg" )
+script = ExtResource("1_6dqwg")
 name = "Warrior"
-default_chest = ExtResource( "1_s0xpp" )
-default_feet = ExtResource( "2_ipqse" )
+default_chest = ExtResource("1_s0xpp")
+default_feet = ExtResource("2_ipqse")
 weapons = []

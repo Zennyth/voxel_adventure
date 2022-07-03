@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnap8qvpaghvn"]
+
+[ext_resource type="Texture2D" uid="uid://7q3bhoa82guc" path="res://assets/items/inventories/default_inventory_background.png" id="1_fvgjh"]
+[ext_resource type="Script" path="res://scripts/items/inventories/dictionaries/ui_dictionary_inventory.gd" id="1_weftr"]
+[ext_resource type="PackedScene" uid="uid://c4askhe2dmpsn" path="res://scenes/items/slots/slot.tscn" id="3_s1oep"]
+[ext_resource type="Script" path="res://scripts/items/slots/restrictions/travel_ui_slot.gd" id="4_4hjte"]
+
+[node name="Inventory" type="Node2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_weftr")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 61.6667
+offset_top = 44.6667
+offset_right = 268.667
+offset_bottom = 156.667
+texture = ExtResource("1_fvgjh")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = 97.0
+offset_top = 62.0
+offset_right = 115.0
+offset_bottom = 154.0
+columns = 5
+
+[node name="Slot" parent="GridContainer" instance=ExtResource("3_s1oep")]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+script = ExtResource("4_4hjte")
+identifier = 0

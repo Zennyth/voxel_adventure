@@ -1,0 +1,24 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://bqp4ti5deyq1f"]
+
+[ext_resource type="Shader" path="res://scripts/environment/wind.gdshader" id="1_v8abp"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1kd3h"]
+
+[sub_resource type="NoiseTexture" id="NoiseTexture_kag3t"]
+width = 64
+height = 64
+seamless = true
+noise = SubResource("FastNoiseLite_1kd3h")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_v8abp")
+shader_param/character_position = null
+shader_param/character_push_strength = 1.0
+shader_param/character_radius = 3.0
+shader_param/wind_horizontal_direction = Vector2(1, 0.5)
+shader_param/wind_noise = SubResource("NoiseTexture_kag3t")
+shader_param/wind_speed = 0.2
+shader_param/wind_strength = 2.0
+shader_param/wind_texture_tile_size = 20.0
+shader_param/wind_vertical_strength = 0.3

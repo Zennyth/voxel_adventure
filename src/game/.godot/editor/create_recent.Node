@@ -1,3 +1,4 @@
+MeshInstance3D
 Button
 VBoxContainer
 LineEdit
@@ -13,7 +14,6 @@ CenterContainer
 Label
 DirectionalLight3D
 OmniLight3D
-MeshInstance3D
 MarginContainer
 Tooltip (ui_tooltip.gd)
 ArrayInventoryContainer (ui_array_inventory.gd)

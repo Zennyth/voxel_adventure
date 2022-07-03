@@ -38,7 +38,7 @@ func get_item_name() -> String:
 	
 	return slot.stack.get_item_name()
 
-func _on_stack_changed():
+func _on_stack_changed(_new_stack: Stack):
 	update_ui()
 
 	
@@ -59,5 +59,5 @@ func update_ui():
 	set('theme_override_styles/panel', empty_style if slot and slot.stack == null else default_style)
 
 
-func is_accepting_item(item: Item) -> bool:
+func is_accepting_item(_item: Item) -> bool:
 	return true

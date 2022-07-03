@@ -12,7 +12,7 @@ var slot: Slot = null:
 		if slot: slot.connect("stack_changed", _on_stack_changed)
 		update_slot()
 
-func _on_stack_changed():
+func _on_stack_changed(_new_stack: Stack):
 	update_slot()
 
 func update_slot():

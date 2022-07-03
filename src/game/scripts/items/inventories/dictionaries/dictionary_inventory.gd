@@ -8,7 +8,7 @@ func _init(inventory_keys: Array = []):
 		set_slot(key, Slot.new(key))
 
 func get_slot(index) -> Slot:
-	return slots[index]
+	return slots[index] if index in slots else null
 
 func set_slot(index, slot: Slot):
 	slots[index] = slot

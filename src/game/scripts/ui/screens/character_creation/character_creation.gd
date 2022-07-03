@@ -22,7 +22,7 @@ func _ready():
 	character.data = DataManager.new()
 	character.init({})
 	preview.add_child(character)
-	character.Body.bind_cosmetic_inventory()
+	character.Body.bind_inventories()
 	inventory = character.data.get_inventory(Inventory.InventoryCategory.CHARACTER_COSMETIC)
 	
 	for carousel in CosmeticCarousels.get_children():
@@ -41,6 +41,14 @@ func _ready():
 
 func create_character():
 	character.data.character_name = NameInput.text 
+	
+	# give hang glider
+	character.data.set_new_stack(
+		Inventory.InventoryCategory.CHARACTER_EQUIPMENTS, 
+		Travel.TravelCategory.HANG_GLIDING,
+		Database.items.get_by_name("Hang Glider")
+	)
+	
 	save_manager.save_character(character.data)
 
 func _on_class_changed(character_class: Class):

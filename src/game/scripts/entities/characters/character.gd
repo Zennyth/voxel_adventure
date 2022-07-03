@@ -38,7 +38,12 @@ func jump():
 	if character.is_on_floor():
 		character.velocity.y = JUMP_VELOCITY
 
-func move(direction, delta: float, gravity: float = default_gravity, speed: float = default_speed):
+func move(direction, delta: float, gravity: float = -1.0, speed: float = -1.0):
+	if gravity == -1.0:
+		gravity = default_gravity
+	if speed == -1.0:
+		speed = default_speed
+	
 	if not character.is_on_floor():
 		character.velocity.y -= gravity * delta
 
@@ -48,7 +53,7 @@ func move(direction, delta: float, gravity: float = default_gravity, speed: floa
 		
 		var look_direction = atan2(- direction.x, direction.z)
 		if look_direction != 0:
-			character.Body.rotation.y = lerp_angle(character.Body.rotation.y, - look_direction, delta * 7)
+			character.Body.rotation.y = lerp_angle(character.Body.rotation.y, - look_direction, delta * speed)
 	else:
 		character.velocity.x = move_toward(character.velocity.x, 0, speed)
 		character.velocity.z = move_toward(character.velocity.z, 0, speed)

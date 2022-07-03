@@ -17,7 +17,7 @@ var stack: Stack:
 func set_stack(_stack: Stack):
 	stack = _stack
 
-func _on_stack_updated(new_stack: Stack):
+func _on_stack_updated(_new_stack: Stack):
 	update_ui()
 
 func update_ui():

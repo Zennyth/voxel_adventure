@@ -1,0 +1,31 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://cpswo4owm71jp"]
+
+[ext_resource type="Shader" path="res://scripts/environment/water_global.gdshader" id="1_wsacj"]
+[ext_resource type="Texture2D" uid="uid://c4er7sf8g3ay7" path="res://assets/terrain/common/water/Water_N_A.png" id="2_20b16"]
+[ext_resource type="Texture2D" uid="uid://xy74dv7g70cl" path="res://assets/terrain/common/water/Water_N_B.png" id="3_uitvk"]
+[ext_resource type="Texture2D" uid="uid://b54nk8ds4gjiy" path="res://assets/terrain/common/water/Water_UV.png" id="4_en5pk"]
+
+[sub_resource type="Texture2DArray" id="Texture2DArray_kg2yw"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_wsacj")
+shader_param/beers_law = 2.0
+shader_param/caustic_sampler = SubResource("Texture2DArray_kg2yw")
+shader_param/color_deep = Color(0.0235294, 0, 1, 1)
+shader_param/color_shallow = Color(0.239216, 0.337255, 1, 1)
+shader_param/depth_offset = -0.75
+shader_param/foam_level = 0.0
+shader_param/normalmap_a_sampler = ExtResource("2_20b16")
+shader_param/normalmap_b_sampler = ExtResource("3_uitvk")
+shader_param/projector = null
+shader_param/refraction = 0.075
+shader_param/sampler_direction = Vector2(0.05, 0.04)
+shader_param/sampler_scale = Vector2(0.25, 0.25)
+shader_param/uv_sampler = ExtResource("4_en5pk")
+shader_param/uv_sampler_scale = Vector2(0.25, 0.25)
+shader_param/uv_sampler_strength = 0.04
+shader_param/wave_a = Quaternion(1, 1, 0.35, 3)
+shader_param/wave_b = Quaternion(1, 0.6, 0.3, 1.55)
+shader_param/wave_c = Quaternion(1, 1.3, 0.25, 0.9)
+shader_param/wave_speed = 0.5

@@ -8,6 +8,6 @@
 [ext_resource type="Resource" uid="uid://chxskx5lm62oq" path="res://resources/items/cosmetics/human_hand_1.tres" id="5_1xt5w"]
 
 [resource]
-script = ExtResource( "1_6ulho" )
+script = ExtResource("1_6ulho")
 name = "Human"
-cosmetics = [ExtResource( "1_1hbwu" ), ExtResource( "2_yjhmc" ), ExtResource( "3_ee1cv" ), ExtResource( "4_ldru4" ), ExtResource( "5_1xt5w" )]
+cosmetics = [ExtResource("1_1hbwu"), ExtResource("2_yjhmc"), ExtResource("3_ee1cv"), ExtResource("4_ldru4"), ExtResource("5_1xt5w")]

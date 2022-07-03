@@ -15,7 +15,7 @@ func init_connection(network: Network, _args: Dictionary):
 	_network._global_requests.connect(_global_requests)
 	add_child(network)
 
-func is_entity_authoritative(entity_state: Dictionary) -> bool:
+func is_entity_authoritative(_entity_state: Dictionary) -> bool:
 	return false
 
 func _clock_synchronization(_data: Dictionary):

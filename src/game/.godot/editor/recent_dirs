@@ -1,3 +1,6 @@
+res://resources/items/equipments/travels
+res://resources/environment
+res://scenes/terrain
 res://scripts/main
 res://resources/ui
 res://resources/classes
@@ -18,5 +21,3 @@ res://assets/environment/common
 res://save/terrain
 res://assets/terrain/biomes
 C:/Users/mathi/AppData/Local/Programs/Microsoft VS Code
-res://script_templates
-res://

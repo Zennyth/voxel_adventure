@@ -7,11 +7,11 @@ func _init():
 
 enum TravelCategory {
 	HANG_GLIDING,
-    BOAT,
-    PET
+	BOAT,
+	PET
 }
 
 @export var travel_category: TravelCategory = TravelCategory.HANG_GLIDING
 
 @export var speed: float = 0
-@export var gravity: float = null
+@export var gravity: float = 0

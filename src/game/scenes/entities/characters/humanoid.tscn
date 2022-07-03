@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://tnw04chrcmb7"]
+[gd_scene load_steps=12 format=3 uid="uid://tnw04chrcmb7"]
 
 [ext_resource type="Script" path="res://scripts/entities/components/state_machine/state_managers/physical_state_manager.gd" id="1_2hpls"]
 [ext_resource type="Script" path="res://scripts/entities/characters/humanoids/humanoid.gd" id="1_f223l"]
@@ -7,56 +7,65 @@
 [ext_resource type="Script" path="res://scripts/entities/components/state_machine/states/character/move/jump.gd" id="4_y1x1r"]
 [ext_resource type="Script" path="res://scripts/entities/components/controllers/controller.gd" id="7_5sdow"]
 [ext_resource type="Script" path="res://scripts/entities/components/state_machine/states/character/fall/fall.gd" id="7_bbhi8"]
+[ext_resource type="Script" path="res://scripts/entities/components/state_machine/states/character/fall/hang_gliding.gd" id="8_s5fke"]
 [ext_resource type="PackedScene" uid="uid://ldyevgu588h2" path="res://scenes/entities/components/bodies/body.tscn" id="9_i3kkh"]
 [ext_resource type="Script" path="res://scripts/entities/components/ui/label.gd" id="9_iss3i"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eryfw"]
 
 [node name="Humanoid" type="CharacterBody3D"]
-script = ExtResource( "1_f223l" )
+script = ExtResource("1_f223l")
 
 [node name="Controller" type="Node3D" parent="."]
-script = ExtResource( "7_5sdow" )
+script = ExtResource("7_5sdow")
 
 [node name="StateManager" type="Node3D" parent="."]
-script = ExtResource( "1_2hpls" )
+script = ExtResource("1_2hpls")
 starting_state = NodePath("IdleState")
 debug = true
 character_controller_path = NodePath("../Controller")
 
 [node name="IdleState" type="Node" parent="StateManager"]
-script = ExtResource( "2_aiskc" )
+script = ExtResource("2_aiskc")
 jump_node = NodePath("../JumpState")
 fall_node = NodePath("../FallState")
 walk_node = NodePath("../WalkState")
 
 [node name="WalkState" type="Node" parent="StateManager"]
-script = ExtResource( "3_e61vb" )
+script = ExtResource("3_e61vb")
 idle_node = NodePath("../IdleState")
 jump_node = NodePath("../JumpState")
 fall_node = NodePath("../FallState")
 walk_node = NodePath(".")
 
 [node name="JumpState" type="Node" parent="StateManager"]
-script = ExtResource( "4_y1x1r" )
+script = ExtResource("4_y1x1r")
 idle_node = NodePath("../IdleState")
 jump_node = NodePath(".")
 fall_node = NodePath("../FallState")
 walk_node = NodePath("../WalkState")
 
 [node name="FallState" type="Node" parent="StateManager"]
-script = ExtResource( "7_bbhi8" )
+script = ExtResource("7_bbhi8")
 idle_node = NodePath("../IdleState")
 walk_node = NodePath("../WalkState")
+hang_gliding_node = NodePath("../HangGlidingState")
+
+[node name="HangGlidingState" type="Node" parent="StateManager"]
+script = ExtResource("8_s5fke")
+idle_node = NodePath("../IdleState")
+walk_node = NodePath("../WalkState")
+hang_gliding_node = NodePath(".")
+fall_node = NodePath("../FallState")
 
 [node name="Debug" type="Label3D" parent="StateManager"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.62127, 0)
 billboard = 1
 double_sided = false
-script = ExtResource( "9_iss3i" )
+script = ExtResource("9_iss3i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01909, 0)
-shape = SubResource( "CapsuleShape3D_eryfw" )
+shape = SubResource("CapsuleShape3D_eryfw")
 
-[node name="Body" parent="." instance=ExtResource( "9_i3kkh" )]
+[node name="Body" parent="." instance=ExtResource("9_i3kkh")]

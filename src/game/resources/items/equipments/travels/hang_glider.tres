@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dflcawiye0tgp"]
+
+[ext_resource type="Script" path="res://scripts/items/items/equipments/travel.gd" id="1_5vt5c"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_eonrk"]
+size = Vector3(10, 0.3, 5)
+
+[resource]
+script = ExtResource("1_5vt5c")
+name = "Hang Glider"
+is_collectable = true
+is_stackable = false
+max_stack_size = 1
+mesh = SubResource("BoxMesh_eonrk")
+item_category = null
+equipment_category = 2
+character_class = null
+stats = null
+travel_category = 0
+speed = 50.0
+gravity = 5.0

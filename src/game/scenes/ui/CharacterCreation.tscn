@@ -81,49 +81,49 @@ offset_bottom = 116.0
 
 [node name="Class" type="VBoxContainer" parent="SubViewport/VBoxContainer/Customization"]
 offset_right = 82.0
-offset_bottom = 20.0
+offset_bottom = 14.0
 
 [node name="Class" parent="SubViewport/VBoxContainer/Customization/Class" instance=ExtResource("4_7o6xd")]
 offset_right = 82.0
-offset_bottom = 20.0
+offset_bottom = 14.0
 script = ExtResource("5_mvg8h")
 label = "Class"
 
 [node name="Race" type="VBoxContainer" parent="SubViewport/VBoxContainer/Customization"]
-offset_top = 24.0
+offset_top = 18.0
 offset_right = 82.0
-offset_bottom = 44.0
+offset_bottom = 32.0
 
 [node name="Race" parent="SubViewport/VBoxContainer/Customization/Race" instance=ExtResource("4_7o6xd")]
 offset_right = 82.0
-offset_bottom = 20.0
+offset_bottom = 14.0
 script = ExtResource("6_mys65")
 label = "Race"
 
 [node name="Cosmetics" type="VBoxContainer" parent="SubViewport/VBoxContainer/Customization"]
-offset_top = 48.0
+offset_top = 36.0
 offset_right = 82.0
-offset_bottom = 116.0
+offset_bottom = 86.0
 
 [node name="Hair" parent="SubViewport/VBoxContainer/Customization/Cosmetics" instance=ExtResource("4_7o6xd")]
 offset_right = 82.0
-offset_bottom = 20.0
+offset_bottom = 14.0
 script = ExtResource("7_tnus3")
 label = "Hair"
 cosmetic_category = 0
 
 [node name="Eyes" parent="SubViewport/VBoxContainer/Customization/Cosmetics" instance=ExtResource("4_7o6xd")]
-offset_top = 24.0
+offset_top = 18.0
 offset_right = 82.0
-offset_bottom = 44.0
+offset_bottom = 32.0
 script = ExtResource("7_tnus3")
 label = "Eyes"
 cosmetic_category = 2
 
 [node name="Face" parent="SubViewport/VBoxContainer/Customization/Cosmetics" instance=ExtResource("4_7o6xd")]
-offset_top = 48.0
+offset_top = 36.0
 offset_right = 82.0
-offset_bottom = 68.0
+offset_bottom = 50.0
 script = ExtResource("7_tnus3")
 label = "Face"
 cosmetic_category = 1

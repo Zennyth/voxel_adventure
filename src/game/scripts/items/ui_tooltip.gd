@@ -4,7 +4,7 @@ class_name Tooltip
 @onready var margin_container = $MarginContainer
 @onready var label = $MarginContainer/Label
 
-func _process(delta):
+func _process(_delta):
 	set_position(get_global_mouse_position() + Vector2.ONE * 4)
 
 func display_info(tooltip):

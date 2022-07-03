@@ -23,7 +23,6 @@ func _ready():
 
 		inventory_keys[bindable_slot.inventory_category].append(bindable_slot.slot_key)
 
-
 func init_inventory(inventory_key: Inventory.InventoryCategory, item_key: Item.ItemCategory, character: Character):
 	if not character.data.has_inventory(inventory_key):
 		character.data.set_inventory(inventory_key, DictionaryInventory.new(inventory_keys[inventory_key]))
@@ -32,9 +31,8 @@ func init_inventory(inventory_key: Inventory.InventoryCategory, item_key: Item.I
 
 func bind_slots(key: Item.ItemCategory, binded_inventory: Inventory):
 	for bindable_slot in bindable_slots:
-		if not bindable_slot.item_category or bindable_slot.item_category != key:
+		if bindable_slot.item_category == null or bindable_slot.item_category != key:
 			continue
-		
 		bindable_slot.slot = binded_inventory.get_slot(bindable_slot.slot_key)
 
 
@@ -50,5 +48,4 @@ func set_stable_state(new_state: Dictionary, component: Node = self) -> void:
 	for bindable_slot in bindable_slots:
 		bindable_slot.set_stable_state(new_state, component)
 	
-	# print(new_state)
 	super.set_stable_state(new_state, component)

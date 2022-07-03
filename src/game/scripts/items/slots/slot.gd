@@ -1,12 +1,12 @@
 class_name Slot
 extends Resource
 
-signal stack_changed()
+signal stack_changed(new_stack: Stack)
 
 @export var stack: Resource:
 	set(_stack):
 		stack = _stack
-		stack_changed.emit()
+		stack_changed.emit(stack)
 
 @export var id: int
 
