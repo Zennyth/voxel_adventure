@@ -19,6 +19,13 @@ func update_cosmetics_by_class(new_class: Class):
 	data.set_new_stack(inventory_key, Cosmetic.CosmeticCategory.CHEST, new_class.default_chest)
 	data.set_new_stack(inventory_key, Cosmetic.CosmeticCategory.FEET, new_class.default_feet)
 
+func randomize_cosmetics():
+    var inventory := data.get_inventory(Inventory.InventoryCategory.CHARACTER_COSMETIC)
+    
+    for slot in inventory.get_slots():
+        var item: Cosmetic = RandomUtils.get_random_from_array(data.character_race.dictionary_cosmetics[slot.id])
+        slot.set_stack(Stack.new(item, 1))
+
 
 ###
 # BUILT-IN

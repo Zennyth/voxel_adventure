@@ -11,9 +11,10 @@ func _ready():
 	
 	if not character.is_authoritative():
 		detection.process_mode = Node.PROCESS_MODE_DISABLED 
-	else:
-		detection.connect("body_entered", _on_detection_body_entered)
-		detection.connect("body_exited", _on_detection_body_exited)
+        return
+    
+	detection.connect("body_entered", _on_detection_body_entered)
+	detection.connect("body_exited", _on_detection_body_exited)
 
 func get_direction() -> Vector3:
 	if current_target == null:

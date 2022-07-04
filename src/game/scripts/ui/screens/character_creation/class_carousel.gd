@@ -14,6 +14,12 @@ func _init():
 func _on_index_changed(_index: int):
 	character_class = list[index]
 
-func init():
-	if len(list) > 0:
-		character_class = list[0]
+
+func init(default_class: Class = null):
+    if len(list) < 0:
+        return
+
+    if default_class == null:
+        character_class = list[0]
+    else:
+        index = list.find(default_class, 0)

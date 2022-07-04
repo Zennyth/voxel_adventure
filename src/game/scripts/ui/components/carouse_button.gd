@@ -17,7 +17,7 @@ signal _index_changed(new_index: int)
 
 var index: int = 0:
 	set(_index):
-		if len(list) < index:
+		if len(list) < index or _index == index:
 			return
 		
 		index = _index

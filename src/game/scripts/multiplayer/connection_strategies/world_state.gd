@@ -22,7 +22,9 @@ const STATE_KEYS = {
 	ROTATION = 'r',
 	
 	LABEL = 'la',
-    BINDALBE_SLOT = 'bs'
+    BINDALBE_SLOT = 'bs',
+    ITEM_NAME = 'in',
+    STACK_QUANTITY = 'sq'
 }
 
 

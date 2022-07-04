@@ -18,24 +18,26 @@ func init_state(linked_character_controller: Controller):
 	if slot:
 		slot.stack_changed.connect(_on_travel_stack_change)
 		if not slot.is_empty():
-			hang_glider = slot.stack.item as Travel
-			if hang_glider:
-				speed = hang_glider.speed
-				gravity = hang_glider.gravity
+			update_hang_glider(stack)
 
 func _on_travel_stack_change(stack: Stack):
 	if not stack:
 		hang_glider = null
 		return
 	
-	hang_glider = stack.item as Travel
+    update_hang_glider(stack)
 
-	if hang_glider:
-		speed = hang_glider.speed
-		gravity = hang_glider.gravity
+func update_hang_glider(stack: Stack):
+    hang_glider = stack.item as Travel
+
+    if hang_glider:
+        speed = hang_glider.speed
+        gravity = hang_glider.gravity
+
 
 func can_transition_to() -> bool:
-	return hang_glider != null
+	return hang_glider != null and character_controller.is_traveling()
+
 
 func physics_process(delta: float):
 	if not can_transition_to():

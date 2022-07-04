@@ -3,7 +3,7 @@ extends Node3D
 @onready var RaceCarousel: RaceCarouselButton = $SubViewport/VBoxContainer/Customization/Race/Race
 @onready var ClassCarousel: ClassCarouselButton = $SubViewport/VBoxContainer/Customization/Class/Class
 @onready var CosmeticCarousels = $SubViewport/VBoxContainer/Customization/Cosmetics
-@onready var preview = $Preview
+@onready var Preview = $Preview
 @onready var NameInput := $SubViewport/Actions/LineEdit
 @onready var CreateButton := $SubViewport/Actions/Button
 
@@ -21,23 +21,23 @@ func _ready():
 	character = character_scene.instantiate()
 	character.data = DataManager.new()
 	character.init({})
-	preview.add_child(character)
+	Preview.add_child(character)
 	character.Body.bind_inventories()
 	inventory = character.data.get_inventory(Inventory.InventoryCategory.CHARACTER_COSMETIC)
 	
+    RaceCarousel.init(character.data.character_race) 
+    ClassCarousel.init(character.data.character_class)
+
 	for carousel in CosmeticCarousels.get_children():
 		RaceCarousel._race_changed.connect(carousel._on_race_changed)
 		carousel.init(inventory.get_slot(carousel.cosmetic_category))
-	RaceCarousel._race_changed.connect(_on_race_changed)
 	
-	ClassCarousel._character_class_changed.connect(_on_class_changed)
+    RaceCarousel._race_changed.connect(_on_race_changed)
+    ClassCarousel._character_class_changed.connect(_on_class_changed)
 	
-	RaceCarousel.init() 
-	ClassCarousel.init()
-	
-	CreateButton.pressed.connect(create_character)
-	
+    CreateButton.pressed.connect(create_character)
 	NameInput.text = character.data.character_name 
+
 
 func create_character():
 	character.data.character_name = NameInput.text 
@@ -56,5 +56,3 @@ func _on_class_changed(character_class: Class):
 
 func _on_race_changed(character_race: Race):
 	character.data.character_race = character_race
-	inventory.get_slot(Cosmetic.CosmeticCategory.HANDS).set_stack(Stack.new(character_race.dictionary_cosmetics[Cosmetic.CosmeticCategory.HANDS][0], 1))
-
