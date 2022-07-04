@@ -9,9 +9,9 @@ func _ready():
 
 var stack: Stack:
 	set(_stack):
-		if stack: stack.disconnect("stack_updated", _on_stack_updated)
+		if stack: stack._stack_updated.disconnect(_on_stack_updated)
 		stack = _stack
-		if stack: stack.connect("stack_updated", _on_stack_updated)
+		if stack: stack._stack_updated.connect(_on_stack_updated)
 		update_ui()
 
 func set_stack(_stack: Stack):

@@ -16,7 +16,7 @@ func init_state(linked_character_controller: Controller):
 	
 	var slot: Slot = character_body.data.get_slot(inventory_key, equipment_key)
 	if slot:
-		slot.stack_changed.connect(_on_travel_stack_change)
+		slot._stack_changed.connect(_on_travel_stack_change)
 		if not slot.is_empty():
 			update_hang_glider(stack)
 

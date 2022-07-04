@@ -23,7 +23,7 @@ var slot: Slot = null:
 		if not slot:
 			return
 		
-		slot.connect("stack_changed", _on_stack_changed)
+		slot._stack_changed.connect(_on_stack_changed)
 		update_ui()
 			
 func set_slot(_slot: Slot):

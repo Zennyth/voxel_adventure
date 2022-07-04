@@ -12,4 +12,4 @@ func _ready():
 		voxelViewer.process_mode = Node.PROCESS_MODE_DISABLED
 		return
 	
-	EventBus.player_initialized.emit(self)
+	EventBus._player_initialized.emit(self)

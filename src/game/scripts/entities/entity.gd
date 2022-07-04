@@ -4,7 +4,7 @@ class_name Entity
 ####
 ## Signals
 ####
-signal destroyed(entity_id: int)
+signal _destroyed(entity_id: int)
 
 
 ####

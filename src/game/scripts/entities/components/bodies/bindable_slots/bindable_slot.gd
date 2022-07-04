@@ -7,9 +7,9 @@ var slot_key
 
 var slot: Slot = null:
 	set(_slot):
-		if slot: slot.disconnect("stack_changed", _on_stack_changed)
+		if slot: slot._stack_changed.disconnect(_on_stack_changed)
 		slot = _slot
-		if slot: slot.connect("stack_changed", _on_stack_changed)
+		if slot: slot._stack_changed.connect(_on_stack_changed)
 		update_slot()
 
 func _on_stack_changed(_new_stack: Stack):

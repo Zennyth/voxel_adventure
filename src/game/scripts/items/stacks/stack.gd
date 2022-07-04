@@ -1,17 +1,17 @@
 extends Resource
 class_name Stack
 
-signal stack_updated
+signal _stack_updated
 
 @export var item: Resource:
 	set(_item):
 		item = _item
-		stack_updated.emit(self)
+		_stack_updated.emit(self)
 
 @export var quantity: int:
 	set(_quantity):
 		quantity = _quantity
-		stack_updated.emit(self)
+		_stack_updated.emit(self)
 
 func _init(item_reference = "", quantity_reference: int = -1):
 	

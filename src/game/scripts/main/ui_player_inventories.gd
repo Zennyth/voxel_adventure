@@ -23,7 +23,7 @@ func _unhandled_input(event):
 		hide_item_tooltip()
 
 func _init():
-	EventBus.connect("player_initialized", _on_player_initialized)
+	EventBus.connect("_player_initialized", _on_player_initialized)
 
 func _on_player_initialized(player_reference: Player):
 	player = player_reference
