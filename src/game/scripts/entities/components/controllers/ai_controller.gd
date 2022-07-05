@@ -11,8 +11,8 @@ func _ready():
 	
 	if not character.is_authoritative():
 		detection.process_mode = Node.PROCESS_MODE_DISABLED 
-        return
-    
+		return
+	
 	detection.connect("body_entered", _on_detection_body_entered)
 	detection.connect("body_exited", _on_detection_body_exited)
 

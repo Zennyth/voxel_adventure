@@ -38,21 +38,18 @@ sky_material = SubResource("ShaderMaterial_riag3")
 [sub_resource type="Environment" id="Environment_ghs71"]
 background_mode = 2
 sky = SubResource("Sky_tq1nc")
-tonemap_mode = 3
+tonemap_mode = 2
 auto_exposure_enabled = true
-ssr_enabled = true
 ssao_enabled = true
-ssil_enabled = true
+ssao_sharpness = 1.0
 sdfgi_enabled = true
-glow_intensity = 1.0
-glow_bloom = 0.08
-glow_blend_mode = 0
+glow_blend_mode = 4
 fog_light_energy = 0.64
 fog_density = 0.0001
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0091
-volumetric_fog_albedo = Color(0.796078, 0.843137, 1, 1)
-volumetric_fog_emission = Color(0.301961, 0.415686, 0.435294, 1)
+volumetric_fog_albedo = Color(1, 0.643137, 0.235294, 1)
+volumetric_fog_emission = Color(0.435294, 0.415686, 0.298039, 1)
 
 [sub_resource type="VoxelStreamRegionFiles" id="VoxelStreamRegionFiles_byu7p"]
 directory = "res://save/terrain/regions"
@@ -87,6 +84,7 @@ erosion_noise = SubResource("FastNoiseLite_pfgw4")
 vertex_color_use_as_albedo = true
 
 [sub_resource type="VoxelMesherCubes" id="VoxelMesherCubes_p8y6y"]
+greedy_meshing_enabled = false
 opaque_material = SubResource("StandardMaterial3D_6tquh")
 transparent_material = ExtResource("7_wjib1")
 
@@ -109,8 +107,11 @@ script = ExtResource("1_hnd5j")
 environment = SubResource("Environment_ghs71")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.35527, 0, 0.934764, -0.934764, 0, 0.35527, 0, -1, 0, 0, 10, 0)
+transform = Transform3D(0.35527, -6.29934e-09, 0.934764, 0.0983585, 0.994449, -0.0373825, -0.929575, 0.105223, 0.353298, 0, 10, 0)
+light_color = Color(1, 0.631373, 0.270588, 1)
+light_energy = 0.217
 shadow_enabled = true
+shadow_blur = 0.614
 
 [node name="VoxelTerrain" type="VoxelTerrain" parent="."]
 stream = SubResource("VoxelStreamRegionFiles_byu7p")

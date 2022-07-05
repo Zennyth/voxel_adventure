@@ -14,4 +14,4 @@ func is_jumping() -> bool:
 	return false
 
 func is_traveling() -> bool:
-    return false
+	return false

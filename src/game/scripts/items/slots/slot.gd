@@ -2,6 +2,7 @@ class_name Slot
 extends Resource
 
 signal _stack_changed(new_stack: Stack)
+signal _item_display_changed(is_displayed: bool)
 
 @export var stack: Resource:
 	set(_stack):
@@ -9,6 +10,11 @@ signal _stack_changed(new_stack: Stack)
 		_stack_changed.emit(stack)
 
 @export var id: int
+
+var is_item_diplayed: bool:
+	set(_is_item_diplayed):
+		is_item_diplayed = _is_item_diplayed
+		_item_display_changed.emit(is_item_diplayed)
 
 func _init(_id = null, initital_stack: Stack = null):
 	if _id: id = _id

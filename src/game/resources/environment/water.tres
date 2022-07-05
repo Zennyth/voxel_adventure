@@ -3,7 +3,6 @@
 [ext_resource type="Shader" path="res://scripts/environment/water.gdshader" id="1_1828s"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_km7hb"]
-frequency = 0.005
 fractal_octaves = 2
 
 [sub_resource type="NoiseTexture" id="NoiseTexture_ykmcu"]
@@ -11,7 +10,6 @@ seamless = true
 noise = SubResource("FastNoiseLite_km7hb")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_r1x5p"]
-seed = 1
 fractal_octaves = 2
 
 [sub_resource type="NoiseTexture" id="NoiseTexture_dl6jl"]
@@ -20,6 +18,7 @@ noise = SubResource("FastNoiseLite_r1x5p")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_d2b5t"]
 seed = 2
+frequency = 0.026
 fractal_octaves = 4
 
 [sub_resource type="NoiseTexture" id="NoiseTexture_6liro"]
@@ -33,17 +32,17 @@ noise = SubResource("FastNoiseLite_d2b5t")
 render_priority = 0
 shader = ExtResource("1_1828s")
 shader_param/_distance = -0.026
-shader_param/beer_law_factor = 0.016
+shader_param/beer_law_factor = 2.0
 shader_param/color = Color(0.0352941, 0.658824, 0.929412, 0.635294)
 shader_param/deep_water = Color(0.14902, 0.329412, 0.501961, 1)
 shader_param/edge_color = Color(1, 1, 1, 1)
-shader_param/edge_scale = 1.252
-shader_param/far = 300.0
-shader_param/near = 2.588
+shader_param/edge_scale = 0.25
+shader_param/far = 100.0
+shader_param/near = 0.1
 shader_param/noise1 = SubResource("NoiseTexture_ykmcu")
 shader_param/noise2 = SubResource("NoiseTexture_dl6jl")
 shader_param/normalmap = SubResource("NoiseTexture_6liro")
-shader_param/speed = 0.021
+shader_param/speed = 0.0
 shader_param/time_factor = Vector2(1, 2)
 shader_param/wave_frequ = Vector2(12, 12)
 shader_param/wave_strength = Vector2(0.05, 0.025)

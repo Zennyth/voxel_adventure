@@ -7,13 +7,20 @@ var slot_key
 
 var slot: Slot = null:
 	set(_slot):
-		if slot: slot._stack_changed.disconnect(_on_stack_changed)
+		if slot: 
+			slot._stack_changed.disconnect(_on_stack_changed)
+			slot._item_display_changed.disconnect(_on_item_display_changed)
 		slot = _slot
-		if slot: slot._stack_changed.connect(_on_stack_changed)
+		if slot: 
+			slot._stack_changed.connect(_on_stack_changed)
+			slot._item_display_changed.connect(_on_item_display_changed)
 		update_slot()
 
 func _on_stack_changed(_new_stack: Stack):
 	update_slot()
+
+func _on_item_display_changed(is_displayed: bool):
+	part.visible = is_displayed
 
 func update_slot():
 	if not slot or slot.is_empty():

@@ -84,11 +84,6 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/entities/characters/classes/class.gd"
 }, {
-"base": "CarouselButton",
-"class": &"ClassCarouselButton",
-"language": &"GDScript",
-"path": "res://scripts/ui/screens/character_creation/class_carousel.gd"
-}, {
 "base": "ConnectionStrategy",
 "class": &"ClientConnectionStrategy",
 "language": &"GDScript",
@@ -274,15 +269,15 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/entities/characters/race.gd"
 }, {
-"base": "CarouselButton",
-"class": &"RaceCarouselButton",
-"language": &"GDScript",
-"path": "res://scripts/ui/screens/character_creation/race_carousel.gd"
-}, {
 "base": "Resource",
 "class": &"RaceResource",
 "language": &"GDScript",
 "path": "res://scripts/entities/components/bodies/collection/race.gd"
+}, {
+"base": "RefCounted",
+"class": &"RandomUtils",
+"language": &"GDScript",
+"path": "res://scripts/utils/random.gd"
 }, {
 "base": "RefCounted",
 "class": &"Reader",
@@ -460,7 +455,6 @@ _global_script_class_icons={
 "CharacterSaveManager": "",
 "CharacterState": "",
 "Class": "",
-"ClassCarouselButton": "",
 "ClientConnectionStrategy": "",
 "ClockSynchronizer": "",
 "Component": "",
@@ -498,8 +492,8 @@ _global_script_class_icons={
 "Player": "",
 "PlayerController": "",
 "Race": "",
-"RaceCarouselButton": "",
 "RaceResource": "",
+"RandomUtils": "",
 "Reader": "",
 "ResourceDatabase": "",
 "SaveManager": "",
@@ -584,5 +578,10 @@ controls_backward={
 ui_inventory={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"unicode":0,"echo":false,"script":null)
+]
+}
+ui_traveling={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":70,"unicode":0,"echo":false,"script":null)
 ]
 }

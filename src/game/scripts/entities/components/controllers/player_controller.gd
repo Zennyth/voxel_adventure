@@ -20,4 +20,4 @@ func is_jumping() -> bool:
 	return Input.is_action_just_pressed("ui_accept")
 
 func is_traveling() -> bool:
-    return Input.is_action_just_pressed("ui_traveling")
+	return Input.is_action_just_pressed("ui_traveling")
