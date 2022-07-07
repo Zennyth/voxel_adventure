@@ -37,7 +37,7 @@ func get_inventory(inventory_key: Inventory.InventoryCategory) -> Inventory:
 func set_inventory(inventory_key: Inventory.InventoryCategory, inventory: Inventory):
 	inventories[inventory_key] = inventory
 
-func get_slot(inventory_key: Inventory.InventoryCategory, slot_key: int) -> Slot:
+func get_slot(inventory_key: Inventory.InventoryCategory, slot_key) -> Slot:
 	var inventory := get_inventory(inventory_key)
 	
 	if not inventory:
@@ -45,7 +45,7 @@ func get_slot(inventory_key: Inventory.InventoryCategory, slot_key: int) -> Slot
 	
 	return inventory.get_slot(slot_key)
 
-func set_new_stack(inventory_key: Inventory.InventoryCategory, slot_key: int, item: Item):
+func set_new_stack(inventory_key: Inventory.InventoryCategory, slot_key, item: Item):
 	var slot := get_slot(inventory_key, slot_key)
 	
 	if not slot:

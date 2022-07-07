@@ -1,12 +1,15 @@
-extends BindableSlot
+extends EquipmentBindableSlot
 class_name TravelBindableSlot
 
 @export var travel_key: Travel.TravelCategory:
 	set(_travel_key):
 		travel_key = _travel_key
-		slot_key = travel_key
+		update_key()
 
 func _init():
-	super._init()
-	slot_key = travel_key
-	item_category = Item.ItemCategory.EQUIPMENT
+    equipement_key = Equipment.EquipmentCategory.TRAVEL
+    update_key()
+    super._init()
+
+func update_key():
+    update_slot_key(str(travel_key))

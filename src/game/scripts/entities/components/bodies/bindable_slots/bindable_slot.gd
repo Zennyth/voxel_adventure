@@ -2,25 +2,30 @@ extends Component
 class_name BindableSlot
 
 var slot_key
-@export var item_category: Item.ItemCategory
+func set_slot_key(item_class: String, category: String):
+    slot_key = str(item_category) + "_" + item_class + "_" + category
+
+var item_category: Item.ItemCategory
 @export var inventory_category: Inventory.InventoryCategory = Inventory.InventoryCategory.CHARACTER_COSMETIC
 
 var slot: Slot = null:
 	set(_slot):
-		if slot: 
-			slot._stack_changed.disconnect(_on_stack_changed)
-			slot._item_display_changed.disconnect(_on_item_display_changed)
+		if slot: slot._stack_changed.disconnect(_on_stack_changed)
 		slot = _slot
-		if slot: 
-			slot._stack_changed.connect(_on_stack_changed)
-			slot._item_display_changed.connect(_on_item_display_changed)
+		if slot: slot._stack_changed.connect(_on_stack_changed)
 		update_slot()
 
 func _on_stack_changed(_new_stack: Stack):
 	update_slot()
 
-func _on_item_display_changed(is_displayed: bool):
-	part.visible = is_displayed
+
+func visible(is_visible: bool):
+    part.visible = is_visible
+
+func is_visible():
+    return part.visible
+
+
 
 func update_slot():
 	if not slot or slot.is_empty():

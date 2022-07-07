@@ -4,7 +4,8 @@ class_name Equipment
 enum EquipmentCategory {
 	ARMOR,
 	WEAPON,
-    TRAVEL
+    TRAVEL,
+    COSMETIC
 }
 
 @export var equipment_category: EquipmentCategory

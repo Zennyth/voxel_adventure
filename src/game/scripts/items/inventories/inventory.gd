@@ -19,14 +19,14 @@ func get_indexes() -> Array:
 	return []
 
 
-func set_stack(index: int, new_stack: Stack) -> Stack:
+func set_stack(index, new_stack: Stack) -> Stack:
 	var slot: Slot = get_slot(index)
 
 	var previous_stack: Stack = slot.stack
 	slot.set_stack(new_stack)
 	return previous_stack
 
-func remove_stack(index: int) -> Stack:
+func remove_stack(index) -> Stack:
 	var slot: Slot = get_slot(index)
 
 	var previous_stack: Stack = slot.stack
