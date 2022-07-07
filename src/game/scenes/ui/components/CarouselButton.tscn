@@ -9,43 +9,43 @@
 offset_right = 68.0
 offset_bottom = 17.0
 alignment = 1
-script = ExtResource( "1_8srtw" )
+script = ExtResource("1_8srtw")
 
 [node name="PreviousButton" type="TextureButton" parent="."]
 texture_filter = 1
 offset_right = 14.0
-offset_bottom = 20.0
-texture_normal = ExtResource( "1_3xjug" )
+offset_bottom = 17.0
+texture_normal = ExtResource("1_3xjug")
 stretch_mode = 0
 flip_h = true
 
 [node name="PanelControl" type="CenterContainer" parent="."]
 offset_left = 18.0
 offset_right = 64.0
-offset_bottom = 20.0
+offset_bottom = 17.0
 
 [node name="Panel" type="TextureRect" parent="PanelControl"]
 texture_filter = 1
-minimum_size = Vector2(0, 20)
+offset_top = 1.0
 offset_right = 46.0
-offset_bottom = 20.0
+offset_bottom = 15.0
 size_flags_stretch_ratio = 0.0
-texture = ExtResource( "2_337h4" )
+texture = ExtResource("2_337h4")
 
 [node name="Label" type="Label" parent="PanelControl"]
 modulate = Color(0.648551, 0.741125, 0.839844, 1)
 texture_filter = 1
 offset_left = 22.0
-offset_top = 6.0
+offset_top = 4.0
 offset_right = 23.0
-offset_bottom = 14.0
-theme = ExtResource( "4_g1ctb" )
+offset_bottom = 12.0
+theme = ExtResource("4_g1ctb")
 
 [node name="NextButton" type="TextureButton" parent="."]
 texture_filter = 1
 offset_left = 68.0
 offset_right = 82.0
-offset_bottom = 20.0
+offset_bottom = 17.0
 size_flags_horizontal = 3
-texture_normal = ExtResource( "1_3xjug" )
+texture_normal = ExtResource("1_3xjug")
 stretch_mode = 0

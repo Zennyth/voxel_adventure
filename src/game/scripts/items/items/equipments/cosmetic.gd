@@ -2,7 +2,7 @@ extends Equipment
 class_name Cosmetic
 
 func _init():
-    item_category = Equipment.EquipmentCategory.COSMETIC
+	equipment_category = Equipment.EquipmentCategory.COSMETIC
 
 enum CosmeticCategory {
 	HAIR,

@@ -3,7 +3,7 @@ class_name BindableSlot
 
 var slot_key
 func set_slot_key(item_class: String, category: String):
-    slot_key = str(item_category) + "_" + item_class + "_" + category
+	slot_key = str(item_category) + "_" + item_class + "_" + category
 
 var item_category: Item.ItemCategory
 @export var inventory_category: Inventory.InventoryCategory = Inventory.InventoryCategory.CHARACTER_COSMETIC
@@ -18,12 +18,13 @@ var slot: Slot = null:
 func _on_stack_changed(_new_stack: Stack):
 	update_slot()
 
+var part: MeshInstance3D
 
-func visible(is_visible: bool):
-    part.visible = is_visible
+func visible(is_visible_var: bool):
+	if part: part.visible = is_visible_var
 
 func is_visible():
-    return part.visible
+	return part.visible
 
 
 
@@ -35,8 +36,6 @@ func update_slot():
 	
 	if is_authoritative():
 		update_stable_state()
-
-var part: MeshInstance3D
 
 func _init():
 	add_to_group("bindable_slots")

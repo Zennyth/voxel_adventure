@@ -509,7 +509,6 @@ bone_idx = 0
 transform = Transform3D(-2.32645e-25, -2.35229e-24, 0.25, -3.72529e-09, 0.25, 1.80623e-24, -0.25, -3.72529e-09, 1.03398e-25, -0.0958622, 0, 0)
 mesh = ExtResource("2_oxvfq")
 script = ExtResource("4_k5kgo")
-item_category = 1
 cosmetic_key = 3
 
 [node name="ChestPlate" type="MeshInstance3D" parent="Armature/Skeleton3D/ChestAttachment"]
@@ -528,21 +527,18 @@ bone_idx = 1
 transform = Transform3D(-1.00974e-27, 6.61854e-27, 0.2, -3.0268e-09, 0.2, -7.09612e-26, -0.2, -3.0268e-09, -2.01948e-28, -4.05286, -0.0300331, 4.06546)
 mesh = ExtResource("5_ahwgx")
 script = ExtResource("4_k5kgo")
-item_category = 1
 cosmetic_key = 1
 
 [node name="HeadHair" type="MeshInstance3D" parent="Armature/Skeleton3D/HeadAttachment"]
 transform = Transform3D(-9.08768e-28, 6.61854e-27, 0.2, -3.0268e-09, 0.2, -7.09612e-26, -0.2, -3.0268e-09, -2.01948e-28, -4.05286, -0.0300331, 4.06546)
 mesh = ExtResource("6_jkjw4")
 script = ExtResource("4_k5kgo")
-item_category = 1
 cosmetic_key = 0
 
 [node name="HeadLeftEye" type="MeshInstance3D" parent="Armature/Skeleton3D/HeadAttachment"]
 transform = Transform3D(-2.12046e-27, 6.6004e-27, 0.2, 0, 0.2, -7.09612e-26, -0.2, 0, -2.01948e-28, -3.957, 0.0529666, 4.14746)
 mesh = ExtResource("7_fx0b1")
 script = ExtResource("4_k5kgo")
-item_category = 1
 cosmetic_key = 2
 
 [node name="HeadRightEye" type="MeshInstance3D" parent="Armature/Skeleton3D/HeadAttachment"]
@@ -619,7 +615,6 @@ transform = Transform3D(1.19209e-08, 2.95319e-14, 0.2, -0.2, 1.11759e-08, 0, 0, 
 [node name="Travel" type="MeshInstance3D" parent="Armature/Skeleton3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.59032, 0)
 script = ExtResource("10_rruat")
-item_category = 0
 inventory_category = 1
 travel_key = 0
 

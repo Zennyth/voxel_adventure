@@ -7,9 +7,9 @@ class_name TravelBindableSlot
 		update_key()
 
 func _init():
-    equipement_key = Equipment.EquipmentCategory.TRAVEL
-    update_key()
-    super._init()
+	equipement_key = Equipment.EquipmentCategory.TRAVEL
+	update_key()
+	super._init()
 
 func update_key():
-    update_slot_key(str(travel_key))
+	update_slot_key(str(travel_key))

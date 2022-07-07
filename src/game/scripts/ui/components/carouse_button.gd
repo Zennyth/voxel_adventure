@@ -15,7 +15,7 @@ var list: Array = []:
 
 signal _index_changed(new_index: int)
 
-var index: int = 0:
+var index: int = -1:
 	set(_index):
 		if len(list) < index or _index == index:
 			return

@@ -19,7 +19,7 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/items/items/equipments/armor.gd"
 }, {
-"base": "BindableSlot",
+"base": "EquipmentBindableSlot",
 "class": &"ArmorBindableSlot",
 "language": &"GDScript",
 "path": "res://scripts/entities/components/bodies/bindable_slots/restrictions/armor_bindable_slot.gd"
@@ -84,6 +84,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/entities/characters/classes/class.gd"
 }, {
+"base": "CarouselButton",
+"class": &"ClassCarouselButton",
+"language": &"GDScript",
+"path": "res://scripts/ui/screens/character_creation/class_carousel.gd"
+}, {
 "base": "ConnectionStrategy",
 "class": &"ClientConnectionStrategy",
 "language": &"GDScript",
@@ -114,12 +119,12 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/entities/components/controllers/controller.gd"
 }, {
-"base": "Item",
+"base": "Equipment",
 "class": &"Cosmetic",
 "language": &"GDScript",
-"path": "res://scripts/items/items/cosmetic.gd"
+"path": "res://scripts/items/items/equipments/cosmetic.gd"
 }, {
-"base": "BindableSlot",
+"base": "EquipmentBindableSlot",
 "class": &"CosmeticBindableSlot",
 "language": &"GDScript",
 "path": "res://scripts/entities/components/bodies/bindable_slots/restrictions/cosmetic_bindable_slot.gd"
@@ -163,6 +168,11 @@ _global_script_classes=[{
 "class": &"Equipment",
 "language": &"GDScript",
 "path": "res://scripts/items/items/equipments/equipment.gd"
+}, {
+"base": "BindableSlot",
+"class": &"EquipmentBindableSlot",
+"language": &"GDScript",
+"path": "res://scripts/entities/components/bodies/bindable_slots/restrictions/equipment_bindable_slot.gd"
 }, {
 "base": "CharacterState",
 "class": &"FallState",
@@ -269,6 +279,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/entities/characters/race.gd"
 }, {
+"base": "CarouselButton",
+"class": &"RaceCarouselButton",
+"language": &"GDScript",
+"path": "res://scripts/ui/screens/character_creation/race_carousel.gd"
+}, {
 "base": "Resource",
 "class": &"RaceResource",
 "language": &"GDScript",
@@ -364,7 +379,7 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/items/items/equipments/travel.gd"
 }, {
-"base": "BindableSlot",
+"base": "EquipmentBindableSlot",
 "class": &"TravelBindableSlot",
 "language": &"GDScript",
 "path": "res://scripts/entities/components/bodies/bindable_slots/restrictions/travel_bindable_slot.gd"
@@ -429,6 +444,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/items/items/equipments/weapon.gd"
 }, {
+"base": "EquipmentBindableSlot",
+"class": &"WeaponBindableSlot",
+"language": &"GDScript",
+"path": "res://scripts/entities/components/bodies/bindable_slots/restrictions/weapon_bindable_slot.gd"
+}, {
 "base": "Node",
 "class": &"WorldState",
 "language": &"GDScript",
@@ -455,6 +475,7 @@ _global_script_class_icons={
 "CharacterSaveManager": "",
 "CharacterState": "",
 "Class": "",
+"ClassCarouselButton": "",
 "ClientConnectionStrategy": "",
 "ClockSynchronizer": "",
 "Component": "",
@@ -471,6 +492,7 @@ _global_script_class_icons={
 "Entity": "",
 "EntityManager": "",
 "Equipment": "",
+"EquipmentBindableSlot": "",
 "FallState": "",
 "FilesUtils": "",
 "GPLReader": "",
@@ -492,6 +514,7 @@ _global_script_class_icons={
 "Player": "",
 "PlayerController": "",
 "Race": "",
+"RaceCarouselButton": "",
 "RaceResource": "",
 "RandomUtils": "",
 "Reader": "",
@@ -524,6 +547,7 @@ _global_script_class_icons={
 "VoxelToolPlugin": "",
 "WalkState": "",
 "Weapon": "",
+"WeaponBindableSlot": "",
 "WorldState": "",
 "WorldStateManager": ""
 }

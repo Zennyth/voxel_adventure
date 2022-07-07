@@ -24,18 +24,18 @@ func _ready():
 	Preview.add_child(character)
 	character.Body.bind_inventories()
 	inventory = character.data.get_inventory(Inventory.InventoryCategory.CHARACTER_COSMETIC)
-	
-    RaceCarousel.init(character.data.character_race) 
-    ClassCarousel.init(character.data.character_class)
+
+	RaceCarousel._race_changed.connect(_on_race_changed)
+	ClassCarousel._character_class_changed.connect(_on_class_changed)
 
 	for carousel in CosmeticCarousels.get_children():
 		RaceCarousel._race_changed.connect(carousel._on_race_changed)
-		carousel.init(inventory.get_slot(carousel.cosmetic_category))
+		carousel.init(inventory.get_slot(carousel.key))
+		
+	RaceCarousel.init(character.data.character_race) 
+	ClassCarousel.init(character.data.character_class)
 	
-    RaceCarousel._race_changed.connect(_on_race_changed)
-    ClassCarousel._character_class_changed.connect(_on_class_changed)
-	
-    CreateButton.pressed.connect(create_character)
+	CreateButton.pressed.connect(create_character)
 	NameInput.text = character.data.character_name 
 
 
@@ -43,11 +43,11 @@ func create_character():
 	character.data.character_name = NameInput.text 
 	
 	# give hang glider
-	character.data.set_new_stack(
-		Inventory.InventoryCategory.CHARACTER_EQUIPMENTS, 
-		Travel.TravelCategory.HANG_GLIDING,
-		Database.items.get_by_name("Hang Glider")
-	)
+#	character.data.set_new_stack(
+#		Inventory.InventoryCategory.CHARACTER_EQUIPMENTS, 
+#		Travel.TravelCategory.HANG_GLIDING,
+#		Database.items.get_by_name("Hang Glider")
+#	)
 	
 	save_manager.save_character(character.data)
 

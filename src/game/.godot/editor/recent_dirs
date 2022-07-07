@@ -1,11 +1,10 @@
+res://resources/races
+res://resources/classes
 res://resources/items/equipments/travels
 res://resources/environment
 res://scenes/terrain
 res://scripts/main
 res://resources/ui
-res://resources/classes
-res://resources/races
-res://resources/items/cosmetics
 res://scripts/databases
 res://scenes/ui/components
 C:/Users/mathi/Desktop/Voxel/src/game/scripts/environment

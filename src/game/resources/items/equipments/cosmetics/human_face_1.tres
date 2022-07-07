@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c8n8mbk4m7u7k"]
+
+[ext_resource type="Script" path="res://scripts/items/items/equipments/cosmetic.gd" id="1_n8lry"]
+[ext_resource type="ArrayMesh" uid="uid://b5dtvrm6iypwg" path="res://assets/items/items/cosmetics/face.vox" id="1_qovev"]
+
+[resource]
+script = ExtResource("1_n8lry")
+name = "Human Face 1"
+is_collectable = false
+is_stackable = false
+max_stack_size = 1
+mesh = ExtResource("1_qovev")
+item_category = 1
+equipment_category = 3
+character_class = null
+stats = null
+cosmetic_category = 1

@@ -18,11 +18,11 @@ func _on_index_changed(_index: int):
 
 
 func init(default_race: Race = null):
-    if len(list) < 0:
-        return
+	if len(list) < 0:
+		return
 
-    if default_race == null:
+	if default_race == null:
 		race = list[0]
-    else:
-        index = list.find(default_race, 0)
+	else:
+		index = list.find(default_race, 0)
 

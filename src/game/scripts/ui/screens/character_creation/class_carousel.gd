@@ -16,10 +16,10 @@ func _on_index_changed(_index: int):
 
 
 func init(default_class: Class = null):
-    if len(list) < 0:
-        return
+	if len(list) < 0:
+		return
 
-    if default_class == null:
-        character_class = list[0]
-    else:
-        index = list.find(default_class, 0)
+	if default_class == null:
+		character_class = list[0]
+	else:
+		index = list.find(default_class, 0)
