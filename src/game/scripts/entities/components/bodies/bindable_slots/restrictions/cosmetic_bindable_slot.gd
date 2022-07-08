@@ -13,4 +13,4 @@ func _init():
 	super._init()
 
 func update_key():
-	update_slot_key(str(cosmetic_key))
+	slot_key = Cosmetic.get_key(cosmetic_key) 

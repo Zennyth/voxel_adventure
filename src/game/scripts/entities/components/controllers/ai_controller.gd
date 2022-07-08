@@ -8,7 +8,6 @@ class_name AIController
 var current_target: Character
 
 func _ready():
-	
 	if not character.is_authoritative():
 		detection.process_mode = Node.PROCESS_MODE_DISABLED 
 		return

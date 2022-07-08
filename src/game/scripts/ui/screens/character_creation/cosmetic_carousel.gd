@@ -10,7 +10,7 @@ func init(_slot: Slot):
 	slot._stack_changed.connect(_on_stack_changed)
 
 func _ready():
-	key = str(Item.ItemCategory.EQUIPMENT) + "_" + str(Equipment.EquipmentCategory.COSMETIC) + "_" + str(cosmetic_category)
+	key = Cosmetic.get_key(cosmetic_category)
 	super._ready()
 
 func _init():

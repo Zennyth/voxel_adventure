@@ -1,58 +1,93 @@
 extends Component
 class_name BindableSlot
 
-var slot_key
-func set_slot_key(item_class: String, category: String):
-	slot_key = str(item_category) + "_" + item_class + "_" + category
+###
+# BUILT-IN
+###
+func _init():
+	add_to_group("bindable_slots")
+	mesh_instance = $"." as MeshInstance3D
+	mesh_instance.mesh = null
 
+
+###
+# BUILT-IN
+# Slot
+###
+var slot_key: String = ""
 var item_category: Item.ItemCategory
+
 @export var inventory_category: Inventory.InventoryCategory = Inventory.InventoryCategory.CHARACTER_COSMETIC
 
 var slot: Slot = null:
-	set(_slot):
-		if slot: slot._stack_changed.disconnect(_on_stack_changed)
-		slot = _slot
-		if slot: slot._stack_changed.connect(_on_stack_changed)
-		update_slot()
+    set(_slot):
+        disconnect_from_slot()
+        slot = _slot
+        connect_to_slot()
+        update_slot()
 
 func _on_stack_changed(_new_stack: Stack):
-	update_slot()
+    update_slot()
 
-var part: MeshInstance3D
+
+###
+# BUILT-IN
+# MeshInstance
+###
+var mesh_instance: MeshInstance3D
 
 func visible(is_visible_var: bool):
-	if part: part.visible = is_visible_var
+	if mesh_instance: mesh_instance.visible = is_visible_var
 
 func is_visible():
-	return part.visible
+	return mesh_instance.visible
 
-
+func _on_is_active_changed(is_now_active: bool):
+    visible(is_now_active)
 
 func update_slot():
 	if not slot or slot.is_empty():
-		part.mesh = null
+		mesh_instance.mesh = null
 	else:
-		part.mesh = get_mesh(slot.stack.item)
+		mesh_instance.mesh = get_mesh(slot.stack.item)
+    
+    visible(slot.is_active)
 	
 	if is_authoritative():
 		update_stable_state()
 
-func _init():
-	add_to_group("bindable_slots")
-	part = $"." as MeshInstance3D
-	part.mesh = null
 
-
+###
+# UTILS
+###
 func get_mesh(item: Item):
 	if not item:
 		return null
-
-	if (item is Equipment or item is Cosmetic) and item.secondary_mesh and "Left" in name:
-		return item.secondary_mesh
+    
+    # TODO: Use Secondary mesh properly
+	# if (item is Equipment or item is Cosmetic) and item.secondary_mesh and "Left" in name:
+	# 	return item.secondary_mesh
 
 	return item.mesh
 
+func connect_to_slot():
+    if not slot:
+        return
+    
+    slot._stack_changed.connect(_on_stack_changed)
+    slot._is_active_changed.connect(_on_is_active_changed)
 
+func disconnect_from_slot():
+    if not slot:
+        return
+    
+    slot._stack_changed.disconnect(_on_stack_changed)
+    slot._is_active_changed.disconnect(_on_is_active_changed)
+
+
+###
+# OVERRIDE
+###
 func get_sync_key() -> String:
 	return WorldState.STATE_KEYS.BINDALBE_SLOT + "_" + str(slot_key)
 
@@ -68,9 +103,9 @@ func set_stable_state(new_state: Dictionary, component: Node = self) -> void:
 	
 	if identifier in new_state:
 		if new_state[identifier] == "":
-			part.mesh = null
+			mesh_instance.mesh = null
 		else:
 			var item: Item = Database.items.get(new_state[identifier])
-			part.mesh = get_mesh(item)
+			mesh_instance.mesh = get_mesh(item)
 	
 	super.set_stable_state(new_state, component)

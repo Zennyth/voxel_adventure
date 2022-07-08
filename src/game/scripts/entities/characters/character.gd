@@ -16,8 +16,8 @@ var data: DataManager = null:
 
 func update_cosmetics_by_class(new_class: Class):
 	var inventory_key := Inventory.InventoryCategory.CHARACTER_COSMETIC
-	data.set_new_stack(inventory_key, Cosmetic.CosmeticCategory.CHEST, new_class.default_chest)
-	data.set_new_stack(inventory_key, Cosmetic.CosmeticCategory.FEET, new_class.default_feet)
+	data.set_new_stack(inventory_key, Cosmetic.get_key(Cosmetic.CosmeticCategory.CHEST), new_class.default_chest)
+	data.set_new_stack(inventory_key, Cosmetic.get_key(Cosmetic.CosmeticCategory.FEET), new_class.default_feet)
 
 func randomize_cosmetics():
 	var inventory := data.get_inventory(Inventory.InventoryCategory.CHARACTER_COSMETIC)

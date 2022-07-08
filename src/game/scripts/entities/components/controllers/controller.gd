@@ -12,6 +12,3 @@ func is_moving() -> bool:
 
 func is_jumping() -> bool:
 	return false
-
-func is_traveling() -> bool:
-	return false

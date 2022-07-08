@@ -12,4 +12,4 @@ func _init():
 	super._init()
 
 func update_key():
-	update_slot_key(str(travel_key))
+	slot_key = Travel.get_key(travel_key) 

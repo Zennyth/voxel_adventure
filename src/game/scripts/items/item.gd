@@ -22,3 +22,7 @@ enum ItemCategory {
 	MATERIAL,
 }
 @export var item_category: ItemCategory
+
+
+static func get_key() -> String:
+    return ""

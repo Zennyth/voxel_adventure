@@ -7,7 +7,7 @@ class_name ArmorBindableSlot
 func update_slot():
 	super.update_slot()
 	if binded_cosmetic_slot: 
-		binded_cosmetic_slot.visible(part.mesh == null)
+		binded_cosmetic_slot.visible(mesh_instance.mesh == null)
 
 
 @export var armor_key: Armor.ArmorCategory:
@@ -21,5 +21,5 @@ func _init():
 	super._init()
 
 func update_key():
-	update_slot_key(str(armor_key))
+	slot_key = Armor.get_key(armor_key) 
 

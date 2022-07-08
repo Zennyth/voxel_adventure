@@ -15,3 +15,6 @@ enum ArmorCategory {
 }
 
 @export var armor_category: ArmorCategory
+
+static func get_key(category_reference: ArmorCategory) -> String:
+    return super.get_key() + "_" + str(Equipment.EquipmentCategory.ARMOR) + "_" + str(category_reference)

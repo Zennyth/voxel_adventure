@@ -15,3 +15,7 @@ enum EquipmentCategory {
 
 func _init():
 	item_category = Item.ItemCategory.EQUIPMENT
+
+
+static func get_key() -> String:
+    return super.get_key() + str(Item.ItemCategory.EQUIPMENT)
