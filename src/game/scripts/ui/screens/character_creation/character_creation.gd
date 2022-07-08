@@ -43,11 +43,11 @@ func create_character():
 	character.data.character_name = NameInput.text 
 	
 	# give hang glider
-#	character.data.set_new_stack(
-#		Inventory.InventoryCategory.CHARACTER_EQUIPMENTS, 
-#		Travel.TravelCategory.HANG_GLIDING,
-#		Database.items.get_by_name("Hang Glider")
-#	)
+	character.data.set_new_stack(
+		Inventory.InventoryCategory.CHARACTER_EQUIPMENTS, 
+		Travel.get_key(Travel.TravelCategory.HANG_GLIDING),
+		Database.items.get_by_name("Hang Glider")
+	)
 	
 	save_manager.save_character(character.data)
 
@@ -56,3 +56,8 @@ func _on_class_changed(character_class: Class):
 
 func _on_race_changed(character_race: Race):
 	character.data.character_race = character_race
+	character.data.set_new_stack(
+		Inventory.InventoryCategory.CHARACTER_COSMETIC, 
+		Cosmetic.get_key(Cosmetic.CosmeticCategory.HANDS), 
+		character_race.dictionary_cosmetics[Cosmetic.CosmeticCategory.HANDS][0]
+	)

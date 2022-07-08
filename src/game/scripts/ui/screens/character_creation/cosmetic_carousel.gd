@@ -22,7 +22,6 @@ func _on_race_changed(race: Race):
 	index = 0
 
 func _on_index_changed(_index: int):
-	print(index)
 	slot.set_stack(Stack.new(list[index], 1))
 
 func _on_stack_changed(stack: Stack):

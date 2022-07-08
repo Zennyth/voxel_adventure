@@ -56,7 +56,6 @@ shadow_enabled = true
 script = ExtResource("3_qy4cf")
 
 [node name="Inventory" parent="UI" instance=ExtResource("3_i1hxt")]
-is_generating_slot_containers = false
 
 [node name="DragPreview" parent="UI" instance=ExtResource("3_fp1ra")]
 

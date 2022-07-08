@@ -8,7 +8,7 @@ extends Resource
 ###
 func _init(_id = null, initital_stack: Stack = null):
 	if _id: id = _id
-	if initital_stack: Stack = initital_stack
+	if initital_stack: stack = initital_stack
 
 
 ###
@@ -18,12 +18,12 @@ func _init(_id = null, initital_stack: Stack = null):
 signal _stack_changed(new_stack: Stack)
 
 @export var stack: Resource:
-    set(_stack):
-        stack = _stack
-        _stack_changed.emit(stack)
+	set(_stack):
+		stack = _stack
+		_stack_changed.emit(stack)
 
 func set_stack(_stack: Stack):
-    stack = _stack
+	stack = _stack
 
 
 ###
@@ -33,9 +33,9 @@ func set_stack(_stack: Stack):
 signal _is_active_changed(is_now_active: bool)
 
 @export var is_active: bool = true:
-    set(is_now_active):
-        is_active = is_now_active
-        _is_active_changed.emit(is_active)
+	set(is_now_active):
+		is_active = is_now_active
+		_is_active_changed.emit(is_active)
 
 ###
 # UTILS

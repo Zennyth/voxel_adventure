@@ -16,5 +16,5 @@ enum TravelCategory {
 @export var speed: float = 0
 @export var gravity: float = 0
 
-static func get_key(category_reference: TravelCategory) -> String:
-    return super.get_key() + "_" + str(Equipment.EquipmentCategory.TRAVEL) + "_" + str(category_reference)
+static func get_key(category_reference = null) -> String:
+	return Equipment.get_key() + "_" + str(Equipment.EquipmentCategory.TRAVEL) + "_" + str(category_reference)

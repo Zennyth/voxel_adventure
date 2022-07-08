@@ -4,8 +4,8 @@ class_name Equipment
 enum EquipmentCategory {
 	ARMOR,
 	WEAPON,
-    TRAVEL,
-    COSMETIC
+	TRAVEL,
+	COSMETIC
 }
 
 @export var equipment_category: EquipmentCategory
@@ -17,5 +17,5 @@ func _init():
 	item_category = Item.ItemCategory.EQUIPMENT
 
 
-static func get_key() -> String:
-    return super.get_key() + str(Item.ItemCategory.EQUIPMENT)
+static func get_key(_identifier = null) -> String:
+	return Item.get_key() + str(Item.ItemCategory.EQUIPMENT)

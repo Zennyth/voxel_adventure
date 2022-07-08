@@ -24,5 +24,5 @@ enum ItemCategory {
 @export var item_category: ItemCategory
 
 
-static func get_key() -> String:
-    return ""
+static func get_key(_identifier = null) -> String:
+	return ""

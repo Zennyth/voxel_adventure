@@ -6,5 +6,5 @@ func _init():
 	update_key()
 	super._init()
 
-    func update_key():
-        slot_key = Weapon.get_key() 
+func update_key():
+	slot_key = Weapon.get_key() 

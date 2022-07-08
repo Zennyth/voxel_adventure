@@ -5,14 +5,14 @@ class_name HangGlidingState
 @onready var fall_state: State = get_node(fall_node)
 
 const inventory_key := Inventory.InventoryCategory.CHARACTER_EQUIPMENTS
-const equipment_key := Travel.TravelCategory.HANG_GLIDING
+var equipment_key := Travel.get_key(Travel.TravelCategory.HANG_GLIDING)
 
 var slot: Slot = null
 var hang_glider: Travel = null
 
 var is_hang_glider_used: bool = false:
-    get():
-        return slot.is_active and hang_glider != null
+	get:
+		return slot and slot.is_active and hang_glider != null
 
 
 func _on_travel_stack_change(stack: Stack):

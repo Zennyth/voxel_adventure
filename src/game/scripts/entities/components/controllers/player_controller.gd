@@ -33,8 +33,11 @@ func is_jumping() -> bool:
 # Equipments
 ###
 func _input(event: InputEvent) -> void:
-    if event.is_action_just_pressed("ui_traveling"):
-        set_slot_active(Travel.get_key(Travel.TravelCategory.HANG_GLIDING))
+	if not event:
+		return
+	
+	if Input.is_action_just_pressed("ui_traveling"):
+		set_slot_active(Travel.get_key(Travel.TravelCategory.HANG_GLIDING))
 
 
 ###
@@ -42,9 +45,8 @@ func _input(event: InputEvent) -> void:
 ###
 const inventory_key := Inventory.InventoryCategory.CHARACTER_EQUIPMENTS
 
-func set_slot_active(equipment_key: int, is_now_active = null):
-    var slot: Slot = player.data.get_slot(inventory_key, equipment_key)
-    if not slot:
-        return
-    
-    slot.is_active = is_now_active if (is_now_active != null and is_now_active is bool) else !slot.is_active
+func set_slot_active(equipment_key: String, is_now_active = null):
+	var slot: Slot = player.data.get_slot(inventory_key, equipment_key)
+	if not slot:
+		return
+	slot.is_active = is_now_active if (is_now_active != null and is_now_active is bool) else !slot.is_active

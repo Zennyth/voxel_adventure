@@ -15,5 +15,5 @@ enum CosmeticCategory {
 
 @export var cosmetic_category: CosmeticCategory
 
-static func get_key(category_reference: CosmeticCategory) -> String:
-    return super.get_key() + "_" + str(Equipment.EquipmentCategory.COSMETIC) + "_" + str(category_reference)
+static func get_key(category_reference = null) -> String:
+	return super.get_key() + "_" + str(Equipment.EquipmentCategory.COSMETIC) + "_" + str(category_reference)

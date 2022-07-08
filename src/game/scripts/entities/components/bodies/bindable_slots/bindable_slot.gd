@@ -20,14 +20,14 @@ var item_category: Item.ItemCategory
 @export var inventory_category: Inventory.InventoryCategory = Inventory.InventoryCategory.CHARACTER_COSMETIC
 
 var slot: Slot = null:
-    set(_slot):
-        disconnect_from_slot()
-        slot = _slot
-        connect_to_slot()
-        update_slot()
+	set(_slot):
+		disconnect_from_slot()
+		slot = _slot
+		connect_to_slot()
+		update_slot()
 
 func _on_stack_changed(_new_stack: Stack):
-    update_slot()
+	update_slot()
 
 
 ###
@@ -43,15 +43,15 @@ func is_visible():
 	return mesh_instance.visible
 
 func _on_is_active_changed(is_now_active: bool):
-    visible(is_now_active)
+	visible(is_now_active)
 
 func update_slot():
 	if not slot or slot.is_empty():
 		mesh_instance.mesh = null
 	else:
 		mesh_instance.mesh = get_mesh(slot.stack.item)
-    
-    visible(slot.is_active)
+	
+	visible(slot.is_active)
 	
 	if is_authoritative():
 		update_stable_state()
@@ -63,26 +63,26 @@ func update_slot():
 func get_mesh(item: Item):
 	if not item:
 		return null
-    
-    # TODO: Use Secondary mesh properly
+	
+	# TODO: Use Secondary mesh properly
 	# if (item is Equipment or item is Cosmetic) and item.secondary_mesh and "Left" in name:
 	# 	return item.secondary_mesh
 
 	return item.mesh
 
 func connect_to_slot():
-    if not slot:
-        return
-    
-    slot._stack_changed.connect(_on_stack_changed)
-    slot._is_active_changed.connect(_on_is_active_changed)
+	if not slot:
+		return
+	
+	slot._stack_changed.connect(_on_stack_changed)
+	slot._is_active_changed.connect(_on_is_active_changed)
 
 func disconnect_from_slot():
-    if not slot:
-        return
-    
-    slot._stack_changed.disconnect(_on_stack_changed)
-    slot._is_active_changed.disconnect(_on_is_active_changed)
+	if not slot:
+		return
+	
+	slot._stack_changed.disconnect(_on_stack_changed)
+	slot._is_active_changed.disconnect(_on_is_active_changed)
 
 
 ###
