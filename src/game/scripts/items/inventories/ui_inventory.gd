@@ -34,8 +34,8 @@ func bind_slot_containers():
 	for slot_container in slot_containers.get_children():
 		if not slot_container is SlotContainer:
 			continue
-		
-		slot_container.set_slot(inventory.get_slot(slot_container.identifier))
+		print("hello", inventory.get_slot(slot_container.key))
+		slot_container.set_slot(inventory.get_slot(slot_container.key))
 
 
 func generate_slot_containers():	

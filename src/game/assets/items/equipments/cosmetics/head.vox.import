@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxMeshImporter"
+type="ArrayMesh"
+uid="uid://clqqy8hh3r5du"
+path="res://.godot/imported/head.vox-f93b706ec1e21e6704300479f0a79ff5.mesh"
+
+[deps]
+
+source_file="res://assets/items/equipments/cosmetics/head.vox"
+dest_files=["res://.godot/imported/head.vox-f93b706ec1e21e6704300479f0a79ff5.mesh"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+pivot_mode=1

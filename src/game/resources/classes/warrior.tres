@@ -1,12 +1,13 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://b6ruhihi86j2j"]
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://b6ruhihi86j2j"]
 
-[ext_resource type="Resource" uid="uid://bsm6v8didxidt" path="res://resources/items/equipments/cosmetics/default_warrior_chest_plate.tres" id="1_2t2vs"]
+[ext_resource type="Resource" path="res://resources/items/equipments/cosmetics/default_warrior_chest_plate.tres" id="1_2t2vs"]
 [ext_resource type="Script" path="res://scripts/entities/characters/classes/class.gd" id="1_6dqwg"]
-[ext_resource type="Resource" uid="uid://beu4vb8glncw0" path="res://resources/items/equipments/cosmetics/default_warrior_shoe.tres" id="2_250je"]
+[ext_resource type="Resource" path="res://resources/items/equipments/cosmetics/default_warrior_shoe.tres" id="2_250je"]
+[ext_resource type="Resource" uid="uid://be0t61xcnyn85" path="res://resources/items/equipments/weapons/short_sword.tres" id="3_oatxn"]
 
 [resource]
 script = ExtResource("1_6dqwg")
 name = "Warrior"
 default_chest = ExtResource("1_2t2vs")
 default_feet = ExtResource("2_250je")
-weapons = []
+default_weapons = [ExtResource("3_oatxn")]

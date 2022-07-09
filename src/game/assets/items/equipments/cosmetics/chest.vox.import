@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxMeshImporter"
+type="ArrayMesh"
+uid="uid://cvwthisgd5vxu"
+path="res://.godot/imported/chest.vox-379c15db40055de7489e3407f4b3241c.mesh"
+
+[deps]
+
+source_file="res://assets/items/equipments/cosmetics/chest.vox"
+dest_files=["res://.godot/imported/chest.vox-379c15db40055de7489e3407f4b3241c.mesh"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+pivot_mode=1

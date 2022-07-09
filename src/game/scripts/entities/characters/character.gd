@@ -78,7 +78,7 @@ func update():
 ###
 func get_unstable_state(state: Dictionary = { }, component: Node = self) -> Dictionary:
 	state[WorldState.STATE_KEYS.POSITION] = character.position
-	state[WorldState.STATE_KEYS.ROTATION] = character.rotation
+	state[WorldState.STATE_KEYS.ROTATION] = character.Body.rotation
 	
 	return super.get_unstable_state(state, component)
 
@@ -86,7 +86,7 @@ func set_unstable_state(new_state: Dictionary, component: Node = self) -> void:
 	for key in new_state.keys():
 		match key:
 			WorldState.STATE_KEYS.ROTATION:
-				character.set_rotation(new_state[key])
+				character.Body.set_rotation(new_state[key])
 			WorldState.STATE_KEYS.POSITION:
 				character.set_position(new_state[key])
 	

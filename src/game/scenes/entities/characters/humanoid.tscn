@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://scripts/entities/components/controllers/controller.gd" id="7_5sdow"]
 [ext_resource type="Script" path="res://scripts/entities/components/state_machine/states/character/fall/fall.gd" id="7_bbhi8"]
 [ext_resource type="Script" path="res://scripts/entities/components/state_machine/states/character/fall/hang_gliding.gd" id="8_s5fke"]
-[ext_resource type="PackedScene" uid="uid://ldyevgu588h2" path="res://scenes/entities/components/bodies/body.tscn" id="9_i3kkh"]
+[ext_resource type="PackedScene" uid="uid://his6n0j6fcog" path="res://scenes/entities/components/bodies/body.tscn" id="9_i3kkh"]
 [ext_resource type="Script" path="res://scripts/entities/components/ui/label.gd" id="9_iss3i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i0jrs"]

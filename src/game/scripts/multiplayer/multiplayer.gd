@@ -7,10 +7,10 @@ var is_ready := false
 
 var connection_strategy: ConnectionStrategy
 func get_strategy() -> ConnectionStrategy:
-#	if "--server" in OS.get_cmdline_args():
-#		return ServerConnectionStrategy.new()
-#	else:
-#		return ClientConnectionStrategy.new()
+	if "--server" in OS.get_cmdline_args():
+		return ServerConnectionStrategy.new()
+	else:
+		return ClientConnectionStrategy.new()
 	
 	return SoloConnectionStrategy.new()
 

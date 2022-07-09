@@ -7,7 +7,7 @@ var empty_texture = preload("res://assets/items/inventories/item_slot_empty_back
 var default_style := StyleBoxTexture.new()
 var empty_style := StyleBoxTexture.new()
 
-var id
+var key
 
 @onready var stack_container: StackContainer = $StackContainer
 

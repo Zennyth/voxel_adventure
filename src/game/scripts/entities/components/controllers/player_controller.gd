@@ -37,13 +37,24 @@ func _input(event: InputEvent) -> void:
 		return
 	
 	if Input.is_action_just_pressed("ui_traveling"):
-		set_slot_active(Travel.get_key(Travel.TravelCategory.HANG_GLIDING))
+		var is_slot_active = get_is_slot_active(Travel.get_key(Travel.TravelCategory.HANG_GLIDING))
+		
+		set_slot_active(Travel.get_key(Travel.TravelCategory.HANG_GLIDING), !is_slot_active)
+		set_slot_active(Weapon.get_key(Weapon.SlotCategory.LEFT_HAND), is_slot_active)
+		set_slot_active(Weapon.get_key(Weapon.SlotCategory.RIGHT_HAND), is_slot_active)
 
 
 ###
 # UTILS
 ###
 const inventory_key := Inventory.InventoryCategory.CHARACTER_EQUIPMENTS
+
+func get_is_slot_active(equipment_key: String) -> bool:
+	var slot: Slot = player.data.get_slot(inventory_key, equipment_key)
+	if not slot:
+		return false
+	
+	return slot.is_active
 
 func set_slot_active(equipment_key: String, is_now_active = null):
 	var slot: Slot = player.data.get_slot(inventory_key, equipment_key)

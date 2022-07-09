@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ldyevgu588h2"]
+[gd_scene load_steps=32 format=3 uid="uid://his6n0j6fcog"]
 
 [ext_resource type="Script" path="res://scripts/entities/components/bodies/humanoid.gd" id="1_ufh77"]
 [ext_resource type="Script" path="res://scripts/entities/components/bodies/bindable_slots/bindable_slot_manager.gd" id="2_dou0n"]
@@ -6,10 +6,13 @@
 [ext_resource type="ArrayMesh" uid="uid://fulaqlp56xy7" path="res://assets/entities/components/bodies/body_parts/foot.vox" id="3_lyjmw"]
 [ext_resource type="ArrayMesh" uid="uid://dnkw4mnj8rp8t" path="res://assets/entities/components/bodies/body_parts/hand.vox" id="4_g7b28"]
 [ext_resource type="Script" path="res://scripts/entities/components/bodies/bindable_slots/restrictions/cosmetic_bindable_slot.gd" id="4_k5kgo"]
-[ext_resource type="ArrayMesh" uid="uid://b5dtvrm6iypwg" path="res://assets/items/items/cosmetics/face.vox" id="5_ahwgx"]
-[ext_resource type="ArrayMesh" uid="uid://c2f52amh01a6y" path="res://assets/items/items/cosmetics/hair.vox" id="6_jkjw4"]
-[ext_resource type="ArrayMesh" uid="uid://dbg8mhf5xhwd1" path="res://assets/items/items/cosmetics/eyes.vox" id="7_fx0b1"]
+[ext_resource type="Script" path="res://scripts/entities/components/bodies/bindable_slots/restrictions/armor_bindable_slot.gd" id="5_2w50y"]
+[ext_resource type="ArrayMesh" uid="uid://b5dtvrm6iypwg" path="res://assets/items/equipments/cosmetics/face.vox" id="6_5nqx2"]
+[ext_resource type="ArrayMesh" uid="uid://c2f52amh01a6y" path="res://assets/items/equipments/cosmetics/hair.vox" id="7_o06cj"]
+[ext_resource type="ArrayMesh" uid="uid://dbg8mhf5xhwd1" path="res://assets/items/equipments/cosmetics/eyes.vox" id="8_iyg4v"]
+[ext_resource type="Script" path="res://scripts/entities/components/bodies/bindable_slots/restrictions/weapon_bindable_slot.gd" id="10_j3q0k"]
 [ext_resource type="Script" path="res://scripts/entities/components/bodies/bindable_slots/restrictions/travel_bindable_slot.gd" id="10_rruat"]
+[ext_resource type="ArrayMesh" uid="uid://bb7crlo6wuu8f" path="res://assets/items/equipments/weapons/VoxelSword.obj" id="12_7xkbu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cbwa2"]
 resource_name = "Iron Black Mat"
@@ -513,10 +516,15 @@ cosmetic_key = 3
 
 [node name="ChestPlate" type="MeshInstance3D" parent="Armature/Skeleton3D/ChestAttachment"]
 transform = Transform3D(-2.32645e-25, -1.93224e-24, 0.25, -3.72529e-09, 0.25, 1.38617e-24, -0.25, -3.72529e-09, 1.03398e-25, -0.0958622, 0, 0)
-visible = false
+script = ExtResource("5_2w50y")
+inventory_category = 1
+binded_cosmetic_slot_path = NodePath("../Chest")
+armor_key = 1
 
 [node name="ChestAmulet" type="MeshInstance3D" parent="Armature/Skeleton3D/ChestAttachment"]
-visible = false
+script = ExtResource("5_2w50y")
+inventory_category = 1
+armor_key = 6
 
 [node name="HeadAttachment" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
 transform = Transform3D(1, -1.64032e-18, -6.05951e-21, 1.64032e-18, 0.999973, 0.00738724, -6.05806e-21, -0.00738724, 0.999973, 5.44109e-17, 3.28631, 0.0450451)
@@ -525,19 +533,19 @@ bone_idx = 1
 
 [node name="HeadFace" type="MeshInstance3D" parent="Armature/Skeleton3D/HeadAttachment"]
 transform = Transform3D(-1.00974e-27, 6.61854e-27, 0.2, -3.0268e-09, 0.2, -7.09612e-26, -0.2, -3.0268e-09, -2.01948e-28, -4.05286, -0.0300331, 4.06546)
-mesh = ExtResource("5_ahwgx")
+mesh = ExtResource("6_5nqx2")
 script = ExtResource("4_k5kgo")
 cosmetic_key = 1
 
 [node name="HeadHair" type="MeshInstance3D" parent="Armature/Skeleton3D/HeadAttachment"]
 transform = Transform3D(-9.08768e-28, 6.61854e-27, 0.2, -3.0268e-09, 0.2, -7.09612e-26, -0.2, -3.0268e-09, -2.01948e-28, -4.05286, -0.0300331, 4.06546)
-mesh = ExtResource("6_jkjw4")
+mesh = ExtResource("7_o06cj")
 script = ExtResource("4_k5kgo")
 cosmetic_key = 0
 
 [node name="HeadLeftEye" type="MeshInstance3D" parent="Armature/Skeleton3D/HeadAttachment"]
 transform = Transform3D(-2.12046e-27, 6.6004e-27, 0.2, 0, 0.2, -7.09612e-26, -0.2, 0, -2.01948e-28, -3.957, 0.0529666, 4.14746)
-mesh = ExtResource("7_fx0b1")
+mesh = ExtResource("8_iyg4v")
 script = ExtResource("4_k5kgo")
 cosmetic_key = 2
 
@@ -547,7 +555,8 @@ visible = false
 
 [node name="HeadHelmet" type="MeshInstance3D" parent="Armature/Skeleton3D/HeadAttachment"]
 transform = Transform3D(1, 2.63616e-17, -1.57041e-18, -2.63616e-17, 0.992928, -0.118722, -1.57041e-18, 0.118722, 0.992928, -5.79956e-17, -2.18444, -0.261189)
-visible = false
+script = ExtResource("5_2w50y")
+armor_key = 0
 
 [node name="RightFootAttachment" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
 transform = Transform3D(1, 3.41061e-13, 1.34309e-06, 1.26209e-06, -0.342021, -0.939692, 4.59364e-07, 0.939692, -0.342021, -0.7, 0.6, -0.5)
@@ -562,7 +571,10 @@ cosmetic_key = 5
 
 [node name="RightShoe" type="MeshInstance3D" parent="Armature/Skeleton3D/RightFootAttachment"]
 transform = Transform3D(1.19209e-08, -2.4869e-14, 0.2, -0.2, 1.49012e-08, 7.10543e-15, -7.45058e-09, -0.2, 1.19209e-08, -0.0960003, 0.000711441, 0.220615)
-visible = false
+script = ExtResource("5_2w50y")
+inventory_category = 1
+binded_cosmetic_slot_path = NodePath("../RightFoot")
+armor_key = 3
 
 [node name="LeftFootAttachment" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
 transform = Transform3D(1, 3.41061e-13, -1.34309e-06, -1.26209e-06, 0.342021, -0.939692, 4.59364e-07, 0.939692, 0.342021, 0.7, 0.5, 4.47035e-08)
@@ -577,7 +589,10 @@ cosmetic_key = 5
 
 [node name="LeftShoe" type="MeshInstance3D" parent="Armature/Skeleton3D/LeftFootAttachment"]
 transform = Transform3D(1.19209e-08, 3.19744e-14, 0.2, -0.2, 1.49012e-08, -7.10543e-15, -7.45058e-09, -0.2, 1.19209e-08, -0.0960003, 0.00071153, 0.220615)
-visible = false
+script = ExtResource("5_2w50y")
+inventory_category = 1
+binded_cosmetic_slot_path = NodePath("../LeftFoot")
+armor_key = 3
 
 [node name="RightHandAttachment" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
 transform = Transform3D(1, -1.38169e-18, 1.10467e-06, 1.0978e-06, -0.111384, -0.993777, 1.23043e-07, 0.993777, -0.111384, -1.6, 2.69005, 0.278215)
@@ -585,6 +600,11 @@ bone_name = "Arm R"
 bone_idx = 3
 
 [node name="RightHandWeapon" type="MeshInstance3D" parent="Armature/Skeleton3D/RightHandAttachment"]
+transform = Transform3D(0.5, 2.57572e-14, 0, 7.10543e-15, -1.86265e-08, 0.5, -1.45661e-13, -0.5, -1.86265e-08, 0.606176, 0.233175, 6.28743)
+mesh = ExtResource("12_7xkbu")
+script = ExtResource("10_j3q0k")
+inventory_category = 1
+weapon_key = 1
 
 [node name="RightHand" type="MeshInstance3D" parent="Armature/Skeleton3D/RightHandAttachment"]
 transform = Transform3D(1.19209e-08, -8.61533e-14, 0.2, -0.2, 1.30385e-08, -1.06581e-14, -3.72529e-09, -0.2, 1.19209e-08, -0.383246, 0.135055, 0.40875)
@@ -594,7 +614,10 @@ cosmetic_key = 4
 
 [node name="RightGlove" type="MeshInstance3D" parent="Armature/Skeleton3D/RightHandAttachment"]
 transform = Transform3D(1.19209e-08, -8.61533e-14, 0.2, -0.2, 1.30385e-08, -1.06581e-14, -3.72529e-09, -0.2, 1.19209e-08, -0.383246, 0.135055, 0.40875)
-visible = false
+script = ExtResource("5_2w50y")
+inventory_category = 1
+binded_cosmetic_slot_path = NodePath("../RightHand")
+armor_key = 2
 
 [node name="LeftHandAttachment" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
 transform = Transform3D(1, -1.38169e-18, -1.10467e-06, -1.0978e-06, -0.111384, -0.993777, -1.23043e-07, 0.993777, -0.111384, 1.6, 2.69004, -0.321786)
@@ -602,6 +625,9 @@ bone_name = "Arm L"
 bone_idx = 2
 
 [node name="LeftHandWeapon" type="MeshInstance3D" parent="Armature/Skeleton3D/LeftHandAttachment"]
+transform = Transform3D(0.499067, -0.0303343, 0.00339992, -0.00339992, 0.000103164, 0.499988, -0.0303343, -0.499079, -0.00010325, 0.930156, 0.470968, 6.34658)
+script = ExtResource("10_j3q0k")
+inventory_category = 1
 
 [node name="LeftHand" type="MeshInstance3D" parent="Armature/Skeleton3D/LeftHandAttachment"]
 transform = Transform3D(1.19209e-08, 2.95319e-14, 0.2, -0.2, 1.11759e-08, 0, 0, -0.2, 1.19209e-08, -0.466302, 0.256227, 0.398659)
@@ -611,6 +637,10 @@ cosmetic_key = 4
 
 [node name="LeftGlove" type="MeshInstance3D" parent="Armature/Skeleton3D/LeftHandAttachment"]
 transform = Transform3D(1.19209e-08, 2.95319e-14, 0.2, -0.2, 1.11759e-08, 0, 0, -0.2, 1.19209e-08, -0.466302, 0.256227, 0.398659)
+script = ExtResource("5_2w50y")
+inventory_category = 1
+binded_cosmetic_slot_path = NodePath("../LeftHand")
+armor_key = 2
 
 [node name="Travel" type="MeshInstance3D" parent="Armature/Skeleton3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.59032, 0)

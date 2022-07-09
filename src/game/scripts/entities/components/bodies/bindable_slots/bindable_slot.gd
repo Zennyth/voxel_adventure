@@ -38,9 +38,11 @@ var mesh_instance: MeshInstance3D
 
 func visible(is_visible_var: bool):
 	if mesh_instance: mesh_instance.visible = is_visible_var
+	if is_authoritative():
+		update_stable_state()
 
 func is_visible():
-	return mesh_instance.visible
+	return slot and slot.is_active
 
 func _on_is_active_changed(is_now_active: bool):
 	visible(is_now_active)
@@ -91,10 +93,15 @@ func disconnect_from_slot():
 func get_sync_key() -> String:
 	return WorldState.STATE_KEYS.BINDALBE_SLOT + "_" + str(slot_key)
 
+func get_sync_is_active_key() -> String:
+	return WorldState.STATE_KEYS.BINDALBE_SLOT_IS_ACTIVE + "_" + str(slot_key)
+
 func get_stable_state(state: Dictionary = { }, component: Node = self) -> Dictionary:
 	
 	if slot_key != null:
 		state[get_sync_key()] = slot.get_item_name() if slot and not slot.is_empty() else ""
+	
+	state[get_sync_is_active_key()] = is_visible()
 	
 	return super.get_stable_state(state, component)
 
@@ -105,7 +112,10 @@ func set_stable_state(new_state: Dictionary, component: Node = self) -> void:
 		if new_state[identifier] == "":
 			mesh_instance.mesh = null
 		else:
-			var item: Item = Database.items.get(new_state[identifier])
+			var item: Item = Database.items.get_by_name(new_state[identifier])
 			mesh_instance.mesh = get_mesh(item)
+	
+	if get_sync_is_active_key() in new_state:
+		visible(new_state[get_sync_is_active_key()])
 	
 	super.set_stable_state(new_state, component)

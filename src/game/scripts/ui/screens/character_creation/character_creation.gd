@@ -53,6 +53,11 @@ func create_character():
 
 func _on_class_changed(character_class: Class):
 	character.data.character_class = character_class
+	character.data.set_new_stack(
+		Inventory.InventoryCategory.CHARACTER_EQUIPMENTS, 
+		Weapon.get_key(Weapon.SlotCategory.RIGHT_HAND), 
+		character_class.default_weapons[0]
+	)
 
 func _on_race_changed(character_race: Race):
 	character.data.character_race = character_race

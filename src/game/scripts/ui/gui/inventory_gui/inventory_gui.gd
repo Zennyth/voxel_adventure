@@ -52,7 +52,7 @@ func slot_container_gui_input(event, slot_container: SlotContainer):
 			hide_item_tooltip()
 
 func drag_stack_container(slot_container: SlotContainer):
-	var slot_index = slot_container.slot.id
+	var slot_index = slot_container.key
 	var slot: Slot = slot_container.slot
 
 	# pick item
@@ -113,7 +113,7 @@ func split_stack_container(slot_container: SlotContainer):
 func show_item_tooltip(slot_container):
 	var slot: Slot = slot_container.slot
 
-	if not slot.is_empty() and drag_preview.is_empty():
+	if slot and not slot.is_empty() and drag_preview.is_empty():
 		tooltip.display_info(slot.get_item_name())
 		tooltip.show()
 	else:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c2otyrc5p71hr"]
+[gd_scene load_steps=14 format=3 uid="uid://c2otyrc5p71hr"]
 
 [ext_resource type="Script" path="res://scripts/main/world.gd" id="1_fpupi"]
 [ext_resource type="Shader" path="res://scripts/environment/sky.gdshader" id="1_rvima"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bnap8qvpaghvn" path="res://scenes/items/inventories/player_equipments.tscn" id="3_i1hxt"]
 [ext_resource type="Script" path="res://scripts/ui/gui/inventory_gui/inventory_gui.gd" id="3_qy4cf"]
 [ext_resource type="PackedScene" uid="uid://e1hth0b0wqyl" path="res://scenes/items/tooltip.tscn" id="4_oljcv"]
+[ext_resource type="PackedScene" uid="uid://c4askhe2dmpsn" path="res://scenes/items/slots/slot.tscn" id="5_thcwg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_72lcx"]
 shader = ExtResource("1_rvima")
@@ -56,6 +57,8 @@ shadow_enabled = true
 script = ExtResource("3_qy4cf")
 
 [node name="Inventory" parent="UI" instance=ExtResource("3_i1hxt")]
+slot_container_template = ExtResource("5_thcwg")
+is_generating_slot_containers = false
 
 [node name="DragPreview" parent="UI" instance=ExtResource("3_fp1ra")]
 

@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxMeshImporter"
+type="ArrayMesh"
+uid="uid://c2f52amh01a6y"
+path="res://.godot/imported/hair.vox-137098598c743410d50005e11aca5ca2.mesh"
+
+[deps]
+
+source_file="res://assets/items/equipments/cosmetics/hair.vox"
+dest_files=["res://.godot/imported/hair.vox-137098598c743410d50005e11aca5ca2.mesh"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+pivot_mode=1

@@ -11,7 +11,8 @@ enum ArmorCategory {
 	GLOVES,
 	SHOES,
 	SHOULDER_PADS,
-	RING
+	RING,
+	AMULET,
 }
 
 @export var armor_category: ArmorCategory

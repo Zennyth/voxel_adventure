@@ -1,7 +1,7 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://huful536wrx4"]
+[gd_resource type="Resource" load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scripts/items/items/equipments/cosmetic.gd" id="1_n8lry"]
-[ext_resource type="ArrayMesh" uid="uid://bed73pokl8jum" path="res://assets/items/items/cosmetics/hand.vox" id="1_tuf77"]
+[ext_resource type="ArrayMesh" path="res://assets/items/equipments/cosmetics/hand.vox" id="1_tuf77"]
 
 [resource]
 script = ExtResource("1_n8lry")

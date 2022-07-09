@@ -3,10 +3,13 @@ extends SlotContainer
 @export var identifier: Travel.TravelCategory:
 	set(_identifier):
 		identifier = _identifier
-		id = identifier
+		update_id()
 
 func _init():
-	id = identifier
+	update_id()
+
+func update_id():
+	key = Travel.get_key(identifier)
 
 
 func is_accepting_item(item: Item) -> bool:

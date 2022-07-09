@@ -1,119 +1,168 @@
-[gd_resource type="Resource" load_steps=30 format=3 uid="uid://cl7hmgjge47ov"]
+[gd_resource type="Resource" load_steps=39 format=3 uid="uid://dji3wox0021mx"]
 
-[ext_resource type="Resource" uid="uid://b6ruhihi86j2j" path="res://resources/classes/warrior.tres" id="1_eqxx4"]
-[ext_resource type="Resource" uid="uid://c5rdgp3u75oq" path="res://resources/races/human.tres" id="2_etk04"]
-[ext_resource type="Script" path="res://scripts/items/inventories/dictionaries/dictionary_inventory.gd" id="3_cvnwx"]
-[ext_resource type="Script" path="res://scripts/items/slots/slot.gd" id="4_e1esr"]
-[ext_resource type="Resource" uid="uid://bsm6v8didxidt" path="res://resources/items/equipments/cosmetics/default_warrior_chest_plate.tres" id="5_lidb3"]
-[ext_resource type="Script" path="res://scripts/items/stacks/stack.gd" id="6_j1owt"]
-[ext_resource type="Resource" uid="uid://c8n8mbk4m7u7k" path="res://resources/items/equipments/cosmetics/human_face_1.tres" id="7_6p405"]
-[ext_resource type="Resource" uid="uid://dgfttmkv2raf" path="res://resources/items/equipments/cosmetics/human_hair_2.tres" id="8_jlklq"]
-[ext_resource type="Resource" uid="uid://cmbaqnngtq7iw" path="res://resources/items/equipments/cosmetics/human_eyes_1.tres" id="9_byoxe"]
-[ext_resource type="Resource" uid="uid://beu4vb8glncw0" path="res://resources/items/equipments/cosmetics/default_warrior_shoe.tres" id="10_eoil8"]
-[ext_resource type="Resource" uid="uid://huful536wrx4" path="res://resources/items/equipments/cosmetics/human_hand_1.tres" id="11_wamu7"]
-[ext_resource type="Resource" uid="uid://dflcawiye0tgp" path="res://resources/items/equipments/travels/hang_glider.tres" id="12_k4nds"]
-[ext_resource type="Script" path="res://scripts/entities/characters/data_manager.gd" id="13_fefsy"]
+[ext_resource type="Resource" uid="uid://b6ruhihi86j2j" path="res://resources/classes/warrior.tres" id="1_82et3"]
+[ext_resource type="Resource" uid="uid://c5rdgp3u75oq" path="res://resources/races/human.tres" id="2_qvdl3"]
+[ext_resource type="Script" path="res://scripts/items/inventories/dictionaries/dictionary_inventory.gd" id="3_t65lw"]
+[ext_resource type="Script" path="res://scripts/items/slots/slot.gd" id="4_b4ekg"]
+[ext_resource type="Resource" path="res://resources/items/equipments/cosmetics/default_warrior_chest_plate.tres" id="5_7hpgv"]
+[ext_resource type="Script" path="res://scripts/items/stacks/stack.gd" id="6_27xgr"]
+[ext_resource type="Resource" path="res://resources/items/equipments/cosmetics/human_face_1.tres" id="7_hyvi6"]
+[ext_resource type="Resource" path="res://resources/items/equipments/cosmetics/human_hair_2.tres" id="8_crbo1"]
+[ext_resource type="Resource" path="res://resources/items/equipments/cosmetics/human_eyes_1.tres" id="9_isyu8"]
+[ext_resource type="Resource" path="res://resources/items/equipments/cosmetics/default_warrior_shoe.tres" id="10_t2eka"]
+[ext_resource type="Resource" path="res://resources/items/equipments/cosmetics/human_hand_1.tres" id="11_drtix"]
+[ext_resource type="Resource" uid="uid://be0t61xcnyn85" path="res://resources/items/equipments/weapons/short_sword.tres" id="12_u5e0a"]
+[ext_resource type="Resource" uid="uid://dflcawiye0tgp" path="res://resources/items/equipments/travels/hang_glider.tres" id="13_ru1i1"]
+[ext_resource type="Script" path="res://scripts/entities/characters/data_manager.gd" id="14_abdp1"]
 
-[sub_resource type="Resource" id="Resource_s1orh"]
-script = ExtResource("6_j1owt")
-item = ExtResource("8_jlklq")
+[sub_resource type="Resource" id="Resource_m2eyu"]
+script = ExtResource("4_b4ekg")
+id = "0_0_0"
+is_active = true
+
+[sub_resource type="Resource" id="Resource_m38lb"]
+script = ExtResource("6_27xgr")
+item = ExtResource("8_crbo1")
 quantity = 1
 
-[sub_resource type="Resource" id="Resource_es62y"]
-script = ExtResource("4_e1esr")
+[sub_resource type="Resource" id="Resource_q2gg1"]
+script = ExtResource("4_b4ekg")
 id = "0_3_0"
-stack = SubResource("Resource_s1orh")
+stack = SubResource("Resource_m38lb")
 is_active = true
 
-[sub_resource type="Resource" id="Resource_ip7gq"]
-script = ExtResource("6_j1owt")
-item = ExtResource("7_6p405")
+[sub_resource type="Resource" id="Resource_vi4m2"]
+script = ExtResource("6_27xgr")
+item = ExtResource("7_hyvi6")
 quantity = 1
 
-[sub_resource type="Resource" id="Resource_u0iwt"]
-script = ExtResource("4_e1esr")
+[sub_resource type="Resource" id="Resource_eyp28"]
+script = ExtResource("4_b4ekg")
 id = "0_3_1"
-stack = SubResource("Resource_ip7gq")
+stack = SubResource("Resource_vi4m2")
 is_active = true
 
-[sub_resource type="Resource" id="Resource_88e5h"]
-script = ExtResource("6_j1owt")
-item = ExtResource("9_byoxe")
+[sub_resource type="Resource" id="Resource_tnxkb"]
+script = ExtResource("6_27xgr")
+item = ExtResource("9_isyu8")
 quantity = 1
 
-[sub_resource type="Resource" id="Resource_qcmhw"]
-script = ExtResource("4_e1esr")
+[sub_resource type="Resource" id="Resource_3kx0q"]
+script = ExtResource("4_b4ekg")
 id = "0_3_2"
-stack = SubResource("Resource_88e5h")
+stack = SubResource("Resource_tnxkb")
 is_active = true
 
-[sub_resource type="Resource" id="Resource_yp4kc"]
-script = ExtResource("6_j1owt")
-item = ExtResource("5_lidb3")
+[sub_resource type="Resource" id="Resource_pl52h"]
+script = ExtResource("6_27xgr")
+item = ExtResource("5_7hpgv")
 quantity = 1
 
-[sub_resource type="Resource" id="Resource_lh6il"]
-script = ExtResource("4_e1esr")
+[sub_resource type="Resource" id="Resource_oilay"]
+script = ExtResource("4_b4ekg")
 id = "0_3_3"
-stack = SubResource("Resource_yp4kc")
+stack = SubResource("Resource_pl52h")
 is_active = true
 
-[sub_resource type="Resource" id="Resource_7cy3j"]
-script = ExtResource("6_j1owt")
-item = ExtResource("11_wamu7")
+[sub_resource type="Resource" id="Resource_p7g43"]
+script = ExtResource("6_27xgr")
+item = ExtResource("11_drtix")
 quantity = 1
 
-[sub_resource type="Resource" id="Resource_j7htw"]
-script = ExtResource("4_e1esr")
+[sub_resource type="Resource" id="Resource_cbquk"]
+script = ExtResource("4_b4ekg")
 id = "0_3_4"
-stack = SubResource("Resource_7cy3j")
+stack = SubResource("Resource_p7g43")
 is_active = true
 
-[sub_resource type="Resource" id="Resource_s8qds"]
-script = ExtResource("6_j1owt")
-item = ExtResource("10_eoil8")
+[sub_resource type="Resource" id="Resource_lidyc"]
+script = ExtResource("6_27xgr")
+item = ExtResource("10_t2eka")
 quantity = 1
 
-[sub_resource type="Resource" id="Resource_o18em"]
-script = ExtResource("4_e1esr")
+[sub_resource type="Resource" id="Resource_lexxr"]
+script = ExtResource("4_b4ekg")
 id = "0_3_5"
-stack = SubResource("Resource_s8qds")
+stack = SubResource("Resource_lidyc")
 is_active = true
 
-[sub_resource type="Resource" id="Resource_ea3bt"]
-script = ExtResource("3_cvnwx")
+[sub_resource type="Resource" id="Resource_3xwjd"]
+script = ExtResource("3_t65lw")
 slots = {
-"0_3_0": SubResource("Resource_es62y"),
-"0_3_1": SubResource("Resource_u0iwt"),
-"0_3_2": SubResource("Resource_qcmhw"),
-"0_3_3": SubResource("Resource_lh6il"),
-"0_3_4": SubResource("Resource_j7htw"),
-"0_3_5": SubResource("Resource_o18em")
+"0_0_0": SubResource("Resource_m2eyu"),
+"0_3_0": SubResource("Resource_q2gg1"),
+"0_3_1": SubResource("Resource_eyp28"),
+"0_3_2": SubResource("Resource_3kx0q"),
+"0_3_3": SubResource("Resource_oilay"),
+"0_3_4": SubResource("Resource_cbquk"),
+"0_3_5": SubResource("Resource_lexxr")
 }
 
-[sub_resource type="Resource" id="Resource_qrshm"]
-script = ExtResource("6_j1owt")
-item = ExtResource("12_k4nds")
+[sub_resource type="Resource" id="Resource_y4of1"]
+script = ExtResource("4_b4ekg")
+id = "0_0_1"
+is_active = true
+
+[sub_resource type="Resource" id="Resource_fe338"]
+script = ExtResource("4_b4ekg")
+id = "0_0_2"
+is_active = true
+
+[sub_resource type="Resource" id="Resource_xrd8y"]
+script = ExtResource("4_b4ekg")
+id = "0_0_3"
+is_active = true
+
+[sub_resource type="Resource" id="Resource_lx0ql"]
+script = ExtResource("4_b4ekg")
+id = "0_0_6"
+is_active = true
+
+[sub_resource type="Resource" id="Resource_40omb"]
+script = ExtResource("4_b4ekg")
+id = "0_1_0"
+is_active = true
+
+[sub_resource type="Resource" id="Resource_7m5vu"]
+script = ExtResource("6_27xgr")
+item = ExtResource("12_u5e0a")
 quantity = 1
 
-[sub_resource type="Resource" id="Resource_3gvbx"]
-script = ExtResource("4_e1esr")
-id = "0_2_0"
-stack = SubResource("Resource_qrshm")
-is_active = false
+[sub_resource type="Resource" id="Resource_5qolw"]
+script = ExtResource("4_b4ekg")
+id = "0_1_1"
+stack = SubResource("Resource_7m5vu")
+is_active = true
 
-[sub_resource type="Resource" id="Resource_4vxow"]
-script = ExtResource("3_cvnwx")
+[sub_resource type="Resource" id="Resource_87c17"]
+script = ExtResource("6_27xgr")
+item = ExtResource("13_ru1i1")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_3vqu8"]
+script = ExtResource("4_b4ekg")
+id = "0_2_0"
+stack = SubResource("Resource_87c17")
+is_active = true
+
+[sub_resource type="Resource" id="Resource_fx5li"]
+script = ExtResource("3_t65lw")
 slots = {
-"0_2_0": SubResource("Resource_3gvbx")
+"0_0_1": SubResource("Resource_y4of1"),
+"0_0_2": SubResource("Resource_fe338"),
+"0_0_3": SubResource("Resource_xrd8y"),
+"0_0_6": SubResource("Resource_lx0ql"),
+"0_1_0": SubResource("Resource_40omb"),
+"0_1_1": SubResource("Resource_5qolw"),
+"0_2_0": SubResource("Resource_3vqu8")
 }
 
 [resource]
-script = ExtResource("13_fefsy")
-character_name = "test"
-character_race = ExtResource("2_etk04")
-character_class = ExtResource("1_eqxx4")
+script = ExtResource("14_abdp1")
+character_name = "azeaze"
+character_race = ExtResource("2_qvdl3")
+character_class = ExtResource("1_82et3")
 inventories = {
-0: SubResource("Resource_ea3bt"),
-1: SubResource("Resource_4vxow")
+0: SubResource("Resource_3xwjd"),
+1: SubResource("Resource_fx5li")
 }

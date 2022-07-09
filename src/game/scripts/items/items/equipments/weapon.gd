@@ -9,8 +9,12 @@ enum WieldCategory {
 	SINGLE_HANDED,
 	TWO_HANDED
 }
-
 @export var wield_category: WieldCategory = WieldCategory.SINGLE_HANDED
 
-static func get_key(_identifier = null) -> String:
-	return Equipment.get_key() + "_" + str(Equipment.EquipmentCategory.WEAPON)
+
+enum SlotCategory {
+	LEFT_HAND,
+	RIGHT_HAND
+}
+static func get_key(identifier = null) -> String:
+	return Equipment.get_key() + "_" + str(Equipment.EquipmentCategory.WEAPON) + "_" + str(identifier)

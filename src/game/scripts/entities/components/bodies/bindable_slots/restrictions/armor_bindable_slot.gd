@@ -2,7 +2,7 @@ extends EquipmentBindableSlot
 class_name ArmorBindableSlot
 
 @export var binded_cosmetic_slot_path: NodePath
-@onready var binded_cosmetic_slot: CosmeticBindableSlot = get_node(binded_cosmetic_slot_path)
+@onready var binded_cosmetic_slot: CosmeticBindableSlot = get_node(binded_cosmetic_slot_path) if binded_cosmetic_slot_path else null
 
 func update_slot():
 	super.update_slot()

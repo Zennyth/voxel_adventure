@@ -1,3 +1,4 @@
+Weapon (weapon.gd)
 Race (race.gd)
 Class (class.gd)
 BoxMesh
