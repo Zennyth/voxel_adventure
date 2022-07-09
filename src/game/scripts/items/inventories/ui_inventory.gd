@@ -31,10 +31,10 @@ func random_populate():
 
 
 func bind_slot_containers():
-	for slot_container in slot_containers.get_children():
+	for slot_container in get_slot_containers():
 		if not slot_container is SlotContainer:
 			continue
-		print("hello", inventory.get_slot(slot_container.key))
+
 		slot_container.set_slot(inventory.get_slot(slot_container.key))
 
 
@@ -55,9 +55,9 @@ func clean_slot_containers():
 	if not slot_containers:
 		return
 	
-	for n in slot_containers.get_children():
+	for n in get_slot_containers():
 		slot_containers.remove_child(n)
 		n.queue_free()
 
 func get_slot_containers():
-	return slot_containers.get_children()
+	return NodeUtils.findNodeDescendantsInGroup(self, "slot_containers")

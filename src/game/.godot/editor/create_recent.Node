@@ -1,13 +1,13 @@
+HBoxContainer
+VBoxContainer
 MeshInstance3D
 Button
-VBoxContainer
 LineEdit
 Control
 Camera3D
 SubViewport
 SubViewportContainer
 Node3D
-HBoxContainer
 TextureButton
 TextureRect
 CenterContainer

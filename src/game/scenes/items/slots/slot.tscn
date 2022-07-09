@@ -10,6 +10,7 @@ region_rect = Rect2(0, 0, 18, 18)
 
 [node name="Slot" type="Panel"]
 texture_filter = 1
+custom_minimum_size = Vector2(20, 20)
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -1006.0
@@ -20,3 +21,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_hab1x")
 script = ExtResource("2_bww6q")
 
 [node name="StackContainer" parent="." instance=ExtResource("3_7l0ee")]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 19.0
+offset_bottom = 19.0

@@ -54,6 +54,9 @@ func slot_container_gui_input(event, slot_container: SlotContainer):
 func drag_stack_container(slot_container: SlotContainer):
 	var slot_index = slot_container.key
 	var slot: Slot = slot_container.slot
+	
+	if not slot:
+		return
 
 	# pick item
 	if not slot.is_empty() and drag_preview.is_empty():

@@ -4,16 +4,8 @@ class_name BindableSlotManager
 var inventory_keys := {}
 var bindable_slots := []
 
-func findNodeDescendantsInGroup(node: Node, groupName: String) -> Array:
-	var descendantsInGroup := []
-	for child in node.get_children():
-		if child.is_in_group(groupName):
-			descendantsInGroup.append(child)
-		descendantsInGroup += findNodeDescendantsInGroup(child, groupName)
-	return descendantsInGroup
-
 func _ready():
-	bindable_slots = findNodeDescendantsInGroup(self, "bindable_slots")
+	bindable_slots = NodeUtils.findNodeDescendantsInGroup(self, "bindable_slots")
 	
 	for bindable_slot in bindable_slots:
 		bindable_slot.init(entity)
@@ -22,7 +14,8 @@ func _ready():
 			inventory_keys[bindable_slot.inventory_category] = []
 
 		inventory_keys[bindable_slot.inventory_category].append(bindable_slot.slot_key)
-
+	
+	print(inventory_keys)
 
 
 func init_inventory(inventory_key: Inventory.InventoryCategory, character: Character):

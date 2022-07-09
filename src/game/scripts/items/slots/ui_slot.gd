@@ -49,7 +49,7 @@ func _on_stack_changed(_new_stack: Stack):
 # SlotContainer
 ###
 func _ready():
-	add_to_group("slots")
+	add_to_group("slot_containers")
 	default_style.texture = default_texture
 	empty_style.texture = empty_texture
 	

@@ -556,6 +556,7 @@ visible = false
 [node name="HeadHelmet" type="MeshInstance3D" parent="Armature/Skeleton3D/HeadAttachment"]
 transform = Transform3D(1, 2.63616e-17, -1.57041e-18, -2.63616e-17, 0.992928, -0.118722, -1.57041e-18, 0.118722, 0.992928, -5.79956e-17, -2.18444, -0.261189)
 script = ExtResource("5_2w50y")
+inventory_category = 1
 armor_key = 0
 
 [node name="RightFootAttachment" type="BoneAttachment3D" parent="Armature/Skeleton3D"]

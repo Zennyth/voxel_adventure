@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/main/world.gd" id="1_fpupi"]
 [ext_resource type="Shader" path="res://scripts/environment/sky.gdshader" id="1_rvima"]
 [ext_resource type="Script" path="res://scripts/multiplayer/entity_manager.gd" id="1_v4eul"]
-[ext_resource type="PackedScene" path="res://scenes/items/inventories/drag_preview.tscn" id="3_fp1ra"]
+[ext_resource type="PackedScene" uid="uid://cmv6om6x12w3d" path="res://scenes/items/inventories/drag_preview.tscn" id="3_fp1ra"]
 [ext_resource type="PackedScene" uid="uid://bnap8qvpaghvn" path="res://scenes/items/inventories/player_equipments.tscn" id="3_i1hxt"]
 [ext_resource type="Script" path="res://scripts/ui/gui/inventory_gui/inventory_gui.gd" id="3_qy4cf"]
 [ext_resource type="PackedScene" uid="uid://e1hth0b0wqyl" path="res://scenes/items/tooltip.tscn" id="4_oljcv"]

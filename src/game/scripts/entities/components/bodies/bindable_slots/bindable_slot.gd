@@ -53,7 +53,7 @@ func update_slot():
 	else:
 		mesh_instance.mesh = get_mesh(slot.stack.item)
 	
-	visible(slot.is_active)
+	visible(slot.is_active if slot else false)
 	
 	if is_authoritative():
 		update_stable_state()
