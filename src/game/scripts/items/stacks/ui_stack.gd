@@ -20,6 +20,10 @@ func set_stack(_stack: Stack):
 func _on_stack_updated(_new_stack: Stack):
 	update_ui()
 
+
+###
+# UTILS
+###
 func update_ui():
 	item_container.set_item(stack.item if stack else null)
 	quantity.text = str(stack.quantity) if stack else ""

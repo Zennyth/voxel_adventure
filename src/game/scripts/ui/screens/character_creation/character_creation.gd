@@ -6,6 +6,7 @@ extends Node3D
 @onready var Preview = $Preview
 @onready var NameInput := $SubViewport/Actions/LineEdit
 @onready var CreateButton := $SubViewport/Actions/Button
+@onready var ColorModifier := $SubViewport/Container/ColorPicker
 
 @export var character_scene: PackedScene
 
@@ -27,6 +28,7 @@ func _ready():
 
 	RaceCarousel._race_changed.connect(_on_race_changed)
 	ClassCarousel._character_class_changed.connect(_on_class_changed)
+	ColorModifier.color_changed.connect(_on_color_changed)
 
 	for carousel in CosmeticCarousels.get_children():
 		RaceCarousel._race_changed.connect(carousel._on_race_changed)
@@ -66,3 +68,11 @@ func _on_race_changed(character_race: Race):
 		Cosmetic.get_key(Cosmetic.CosmeticCategory.HANDS), 
 		character_race.dictionary_cosmetics[Cosmetic.CosmeticCategory.HANDS][0]
 	)
+
+func _on_color_changed(_color: Color):
+	var slot: Slot = character.data.get_slot(
+		Inventory.InventoryCategory.CHARACTER_COSMETIC,
+		Cosmetic.get_key(Cosmetic.CosmeticCategory.CHEST)
+	)
+	
+	print(slot.stack.item.mesh)

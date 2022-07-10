@@ -16,6 +16,7 @@ func _unhandled_input(event):
 
 	if event.is_action_pressed("ui_inventory"):
 		equipments_container.visible = !equipments_container.visible
+		Game.ui_manager.is_lock = equipments_container.visible 
 		hide_item_tooltip()
 
 func _init():
@@ -31,7 +32,7 @@ func _on_player_initialized(player_reference: Player):
 		slot_container.stack_container.connect("gui_input", slot_container_gui_input, [slot_container])
 		slot_container.stack_container.connect("mouse_entered", show_item_tooltip, [slot_container])
 		slot_container.stack_container.connect("mouse_exited", hide_item_tooltip)
-	
+
 	is_ready = true
 
 

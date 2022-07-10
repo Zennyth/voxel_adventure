@@ -1,9 +1,11 @@
+Control
+ColorPicker
+Container
 HBoxContainer
 VBoxContainer
 MeshInstance3D
 Button
 LineEdit
-Control
 Camera3D
 SubViewport
 SubViewportContainer
@@ -28,5 +30,3 @@ Area3D
 CollisionShape3D
 Controller (controller.gd)
 CharacterBody3D
-AIController (ai_controller.gd)
-PlayerController (player_controller.gd)

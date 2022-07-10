@@ -42,9 +42,7 @@ func get_item_name() -> String:
 func _on_stack_changed(_new_stack: Stack):
 	update_ui()
 
-	
-	
-	
+
 ###
 # BUILT-IN
 # SlotContainer

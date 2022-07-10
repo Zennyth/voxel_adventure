@@ -16,15 +16,17 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event is InputEventKey:
 		if event.pressed:
 			if event.keycode == KEY_ESCAPE:
-				lock = not lock
-				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE if lock else Input.MOUSE_MODE_CAPTURED)
-
+				Game.ui_manager.is_lock = !Game.ui_manager.is_lock
 
 @onready 
 var camera: Camera3D = $Camera3D
 
 func init(linked_player: Entity) -> void:
 	player = linked_player
+	Game.ui_manager._is_lock_changed.connect(_on_is_lock_changed)
+
+func _on_is_lock_changed(is_lock: bool):
+	lock = is_lock
 
 func _ready():
 	camera.current = player.is_authoritative()

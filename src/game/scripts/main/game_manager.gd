@@ -19,3 +19,10 @@ func _on_world_ready(entity_manager: EntityManager):
 # SAVE_MANAGER
 ###
 var character_save_manager := CharacterSaveManager.new()
+
+
+###
+# BUILT-IN
+# UI
+###
+var ui_manager := UIManager.new()

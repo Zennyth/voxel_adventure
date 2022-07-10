@@ -15,7 +15,6 @@ class_name Item
 	set(_mesh):
 		mesh = _mesh
 
-
 enum ItemCategory {
 	EQUIPMENT,
 	COSMETIC,
