@@ -14,8 +14,6 @@ func _ready():
 			inventory_keys[bindable_slot.inventory_category] = []
 
 		inventory_keys[bindable_slot.inventory_category].append(bindable_slot.slot_key)
-	
-	print(inventory_keys)
 
 
 func init_inventory(inventory_key: Inventory.InventoryCategory, character: Character):

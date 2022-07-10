@@ -6,6 +6,7 @@ var empty_texture = preload("res://assets/items/inventories/item_slot_empty_back
 
 var default_style := StyleBoxTexture.new()
 var empty_style := StyleBoxTexture.new()
+var disabled_style := StyleBoxTexture.new()
 
 var key
 
@@ -52,12 +53,22 @@ func _ready():
 	add_to_group("slot_containers")
 	default_style.texture = default_texture
 	empty_style.texture = empty_texture
+	disabled_style.texture = empty_texture
+	
+	update_ui()
 	
 
 func update_ui():
-	stack_container.set_stack(slot.stack)
-	set('theme_override_styles/panel', empty_style if slot and slot.stack == null else default_style)
+	stack_container.set_stack(slot.stack if slot else null)
+	set('theme_override_styles/panel', get_style())
 
+func get_style() -> StyleBoxTexture:
+	if slot == null:
+		return disabled_style
+	elif slot.is_empty():
+		return empty_style
+	
+	return default_style
 
 func is_accepting_item(_item: Item) -> bool:
 	return true
