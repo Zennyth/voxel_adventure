@@ -1,17 +1,16 @@
-[gd_scene load_steps=30 format=3 uid="uid://o3h1whqowhix"]
+[gd_scene load_steps=26 format=3 uid="uid://o3h1whqowhix"]
 
 [ext_resource type="Script" path="res://scripts/main/world.gd" id="1_hnd5j"]
 [ext_resource type="Shader" path="res://scripts/environment/sky.gdshader" id="2_hvotx"]
 [ext_resource type="Biome" uid="uid://cku6scldg8hvt" path="res://assets/terrain/biomes/seasonal_forest.tres" id="3_44bv1"]
 [ext_resource type="Biome" uid="uid://b40bm5c1q32c0" path="res://assets/terrain/biomes/temperate_rainforest.tres" id="4_kx02e"]
 [ext_resource type="Biome" uid="uid://cv5kpg873kgsd" path="res://assets/terrain/biomes/tundra.tres" id="5_w0cao"]
-[ext_resource type="ArrayMesh" uid="uid://d1djonn5mlr2i" path="res://assets/environment/common/grass/Grass.vox" id="6_goijs"]
 [ext_resource type="Biome" uid="uid://c63kd01mimsco" path="res://assets/terrain/biomes/desert.tres" id="6_n4676"]
 [ext_resource type="Material" uid="uid://db2s6xq8u3hbg" path="res://resources/environment/water.tres" id="7_j1wk1"]
 [ext_resource type="Script" path="res://scripts/multiplayer/entity_manager.gd" id="8_g3enr"]
 [ext_resource type="Script" path="res://scripts/ui/gui/inventory_gui/inventory_gui.gd" id="10_f5co6"]
 [ext_resource type="PackedScene" uid="uid://bnap8qvpaghvn" path="res://scenes/items/inventories/player_equipments.tscn" id="11_kkr82"]
-[ext_resource type="PackedScene" path="res://scenes/items/inventories/drag_preview.tscn" id="12_boprf"]
+[ext_resource type="PackedScene" uid="uid://cmv6om6x12w3d" path="res://scenes/items/inventories/drag_preview.tscn" id="12_boprf"]
 [ext_resource type="PackedScene" uid="uid://c4askhe2dmpsn" path="res://scenes/items/slots/slot.tscn" id="12_llc6r"]
 [ext_resource type="PackedScene" uid="uid://e1hth0b0wqyl" path="res://scenes/items/tooltip.tscn" id="13_pnx4f"]
 
@@ -41,26 +40,28 @@ sky_material = SubResource("ShaderMaterial_riag3")
 
 [sub_resource type="Environment" id="Environment_ghs71"]
 background_mode = 2
+background_color = Color(0.352941, 0.643137, 0.847059, 1)
 background_energy = 1.98
 sky = SubResource("Sky_tq1nc")
 ambient_light_source = 3
 reflected_light_source = 1
 tonemap_mode = 2
-ssao_enabled = true
 ssao_sharpness = 1.0
 ssil_enabled = true
 ssil_radius = 13.8
 ssil_intensity = 0.5
 sdfgi_enabled = true
-glow_enabled = true
 glow_blend_mode = 4
-fog_enabled = true
 fog_light_color = Color(0, 0.423529, 0.701961, 1)
 fog_light_energy = 0.9
 fog_density = 0.0057
 fog_height_density = 2.0
-volumetric_fog_density = 0.0204
-volumetric_fog_albedo = Color(0.345098, 0, 1, 1)
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0169
+volumetric_fog_albedo = Color(0.337255, 0.682353, 1, 1)
+volumetric_fog_length = 251.79
+volumetric_fog_detail_spread = 6.0
+volumetric_fog_ambient_inject = 0.89
 
 [sub_resource type="VoxelStreamRegionFiles" id="VoxelStreamRegionFiles_byu7p"]
 directory = "res://save/terrain/regions"
@@ -87,6 +88,7 @@ fractal_gain = 0.1
 biomes = [ExtResource("3_44bv1"), ExtResource("4_kx02e"), ExtResource("5_w0cao"), ExtResource("6_n4676")]
 temperature_noise = SubResource("FastNoiseLite_fwsue")
 moisture_noise = SubResource("FastNoiseLite_q5o7r")
+height = 250
 continentalness_noise = SubResource("FastNoiseLite_n8vxe")
 peaks_and_valleys_noise = SubResource("FastNoiseLite_url8d")
 erosion_noise = SubResource("FastNoiseLite_pfgw4")
@@ -98,19 +100,6 @@ vertex_color_use_as_albedo = true
 greedy_meshing_enabled = false
 opaque_material = SubResource("StandardMaterial3D_6tquh")
 transparent_material = ExtResource("7_j1wk1")
-
-[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_o8co0"]
-density = 0.01
-min_scale = 0.025
-max_scale = 0.025
-random_rotation = false
-
-[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_hs0xq"]
-generator = SubResource("VoxelInstanceGenerator_o8co0")
-mesh = ExtResource("6_goijs")
-
-[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_f20yk"]
-item_1 = SubResource("VoxelInstanceLibraryMultiMeshItem_hs0xq")
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_hnd5j")
@@ -133,9 +122,6 @@ max_view_distance = 256
 run_stream_in_editor = false
 mesh_block_size = 32
 
-[node name="VoxelInstancer" type="VoxelInstancer" parent="VoxelTerrain"]
-library = SubResource("VoxelInstanceLibrary_f20yk")
-
 [node name="EntityManager" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 155.31, 0)
 script = ExtResource("8_g3enr")
@@ -148,6 +134,5 @@ slot_container_template = ExtResource("12_llc6r")
 is_generating_slot_containers = false
 
 [node name="Tooltip" parent="UI" instance=ExtResource("13_pnx4f")]
-color = Color(1, 1, 1, 0)
 
 [node name="DragPreview" parent="UI" instance=ExtResource("12_boprf")]

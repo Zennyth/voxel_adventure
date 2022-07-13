@@ -1,32 +1,36 @@
-[gd_resource type="Biome" load_steps=8 format=3 uid="uid://cv5kpg873kgsd"]
+[gd_resource type="Biome" load_steps=9 format=3 uid="uid://cv5kpg873kgsd"]
 
-[sub_resource type="Curve" id="Curve_jjgka"]
+[sub_resource type="Curve" id="Curve_bqhhk"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.568293, 0.281818), 0.0, 0.0, 0, 0, Vector2(1, 0.990909), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="HeightMap" id="HeightMap_1jqwy"]
-curve = SubResource("Curve_jjgka")
+[sub_resource type="HeightMap" id="HeightMap_1s8vd"]
+curve = SubResource("Curve_bqhhk")
 weight = 1.0
 
-[sub_resource type="Curve" id="Curve_7oanh"]
+[sub_resource type="Curve" id="Curve_n44a2"]
 
-[sub_resource type="HeightMap" id="HeightMap_0bwnb"]
-curve = SubResource("Curve_7oanh")
+[sub_resource type="HeightMap" id="HeightMap_gca8w"]
+curve = SubResource("Curve_n44a2")
 
-[sub_resource type="Gradient" id="Gradient_gh5d6"]
-offsets = PackedFloat32Array(0.00189753, 1)
-colors = PackedColorArray(0.534103, 0.534103, 0.570312, 1, 1, 1, 1, 1)
+[sub_resource type="Curve" id="Curve_vsgsx"]
 
-[sub_resource type="Curve" id="Curve_t8qn2"]
+[sub_resource type="HeightMap" id="HeightMap_s0bkd"]
+curve = SubResource("Curve_vsgsx")
 
-[sub_resource type="HeightMap" id="HeightMap_rwem4"]
-curve = SubResource("Curve_t8qn2")
+[sub_resource type="Gradient" id="Gradient_s6574"]
+offsets = PackedFloat32Array(0.00189753, 0.658643, 1)
+colors = PackedColorArray(0.534103, 0.534103, 0.570312, 1, 0.526417, 0.526417, 0.542969, 1, 1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_xaryn"]
+offsets = PackedFloat32Array(0, 0, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.570312, 0.570312, 0.570312, 1, 0.382812, 0.382812, 0.382812, 1)
 
 [resource]
 biome_name = "Tundra"
-continentalness = SubResource("HeightMap_1jqwy")
-erosion = SubResource("HeightMap_0bwnb")
-peaks_and_valleys = SubResource("HeightMap_rwem4")
-gradient = SubResource("Gradient_gh5d6")
-max_temperature = 0.5
-min_moisture = 0.5
+continentalness = SubResource("HeightMap_1s8vd")
+erosion = SubResource("HeightMap_gca8w")
+peaks_and_valleys = SubResource("HeightMap_s0bkd")
+surface_gradient = SubResource("Gradient_s6574")
+underground_gradient = SubResource("Gradient_xaryn")
+temperature = 1

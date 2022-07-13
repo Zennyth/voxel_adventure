@@ -1,31 +1,35 @@
-[gd_resource type="Biome" load_steps=8 format=3 uid="uid://b40bm5c1q32c0"]
+[gd_resource type="Biome" load_steps=9 format=3 uid="uid://b40bm5c1q32c0"]
 
-[sub_resource type="Curve" id="Curve_s82o6"]
+[sub_resource type="Curve" id="Curve_eoa7j"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.590074, 0.409091), 0.0, 0.0, 0, 0, Vector2(0.930041, 0.472727), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="HeightMap" id="HeightMap_mwhdw"]
-curve = SubResource("Curve_s82o6")
+[sub_resource type="HeightMap" id="HeightMap_aybhn"]
+curve = SubResource("Curve_eoa7j")
 weight = 1.0
 
-[sub_resource type="Curve" id="Curve_kagnx"]
+[sub_resource type="Curve" id="Curve_760sv"]
 
-[sub_resource type="HeightMap" id="HeightMap_l0pyn"]
-curve = SubResource("Curve_kagnx")
+[sub_resource type="HeightMap" id="HeightMap_b0385"]
+curve = SubResource("Curve_760sv")
 
-[sub_resource type="Gradient" id="Gradient_v4gxf"]
+[sub_resource type="Curve" id="Curve_15yq1"]
+
+[sub_resource type="HeightMap" id="HeightMap_bt1e8"]
+curve = SubResource("Curve_15yq1")
+
+[sub_resource type="Gradient" id="Gradient_b0brp"]
 colors = PackedColorArray(0.360784, 0.631373, 0.117647, 1, 0.686275, 0.854902, 0.109804, 1)
 
-[sub_resource type="Curve" id="Curve_c2ff1"]
-
-[sub_resource type="HeightMap" id="HeightMap_shn7p"]
-curve = SubResource("Curve_c2ff1")
+[sub_resource type="Gradient" id="Gradient_weq0p"]
+offsets = PackedFloat32Array(0, 0, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.570312, 0.570312, 0.570312, 1, 0.382812, 0.382812, 0.382812, 1)
 
 [resource]
 biome_name = "Temperate Rainforest"
-continentalness = SubResource("HeightMap_mwhdw")
-erosion = SubResource("HeightMap_l0pyn")
-peaks_and_valleys = SubResource("HeightMap_shn7p")
-gradient = SubResource("Gradient_v4gxf")
-min_temperature = 0.5
-min_moisture = 0.5
+continentalness = SubResource("HeightMap_aybhn")
+erosion = SubResource("HeightMap_b0385")
+peaks_and_valleys = SubResource("HeightMap_bt1e8")
+surface_gradient = SubResource("Gradient_b0brp")
+underground_gradient = SubResource("Gradient_weq0p")
+humidity = 1
