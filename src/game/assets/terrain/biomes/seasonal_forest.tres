@@ -4,18 +4,18 @@
 _data = [Vector2(0.0056391, 0), 0.0, 0.0, 0, 0, Vector2(0.554511, 0.436364), 0.0, 0.0, 0, 0, Vector2(0.996241, 0.354545), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="HeightMap" id="HeightMap_ds8vl"]
+[sub_resource type="HeightFilter" id="HeightFilter_ds8vl"]
 curve = SubResource("Curve_vbckg")
 weight = 1.0
 
 [sub_resource type="Curve" id="Curve_cm1ip"]
 
-[sub_resource type="HeightMap" id="HeightMap_76n8j"]
+[sub_resource type="HeightFilter" id="HeightFilter_76n8j"]
 curve = SubResource("Curve_cm1ip")
 
 [sub_resource type="Curve" id="Curve_afcld"]
 
-[sub_resource type="HeightMap" id="HeightMap_4a8ct"]
+[sub_resource type="HeightFilter" id="HeightFilter_4a8ct"]
 curve = SubResource("Curve_afcld")
 
 [sub_resource type="Gradient" id="Gradient_k7nch"]
@@ -27,8 +27,8 @@ colors = PackedColorArray(0, 0, 0, 1, 0.570312, 0.570312, 0.570312, 1, 0.382812,
 
 [resource]
 biome_name = "Seasonal Forest"
-continentalness = SubResource("HeightMap_ds8vl")
-erosion = SubResource("HeightMap_76n8j")
-peaks_and_valleys = SubResource("HeightMap_4a8ct")
+continentalness = SubResource("HeightFilter_ds8vl")
+erosion = SubResource("HeightFilter_76n8j")
+peaks_and_valleys = SubResource("HeightFilter_4a8ct")
 surface_gradient = SubResource("Gradient_k7nch")
 underground_gradient = SubResource("Gradient_tfe4j")

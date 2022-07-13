@@ -4,18 +4,18 @@
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.590074, 0.409091), 0.0, 0.0, 0, 0, Vector2(0.930041, 0.472727), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="HeightMap" id="HeightMap_aybhn"]
+[sub_resource type="HeightFilter" id="HeightFilter_aybhn"]
 curve = SubResource("Curve_eoa7j")
 weight = 1.0
 
 [sub_resource type="Curve" id="Curve_760sv"]
 
-[sub_resource type="HeightMap" id="HeightMap_b0385"]
+[sub_resource type="HeightFilter" id="HeightFilter_b0385"]
 curve = SubResource("Curve_760sv")
 
 [sub_resource type="Curve" id="Curve_15yq1"]
 
-[sub_resource type="HeightMap" id="HeightMap_bt1e8"]
+[sub_resource type="HeightFilter" id="HeightFilter_bt1e8"]
 curve = SubResource("Curve_15yq1")
 
 [sub_resource type="Gradient" id="Gradient_b0brp"]
@@ -27,9 +27,9 @@ colors = PackedColorArray(0, 0, 0, 1, 0.570312, 0.570312, 0.570312, 1, 0.382812,
 
 [resource]
 biome_name = "Temperate Rainforest"
-continentalness = SubResource("HeightMap_aybhn")
-erosion = SubResource("HeightMap_b0385")
-peaks_and_valleys = SubResource("HeightMap_bt1e8")
+continentalness = SubResource("HeightFilter_aybhn")
+erosion = SubResource("HeightFilter_b0385")
+peaks_and_valleys = SubResource("HeightFilter_bt1e8")
 surface_gradient = SubResource("Gradient_b0brp")
 underground_gradient = SubResource("Gradient_weq0p")
 humidity = 1

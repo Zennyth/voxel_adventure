@@ -4,18 +4,18 @@
 _data = [Vector2(0, 0.109091), 0.0, 0.0, 0, 0, Vector2(1, 0.318182), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="HeightMap" id="HeightMap_pbb03"]
+[sub_resource type="HeightFilter" id="HeightFilter_pbb03"]
 curve = SubResource("Curve_ibab4")
 weight = 1.0
 
 [sub_resource type="Curve" id="Curve_layv6"]
 
-[sub_resource type="HeightMap" id="HeightMap_inhky"]
+[sub_resource type="HeightFilter" id="HeightFilter_inhky"]
 curve = SubResource("Curve_layv6")
 
 [sub_resource type="Curve" id="Curve_w4h6w"]
 
-[sub_resource type="HeightMap" id="HeightMap_qym2r"]
+[sub_resource type="HeightFilter" id="HeightFilter_qym2r"]
 curve = SubResource("Curve_w4h6w")
 
 [sub_resource type="Gradient" id="Gradient_u7xeh"]
@@ -28,9 +28,9 @@ colors = PackedColorArray(0, 0, 0, 1, 0.570312, 0.570312, 0.570312, 1, 0.382812,
 
 [resource]
 biome_name = "Desert"
-continentalness = SubResource("HeightMap_pbb03")
-erosion = SubResource("HeightMap_inhky")
-peaks_and_valleys = SubResource("HeightMap_qym2r")
+continentalness = SubResource("HeightFilter_pbb03")
+erosion = SubResource("HeightFilter_inhky")
+peaks_and_valleys = SubResource("HeightFilter_qym2r")
 surface_gradient = SubResource("Gradient_u7xeh")
 underground_gradient = SubResource("Gradient_ts8fr")
 humidity = 1
