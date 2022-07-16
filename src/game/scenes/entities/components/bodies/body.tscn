@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://his6n0j6fcog"]
+[gd_scene load_steps=40 format=3 uid="uid://his6n0j6fcog"]
 
 [ext_resource type="Script" path="res://scripts/entities/components/bodies/humanoid.gd" id="1_ufh77"]
 [ext_resource type="Script" path="res://scripts/entities/components/bodies/bindable_slots/bindable_slot_manager.gd" id="2_dou0n"]
@@ -282,9 +282,14 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ec7jr"]
+blend_mode = 1
+vertex_color_use_as_albedo = true
+
 [sub_resource type="Animation" id="Animation_ykpqw"]
 resource_name = "Idle"
 length = 0.001
+loop_mode = 1
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -352,6 +357,7 @@ tracks/8/keys = PackedFloat32Array(0, 1, 0.708246, 4.74087e-07, 4.75619e-07, 0.7
 [sub_resource type="Animation" id="Animation_u3nfk"]
 resource_name = "Walk"
 length = 0.833333
+loop_mode = 1
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -421,6 +427,28 @@ _data = {
 "Idle": SubResource("Animation_ykpqw"),
 "Walk": SubResource("Animation_u3nfk")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bcf4q"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_akykl"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xwqle"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_15wvm"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_40i5w"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_k3j18"]
+states/Idle/node = SubResource("AnimationNodeAnimation_bcf4q")
+states/Idle/position = Vector2(292, 132)
+states/Start/position = Vector2(172, 132)
+states/Walk/node = SubResource("AnimationNodeAnimation_akykl")
+states/Walk/position = Vector2(489, 132)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_xwqle"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_15wvm"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_40i5w")]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_dey4i"]
 
 [node name="HumanoidBody" type="Node3D"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
@@ -546,6 +574,7 @@ cosmetic_key = 0
 [node name="HeadLeftEye" type="MeshInstance3D" parent="Armature/Skeleton3D/HeadAttachment"]
 transform = Transform3D(-2.12046e-27, 6.6004e-27, 0.2, 0, 0.2, -7.09612e-26, -0.2, 0, -2.01948e-28, -3.957, 0.0529666, 4.14746)
 mesh = ExtResource("8_iyg4v")
+surface_material_override/0 = SubResource("StandardMaterial3D_ec7jr")
 script = ExtResource("4_k5kgo")
 cosmetic_key = 2
 
@@ -650,6 +679,13 @@ inventory_category = 1
 travel_key = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_process_mode = 0
 libraries = {
 "": SubResource("AnimationLibrary_gjsnc")
 }
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_k3j18")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_dey4i")

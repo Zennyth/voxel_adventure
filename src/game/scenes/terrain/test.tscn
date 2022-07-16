@@ -1,12 +1,12 @@
-[gd_scene load_steps=26 format=3 uid="uid://o3h1whqowhix"]
+[gd_scene load_steps=39 format=3 uid="uid://djm1jggm80cl2"]
 
 [ext_resource type="Script" path="res://scripts/main/world.gd" id="1_hnd5j"]
 [ext_resource type="Shader" path="res://scripts/environment/sky.gdshader" id="2_hvotx"]
-[ext_resource type="Biome" uid="uid://cku6scldg8hvt" path="res://assets/terrain/biomes/seasonal_forest.tres" id="3_44bv1"]
-[ext_resource type="Biome" uid="uid://b40bm5c1q32c0" path="res://assets/terrain/biomes/temperate_rainforest.tres" id="4_kx02e"]
-[ext_resource type="Biome" uid="uid://cv5kpg873kgsd" path="res://assets/terrain/biomes/tundra.tres" id="5_w0cao"]
-[ext_resource type="Biome" uid="uid://c63kd01mimsco" path="res://assets/terrain/biomes/desert.tres" id="6_n4676"]
-[ext_resource type="Material" uid="uid://db2s6xq8u3hbg" path="res://resources/environment/water.tres" id="7_j1wk1"]
+[ext_resource type="Biome" uid="uid://dd2lc421omhbw" path="res://resources/terrain/biomes/seasonal_forest.tres" id="3_44bv1"]
+[ext_resource type="Biome" uid="uid://b5crvssga2pre" path="res://resources/terrain/biomes/temperate_rainforest.tres" id="4_kx02e"]
+[ext_resource type="Biome" uid="uid://ddalox82x3l3r" path="res://resources/terrain/biomes/tundra.tres" id="5_w0cao"]
+[ext_resource type="Biome" uid="uid://bv2sjrcloqddy" path="res://resources/terrain/biomes/desert.tres" id="6_n4676"]
+[ext_resource type="Material" uid="uid://qnkphsvfin1w" path="res://resources/environment/water.tres" id="7_j1wk1"]
 [ext_resource type="Script" path="res://scripts/multiplayer/entity_manager.gd" id="8_g3enr"]
 [ext_resource type="Script" path="res://scripts/ui/gui/inventory_gui/inventory_gui.gd" id="10_f5co6"]
 [ext_resource type="PackedScene" uid="uid://bnap8qvpaghvn" path="res://scenes/items/inventories/player_equipments.tscn" id="11_kkr82"]
@@ -59,7 +59,6 @@ fog_height_density = 2.0
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0169
 volumetric_fog_albedo = Color(0.337255, 0.682353, 1, 1)
-volumetric_fog_length = 251.79
 volumetric_fog_detail_spread = 6.0
 volumetric_fog_ambient_inject = 0.89
 
@@ -101,6 +100,49 @@ greedy_meshing_enabled = false
 opaque_material = SubResource("StandardMaterial3D_6tquh")
 transparent_material = ExtResource("7_j1wk1")
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_83nyr"]
+
+[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_q36sn"]
+noise = SubResource("FastNoiseLite_83nyr")
+
+[sub_resource type="BoxMesh" id="BoxMesh_pqb0l"]
+
+[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_1hybt"]
+generator = SubResource("VoxelInstanceGenerator_q36sn")
+mesh = SubResource("BoxMesh_pqb0l")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6ofba"]
+frequency = 0.001
+
+[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_vf3og"]
+density = 0.001
+noise = SubResource("FastNoiseLite_6ofba")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_p3xuf"]
+
+[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_roclw"]
+generator = SubResource("VoxelInstanceGenerator_vf3og")
+mesh = SubResource("CapsuleMesh_p3xuf")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_djmx6"]
+frequency = 0.001
+
+[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_ka4vc"]
+density = 0.001
+noise = SubResource("FastNoiseLite_djmx6")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uimxc"]
+height = 1.0
+
+[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_sr0aq"]
+generator = SubResource("VoxelInstanceGenerator_ka4vc")
+mesh = SubResource("CylinderMesh_uimxc")
+
+[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_x3aga"]
+item_0 = SubResource("VoxelInstanceLibraryMultiMeshItem_1hybt")
+item_1 = SubResource("VoxelInstanceLibraryMultiMeshItem_roclw")
+item_2 = SubResource("VoxelInstanceLibraryMultiMeshItem_sr0aq")
+
 [node name="World" type="Node3D"]
 script = ExtResource("1_hnd5j")
 
@@ -122,8 +164,10 @@ max_view_distance = 256
 run_stream_in_editor = false
 mesh_block_size = 32
 
+[node name="VoxelInstancerWorld" type="VoxelInstancerWorld" parent="VoxelTerrain"]
+library = SubResource("VoxelInstanceLibrary_x3aga")
+
 [node name="EntityManager" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 155.31, 0)
 script = ExtResource("8_g3enr")
 
 [node name="UI" type="Node2D" parent="."]

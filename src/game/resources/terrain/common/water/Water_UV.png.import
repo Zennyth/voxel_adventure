@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4er7sf8g3ay7"
-path.s3tc="res://.godot/imported/Water_N_A.png-a924cefea965c1d1664ee7fc82498fdf.s3tc.ctex"
-path.etc2="res://.godot/imported/Water_N_A.png-a924cefea965c1d1664ee7fc82498fdf.etc2.ctex"
+uid="uid://b54nk8ds4gjiy"
+path.s3tc="res://.godot/imported/Water_UV.png-f8826ecfe22bb92c39829b7770530656.s3tc.ctex"
+path.etc2="res://.godot/imported/Water_UV.png-f8826ecfe22bb92c39829b7770530656.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc", "etc2"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/terrain/common/water/Water_N_A.png"
-dest_files=["res://.godot/imported/Water_N_A.png-a924cefea965c1d1664ee7fc82498fdf.s3tc.ctex", "res://.godot/imported/Water_N_A.png-a924cefea965c1d1664ee7fc82498fdf.etc2.ctex"]
+source_file="res://resources/terrain/common/water/Water_UV.png"
+dest_files=["res://.godot/imported/Water_UV.png-f8826ecfe22bb92c39829b7770530656.s3tc.ctex", "res://.godot/imported/Water_UV.png-f8826ecfe22bb92c39829b7770530656.etc2.ctex"]
 
 [params]
 

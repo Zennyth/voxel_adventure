@@ -17,6 +17,8 @@ size = Vector3(1, 1.63916, 1)
 [node name="Humanoid" type="CharacterBody3D"]
 script = ExtResource("1_f223l")
 
+[node name="Body" parent="." instance=ExtResource("9_i3kkh")]
+
 [node name="Controller" type="Node3D" parent="."]
 script = ExtResource("7_5sdow")
 
@@ -66,7 +68,5 @@ double_sided = false
 script = ExtResource("9_iss3i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13956, 0.928842, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0311819, 0.847417, 0)
 shape = SubResource("BoxShape3D_i0jrs")
-
-[node name="Body" parent="." instance=ExtResource("9_i3kkh")]

@@ -1,4 +1,4 @@
-[gd_resource type="Biome" load_steps=9 format=3 uid="uid://cku6scldg8hvt"]
+[gd_resource type="Biome" load_steps=14 format=3 uid="uid://dd2lc421omhbw"]
 
 [sub_resource type="Curve" id="Curve_vbckg"]
 _data = [Vector2(0.0056391, 0), 0.0, 0.0, 0, 0, Vector2(0.554511, 0.436364), 0.0, 0.0, 0, 0, Vector2(0.996241, 0.354545), 0.0, 0.0, 0, 0]
@@ -12,6 +12,20 @@ weight = 1.0
 
 [sub_resource type="HeightFilter" id="HeightFilter_76n8j"]
 curve = SubResource("Curve_cm1ip")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_83nyr"]
+
+[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_q36sn"]
+noise = SubResource("FastNoiseLite_83nyr")
+
+[sub_resource type="BoxMesh" id="BoxMesh_pqb0l"]
+
+[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_1hybt"]
+generator = SubResource("VoxelInstanceGenerator_q36sn")
+mesh = SubResource("BoxMesh_pqb0l")
+
+[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_nwwv6"]
+item_1 = SubResource("VoxelInstanceLibraryMultiMeshItem_1hybt")
 
 [sub_resource type="Curve" id="Curve_afcld"]
 
@@ -27,6 +41,7 @@ colors = PackedColorArray(0, 0, 0, 1, 0.570312, 0.570312, 0.570312, 1, 0.382812,
 
 [resource]
 biome_name = "Seasonal Forest"
+library = SubResource("VoxelInstanceLibrary_nwwv6")
 continentalness = SubResource("HeightFilter_ds8vl")
 erosion = SubResource("HeightFilter_76n8j")
 peaks_and_valleys = SubResource("HeightFilter_4a8ct")

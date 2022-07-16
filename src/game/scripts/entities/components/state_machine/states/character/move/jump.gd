@@ -2,9 +2,8 @@ extends MoveState
 class_name JumpState
 
 func enter() -> void:
-	# This calls the base class enter function, which is necessary here
-	# to make sure the animation switches
 	super.enter()
+	animation_state_machine.travel("Idle")
 	character_body.jump()
 
 func physics_process(delta: float) -> State:

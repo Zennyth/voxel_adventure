@@ -1,6 +1,9 @@
 extends MoveState
 class_name WalkState
 
+func enter() -> void:
+	animation_state_machine.travel("Walk")
+
 func input(event: InputEvent) -> State:
 	# First run parent code and make sure we don't need to exit early
 	# based on its logic

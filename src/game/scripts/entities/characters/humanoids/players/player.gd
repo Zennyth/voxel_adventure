@@ -3,6 +3,7 @@ class_name Player
 
 @onready var springArmPlayer: SpringArmPlayer = $SpringArmPlayer
 @onready var voxelViewer: VoxelViewer = $VoxelViewer
+@onready var controller: Controller = $Controller
 # @onready var label: LabelComponent = $Label3D
 
 func _ready():

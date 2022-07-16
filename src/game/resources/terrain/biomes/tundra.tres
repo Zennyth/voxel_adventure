@@ -1,4 +1,4 @@
-[gd_resource type="Biome" load_steps=9 format=3 uid="uid://cv5kpg873kgsd"]
+[gd_resource type="Biome" load_steps=9 format=3 uid="uid://ddalox82x3l3r"]
 
 [sub_resource type="Curve" id="Curve_bqhhk"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.568293, 0.281818), 0.0, 0.0, 0, 0, Vector2(1, 0.990909), 0.0, 0.0, 0, 0]
@@ -13,24 +13,24 @@ weight = 1.0
 [sub_resource type="HeightFilter" id="HeightFilter_gca8w"]
 curve = SubResource("Curve_n44a2")
 
+[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_hyvh4"]
+
 [sub_resource type="Curve" id="Curve_vsgsx"]
 
 [sub_resource type="HeightFilter" id="HeightFilter_s0bkd"]
 curve = SubResource("Curve_vsgsx")
 
 [sub_resource type="Gradient" id="Gradient_s6574"]
-offsets = PackedFloat32Array(0.00189753, 0.658643, 1)
-colors = PackedColorArray(0.534103, 0.534103, 0.570312, 1, 0.526417, 0.526417, 0.542969, 1, 1, 1, 1, 1)
-
-[sub_resource type="Gradient" id="Gradient_xaryn"]
-offsets = PackedFloat32Array(0, 0, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.570312, 0.570312, 0.570312, 1, 0.382812, 0.382812, 0.382812, 1)
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.00189753, 0.888268, 1)
+colors = PackedColorArray(0.534103, 0.534103, 0.570312, 1, 0.969516, 0.969516, 1, 1, 1, 1, 1, 1)
 
 [resource]
 biome_name = "Tundra"
+library = SubResource("VoxelInstanceLibrary_hyvh4")
 continentalness = SubResource("HeightFilter_1s8vd")
 erosion = SubResource("HeightFilter_gca8w")
 peaks_and_valleys = SubResource("HeightFilter_s0bkd")
 surface_gradient = SubResource("Gradient_s6574")
-underground_gradient = SubResource("Gradient_xaryn")
+underground_gradient = SubResource("Gradient_s6574")
 temperature = 1

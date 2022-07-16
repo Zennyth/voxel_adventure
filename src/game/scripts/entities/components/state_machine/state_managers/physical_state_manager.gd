@@ -5,8 +5,8 @@ class_name PhysicalStateManager
 @onready var character_controller: Controller = get_node(character_controller_path)
 
 func _ready() -> void:
-	super._ready()
-	
 	for state in get_children():
 		if state is CharacterState:
 			state.init_state(character_controller)
+	
+	super._ready()

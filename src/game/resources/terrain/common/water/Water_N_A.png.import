@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ju8r8ihv8jra"
-path.s3tc="res://.godot/imported/Foam.png-304130c34e7ade69e9667e32ce75811d.s3tc.ctex"
-path.etc2="res://.godot/imported/Foam.png-304130c34e7ade69e9667e32ce75811d.etc2.ctex"
+uid="uid://c4er7sf8g3ay7"
+path.s3tc="res://.godot/imported/Water_N_A.png-98bde48a030517013c1f6fda1f9f3c44.s3tc.ctex"
+path.etc2="res://.godot/imported/Water_N_A.png-98bde48a030517013c1f6fda1f9f3c44.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc", "etc2"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/terrain/common/water/Foam.png"
-dest_files=["res://.godot/imported/Foam.png-304130c34e7ade69e9667e32ce75811d.s3tc.ctex", "res://.godot/imported/Foam.png-304130c34e7ade69e9667e32ce75811d.etc2.ctex"]
+source_file="res://resources/terrain/common/water/Water_N_A.png"
+dest_files=["res://.godot/imported/Water_N_A.png-98bde48a030517013c1f6fda1f9f3c44.s3tc.ctex", "res://.godot/imported/Water_N_A.png-98bde48a030517013c1f6fda1f9f3c44.etc2.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/bptc_ldr=0
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1

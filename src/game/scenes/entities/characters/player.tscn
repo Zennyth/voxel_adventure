@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://chnogoitk7w8q"]
+[gd_scene load_steps=6 format=3 uid="uid://chnogoitk7w8q"]
 
 [ext_resource type="PackedScene" uid="uid://tnw04chrcmb7" path="res://scenes/entities/characters/humanoid.tscn" id="1_313ia"]
 [ext_resource type="Script" path="res://scripts/entities/components/controllers/player_controller.gd" id="2_fjj0f"]
 [ext_resource type="Script" path="res://scripts/entities/characters/humanoids/players/player.gd" id="2_va62i"]
 [ext_resource type="Script" path="res://scripts/entities/characters/humanoids/players/spring_arm.gd" id="4_u71ax"]
+[ext_resource type="Script" path="res://scripts/entities/characters/humanoids/players/step_assist.gd" id="5_k5d0x"]
 
 [node name="Player" instance=ExtResource("1_313ia")]
 script = ExtResource("2_va62i")
 
-[node name="Controller" parent="." index="0"]
+[node name="Controller" parent="." index="1"]
 script = ExtResource("2_fjj0f")
 player_path = NodePath("..")
 
@@ -23,3 +24,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.69508, 0)
 
 [node name="VoxelViewer" type="VoxelViewer" parent="." index="5"]
 view_distance = 512
+
+[node name="StepAssist" type="Node3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.473, 0.197055)
+script = ExtResource("5_k5d0x")

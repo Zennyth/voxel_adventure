@@ -9,6 +9,8 @@ class_name IdleState
 @onready var fall_state: State = get_node(fall_node)
 @onready var walk_state: State = get_node(walk_node)
 
+func enter() -> void:
+	animation_state_machine.travel("Idle")
 
 func input(_event: InputEvent) -> State:
 	if walk_state.can_transition_to():

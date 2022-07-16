@@ -1,9 +1,9 @@
-[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://cpswo4owm71jp"]
+[gd_resource type="ShaderMaterial" load_steps=6 format=3]
 
 [ext_resource type="Shader" path="res://scripts/environment/water_global.gdshader" id="1_wsacj"]
-[ext_resource type="Texture2D" uid="uid://c4er7sf8g3ay7" path="res://assets/terrain/common/water/Water_N_A.png" id="2_20b16"]
-[ext_resource type="Texture2D" uid="uid://xy74dv7g70cl" path="res://assets/terrain/common/water/Water_N_B.png" id="3_uitvk"]
-[ext_resource type="Texture2D" uid="uid://b54nk8ds4gjiy" path="res://assets/terrain/common/water/Water_UV.png" id="4_en5pk"]
+[ext_resource type="Texture2D" path="res://resources/terrain/common/water/Water_N_A.png" id="2_20b16"]
+[ext_resource type="Texture2D" path="res://resources/terrain/common/water/Water_N_B.png" id="3_uitvk"]
+[ext_resource type="Texture2D" path="res://resources/terrain/common/water/Water_UV.png" id="4_en5pk"]
 
 [sub_resource type="Texture2DArray" id="Texture2DArray_kg2yw"]
 

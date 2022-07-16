@@ -13,6 +13,8 @@ class_name FallState
 var gravity: float = -1
 var speed: float = -1
 
+func enter() -> void:
+	animation_state_machine.travel("Idle")
 
 #var direction_before_falling: Vector3 = Vector3.ZERO
 #

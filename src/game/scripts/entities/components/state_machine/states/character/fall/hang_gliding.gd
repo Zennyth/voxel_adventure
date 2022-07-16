@@ -14,6 +14,8 @@ var is_hang_glider_used: bool = false:
 	get:
 		return slot and slot.is_active and hang_glider != null
 
+func enter() -> void:
+	animation_state_machine.travel("Idle")
 
 func _on_travel_stack_change(stack: Stack):
 	if not stack:

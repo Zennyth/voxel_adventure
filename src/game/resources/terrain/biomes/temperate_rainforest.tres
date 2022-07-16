@@ -1,4 +1,4 @@
-[gd_resource type="Biome" load_steps=9 format=3 uid="uid://b40bm5c1q32c0"]
+[gd_resource type="Biome" load_steps=14 format=3 uid="uid://b5crvssga2pre"]
 
 [sub_resource type="Curve" id="Curve_eoa7j"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.590074, 0.409091), 0.0, 0.0, 0, 0, Vector2(0.930041, 0.472727), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -12,6 +12,22 @@ weight = 1.0
 
 [sub_resource type="HeightFilter" id="HeightFilter_b0385"]
 curve = SubResource("Curve_760sv")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6ofba"]
+frequency = 0.001
+
+[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_vf3og"]
+density = 0.001
+noise = SubResource("FastNoiseLite_6ofba")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_p3xuf"]
+
+[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_roclw"]
+generator = SubResource("VoxelInstanceGenerator_vf3og")
+mesh = SubResource("CapsuleMesh_p3xuf")
+
+[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_dni7a"]
+item_1 = SubResource("VoxelInstanceLibraryMultiMeshItem_roclw")
 
 [sub_resource type="Curve" id="Curve_15yq1"]
 
@@ -27,6 +43,7 @@ colors = PackedColorArray(0, 0, 0, 1, 0.570312, 0.570312, 0.570312, 1, 0.382812,
 
 [resource]
 biome_name = "Temperate Rainforest"
+library = SubResource("VoxelInstanceLibrary_dni7a")
 continentalness = SubResource("HeightFilter_aybhn")
 erosion = SubResource("HeightFilter_b0385")
 peaks_and_valleys = SubResource("HeightFilter_bt1e8")

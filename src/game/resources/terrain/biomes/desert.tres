@@ -1,4 +1,4 @@
-[gd_resource type="Biome" load_steps=9 format=3 uid="uid://c63kd01mimsco"]
+[gd_resource type="Biome" load_steps=14 format=3 uid="uid://bv2sjrcloqddy"]
 
 [sub_resource type="Curve" id="Curve_ibab4"]
 _data = [Vector2(0, 0.109091), 0.0, 0.0, 0, 0, Vector2(1, 0.318182), 0.0, 0.0, 0, 0]
@@ -12,6 +12,23 @@ weight = 1.0
 
 [sub_resource type="HeightFilter" id="HeightFilter_inhky"]
 curve = SubResource("Curve_layv6")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_djmx6"]
+frequency = 0.001
+
+[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_ka4vc"]
+density = 0.001
+noise = SubResource("FastNoiseLite_djmx6")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uimxc"]
+height = 1.0
+
+[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_sr0aq"]
+generator = SubResource("VoxelInstanceGenerator_ka4vc")
+mesh = SubResource("CylinderMesh_uimxc")
+
+[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_25cm8"]
+item_1 = SubResource("VoxelInstanceLibraryMultiMeshItem_sr0aq")
 
 [sub_resource type="Curve" id="Curve_w4h6w"]
 
@@ -28,6 +45,7 @@ colors = PackedColorArray(0, 0, 0, 1, 0.570312, 0.570312, 0.570312, 1, 0.382812,
 
 [resource]
 biome_name = "Desert"
+library = SubResource("VoxelInstanceLibrary_25cm8")
 continentalness = SubResource("HeightFilter_pbb03")
 erosion = SubResource("HeightFilter_inhky")
 peaks_and_valleys = SubResource("HeightFilter_qym2r")
