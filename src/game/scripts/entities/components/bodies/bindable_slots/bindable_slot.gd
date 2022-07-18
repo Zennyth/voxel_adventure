@@ -15,7 +15,7 @@ func _init():
 # Slot
 ###
 var slot_key: String = ""
-var item_category: Item.ItemCategory
+var item_category: ItemReference.Category
 
 @export var inventory_category: Inventory.InventoryCategory = Inventory.InventoryCategory.CHARACTER_COSMETIC
 
@@ -51,7 +51,7 @@ func update_slot():
 	if not slot or slot.is_empty():
 		mesh_instance.mesh = null
 	else:
-		mesh_instance.mesh = get_mesh(slot.stack.item)
+		mesh_instance.mesh = slot.get_item_mesh()
 	
 	visible(slot.is_active if slot else false)
 	
@@ -70,7 +70,7 @@ func get_mesh(item: Item):
 	# if (item is Equipment or item is Cosmetic) and item.secondary_mesh and "Left" in name:
 	# 	return item.secondary_mesh
 
-	return item.mesh
+	return item.get_mesh()
 
 func connect_to_slot():
 	if not slot:
@@ -112,8 +112,8 @@ func set_stable_state(new_state: Dictionary, component: Node = self) -> void:
 		if new_state[identifier] == "":
 			mesh_instance.mesh = null
 		else:
-			var item: Item = Database.items.get_by_name(new_state[identifier])
-			mesh_instance.mesh = get_mesh(item)
+			var item: Item = Database.item_references.get_item_by_name(new_state[identifier])
+			mesh_instance.mesh = item.get_mesh()
 	
 	if get_sync_is_active_key() in new_state:
 		visible(new_state[get_sync_is_active_key()])

@@ -11,5 +11,5 @@ func _init():
 func update_id():
 	key = Armor.get_key(identifier)
 
-func is_accepting_item(item: Item) -> bool:
+func is_accepting_item_reference(item: ItemReference) -> bool:
 	return item is Armor and identifier == item.armor_category

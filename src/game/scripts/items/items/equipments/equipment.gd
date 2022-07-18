@@ -1,4 +1,4 @@
-extends Item
+extends ItemReference
 class_name Equipment
 
 enum EquipmentCategory {
@@ -14,8 +14,8 @@ enum EquipmentCategory {
 @export var secondary_mesh: Resource = null
 
 func _init():
-	item_category = Item.ItemCategory.EQUIPMENT
+	category = ItemReference.Category.EQUIPMENT
 
 
 static func get_key(_identifier = null) -> String:
-	return Item.get_key() + str(Item.ItemCategory.EQUIPMENT)
+	return ItemReference.get_key() + str(ItemReference.Category.EQUIPMENT)

@@ -12,5 +12,5 @@ func update_id():
 	key = Travel.get_key(identifier)
 
 
-func is_accepting_item(item: Item) -> bool:
+func is_accepting_item_reference(item: ItemReference) -> bool:
 	return item is Travel and identifier == item.travel_category

@@ -269,7 +269,7 @@ CarouselButton.tscn::PackedScene::3767500581673098532::1657224163::0::1::::<><>:
 class_database.gd::GDScript::-1::1657220677::0::1::::<>ResourceDatabase<>::
 database.gd::GDScript::-1::1657220677::0::1::::ResourceDatabase<>Object<>::
 database_manager.gd::GDScript::-1::1657220677::0::1::::<>Node<>::
-item_database.gd::GDScript::-1::1657220677::0::1::::<>ResourceDatabase<>::
+item_reference_database.gd::GDScript::-1::1657220677::0::1::::<>ResourceDatabase<>::
 race_database.gd::GDScript::-1::1657220677::0::1::::<>ResourceDatabase<>::
 ::res://scripts/entities/::1657220677
 entity.gd::GDScript::-1::1657220677::0::1::::Entity<>Stateful<>::

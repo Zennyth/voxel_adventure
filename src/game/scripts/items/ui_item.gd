@@ -13,10 +13,10 @@ func _ready():
 var item: Item = null:
 	set(_item):
 		item = _item
-		mesh_instance.mesh = item.mesh if item and item.mesh else null
+		mesh_instance.mesh = item.get_mesh() if item and item.get_mesh() else null
 
 func set_item(_item: Item):
 	item = _item
 
 func get_item_name() -> String:
-	return item.name
+	return item.get_name()

@@ -37,7 +37,7 @@ func get_item_name() -> String:
 	if slot == null or slot.stack == null:
 		return ""
 	
-	return slot.stack.get_item_name()
+	return slot.get_item_name()
 
 func _on_stack_changed(_new_stack: Stack):
 	update_ui()
@@ -68,5 +68,5 @@ func get_style() -> StyleBoxTexture:
 	
 	return default_style
 
-func is_accepting_item(_item: Item) -> bool:
+func is_accepting_item_reference(_item: ItemReference) -> bool:
 	return true

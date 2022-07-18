@@ -1,27 +1,48 @@
-extends Resource
 class_name Item
+extends Resource
 
-@export var name: String = ""
-@export var is_collectable: bool = true
-
-@export var is_stackable: bool = true
-@export var max_stack_size: int = 1:
-	get:
-		return max_stack_size if is_stackable else 1
-	set(size):
-		max_stack_size = size if is_stackable else 1
-
-@export var mesh: Resource:
-	set(_mesh):
-		mesh = _mesh
-
-enum ItemCategory {
-	EQUIPMENT,
-	COSMETIC,
-	MATERIAL,
-}
-@export var item_category: ItemCategory
+###
+# BUILT-IN
+###
+func _init(_item_reference: ItemReference = null, _modifiers: Dictionary = {}):
+    item_reference = _item_reference
+    modifiers = _modifiers
 
 
-static func get_key(_identifier = null) -> String:
-	return ""
+###
+# BUILT-IN
+# Item
+###
+@export var item_reference: Resource
+func get_item_reference() -> ItemReference:
+    return item_reference
+
+
+###
+# BUILT-IN
+# Modifiers
+###
+@export var modifiers: Dictionary
+
+
+###
+# DECORATOR
+# Item
+###
+func get_name() -> String:
+	return item_reference.name
+
+func is_collectable() -> bool:
+    return item_reference.is_collectable()
+
+func is_stackable() -> bool:
+	return item_reference.is_stackable()
+
+func get_max_stack_size() -> int:
+    return item_reference.max_stack_size()
+
+func get_mesh() -> Mesh:
+    return item_reference.mesh
+
+func get_category() -> ItemReference.Category:
+    return item_reference.category

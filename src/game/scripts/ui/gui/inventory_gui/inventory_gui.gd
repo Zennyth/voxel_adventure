@@ -64,7 +64,7 @@ func drag_stack_container(slot_container: SlotContainer):
 		drag_preview.set_stack( inventory.remove_stack(slot_index) )
 
 	# check if slot accepts item
-	elif not slot.is_empty() and not slot_container.is_accepting_item(drag_preview.stack.item):
+	elif not slot.is_empty() and not slot_container.is_accepting_item_reference(drag_preview.stack.item.get_item_reference()):
 		return
 	
 	# drop item

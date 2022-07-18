@@ -12,5 +12,5 @@ func update_id():
 	key = Cosmetic.get_key(identifier)
 
 
-func is_accepting_item(item: Item) -> bool:
+func is_accepting_item_reference(item: ItemReference) -> bool:
 	return item is Cosmetic and identifier == item.cosmetic_category

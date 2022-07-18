@@ -48,7 +48,7 @@ func create_character():
 	character.data.set_new_stack(
 		Inventory.InventoryCategory.CHARACTER_EQUIPMENTS, 
 		Travel.get_key(Travel.TravelCategory.HANG_GLIDING),
-		Database.items.get_by_name("Hang Glider")
+		Database.item_references.get_by_name("Hang Glider")
 	)
 	
 	save_manager.save_character(character.data)
@@ -74,5 +74,3 @@ func _on_color_changed(_color: Color):
 		Inventory.InventoryCategory.CHARACTER_COSMETIC,
 		Cosmetic.get_key(Cosmetic.CosmeticCategory.CHEST)
 	)
-	
-	print(slot.stack.item.mesh)

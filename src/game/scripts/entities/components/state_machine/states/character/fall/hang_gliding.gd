@@ -29,7 +29,7 @@ func _on_travel_stack_change(stack: Stack):
 # BUILT-IN
 ###
 func update_hang_glider(stack: Stack):
-	hang_glider = stack.item as Travel
+	hang_glider = stack.item.item_reference as Travel
 
 	if hang_glider:
 		speed = hang_glider.speed

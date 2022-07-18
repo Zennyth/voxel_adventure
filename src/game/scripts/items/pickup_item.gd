@@ -23,7 +23,7 @@ func get_stable_state(state: Dictionary = { }, component: Node = self) -> Dictio
 
 func set_stable_state(new_state: Dictionary, component: Node = self) -> void:
     if WorldState.STATE_KEYS.ITEM_NAME in new_state:
-        stack.item = Database.items.get_by_name(new_state[WorldState.STATE_KEYS.ITEM_NAME])
+        stack.item = Database.item_references.get_by_name(new_state[WorldState.STATE_KEYS.ITEM_NAME])
     
     if WorldState.STATE_KEYS.STACK_QUANTITY in new_state:
         stack.quantity = new_state[WorldState.STATE_KEYS.STACK_QUANTITY]
