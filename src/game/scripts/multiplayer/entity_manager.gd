@@ -4,7 +4,6 @@ class_name EntityManager
 ####
 ## Init
 ####
-
 func get_entity(entity_id: int) -> Entity:
 	if not has_entity(entity_id): return null
 	
@@ -12,6 +11,7 @@ func get_entity(entity_id: int) -> Entity:
 
 func has_entity(entity_id: int) -> bool:
 	return has_node(str(entity_id))
+
 	
 ####
 ## Scenes
