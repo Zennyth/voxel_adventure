@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxMeshImporter"
+type="ArrayMesh"
+uid="uid://do0xgigudrgal"
+path="res://.godot/imported/Treestump1.vox-40dfa3f47da92c6d5f821f9b4a2e682d.mesh"
+
+[deps]
+
+source_file="res://assets/environment/common/trees/Treestump1.vox"
+dest_files=["res://.godot/imported/Treestump1.vox-40dfa3f47da92c6d5f821f9b4a2e682d.mesh"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+pivot_mode=1

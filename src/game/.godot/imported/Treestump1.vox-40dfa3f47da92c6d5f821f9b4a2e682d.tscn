@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/Treestump1.vox-40dfa3f47da92c6d5f821f9b4a2e682d.model0.mesh" id="1_paa5w"]
+
+[node name="Treestump1" type="Node3D"]
+
+[node name="@@41219" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -15)
+gi_mode = 2
+mesh = ExtResource("1_paa5w")

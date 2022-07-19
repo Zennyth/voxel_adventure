@@ -1,4 +1,7 @@
-[gd_resource type="Biome" load_steps=14 format=3 uid="uid://b5crvssga2pre"]
+[gd_resource type="Biome" load_steps=18 format=3 uid="uid://b5crvssga2pre"]
+
+[ext_resource type="ArrayMesh" uid="uid://do0xgigudrgal" path="res://assets/environment/common/trees/Treestump1.vox" id="1_hwttp"]
+[ext_resource type="ArrayMesh" uid="uid://rtssipg20p1l" path="res://assets/environment/common/trees/Tree_Oak_L1.vox" id="2_hrpkt"]
 
 [sub_resource type="Curve" id="Curve_eoa7j"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.590074, 0.409091), 0.0, 0.0, 0, 0, Vector2(0.930041, 0.472727), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -14,20 +17,35 @@ weight = 1.0
 curve = SubResource("Curve_760sv")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_6ofba"]
+seed = 1
 frequency = 0.001
 
 [sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_vf3og"]
 density = 0.001
+min_scale = 0.1
+max_scale = 0.1
 noise = SubResource("FastNoiseLite_6ofba")
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_p3xuf"]
 
 [sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_roclw"]
 generator = SubResource("VoxelInstanceGenerator_vf3og")
-mesh = SubResource("CapsuleMesh_p3xuf")
+mesh = ExtResource("1_hwttp")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7bo3u"]
+frequency = 0.001
+
+[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_31iiq"]
+density = 0.001
+min_scale = 0.1
+max_scale = 0.1
+noise = SubResource("FastNoiseLite_7bo3u")
+
+[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_hptl7"]
+generator = SubResource("VoxelInstanceGenerator_31iiq")
+mesh = ExtResource("2_hrpkt")
 
 [sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_dni7a"]
 item_1 = SubResource("VoxelInstanceLibraryMultiMeshItem_roclw")
+item_2 = SubResource("VoxelInstanceLibraryMultiMeshItem_hptl7")
 
 [sub_resource type="Curve" id="Curve_15yq1"]
 
@@ -35,11 +53,11 @@ item_1 = SubResource("VoxelInstanceLibraryMultiMeshItem_roclw")
 curve = SubResource("Curve_15yq1")
 
 [sub_resource type="Gradient" id="Gradient_b0brp"]
-colors = PackedColorArray(0.360784, 0.631373, 0.117647, 1, 0.686275, 0.854902, 0.109804, 1)
+colors = PackedColorArray(0.360784, 0.631373, 0.117647, 1, 0.414054, 0.667969, 0.130235, 1)
 
 [sub_resource type="Gradient" id="Gradient_weq0p"]
 offsets = PackedFloat32Array(0, 0, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.570312, 0.570312, 0.570312, 1, 0.382812, 0.382812, 0.382812, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.570312, 0.570312, 0.570312, 1, 0.566406, 0.35196, 0.0693411, 1)
 
 [resource]
 biome_name = "Temperate Rainforest"

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="ArrayMesh" path="res://.godot/imported/Tree_Oak_L1.vox-aab4a1fe4a015da3f3f5cc49593b0287.model0.mesh" id="1_o6ruv"]
+
+[node name="Tree_Oak_L1" type="Node3D"]
+
+[node name="@@41230" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, 0, -43)
+gi_mode = 2
+mesh = ExtResource("1_o6ruv")

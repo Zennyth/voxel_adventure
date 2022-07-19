@@ -1,0 +1,17 @@
+[remap]
+
+importer="VoxelVoxMeshImporter"
+type="ArrayMesh"
+uid="uid://rtssipg20p1l"
+path="res://.godot/imported/Tree_Oak_L1.vox-aab4a1fe4a015da3f3f5cc49593b0287.mesh"
+
+[deps]
+
+source_file="res://assets/environment/common/trees/Tree_Oak_L1.vox"
+dest_files=["res://.godot/imported/Tree_Oak_L1.vox-aab4a1fe4a015da3f3f5cc49593b0287.mesh"]
+
+[params]
+
+store_colors_in_texture=false
+scale=1.0
+pivot_mode=1
