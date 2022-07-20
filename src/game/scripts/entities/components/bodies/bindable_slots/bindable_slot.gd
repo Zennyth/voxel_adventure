@@ -32,31 +32,32 @@ func _on_stack_changed(_new_stack: Stack):
 
 ###
 # BUILT-IN
+# Visibility
+###
+var is_mesh_visible := SyncProp.new(mesh_instance.visible, get_sync_is_active_key(), self)
+
+func get_sync_is_active_key() -> String:
+	return WorldState.STATE_KEYS.BINDALBE_SLOT_IS_ACTIVE + "_" + str(slot_key)
+    
+func _on_is_active_changed(is_now_active: bool):
+    is_mesh_visible.set_property(is_now_active)
+
+###
+# BUILT-IN
 # MeshInstance
 ###
 var mesh_instance: MeshInstance3D
 
-func visible(is_visible_var: bool):
-	if mesh_instance: mesh_instance.visible = is_visible_var
-	if is_authoritative():
-		update_stable_state()
-
-func is_visible():
-	return slot and slot.is_active
-
-func _on_is_active_changed(is_now_active: bool):
-	visible(is_now_active)
+func get_sync_key() -> String:
+	return WorldState.STATE_KEYS.BINDALBE_SLOT + "_" + str(slot_key)
 
 func update_slot():
 	if not slot or slot.is_empty():
-		mesh_instance.mesh = null
+		item_mesh.set_property(null)
 	else:
-		mesh_instance.mesh = get_mesh(slot.stack.item)
+		item_mesh.set_property(get_mesh(slot.get_item()))
 	
-	visible(slot.is_active if slot else false)
-	
-	if is_authoritative():
-		update_stable_state()
+    is_mesh_visible.set_property(slot.is_active if slot else false)
 
 
 ###
@@ -85,37 +86,3 @@ func disconnect_from_slot():
 	
 	slot._stack_changed.disconnect(_on_stack_changed)
 	slot._is_active_changed.disconnect(_on_is_active_changed)
-
-
-###
-# OVERRIDE
-###
-func get_sync_key() -> String:
-	return WorldState.STATE_KEYS.BINDALBE_SLOT + "_" + str(slot_key)
-
-func get_sync_is_active_key() -> String:
-	return WorldState.STATE_KEYS.BINDALBE_SLOT_IS_ACTIVE + "_" + str(slot_key)
-
-func get_stable_state(state: Dictionary = { }, component: Node = self) -> Dictionary:
-	
-	if slot_key != null:
-		state[get_sync_key()] = slot.get_item_name() if slot and not slot.is_empty() else ""
-	
-	state[get_sync_is_active_key()] = is_visible()
-	
-	return super.get_stable_state(state, component)
-
-func set_stable_state(new_state: Dictionary, component: Node = self) -> void:
-	var identifier := get_sync_key()
-	
-	if identifier in new_state:
-		if new_state[identifier] == "":
-			mesh_instance.mesh = null
-		else:
-			var item: Item = Database.items.get_by_name(new_state[identifier])
-			mesh_instance.mesh = get_mesh(item)
-	
-	if get_sync_is_active_key() in new_state:
-		visible(new_state[get_sync_is_active_key()])
-	
-	super.set_stable_state(new_state, component)

@@ -23,5 +23,12 @@ enum ItemCategory {
 @export var item_category: ItemCategory
 
 
+func dump():
+    return var2bytes(self)
+
+static func parse(new_sync):
+    return bytes2var(new_sync)
+
+
 static func get_key(_identifier = null) -> String:
 	return ""
