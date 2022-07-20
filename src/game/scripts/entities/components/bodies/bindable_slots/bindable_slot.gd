@@ -24,10 +24,31 @@ var slot: Slot = null:
 		disconnect_from_slot()
 		slot = _slot
 		connect_to_slot()
-		update_slot()
+		slot_changed()
 
 func _on_stack_changed(_new_stack: Stack):
-	update_slot()
+	slot_changed()
+
+func slot_changed():
+    if not slot or slot.is_empty():
+        item_proxy.set_property(null)
+    else:
+        item_proxy.set_property(slot.get_item())
+    
+    is_mesh_visible.set_property(slot.is_active if slot else false)
+
+
+###
+# BUILT-IN
+# Item
+###
+var item := SyncProp.new(null, get_sync_key(), self)
+
+func _on_item_changed(new_item: Item):
+    new_item
+
+func get_sync_key() -> String:
+	return WorldState.STATE_KEYS.BINDALBE_SLOT + "_" + str(slot_key)
 
 
 ###
@@ -48,21 +69,6 @@ func _on_is_active_changed(is_now_active: bool):
 ###
 var mesh_instance: MeshInstance3D
 
-func get_sync_key() -> String:
-	return WorldState.STATE_KEYS.BINDALBE_SLOT + "_" + str(slot_key)
-
-func update_slot():
-	if not slot or slot.is_empty():
-		item_mesh.set_property(null)
-	else:
-		item_mesh.set_property(get_mesh(slot.get_item()))
-	
-    is_mesh_visible.set_property(slot.is_active if slot else false)
-
-
-###
-# UTILS
-###
 func get_mesh(item: Item):
 	if not item:
 		return null
@@ -73,6 +79,10 @@ func get_mesh(item: Item):
 
 	return item.mesh
 
+
+###
+# UTILS
+###
 func connect_to_slot():
 	if not slot:
 		return
