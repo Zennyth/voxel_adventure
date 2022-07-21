@@ -30,8 +30,15 @@ func fill_to(add_quantity: int) -> int:
 	quantity = potential_quantity
 	return 0
 
+
+
+###
+# UTILS
+# Item
+###
 func is_empty() -> bool:
 	return item == null or quantity == 0
+
 
 func get_item_name() -> String:
 	if item == null:
@@ -41,3 +48,15 @@ func get_item_name() -> String:
 
 func is_item_stackable() -> bool:
 	return item != null and item.is_stackable
+
+func is_item_collectable() -> bool:
+    return item != null and item.is_collectable
+
+func get_item_max_stack_size() -> int:
+    return item.max_stack_size if item != null else 0 
+
+func get_item_mesh() -> Mesh:
+    return item.get_mesh if item != null else null
+
+func get_item_category() -> ItemReference.Category:
+    return item.item_category if item != null else null

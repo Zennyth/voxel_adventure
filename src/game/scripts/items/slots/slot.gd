@@ -48,3 +48,15 @@ func get_item_name() -> String:
 
 func is_item_stackable() -> bool:
 	return stack.is_item_stackable()
+
+func is_item_collectable() -> bool:
+	return stack.is_item_collectable()
+
+func get_item_max_stack_size() -> int:
+	return stack.get_item_max_stack_size()
+
+func get_item_mesh() -> Mesh:
+	return stack.get_item_mesh()
+
+func get_item_category() -> ItemReference.Category:
+	return stack.get_item_category()

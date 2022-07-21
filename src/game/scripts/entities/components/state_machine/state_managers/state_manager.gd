@@ -10,7 +10,7 @@ class_name StateManager
 func init(linked_entity: Entity) -> void:
 	super.init(linked_entity)
 	
-	if not entity.is_authoritative():
+	if not is_authoritative():
 		process_mode = Node.PROCESS_MODE_DISABLED
 
 func change_state(new_state: State) -> void:

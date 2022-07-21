@@ -1,7 +1,7 @@
 extends Node
 class_name Stateful
 
-func register_property(property: SyncProp) -> void:
+func register_property(property: SyncProperty) -> void:
     pass
 
 

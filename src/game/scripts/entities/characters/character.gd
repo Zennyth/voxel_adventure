@@ -32,9 +32,16 @@ func randomize_cosmetics():
 # Character3D and movements
 ###
 var character: CharacterBody3D
+
+var sync_position: SyncProperty
+var sync_rotation: SyncProperty
 	
 func _init():
 	character = $"." as CharacterBody3D
+
+func _ready():
+    sync_position = SyncProperty.new(character.position, WorldState.STATE_KEYS.POSITION, self, null, false)
+    sync_rotation = SyncProperty.new(character.Body.rotation, WorldState.STATE_KEYS.ROTATION, self, null, false)
 
 @export var default_speed := 10.0
 @export var JUMP_VELOCITY := 8.0
@@ -71,23 +78,3 @@ func update():
 	if is_authoritative(): 
 		character.move_and_slide()
 		update_unstable_state()
-
-
-###
-# OVERRIDE
-###
-func get_unstable_state(state: Dictionary = { }, component: Node = self) -> Dictionary:
-	state[WorldState.STATE_KEYS.POSITION] = character.position
-	state[WorldState.STATE_KEYS.ROTATION] = character.Body.rotation
-	
-	return super.get_unstable_state(state, component)
-
-func set_unstable_state(new_state: Dictionary, component: Node = self) -> void:
-	for key in new_state.keys():
-		match key:
-			WorldState.STATE_KEYS.ROTATION:
-				character.Body.set_rotation(new_state[key])
-			WorldState.STATE_KEYS.POSITION:
-				character.set_position(new_state[key])
-	
-	super.set_unstable_state(new_state, component)

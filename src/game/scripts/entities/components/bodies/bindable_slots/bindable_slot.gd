@@ -28,40 +28,47 @@ var slot: Slot = null:
 
 func _on_stack_changed(_new_stack: Stack):
 	slot_changed()
-
+    
 func slot_changed():
     if not slot or slot.is_empty():
-        item_proxy.set_property(null)
+        item.set_property(null)
     else:
-        item_proxy.set_property(slot.get_item())
-    
-    is_mesh_visible.set_property(slot.is_active if slot else false)
+        item.set_property(slot.get_item())
+        
+    _on_is_active_changed(slot.is_active if slot else false)
+       
+func _on_is_active_changed(is_now_active: bool):
+    is_mesh_visible.set_property(is_now_active)
 
 
 ###
 # BUILT-IN
 # Item
 ###
-var item := SyncProp.new(null, get_sync_key(), self)
+var item_key: String:
+    get():
+	    return "%s_%s" % [WorldState.STATE_KEYS.BINDALBE_SLOT, slot_key]
+
+var item := SyncProperty.new(null, item_key, self, Item.parse)
+item._property_changed.connect(_on_item_changed)
 
 func _on_item_changed(new_item: Item):
-    new_item
-
-func get_sync_key() -> String:
-	return WorldState.STATE_KEYS.BINDALBE_SLOT + "_" + str(slot_key)
+    mesh_instance.mesh = get_mesh(new_item)
 
 
 ###
 # BUILT-IN
 # Visibility
 ###
-var is_mesh_visible := SyncProp.new(mesh_instance.visible, get_sync_is_active_key(), self)
+var visibility_key: String:
+    get():
+	    return "%s_%s" % [WorldState.STATE_KEYS.BINDALBE_SLOT_IS_ACTIVE, slot_key]
 
-func get_sync_is_active_key() -> String:
-	return WorldState.STATE_KEYS.BINDALBE_SLOT_IS_ACTIVE + "_" + str(slot_key)
-    
-func _on_is_active_changed(is_now_active: bool):
-    is_mesh_visible.set_property(is_now_active)
+var is_mesh_visible := SyncProperty.new(false, visibility_key, self)
+is_mesh_visible._property_changed.connect(_on_mesh_visible_changed)
+
+func _on_mesh_visible_changed(is_mesh_now_visible: bool):
+    mesh_instance.visible = is_mesh_now_visible
 
 ###
 # BUILT-IN

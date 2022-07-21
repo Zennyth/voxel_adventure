@@ -2,11 +2,11 @@ extends Component
 class_name LabelComponent
 
 var label: Label3D
-var text: SyncProp
+var text: SyncProperty
 
 func _init():
 	label = $"." as Label3D
-    text = SyncProp.new(label.text, WorldState.STATE_KEYS.LABEL, self)
+    text = SyncProperty.new(label.text, WorldState.STATE_KEYS.LABEL, self)
 
 
 func set_text(new_text: String):

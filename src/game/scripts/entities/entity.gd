@@ -32,7 +32,7 @@ func _ready():
 		update_stable_state()
 
 
-func register_property(property: SyncProp) -> void:
+func register_property(property: SyncProperty) -> void:
     var properties: Dictionary = stable_properties if property.is_stable else unstable_properties
     properties[property.key] = property
 

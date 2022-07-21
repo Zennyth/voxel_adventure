@@ -1,5 +1,5 @@
 extends Reference
-class_name SyncProp
+class_name SyncProperty
 
 var _property
 var key: String
