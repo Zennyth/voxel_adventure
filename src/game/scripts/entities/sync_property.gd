@@ -1,13 +1,14 @@
 extends Reference
 class_name SyncProperty
 
+signal _property_changed(property)
+
 var _property
 var key: String
 var owner: Entity
 var is_stable: bool
 var parse: Callable
 
-signal _property_changed(property)
 
 func _init(property, key_: String, owner_: Stateful, parse_: Callable = null, is_stable_: bool = true):
     _property = property
@@ -36,8 +37,4 @@ func dump():
     return _property
 
 func parse(data):
-    if parse:
-        set_property(parse(data))
-        return
-
-    set_property(data)
+    set_property(parse(data) if parse else data)

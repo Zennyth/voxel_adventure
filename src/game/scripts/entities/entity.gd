@@ -1,20 +1,17 @@
 extends Stateful
 class_name Entity
 
-####
-## Signals
-####
+###
+# Signals
+###
 signal _destroyed(entity_id: int)
 
 
-####
-## BUILT-IN
-####
+###
+# BUILT-IN
+###
 var id: int = -1
 var scene: String = ""
-
-var stable_properties := {}
-var unstable_properties := {}
 
 func init(entity_state: Dictionary) -> void:
 	if WorldState.STATE_KEYS.ID in entity_state:
@@ -31,12 +28,26 @@ func _ready():
 		# Spawn the entity
 		update_stable_state()
 
+func is_authoritative() -> bool:
+    return Game.multiplayer_manager.is_entity_authoritative(get_stable_state())
+
+
+###
+# BUILT-IN
+# Properties
+###
+var stable_properties := {}
+var unstable_properties := {}
 
 func register_property(property: SyncProperty) -> void:
     var properties: Dictionary = stable_properties if property.is_stable else unstable_properties
     properties[property.key] = property
 
 
+###
+# BUILT-IN
+# States
+###
 func get_unstable_state(state: Dictionary = { }) -> Dictionary:
     return get_state(state, unstable_properties)
 
@@ -59,14 +70,9 @@ func update_stable_state() -> void:
 	Game.multiplayer_manager.update_entity_stable_state(get_stable_state())
 
 
-func is_authoritative() -> bool:
-	return Game.multiplayer_manager.is_entity_authoritative(get_stable_state())
-
-
-
-####
-## UTILS
-####
+###
+# UTILS
+###
 func get_state(state: Dictionary = { }, properties: Dictionary) -> Dictionary:
     for property in properties.values():
         state[property.key] = property.get_property()
