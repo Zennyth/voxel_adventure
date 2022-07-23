@@ -1,15 +1,15 @@
 extends Node
 class_name Stateful
 
-func register_property(property: SyncProperty) -> void:
-    pass
+func register_property(_property: SyncProperty) -> void:
+	pass
 
 
 func update_unstable_state() -> void:
-    pass
+	pass
 
 func update_stable_state() -> void:
-    pass
+	pass
 
 
 func is_authoritative() -> bool:

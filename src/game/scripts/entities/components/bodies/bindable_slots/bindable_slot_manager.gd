@@ -26,19 +26,5 @@ func bind_slots(inventory_key: Inventory.InventoryCategory, binded_inventory: In
 	for bindable_slot in bindable_slots:
 		if bindable_slot.inventory_category == null or bindable_slot.inventory_category != inventory_key:
 			continue
+
 		bindable_slot.slot = binded_inventory.get_slot(bindable_slot.slot_key)
-
-
-
-
-func get_stable_state(state: Dictionary = { }, component: Node = self) -> Dictionary:
-	for bindable_slot in bindable_slots:
-		bindable_slot.get_stable_state(state, component)
-	
-	return super.get_stable_state(state, component)
-
-func set_stable_state(new_state: Dictionary, component: Node = self) -> void:
-	for bindable_slot in bindable_slots:
-		bindable_slot.set_stable_state(new_state, component)
-	
-	super.set_stable_state(new_state, component)

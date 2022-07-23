@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://djm1jggm80cl2"]
+[gd_scene load_steps=43 format=3 uid="uid://djm1jggm80cl2"]
 
 [ext_resource type="Script" path="res://scripts/main/world.gd" id="1_hnd5j"]
 [ext_resource type="Shader" path="res://scripts/environment/sky.gdshader" id="2_hvotx"]
@@ -9,6 +9,7 @@
 [ext_resource type="Material" uid="uid://cdt78n65d6g4i" path="res://resources/environment/water_global.tres" id="7_nb2ds"]
 [ext_resource type="Script" path="res://scripts/multiplayer/entity_manager.gd" id="8_g3enr"]
 [ext_resource type="ArrayMesh" uid="uid://do0xgigudrgal" path="res://assets/environment/common/trees/Treestump1.vox" id="8_nl8jd"]
+[ext_resource type="ArrayMesh" uid="uid://rtssipg20p1l" path="res://assets/environment/common/trees/Tree_Oak_L1.vox" id="9_iei2y"]
 [ext_resource type="Script" path="res://scripts/ui/gui/inventory_gui/inventory_gui.gd" id="10_f5co6"]
 [ext_resource type="PackedScene" uid="uid://bnap8qvpaghvn" path="res://scenes/items/inventories/player_equipments.tscn" id="11_kkr82"]
 [ext_resource type="PackedScene" uid="uid://cmv6om6x12w3d" path="res://scenes/items/inventories/drag_preview.tscn" id="12_boprf"]
@@ -129,6 +130,19 @@ noise = SubResource("FastNoiseLite_6ofba")
 generator = SubResource("VoxelInstanceGenerator_vf3og")
 mesh = ExtResource("8_nl8jd")
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7bo3u"]
+frequency = 0.001
+
+[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_31iiq"]
+density = 0.001
+min_scale = 0.1
+max_scale = 0.1
+noise = SubResource("FastNoiseLite_7bo3u")
+
+[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_hptl7"]
+generator = SubResource("VoxelInstanceGenerator_31iiq")
+mesh = ExtResource("9_iei2y")
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_djmx6"]
 frequency = 0.001
 
@@ -143,10 +157,11 @@ height = 1.0
 generator = SubResource("VoxelInstanceGenerator_ka4vc")
 mesh = SubResource("CylinderMesh_uimxc")
 
-[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_fv2b5"]
+[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_mbrre"]
 item_0 = SubResource("VoxelInstanceLibraryMultiMeshItem_1hybt")
 item_1 = SubResource("VoxelInstanceLibraryMultiMeshItem_roclw")
-item_2 = SubResource("VoxelInstanceLibraryMultiMeshItem_sr0aq")
+item_2 = SubResource("VoxelInstanceLibraryMultiMeshItem_hptl7")
+item_3 = SubResource("VoxelInstanceLibraryMultiMeshItem_sr0aq")
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_hnd5j")
@@ -171,7 +186,7 @@ run_stream_in_editor = false
 mesh_block_size = 32
 
 [node name="VoxelInstancerWorld" type="VoxelInstancerWorld" parent="VoxelTerrain"]
-library = SubResource("VoxelInstanceLibrary_fv2b5")
+library = SubResource("VoxelInstanceLibrary_mbrre")
 
 [node name="EntityManager" type="Node3D" parent="."]
 script = ExtResource("8_g3enr")

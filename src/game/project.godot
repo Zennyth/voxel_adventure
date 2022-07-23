@@ -49,16 +49,6 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/entities/components/bodies/body.gd"
 }, {
-"base": "Resource",
-"class": &"BodyPartResource",
-"language": &"GDScript",
-"path": "res://scripts/entities/components/bodies/collection/body_part.gd"
-}, {
-"base": "Resource",
-"class": &"BodyPartsCollectionResource",
-"language": &"GDScript",
-"path": "res://scripts/entities/components/bodies/collection/collection.gd"
-}, {
 "base": "HBoxContainer",
 "class": &"CarouselButton",
 "language": &"GDScript",
@@ -109,7 +99,7 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/multiplayer/connection_strategies/connection_strategy.gd"
 }, {
-"base": "Object",
+"base": "Reference",
 "class": &"ConnectionStrategyFactory",
 "language": &"GDScript",
 "path": "res://scripts/multiplayer/connection_strategies/connection_strategy_factory.gd"
@@ -227,7 +217,7 @@ _global_script_classes=[{
 "base": "Resource",
 "class": &"Item",
 "language": &"GDScript",
-"path": "res://scripts/items/item.gd"
+"path": "res://scripts/items/items/item.gd"
 }, {
 "base": "SubViewportContainer",
 "class": &"ItemContainer",
@@ -288,11 +278,6 @@ _global_script_classes=[{
 "class": &"RaceCarouselButton",
 "language": &"GDScript",
 "path": "res://scripts/ui/screens/character_creation/race_carousel.gd"
-}, {
-"base": "Resource",
-"class": &"RaceResource",
-"language": &"GDScript",
-"path": "res://scripts/entities/components/bodies/collection/race.gd"
 }, {
 "base": "RefCounted",
 "class": &"RandomUtils",
@@ -374,6 +359,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/entities/stateful.gd"
 }, {
+"base": "RefCounted",
+"class": &"SyncProperty",
+"language": &"GDScript",
+"path": "res://scripts/entities/sync_property.gd"
+}, {
 "base": "ColorRect",
 "class": &"Tooltip",
 "language": &"GDScript",
@@ -394,7 +384,7 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/main/ui_player_inventories.gd"
 }, {
-"base": "Object",
+"base": "RefCounted",
 "class": &"UIManager",
 "language": &"GDScript",
 "path": "res://scripts/ui/ui_manager.gd"
@@ -478,8 +468,6 @@ _global_script_class_icons={
 "BindableSlot": "",
 "BindableSlotManager": "",
 "Body": "",
-"BodyPartResource": "",
-"BodyPartsCollectionResource": "",
 "CarouselButton": "",
 "Character": "",
 "CharacterSaveManager": "",
@@ -526,7 +514,6 @@ _global_script_class_icons={
 "PlayerController": "",
 "Race": "",
 "RaceCarouselButton": "",
-"RaceResource": "",
 "RandomUtils": "",
 "Reader": "",
 "ResourceDatabase": "",
@@ -543,6 +530,7 @@ _global_script_class_icons={
 "State": "",
 "StateManager": "",
 "Stateful": "",
+"SyncProperty": "",
 "Tooltip": "",
 "Travel": "",
 "TravelBindableSlot": "",

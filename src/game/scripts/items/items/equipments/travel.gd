@@ -18,3 +18,9 @@ enum TravelCategory {
 
 static func get_key(category_reference = null) -> String:
 	return Equipment.get_key() + "_" + str(Equipment.EquipmentCategory.TRAVEL) + "_" + str(category_reference)
+
+static func get_item_class() -> String:
+	return "Travel"
+
+func get_class() -> String:
+	return "Travel" 

@@ -6,11 +6,14 @@ var text: SyncProperty
 
 func _init():
 	label = $"." as Label3D
-    text = SyncProperty.new(label.text, WorldState.STATE_KEYS.LABEL, self)
-
+	text = SyncProperty.new(label.text, WorldState.STATE_KEYS.LABEL, self)
+	text._property_changed.connect(_on_text_updated)
 
 func set_text(new_text: String):
 	if not label:
 		return
 	
 	text.set_property(new_text)
+
+func _on_text_updated(new_text):
+	label.text = new_text

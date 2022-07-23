@@ -18,3 +18,9 @@ enum SlotCategory {
 }
 static func get_key(identifier = null) -> String:
 	return Equipment.get_key() + "_" + str(Equipment.EquipmentCategory.WEAPON) + "_" + str(identifier)
+
+static func get_item_class() -> String:
+	return "Weapon"
+
+func get_class() -> String:
+	return "Weapon" 

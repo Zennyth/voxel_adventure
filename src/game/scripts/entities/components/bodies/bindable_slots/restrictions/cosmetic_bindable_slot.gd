@@ -14,3 +14,4 @@ func _init():
 
 func update_key():
 	slot_key = Cosmetic.get_key(cosmetic_key) 
+	super.update_key()

@@ -1,40 +1,45 @@
-extends Reference
+extends RefCounted
 class_name SyncProperty
 
 signal _property_changed(property)
+signal _sync_property_changed(sync_property: SyncProperty)
 
 var _property
 var key: String
-var owner: Entity
+var owner: Stateful
 var is_stable: bool
-var parse: Callable
+var parse_function: Callable
+var dump_function: Callable
 
 
-func _init(property, key_: String, owner_: Stateful, parse_: Callable = null, is_stable_: bool = true):
-    _property = property
-    key = key_
-    owner = owner_
-    is_stable = is_stable_
-    parse = parse_
+func _init(property, key_: String, owner_: Stateful, parse_function_ = null, dump_function_ = null, is_stable_: bool = true):
+	_property = property
+	key = key_
+	owner = owner_
+	is_stable = is_stable_
+	
+	if parse_function_:
+		parse_function = parse_function_
+	
+	if dump_function_:
+		dump_function = dump_function_
 
-    if owner:
-        owner.register_property(self)
+	if owner:
+		owner.register_property(self)
 
 
 func get_property():
-    return _property
+	return _property
 
 func set_property(new_property):
-    _property = new_property
-
-    update_state()
+	_property = new_property
+	
+	_property_changed.emit(_property)
+	_sync_property_changed.emit(self)
 
 
 func dump():
-    if _property.has_method('dump'):
-        return _property.dump()
-
-    return _property
+	return dump_function.call(_property) if dump_function else _property
 
 func parse(data):
-    set_property(parse(data) if parse else data)
+	set_property(parse_function.call(data) if parse_function else data)

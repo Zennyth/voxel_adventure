@@ -4,10 +4,11 @@ class_name ArmorBindableSlot
 @export var binded_cosmetic_slot_path: NodePath
 @onready var binded_cosmetic_slot: CosmeticBindableSlot = get_node(binded_cosmetic_slot_path) if binded_cosmetic_slot_path else null
 
-func update_slot():
-	super.update_slot()
-	if binded_cosmetic_slot: 
-		binded_cosmetic_slot.visible(mesh_instance.mesh == null)
+func slot_changed():
+	super.slot_changed()
+	
+	if binded_cosmetic_slot and binded_cosmetic_slot.is_mesh_visible: 
+		binded_cosmetic_slot.is_mesh_visible.set_property(mesh_instance.mesh == null)
 
 
 @export var armor_key: Armor.ArmorCategory:
@@ -21,5 +22,6 @@ func _init():
 	super._init()
 
 func update_key():
-	slot_key = Armor.get_key(armor_key) 
+	slot_key = Armor.get_key(armor_key)
+	super.update_key()
 

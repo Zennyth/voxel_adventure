@@ -13,9 +13,8 @@ signal _stack_updated
 		quantity = _quantity
 		_stack_updated.emit(self)
 
-func _init(item_reference = "", quantity_reference: int = -1):
-	
-	item = item_reference if item_reference is Item else Database.items.get_by_name(item_reference)
+func _init(item_reference = null, quantity_reference: int = -1):
+	item = item_reference
 	if quantity_reference != -1:
 		quantity = quantity_reference
 
@@ -39,6 +38,8 @@ func fill_to(add_quantity: int) -> int:
 func is_empty() -> bool:
 	return item == null or quantity == 0
 
+func get_item() -> Item:
+	return item
 
 func get_item_name() -> String:
 	if item == null:
@@ -50,13 +51,13 @@ func is_item_stackable() -> bool:
 	return item != null and item.is_stackable
 
 func is_item_collectable() -> bool:
-    return item != null and item.is_collectable
+	return item != null and item.is_collectable
 
 func get_item_max_stack_size() -> int:
-    return item.max_stack_size if item != null else 0 
+	return item.max_stack_size if item != null else 0 
 
 func get_item_mesh() -> Mesh:
-    return item.get_mesh if item != null else null
+	return item.get_mesh if item != null else null
 
-func get_item_category() -> ItemReference.Category:
-    return item.item_category if item != null else null
+func get_item_category() -> Item.ItemCategory:
+	return item.item_category if item != null else null

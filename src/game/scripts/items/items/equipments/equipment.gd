@@ -19,3 +19,9 @@ func _init():
 
 static func get_key(_identifier = null) -> String:
 	return Item.get_key() + str(Item.ItemCategory.EQUIPMENT)
+
+static func get_item_class() -> String:
+	return "Equipment"
+
+func get_class() -> String:
+	return "Equipment" 

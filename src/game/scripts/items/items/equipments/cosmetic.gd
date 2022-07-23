@@ -17,3 +17,9 @@ enum CosmeticCategory {
 
 static func get_key(category_reference = null) -> String:
 	return super.get_key() + "_" + str(Equipment.EquipmentCategory.COSMETIC) + "_" + str(category_reference)
+
+static func get_item_class() -> String:
+	return "Cosmetic"
+
+func get_class() -> String:
+	return "Cosmetic"

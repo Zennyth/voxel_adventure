@@ -43,6 +43,9 @@ signal _is_active_changed(is_now_active: bool)
 func is_empty() -> bool:
 	return stack == null or stack.is_empty()
 
+func get_item() -> Item:
+	return stack.get_item()
+
 func get_item_name() -> String:
 	return stack.get_item_name()
 
@@ -58,5 +61,5 @@ func get_item_max_stack_size() -> int:
 func get_item_mesh() -> Mesh:
 	return stack.get_item_mesh()
 
-func get_item_category() -> ItemReference.Category:
+func get_item_category() -> Item.ItemCategory:
 	return stack.get_item_category()

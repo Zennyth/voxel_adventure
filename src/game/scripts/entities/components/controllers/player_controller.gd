@@ -28,9 +28,10 @@ func is_jumping() -> bool:
 	return Input.is_action_just_pressed("ui_accept")
 
 func _ready():
-	set_slot_active(Travel.get_key(Travel.TravelCategory.HANG_GLIDING), false)
-	set_slot_active(Weapon.get_key(Weapon.SlotCategory.LEFT_HAND), true)
-	set_slot_active(Weapon.get_key(Weapon.SlotCategory.RIGHT_HAND), true)
+	if is_authoritative():
+		set_slot_active(Travel.get_key(Travel.TravelCategory.HANG_GLIDING), false)
+		set_slot_active(Weapon.get_key(Weapon.SlotCategory.LEFT_HAND), true)
+		set_slot_active(Weapon.get_key(Weapon.SlotCategory.RIGHT_HAND), true)
 
 
 ###

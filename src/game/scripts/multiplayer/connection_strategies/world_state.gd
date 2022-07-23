@@ -23,7 +23,7 @@ const STATE_KEYS = {
 	
 	LABEL = 'la',
 	BINDALBE_SLOT = 'bs',
-	BINDALBE_SLOT_IS_ACTIVE = 'ia',
+	BINDALBE_SLOT_IS_ACTIVE = 'bsia',
 	ITEM_NAME = 'in',
 	STACK_QUANTITY = 'sq'
 }

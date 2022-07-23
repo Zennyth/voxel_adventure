@@ -31,8 +31,8 @@ static func get_key(_identifier = null) -> String:
 ## BUILT-IN
 ## Serializable
 ####
-func dump():
-    return var2bytes(self)
+static func get_item_class() -> String:
+	return "Item"
 
-static func parse(new_sync):
-    return bytes2var(new_sync)
+func get_class() -> String:
+	return "Item"

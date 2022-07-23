@@ -7,10 +7,10 @@ var is_ready := false
 
 var connection_strategy: ConnectionStrategy
 func get_strategy() -> ConnectionStrategy:
-#	if "--server" in OS.get_cmdline_args():
-#		return ServerConnectionStrategy.new()
-#	else:
-#		return ClientConnectionStrategy.new()
+	if "--server" in OS.get_cmdline_args():
+		return ServerConnectionStrategy.new()
+	else:
+		return ClientConnectionStrategy.new()
 	
 	return SoloConnectionStrategy.new()
 
@@ -32,7 +32,10 @@ func is_entity_authoritative(data) -> bool:
 	var entity_state: Dictionary
 	
 	if data is int:
-		entity_state = connection_strategy.entity_manager.get_entity(data).get_stable_state()
+		var entity = connection_strategy.entity_manager.get_entity(data)
+		if not entity:
+			return false
+		entity_state = entity.get_identity()
 	else:
 		entity_state = data
 	

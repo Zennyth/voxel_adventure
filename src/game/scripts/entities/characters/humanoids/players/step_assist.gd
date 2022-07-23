@@ -9,7 +9,7 @@ func _ready():
 func _on_terrain_ready(terrain: VoxelTerrain):
 	voxel_tool = terrain.get_voxel_tool()
 
-func _process(delta):
+func _process(_delta):
 	if not voxel_tool:
 		return
 		

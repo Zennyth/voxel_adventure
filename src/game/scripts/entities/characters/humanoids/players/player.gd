@@ -11,6 +11,7 @@ func _ready():
 	
 	if not is_authoritative():
 		voxelViewer.process_mode = Node.PROCESS_MODE_DISABLED
+		controller.process_mode = Node.PROCESS_MODE_DISABLED
 		return
 	
 	EventBus._player_initialized.emit(self)
