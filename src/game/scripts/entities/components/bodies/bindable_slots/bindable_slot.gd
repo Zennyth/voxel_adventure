@@ -16,11 +16,15 @@ func update_key():
 
 func entity_ready():
 	super.entity_ready()
-	item = create_property(null, item_key, self.parse_item, self.dump_item)
-	item._property_changed.connect(_on_item_changed)
+	item = create_property(null, item_key, true, {
+		"on_changed": _on_item_changed,
+		"parse": Database.item_classes.parse_item,
+		"dump": Database.item_classes.dump_item
+	})
 	
-	is_mesh_visible = create_property(false, visibility_key)
-	is_mesh_visible._property_changed.connect(_on_mesh_visible_changed)
+	is_mesh_visible = create_property(false, visibility_key, true, {
+		"on_changed": _on_mesh_visible_changed,
+	})
 
 ###
 # BUILT-IN
@@ -41,16 +45,15 @@ var slot: Slot = null:
 func _on_stack_changed(_new_stack: Stack):
 	slot_changed()
 	
-func slot_changed():	
-	if slot and not slot.is_empty():
-		item.set_property(slot.get_item())
-		mesh_instance.mesh = get_mesh(item.get_property())
+func slot_changed():
+	if slot_key == "0_3_5":
+		print(slot.get_item(), name)
 	
+	item.set_property(slot.get_item() if slot and not slot.is_empty() else null)
 	_on_is_active_changed(slot.is_active if slot else false)
    
 func _on_is_active_changed(is_now_active: bool):
-	if is_mesh_visible:
-		is_mesh_visible.set_property(is_now_active)
+	is_mesh_visible.set_property(is_now_active)
 
 
 ###
@@ -61,51 +64,10 @@ var item_key: String:
 	get:
 		return "%s_%s" % [WorldState.STATE_KEYS.BINDALBE_SLOT, slot_key]
 
-func parse_item(data) -> Item:
-	if data == null:
-		return null
-
-	var item = Database.item_classes.get_by_name(data["i"])
-
-	for property in data["p"]:
-		var vt = data["p"][property]
-		
-		if "t" in vt and vt["t"].contains("Mesh"):
-			item[property] = bytes2var_with_objects(data["p"][property]["v"])
-		else:
-			item[property] = vt["v"]
-
-	return item
-
-func dump_item(new_item):
-	if new_item == null:
-		return null
-
-	var data = {
-		"i": new_item.get_item_class(),
-		"p": {}
-	}
-
-	for property in new_item.get_property_list():
-		var value = new_item.get(property["name"])
-
-		if value == null or property["usage"] != 8199:
-			continue
-
-		data["p"][property["name"]] = {
-			"v": value
-		}
-		
-		if value is Object:
-			data["p"][property["name"]]["t"] = value.get_class()
-			
-			if value.get_class().contains("Mesh"):
-				data["p"][property["name"]]["v"] = var2bytes_with_objects(value)
-
-	return data
-
 func _on_item_changed(new_item: Item):
-	# print(new_item)
+#	if slot_key == "0_3_5":
+#		print(new_item, name)
+	
 	mesh_instance.mesh = get_mesh(new_item)
 
 

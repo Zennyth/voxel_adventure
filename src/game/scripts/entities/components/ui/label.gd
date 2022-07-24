@@ -9,8 +9,9 @@ func _init():
 
 func entity_ready():
 	super.entity_ready()
-	text = create_property(label.text, WorldState.STATE_KEYS.LABEL)
-	text._property_changed.connect(_on_text_updated)
+	text = create_property(label.text, WorldState.STATE_KEYS.LABEL, true, {
+		"on_changed": _on_text_updated
+	})
 
 func set_text(new_text: String):
 	if not label or not text:

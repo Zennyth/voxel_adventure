@@ -12,20 +12,14 @@ var parse_function: Callable
 var dump_function: Callable
 
 
-func _init(property, key_: String, owner_: Stateful, parse_function_ = null, dump_function_ = null, is_stable_: bool = true):
+func _init(property, key_: String, owner_: Stateful, is_stable_: bool = true, options: Dictionary = {}):
 	_property = property
 	key = key_
 	owner = owner_
 	is_stable = is_stable_
 	
-	if parse_function_:
-		parse_function = parse_function_
-	
-	if dump_function_:
-		dump_function = dump_function_
-
-	if owner:
-		owner.register_property(self)
+	set_option("parse", "parse_function", options)
+	set_option("dump", "dump_function", options)
 
 
 func get_property():
@@ -43,3 +37,11 @@ func dump():
 
 func parse(data):
 	set_property(parse_function.call(data) if parse_function else data)
+
+
+###
+# Utils
+###
+func set_option(option_name: String, property_name: String, options: Dictionary):
+	if option_name in options:
+		set(property_name, options[option_name])

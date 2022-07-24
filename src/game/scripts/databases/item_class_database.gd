@@ -17,3 +17,51 @@ func get_by_name(name_item_class: String):
 
 func get_all() -> Array:
 	return _item_classes.values()
+
+
+###
+# BUILT-IN
+# Networking
+###
+func parse_item(data) -> Item:
+	if data == null:
+		return null
+
+	var item = get_by_name(data["i"])
+
+	for property in data["p"]:
+		var vt = data["p"][property]
+		
+		if "t" in vt and vt["t"].contains("Mesh"):
+			item[property] = bytes2var_with_objects(data["p"][property]["v"])
+		else:
+			item[property] = vt["v"]
+
+	return item
+
+func dump_item(new_item):
+	if new_item == null:
+		return null
+
+	var data = {
+		"i": new_item.get_item_class(),
+		"p": {}
+	}
+
+	for property in new_item.get_property_list():
+		var value = new_item.get(property["name"])
+
+		if value == null or property["usage"] != 8199:
+			continue
+
+		data["p"][property["name"]] = {
+			"v": value
+		}
+		
+		if value is Object:
+			data["p"][property["name"]]["t"] = value.get_class()
+			
+			if value.get_class().contains("Mesh"):
+				data["p"][property["name"]]["v"] = var2bytes_with_objects(value)
+
+	return data

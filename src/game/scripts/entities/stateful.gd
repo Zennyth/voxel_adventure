@@ -10,11 +10,16 @@ func register_property(_property: SyncProperty) -> void:
 func get_property(key: String, is_stable: bool) -> SyncProperty:
 	return null
 
-func create_property(property, key_: String, parse_function_ = null, dump_function_ = null, is_stable_: bool = true) -> SyncProperty:
+func create_property(property, key_: String, is_stable_: bool = true, options: Dictionary = {}) -> SyncProperty:
 	var prop = get_property(key_, is_stable_)
 	
 	if prop == null:
-		prop = SyncProperty.new(property, key_, self, parse_function_, dump_function_, is_stable_)
+		prop = SyncProperty.new(property, key_, self, is_stable_, options)
+		register_property(prop)
+	
+	if "on_changed" in options:
+		prop._property_changed.connect(options["on_changed"])
+	
 	
 	return prop
 

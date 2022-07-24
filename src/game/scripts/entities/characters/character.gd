@@ -48,10 +48,12 @@ func _init():
 
 func entity_ready():
 	super.entity_ready()
-	sync_position = create_property(character.position, WorldState.STATE_KEYS.POSITION, null, null, false)
-	sync_position._property_changed.connect(_position_synced)
-	sync_rotation = create_property(character.Body.rotation, WorldState.STATE_KEYS.ROTATION, null, null, false)
-	sync_rotation._property_changed.connect(_rotation_synced)
+	sync_position = create_property(character.position, WorldState.STATE_KEYS.POSITION, false, {
+		"on_changed": _position_synced
+	})
+	sync_rotation = create_property(character.Body.rotation, WorldState.STATE_KEYS.ROTATION, false, {
+		"on_changed": _rotation_synced
+	})
 
 @export var default_speed := 10.0
 @export var JUMP_VELOCITY := 8.0
