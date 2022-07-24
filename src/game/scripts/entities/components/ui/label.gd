@@ -6,11 +6,14 @@ var text: SyncProperty
 
 func _init():
 	label = $"." as Label3D
-	text = SyncProperty.new(label.text, WorldState.STATE_KEYS.LABEL, self)
+
+func entity_ready():
+	super.entity_ready()
+	text = create_property(label.text, WorldState.STATE_KEYS.LABEL)
 	text._property_changed.connect(_on_text_updated)
 
 func set_text(new_text: String):
-	if not label:
+	if not label or not text:
 		return
 	
 	text.set_property(new_text)

@@ -29,7 +29,14 @@ func init(entity_state: Dictionary) -> void:
 		if component.has_method("init"):
 			component.init(self)
 
+func entity_ready() -> void:
+	for component in get_children():
+		if component.has_method("entity_ready"):
+			component.entity_ready()
+
 func _ready():
+	entity_ready()
+	
 	if is_authoritative():
 		# Spawn the entity
 		update_stable_state()
@@ -45,18 +52,31 @@ func is_authoritative() -> bool:
 var stable_properties := {}
 var unstable_properties := {}
 
+func get_property(key: String, is_stable: bool) -> SyncProperty:
+	var properties: Dictionary = stable_properties if is_stable else unstable_properties
+	
+	if not key in properties:
+		return null
+	
+	return properties[key]
+
 func register_property(property: SyncProperty) -> void:
 	var properties: Dictionary = stable_properties if property.is_stable else unstable_properties
+	
 	properties[property.key] = property
 	
 	property._sync_property_changed.connect(_sync_property_changed)
 
 func _sync_property_changed(property: SyncProperty):
-	if not is_authoritative():
+	if not is_authoritative() or not property.is_stable:
 		return
 	
-	if property.is_stable:
-		update_stable_state()
+	var new_state = {
+		WorldState.STATE_KEYS.ID: id,
+		WorldState.STATE_KEYS.SCENE: scene,
+		property.key: property.dump()
+	}
+	Game.multiplayer_manager.update_entity_stable_state(new_state)
 
 ###
 # BUILT-IN
@@ -102,4 +122,5 @@ func get_state(properties: Dictionary, state: Dictionary = { }) -> Dictionary:
 
 func set_state(properties: Dictionary, new_state: Dictionary) -> void:
 	for property in properties.values():
-		property.parse(new_state[property.key])
+		if property.key in new_state:
+			property.parse(new_state[property.key])

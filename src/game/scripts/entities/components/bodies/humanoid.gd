@@ -1,7 +1,8 @@
 extends Body
 class_name HumanoidBody
 	
-func _ready():
+func entity_ready():
+	super.entity_ready()
 	if is_authoritative():
 		bind_inventories()
 

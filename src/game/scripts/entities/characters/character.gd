@@ -46,10 +46,11 @@ func _rotation_synced(new_rotation):
 func _init():
 	character = $"." as CharacterBody3D
 
-func _ready():
-	sync_position = SyncProperty.new(character.position, WorldState.STATE_KEYS.POSITION, self, null, null, false)
+func entity_ready():
+	super.entity_ready()
+	sync_position = create_property(character.position, WorldState.STATE_KEYS.POSITION, null, null, false)
 	sync_position._property_changed.connect(_position_synced)
-	sync_rotation = SyncProperty.new(character.Body.rotation, WorldState.STATE_KEYS.ROTATION, self, null, null, false)
+	sync_rotation = create_property(character.Body.rotation, WorldState.STATE_KEYS.ROTATION, null, null, false)
 	sync_rotation._property_changed.connect(_rotation_synced)
 
 @export var default_speed := 10.0

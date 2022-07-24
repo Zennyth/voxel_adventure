@@ -12,13 +12,14 @@ func _init():
 	mesh_instance.mesh = null
 
 func update_key():
-	if slot_key.contains("null"):
-		return
-	
-	item = SyncProperty.new(null, item_key, self, self.parse_item, self.dump_item)
+	pass
+
+func entity_ready():
+	super.entity_ready()
+	item = create_property(null, item_key, self.parse_item, self.dump_item)
 	item._property_changed.connect(_on_item_changed)
 	
-	is_mesh_visible = SyncProperty.new(true, visibility_key, self)
+	is_mesh_visible = create_property(false, visibility_key)
 	is_mesh_visible._property_changed.connect(_on_mesh_visible_changed)
 
 ###
@@ -42,11 +43,7 @@ func _on_stack_changed(_new_stack: Stack):
 	
 func slot_changed():	
 	if slot and not slot.is_empty():
-		if item == null:
-			item = SyncProperty.new(slot.get_item(), item_key, self, self.parse_item, self.dump_item)
-			item._property_changed.connect(_on_item_changed)
-		else:
-			item.set_property(slot.get_item())
+		item.set_property(slot.get_item())
 		mesh_instance.mesh = get_mesh(item.get_property())
 	
 	_on_is_active_changed(slot.is_active if slot else false)
@@ -64,7 +61,7 @@ var item_key: String:
 	get:
 		return "%s_%s" % [WorldState.STATE_KEYS.BINDALBE_SLOT, slot_key]
 
-func parse_item(data) -> Cosmetic:
+func parse_item(data) -> Item:
 	if data == null:
 		return null
 
@@ -73,7 +70,7 @@ func parse_item(data) -> Cosmetic:
 	for property in data["p"]:
 		var vt = data["p"][property]
 		
-		if "t" in vt and vt["t"] == "ArrayMesh":
+		if "t" in vt and vt["t"].contains("Mesh"):
 			item[property] = bytes2var_with_objects(data["p"][property]["v"])
 		else:
 			item[property] = vt["v"]
@@ -102,7 +99,7 @@ func dump_item(new_item):
 		if value is Object:
 			data["p"][property["name"]]["t"] = value.get_class()
 			
-			if value.get_class() == "ArrayMesh":
+			if value.get_class().contains("Mesh"):
 				data["p"][property["name"]]["v"] = var2bytes_with_objects(value)
 
 	return data
@@ -123,7 +120,7 @@ var visibility_key: String:
 var is_mesh_visible: SyncProperty
 
 func _on_mesh_visible_changed(is_mesh_now_visible: bool):
-	mesh_instance.visible = true
+	mesh_instance.visible = is_mesh_now_visible
 
 ###
 # BUILT-IN
