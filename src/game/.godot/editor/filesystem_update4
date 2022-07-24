@@ -1,12 +1,10 @@
-res://scenes/terrain/test.tscn
+res://scenes/entities/components/bodies/body.tscn
 res://resources/terrain/biomes/seasonal_forest.tres
 res://resources/terrain/biomes/temperate_rainforest.tres
 res://resources/terrain/biomes/tundra.tres
 res://resources/terrain/biomes/desert.tres
 res://resources/environment/water_global.tres
 res://resources/ui/main_theme.tres
+res://scripts/entities/components/state_machine/state_managers/state_manager.gd
+res://scenes/terrain/test.tscn
 res://scenes/entities/characters/player.tscn
-res://scenes/entities/components/bodies/body.tscn
-res://scripts/entities/stateful.gd
-res://scripts/entities/components/bodies/bindable_slots/bindable_slot.gd
-res://scripts/entities/sync_property.gd

@@ -24,6 +24,7 @@ const STATE_KEYS = {
 	LABEL = 'la',
 	BINDALBE_SLOT = 'bs',
 	BINDALBE_SLOT_IS_ACTIVE = 'bsia',
+	STATE_MACHINE = 'sm',
 	ITEM_NAME = 'in',
 	STACK_QUANTITY = 'sq'
 }
