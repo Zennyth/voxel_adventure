@@ -33,27 +33,13 @@ func randomize_cosmetics():
 ###
 var character: CharacterBody3D
 
-var sync_position: SyncProperty
-func _position_synced(new_position):
-	if not is_authoritative():
-		character.position = new_position
-
-var sync_rotation: SyncProperty
-func _rotation_synced(new_rotation):
-	if not is_authoritative():
-		character.Body.rotation = new_rotation
+var sync_position: BindedProperty = /
+	bind_property(character, "position", WorldState.STATE_KEYS.POSITION, false)
+var sync_rotation: BindedProperty = /
+	bind_property(character, "Body.rotation", WorldState.STATE_KEYS.ROTATION, false)
 
 func _init():
 	character = $"." as CharacterBody3D
-
-func entity_ready():
-	super.entity_ready()
-	sync_position = create_property(character.position, WorldState.STATE_KEYS.POSITION, false, {
-		"on_changed": _position_synced
-	})
-	sync_rotation = create_property(character.Body.rotation, WorldState.STATE_KEYS.ROTATION, false, {
-		"on_changed": _rotation_synced
-	})
 
 @export var default_speed := 10.0
 @export var JUMP_VELOCITY := 8.0
@@ -89,6 +75,4 @@ func move(direction, delta: float, gravity: float = -1.0, speed: float = -1.0):
 func update():
 	if is_authoritative(): 
 		character.move_and_slide()
-		sync_position.set_property(character.position)
-		sync_rotation.set_property(character.Body.rotation)
 		update_unstable_state()

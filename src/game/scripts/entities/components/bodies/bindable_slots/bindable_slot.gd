@@ -4,8 +4,6 @@ class_name BindableSlot
 ###
 # BUILT-IN
 ###
-var item: SyncProperty
-
 func _init():
 	add_to_group("bindable_slots")
 	mesh_instance = $"." as MeshInstance3D
@@ -14,23 +12,17 @@ func _init():
 func update_key():
 	pass
 
-func entity_ready():
-	super.entity_ready()
-	item = create_property(null, item_key, true, {
-		"on_changed": _on_item_changed,
-		"parse": Database.item_classes.parse_item,
-		"dump": Database.item_classes.dump_item
-	})
-	
-	is_mesh_visible = create_property(false, visibility_key, true, {
-		"on_changed": _on_mesh_visible_changed,
-	})
-
 ###
 # BUILT-IN
 # Slot
 ###
-var slot_key: String = ""
+var slot_key: String = "":
+	set(value):
+		slot_key = value
+		if slot_key == "":
+			item.key = "%s_%s" % [WorldState.STATE_KEYS.BINDALBE_SLOT, slot_key]
+			mesh_visibility.key = "%s_%s" % [WorldState.STATE_KEYS.BINDALBE_SLOT_IS_ACTIVE, slot_key]
+
 var item_category: Item.ItemCategory
 
 @export var inventory_category: Inventory.InventoryCategory = Inventory.InventoryCategory.CHARACTER_COSMETIC
@@ -45,29 +37,25 @@ var slot: Slot = null:
 func _on_stack_changed(_new_stack: Stack):
 	slot_changed()
 	
-func slot_changed():
-	if slot_key == "0_3_5":
-		print(slot.get_item(), name)
-	
-	item.set_property(slot.get_item() if slot and not slot.is_empty() else null)
-	_on_is_active_changed(slot.is_active if slot else false)
+func slot_changed():	
+	item.sync_value(slot.get_item() if slot and not slot.is_empty() else null)
+	_on_is_active_changed(slot and slot.is_active)
    
 func _on_is_active_changed(is_now_active: bool):
-	is_mesh_visible.set_property(is_now_active)
+	mesh_visibility.sync_value(is_now_active)
 
 
 ###
 # BUILT-IN
 # Item
 ###
-var item_key: String:
-	get:
-		return "%s_%s" % [WorldState.STATE_KEYS.BINDALBE_SLOT, slot_key]
+var item := create_property(null, null, true, {
+	"on_changed": _on_item_changed,
+	"parse": Database.item_classes.parse_item,
+	"dump": Database.item_classes.dump_item
+})
 
 func _on_item_changed(new_item: Item):
-#	if slot_key == "0_3_5":
-#		print(new_item, name)
-	
 	mesh_instance.mesh = get_mesh(new_item)
 
 
@@ -75,14 +63,7 @@ func _on_item_changed(new_item: Item):
 # BUILT-IN
 # Visibility
 ###
-var visibility_key: String:
-	get:
-		return "%s_%s" % [WorldState.STATE_KEYS.BINDALBE_SLOT_IS_ACTIVE, slot_key]
-
-var is_mesh_visible: SyncProperty
-
-func _on_mesh_visible_changed(is_mesh_now_visible: bool):
-	mesh_instance.visible = is_mesh_now_visible
+var mesh_visibility: := bind_property(mesh_instance, "visible", null, true)
 
 ###
 # BUILT-IN

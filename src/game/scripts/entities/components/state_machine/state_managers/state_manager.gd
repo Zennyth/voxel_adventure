@@ -21,7 +21,7 @@ func change_state(new_state: State) -> void:
 	current_state.enter()
 	
 	if state_path != null and state_path.get_property() != current_state.get_path():
-		state_path.set_property(current_state.get_path())
+		state_path.sync_value(current_state.get_path())
 	
 	if debug and debug_label != null:
 		debug_label.set_text(current_state.name)
@@ -54,13 +54,9 @@ func _process(delta: float) -> void:
 ###
 # Sync
 ###
-var state_path: SyncProperty
-
-func entity_ready():
-	super.entity_ready()
-	state_path = create_property(current_state.get_path(), WorldState.STATE_KEYS.STATE_MACHINE, true, {
-		"on_changed": _on_state_path_changed
-	})
+var state_path := new_property(null, WorldState.STATE_KEYS.STATE_MACHINE, true, {
+	"on_changed": _on_state_path_changed
+})
 
 func _on_state_path_changed(value):
 	if not is_authoritative():

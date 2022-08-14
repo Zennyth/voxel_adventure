@@ -35,26 +35,5 @@ func is_authoritative() -> bool:
 # BUILT-IN
 # Properties
 ###
-var unregistered_properties := {}
-
-func get_property(key: String, is_stable: bool) -> SyncProperty:
-	if key in unregistered_properties:
-		return unregistered_properties[key]
-	
-	if entity == null:
-		return null
-	
-	return entity.get_property(key, is_stable)
-
-func register_property(property: SyncProperty) -> void:
-	if entity:
-		entity.register_property(property)
-		return
-	
-	unregistered_properties[property.key] = property
-
-func _register_properties() -> void:
-	for property in unregistered_properties.values():
-		entity.register_property(property)
-	
-	unregistered_properties = {}
+func register_property(property: Property) -> void:
+	entity.register_property(property)

@@ -7,8 +7,9 @@ class_name ArmorBindableSlot
 func slot_changed():
 	super.slot_changed()
 	
+	# TODO: make it cleaner // dispacth event to assotiated CosmeticSlots
 	if binded_cosmetic_slot and binded_cosmetic_slot.is_mesh_visible: 
-		binded_cosmetic_slot.is_mesh_visible.set_property(mesh_instance.mesh == null)
+		binded_cosmetic_slot.is_mesh_visible.sync_value(mesh_instance.mesh == null)
 
 
 @export var armor_key: Armor.ArmorCategory:
