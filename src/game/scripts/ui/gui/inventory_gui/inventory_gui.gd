@@ -29,10 +29,13 @@ func _on_player_initialized(player_reference: Player):
 	inventory = equipments_container.inventory
 	
 	for slot_container in equipments_container.get_slot_containers():
-		slot_container.stack_container.connect("gui_input", slot_container_gui_input, [slot_container])
-		slot_container.stack_container.connect("mouse_entered", show_item_tooltip, [slot_container])
+		slot_container.stack_container.connect("gui_input", 
+			func(event): slot_container_gui_input(event, slot_container)
+		)
+		slot_container.stack_container.connect("mouse_entered", 
+			func(): show_item_tooltip(slot_container)
+		)
 		slot_container.stack_container.connect("mouse_exited", hide_item_tooltip)
-
 	is_ready = true
 
 
@@ -91,7 +94,7 @@ func split_stack_container(slot_container: SlotContainer):
 	if slot.is_empty() or not slot.is_item_stackable():
 		return
 	
-	var split_amount := ceil(slot.stack.quantity / 2.0)
+	var split_amount = ceil(slot.stack.quantity / 2.0)
 
 	if not drag_preview.is_empty() and slot.get_item_name() == drag_preview.get_item_name():
 		var remaining_quantity := drag_preview.stack.fill_to(split_amount)

@@ -44,6 +44,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/entities/components/bodies/bindable_slots/bindable_slot_manager.gd"
 }, {
+"base": "Property",
+"class": &"BindedProperty",
+"language": &"GDScript",
+"path": "res://scripts/entities/properties/binded_property.gd"
+}, {
 "base": "Component",
 "class": &"Body",
 "language": &"GDScript",
@@ -249,6 +254,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/multiplayer/networks/network.gd"
 }, {
+"base": "Property",
+"class": &"NewProperty",
+"language": &"GDScript",
+"path": "res://scripts/entities/properties/new_property.gd"
+}, {
 "base": "RefCounted",
 "class": &"NodeUtils",
 "language": &"GDScript",
@@ -268,6 +278,11 @@ _global_script_classes=[{
 "class": &"PlayerController",
 "language": &"GDScript",
 "path": "res://scripts/entities/components/controllers/player_controller.gd"
+}, {
+"base": "RefCounted",
+"class": &"Property",
+"language": &"GDScript",
+"path": "res://scripts/entities/properties/property.gd"
 }, {
 "base": "Resource",
 "class": &"Race",
@@ -358,11 +373,6 @@ _global_script_classes=[{
 "class": &"Stateful",
 "language": &"GDScript",
 "path": "res://scripts/entities/stateful.gd"
-}, {
-"base": "RefCounted",
-"class": &"SyncProperty",
-"language": &"GDScript",
-"path": "res://scripts/entities/sync_property.gd"
 }, {
 "base": "ColorRect",
 "class": &"Tooltip",
@@ -467,6 +477,7 @@ _global_script_class_icons={
 "ArrayInventoryContainer": "",
 "BindableSlot": "",
 "BindableSlotManager": "",
+"BindedProperty": "",
 "Body": "",
 "CarouselButton": "",
 "Character": "",
@@ -508,10 +519,12 @@ _global_script_class_icons={
 "MoveState": "",
 "MultiplayerManager": "",
 "Network": "",
+"NewProperty": "",
 "NodeUtils": "",
 "PhysicalStateManager": "",
 "Player": "",
 "PlayerController": "",
+"Property": "",
 "Race": "",
 "RaceCarouselButton": "",
 "RandomUtils": "",
@@ -530,7 +543,6 @@ _global_script_class_icons={
 "State": "",
 "StateManager": "",
 "Stateful": "",
-"SyncProperty": "",
 "Tooltip": "",
 "Travel": "",
 "TravelBindableSlot": "",
@@ -567,7 +579,7 @@ Game="*res://scripts/main/game_manager.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/voxel-core/plugin.cfg")
+enabled=PackedStringArray()
 
 [importer_defaults]
 
