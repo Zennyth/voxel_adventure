@@ -28,6 +28,8 @@ func init(entity_state: Dictionary) -> void:
 	for component in get_children():
 		if component.has_method("init"):
 			component.init(self)
+	
+	_entity_initialized.emit()
 
 func entity_ready() -> void:
 	for component in get_children():
@@ -52,16 +54,18 @@ func is_authoritative() -> bool:
 
 # key = is_stable
 var properties = {
-	true: PropertyManager.new(self, _stable_property_value_changed)
+	true: PropertyManager.new(self, _stable_property_value_changed),
 	false: PropertyManager.new(self)
 }
 
-func register_property(property: Property) -> void:
-	properties[property.is_stable].register_property(property)
+func register_property(property: Property) -> bool:
+	return properties[property.is_stable].register_property(property)
 
 func _stable_property_value_changed(property: Property):
 	if not is_authoritative():
 		return
+	
+	# print("[update] property ", property.key)
 	
 	var new_state = {
 		WorldState.STATE_KEYS.ID: id,
@@ -76,7 +80,7 @@ func _stable_property_value_changed(property: Property):
 ###
 func get_unstable_state(state: Dictionary = { }) -> Dictionary:
 	state[WorldState.STATE_KEYS.ID] = id
-	return properties[false].get_state()
+	return properties[false].get_state(state)
 
 func set_unstable_state(new_state: Dictionary) -> void:
 	return properties[false].set_state(new_state)
@@ -91,7 +95,7 @@ func update_unstable_state() -> void:
 func get_stable_state(state: Dictionary = { }) -> Dictionary:
 	state[WorldState.STATE_KEYS.ID] = id
 	state[WorldState.STATE_KEYS.SCENE] = scene
-	return properties[true].get_state()
+	return properties[true].get_state(state)
 
 func set_stable_state(new_state: Dictionary) -> void:
 	return properties[true].set_state(new_state)
@@ -108,40 +112,38 @@ class PropertyManager:
 	var entity: Entity
 	var _property_value_changed: Callable
 
-	func _init(_entity: Entity, property_value_changed: Callable = null):
+	func _init(_entity: Entity, property_value_changed = null):
 		entity = _entity
-		_property_value_changed = property_value_changed
+		if property_value_changed:
+			_property_value_changed = property_value_changed
 	
 	func get_groups() -> Array:
 		return property_groups.keys()
 	
 
 	func set_state(new_state: Dictionary) -> void:
-		for key in get_groups():
-			if not key in new_state:
+		for key in new_state.keys():
+			if not key in property_groups:
 				continue
 			
-			for property in property_groups[key].
+			for property in property_groups[key]:
 				property.parse(new_state[key])
 	
 	func get_state(state: Dictionary = { }) -> Dictionary:
 		for key in get_groups():
-			if not key in new_state:
-				continue
-			
 			state[key] = property_groups[key][0].dump()
 	
 		return state
-				
 
-	func register_property(property: Property):
+	func register_property(property: Property) -> bool:
 		if not property.key in property_groups:
 			property_groups[property.key] = []
 		
-		if property_groups[property.key].length() == 0 or not property.ignore_duplicates:
-			property._property_changed.connect(_property_changed)
-
+		if len(property_groups[property.key]) == 0 or not property.ignore_duplicates:
+			property._property_value_changed.connect(_property_changed)
+		
 		property_groups[property.key].append(property)
+		return true
 	
 	func _property_changed(property: Property):
 		for _property in property_groups[property.key]:
@@ -151,4 +153,4 @@ class PropertyManager:
 			_property.set_value(property.get_value())
 		
 		if _property_value_changed:
-			_property_value_changed.emit(property)
+			_property_value_changed.call(property)

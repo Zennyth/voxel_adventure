@@ -19,9 +19,10 @@ func update_key():
 var slot_key: String = "":
 	set(value):
 		slot_key = value
-		if slot_key == "":
-			item.key = "%s_%s" % [WorldState.STATE_KEYS.BINDALBE_SLOT, slot_key]
-			mesh_visibility.key = "%s_%s" % [WorldState.STATE_KEYS.BINDALBE_SLOT_IS_ACTIVE, slot_key]
+		if slot_key == "" or slot_key == null or slot_key.contains("null"):
+			return
+		item.key = "%s_%s" % [WorldState.STATE_KEYS.BINDALBE_SLOT, slot_key]
+		mesh_visibility.key = "%s_%s" % [WorldState.STATE_KEYS.BINDALBE_SLOT_IS_ACTIVE, slot_key]
 
 var item_category: Item.ItemCategory
 
@@ -49,7 +50,7 @@ func _on_is_active_changed(is_now_active: bool):
 # BUILT-IN
 # Item
 ###
-var item := create_property(null, null, true, {
+var item := new_property(null, null, true, {
 	"on_changed": _on_item_changed,
 	"parse": Database.item_classes.parse_item,
 	"dump": Database.item_classes.dump_item
@@ -63,7 +64,7 @@ func _on_item_changed(new_item: Item):
 # BUILT-IN
 # Visibility
 ###
-var mesh_visibility: := bind_property(mesh_instance, "visible", null, true)
+var mesh_visibility := bind_property("mesh_instance.visible", null, true)
 
 ###
 # BUILT-IN

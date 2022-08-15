@@ -8,8 +8,8 @@ func slot_changed():
 	super.slot_changed()
 	
 	# TODO: make it cleaner // dispacth event to assotiated CosmeticSlots
-	if binded_cosmetic_slot and binded_cosmetic_slot.is_mesh_visible: 
-		binded_cosmetic_slot.is_mesh_visible.sync_value(mesh_instance.mesh == null)
+	if binded_cosmetic_slot and binded_cosmetic_slot.mesh_visibility.get_value(): 
+		binded_cosmetic_slot.mesh_visibility.sync_value(mesh_instance.mesh == null)
 
 
 @export var armor_key: Armor.ArmorCategory:

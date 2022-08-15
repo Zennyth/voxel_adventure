@@ -4,17 +4,17 @@ class_name Property
 signal _value_changed(value)
 signal _property_value_changed(property: Property)
 
-var key: String:
+var key:
 	set(value):
 		key = value
 		if key != null and not _has_been_registered:
-			register(self)
+			register()
 
 var owner: Stateful:
 	set(value):
 		owner = value
 		# TODO: check if ready
-		owner.ready.connect(register)
+		owner._entity_initialized.connect(register)
 
 var is_stable: bool
 var ignore_duplicates := true
@@ -24,7 +24,7 @@ var dump_function: Callable
 var _has_been_registered := false
 
 
-func _init(key_: String, owner_: Stateful, is_stable_: bool = true, options: Dictionary = {}):
+func _init(key_, owner_: Stateful, is_stable_: bool = true, options: Dictionary = {}):
 	key = key_
 	owner = owner_
 	is_stable = is_stable_
@@ -33,15 +33,17 @@ func _init(key_: String, owner_: Stateful, is_stable_: bool = true, options: Dic
 	set_option("dump", "dump_function", options)
 	set_option("ignore_duplicates", "ignore_duplicates", options)
 	if "on_changed" in options:
-		_property_changed.connect(options["on_changed"])
+		_value_changed.connect(options["on_changed"])
 
 
-func register(_owner: Stateful):
-	if key == null:
+func register(_owner: Property = null):
+	if key == null or owner == null:
 		return
 	
-	owner.register_property(self)
-	_has_been_registered = true
+	if _has_been_registered:
+		return
+	
+	_has_been_registered = owner.register_property(self)
 
 
 func get_value():
@@ -51,7 +53,7 @@ func set_value(new_value):
 	_value_changed.emit(new_value)
 
 func sync_value(new_value):
-	if not owner or owner_.is_authoritative():
+	if not owner or not owner.is_authoritative():
 		return
 	
 	set_value(new_value)
@@ -59,7 +61,7 @@ func sync_value(new_value):
 
 
 func dump():
-	return dump_function.call(_property) if dump_function else _property
+	return dump_function.call(get_value()) if dump_function else get_value()
 
 func parse(data):
 	set_value(parse_function.call(data) if parse_function else data)

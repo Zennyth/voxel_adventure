@@ -14,7 +14,7 @@ static func recursive_get(object, path: String):
 	
 	var properties = path.split(".")
 	for property in properties:
-		if not property in object:
+		if object == null or not property in object:
 			return null
 
 		object = object.get(property)
@@ -38,11 +38,10 @@ static func recursive_set(object, path: String, value):
 	if object == null:
 		return
 	
-	var properties = path.split(".")
+	var properties: Array = path.split(".")
 	var last_index = len(properties) - 1
 	var last_property = properties[last_index]
-	properties.remove(last_index)
-
+	properties.remove_at(last_index)
 
 	for property in properties:
 		if not property in object:

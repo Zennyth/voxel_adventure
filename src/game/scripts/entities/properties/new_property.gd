@@ -3,7 +3,7 @@ class_name NewProperty
 
 var _value
 
-func _init(value, key_: String, owner_: Stateful, is_stable_: bool = true, options: Dictionary = {}):
+func _init(value, key_, owner_: Stateful, is_stable_: bool = true, options: Dictionary = {}):
 	super._init(key_, owner_, is_stable_, options)
 
 	set_value(value)

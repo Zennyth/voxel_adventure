@@ -33,10 +33,10 @@ func randomize_cosmetics():
 ###
 var character: CharacterBody3D
 
-var sync_position: BindedProperty = /
-	bind_property(character, "position", WorldState.STATE_KEYS.POSITION, false)
-var sync_rotation: BindedProperty = /
-	bind_property(character, "Body.rotation", WorldState.STATE_KEYS.ROTATION, false)
+var sync_position: BindedProperty = \
+	bind_property("position", WorldState.STATE_KEYS.POSITION, false)
+var sync_rotation: BindedProperty = \
+	bind_property("Body.rotation", WorldState.STATE_KEYS.ROTATION, false)
 
 func _init():
 	character = $"." as CharacterBody3D

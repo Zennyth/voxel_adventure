@@ -51,7 +51,7 @@ func dump_item(new_item):
 	for property in new_item.get_property_list():
 		var value = new_item.get(property["name"])
 
-		if value == null or property["usage"] != 8199:
+		if value == null or property["usage"] != 4102:
 			continue
 
 		data["p"][property["name"]] = {
@@ -63,5 +63,4 @@ func dump_item(new_item):
 			
 			if value.get_class().contains("Mesh"):
 				data["p"][property["name"]]["v"] = var2bytes_with_objects(value)
-
 	return data

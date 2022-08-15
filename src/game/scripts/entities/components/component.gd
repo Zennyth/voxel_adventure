@@ -8,11 +8,12 @@ var entity: Entity
 
 func init(linked_entity: Entity) -> void:
 	entity = linked_entity
-	_register_properties()
+	_entity_initialized.emit()
 	
 	for component in get_children():
 		if component.has_method("init"):
 			component.init(entity)
+	
 
 func entity_ready() -> void:
 	for component in get_children():
@@ -35,5 +36,5 @@ func is_authoritative() -> bool:
 # BUILT-IN
 # Properties
 ###
-func register_property(property: Property) -> void:
-	entity.register_property(property)
+func register_property(property: Property) -> bool:
+	return entity != null and entity.register_property(property)

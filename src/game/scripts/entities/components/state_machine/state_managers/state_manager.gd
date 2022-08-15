@@ -20,7 +20,7 @@ func change_state(new_state: State) -> void:
 	current_state = new_state
 	current_state.enter()
 	
-	if state_path != null and state_path.get_property() != current_state.get_path():
+	if state_path != null and state_path.get_value() != current_state.get_path():
 		state_path.sync_value(current_state.get_path())
 	
 	if debug and debug_label != null:
