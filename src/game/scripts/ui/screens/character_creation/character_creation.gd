@@ -74,5 +74,3 @@ func _on_color_changed(_color: Color):
 		Inventory.InventoryCategory.CHARACTER_COSMETIC,
 		Cosmetic.get_key(Cosmetic.CosmeticCategory.CHEST)
 	)
-	
-	print(slot.stack.item.mesh)

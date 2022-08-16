@@ -1,47 +1,42 @@
 extends Entity
 class_name PickupItem
 
-@onready var ItemInstance := $ItemInstance
-var stack: Stack = null:
-    set(_stack):      
-        stack = _stack
-        if not stack.is_empty():
-            ItemInstance.mesh = stack.item.mesh
+@onready var mesh_instance: MeshInstance3D = $"MeshInstance3D"
+@onready var label: Label3D = $"Label3D"
 
-###
-# OVERRIDE
-###
 var pickup_item: Node3D
 func _init():
 	pickup_item = $"." as Node3D
 
-func get_stable_state(state: Dictionary = { }, component: Node = self) -> Dictionary:
-	state[WorldState.STATE_KEYS.ITEM_NAME] = stack.item.name if stack and not stack.is_empty() else ""
-	state[WorldState.STATE_KEYS.STACK_QUANTITY] = stack.quantity
 
-	return super.get_stable_state(state, component)
+var stack := Stack.new()
 
-func set_stable_state(new_state: Dictionary, component: Node = self) -> void:
-    if WorldState.STATE_KEYS.ITEM_NAME in new_state:
-        stack.item = Database.items.get_by_name(new_state[WorldState.STATE_KEYS.ITEM_NAME])
-    
-    if WorldState.STATE_KEYS.STACK_QUANTITY in new_state:
-        stack.quantity = new_state[WorldState.STATE_KEYS.STACK_QUANTITY]
+var quantity := bind_property("stack.quantity", "q", true, {
+	"on_changed": func(new_quantity: int): label.text = new_quantity
+})
+
+var item := bind_property("stack.item", "i", true, {
+	"on_changed": func(new_item: Item): mesh_instance.mesh = new_item.get_mesh() if new_item else null,
+	"parse": Database.item_classes.parse_item,
+	"dump": Database.item_classes.dump_item
+})
+
+func pickup(desired_quantity: int = 1):
+	var remaining_quantity = quantity.get_value() - desired_quantity
+	if remaining_quantity < 0:
+		return
 	
-	super.set_stable_state(new_state, component)
+	quantity.set_value(remaining_quantity)
+	if remaining_quantity == 0:
+		destroy()
 
 
-func get_unstable_state(state: Dictionary = { }, component: Node = self) -> Dictionary:
-	state[WorldState.STATE_KEYS.POSITION] = pickup_item.position
-	state[WorldState.STATE_KEYS.ROTATION] = pickup_item.rotation
-	
-	return super.get_unstable_state(state, component)
 
-func set_unstable_state(new_state: Dictionary, component: Node = self) -> void:  
-    if WorldState.STATE_KEYS.ROTATION in new_state:
-        pickup_item.set_rotation(new_state[WorldState.STATE_KEYS.ROTATION])
-    
-    if WorldState.STATE_KEYS.POSITION in new_state:
-        pickup_item.set_position(new_state[WorldState.STATE_KEYS.POSITION])
-	
-	super.set_unstable_state(new_state, component)
+var sync_position := bind_property("position", WorldState.STATE_KEYS.POSITION, false)
+var sync_rotation := bind_property("rotation", WorldState.STATE_KEYS.ROTATION, false)
+
+func _ready():
+	set_physics_process(is_authoritative())
+
+func _process():
+	update_unstable_state()

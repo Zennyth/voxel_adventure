@@ -7,14 +7,15 @@ signal _property_value_changed(property: Property)
 var key:
 	set(value):
 		key = value
-		if key != null and not _has_been_registered:
+		if key != null:
 			register()
 
 var owner: Stateful:
 	set(value):
 		owner = value
-		# TODO: check if ready
-		owner._entity_initialized.connect(register)
+		if owner != null:
+			register()
+			owner._entity_initialized.connect(register)
 
 var is_stable: bool
 var ignore_duplicates := true

@@ -64,3 +64,19 @@ func dump_item(new_item):
 			if value.get_class().contains("Mesh"):
 				data["p"][property["name"]]["v"] = var2bytes_with_objects(value)
 	return data
+
+
+func parse_stack(data) -> Stack:
+	if data == null:
+		return null
+	
+	return Stack.new(data["q"], parse_item(data["i"]))
+
+func dump_stack(stack):
+	if stack == null:
+		return null
+	
+	return {
+		"q": stack.quantity,
+		"i": dump_item(stack.get_item())
+	}
