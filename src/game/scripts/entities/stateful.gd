@@ -5,7 +5,9 @@ signal _entity_initialized
 
 
 func entity_ready() -> void:
-	pass
+	for component in get_children():
+		if component.has_method("entity_ready"):
+			component.entity_ready()
 
 
 func register_property(_property: Property) -> bool:

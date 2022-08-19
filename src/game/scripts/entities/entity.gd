@@ -31,10 +31,6 @@ func init(entity_state: Dictionary) -> void:
 	
 	_entity_initialized.emit()
 
-func entity_ready() -> void:
-	for component in get_children():
-		if component.has_method("entity_ready"):
-			component.entity_ready()
 
 func _ready():
 	entity_ready()
@@ -51,15 +47,15 @@ func is_authoritative() -> bool:
 # BUILT-IN
 # Properties
 ###
-
-# key = is_stable
 var properties = {
-	true: PropertyManager.new(self, _stable_property_value_changed),
-	false: PropertyManager.new(self)
+	"stable": PropertyManager.new(self, _stable_property_value_changed),
+	"unstable": PropertyManager.new(self)
 }
 
 func register_property(property: Property) -> bool:
-	return properties[property.is_stable].register_property(property)
+	var key = "stable" if property.is_stable else "unstable"  
+
+	return properties[key].register_property(property)
 
 func _stable_property_value_changed(property: Property):
 	if not is_authoritative():
@@ -80,10 +76,10 @@ func _stable_property_value_changed(property: Property):
 ###
 func get_unstable_state(state: Dictionary = { }) -> Dictionary:
 	state[WorldState.STATE_KEYS.ID] = id
-	return properties[false].get_state(state)
+	return properties["unstable"].get_state(state)
 
 func set_unstable_state(new_state: Dictionary) -> void:
-	return properties[false].set_state(new_state)
+	return properties["unstable"].set_state(new_state)
 
 func update_unstable_state() -> void:
 	if not is_authoritative():
@@ -95,10 +91,10 @@ func update_unstable_state() -> void:
 func get_stable_state(state: Dictionary = { }) -> Dictionary:
 	state[WorldState.STATE_KEYS.ID] = id
 	state[WorldState.STATE_KEYS.SCENE] = scene
-	return properties[true].get_state(state)
+	return properties["stable"].get_state(state)
 
 func set_stable_state(new_state: Dictionary) -> void:
-	return properties[true].set_state(new_state)
+	return properties["stable"].set_state(new_state)
 
 func update_stable_state() -> void:
 	if not is_authoritative():

@@ -15,10 +15,6 @@ func _ready():
 
 		inventory_keys[bindable_slot.inventory_category].append(bindable_slot.slot_key)
 
-func entity_ready():
-	for bindable_slot in bindable_slots:
-		bindable_slot.entity_ready()
-
 func init_inventory(inventory_key: Inventory.InventoryCategory, character: Character):
 	if not character.data.has_inventory(inventory_key):
 		character.data.set_inventory(inventory_key, DictionaryInventory.new(inventory_keys[inventory_key]))

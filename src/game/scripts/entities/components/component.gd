@@ -13,12 +13,6 @@ func init(linked_entity: Entity) -> void:
 	for component in get_children():
 		if component.has_method("init"):
 			component.init(entity)
-	
-
-func entity_ready() -> void:
-	for component in get_children():
-		if component.has_method("entity_ready"):
-			component.entity_ready()
 
 
 func update_unstable_state() -> void:
