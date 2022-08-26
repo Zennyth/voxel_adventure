@@ -7,7 +7,7 @@ class_name WorldStateManager
 
 var world_state := {}
 
-func update_entity(entity_state: Dictionary):
+func update_entity(_entity_state: Dictionary):
 	pass
 
 func despawn_entity(entity_id: int):

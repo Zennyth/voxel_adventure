@@ -5,8 +5,12 @@ func update_entity(entity_state: Dictionary):
 	var entity_id: int = entity_state[WorldState.STATE_KEYS.ID]
 
 	entity_state[STATE_KEYS.TIME] = clock_synchronizer.get_unit()
-
-	world_state[entity_id] = entity_state
+	
+	if entity_id not in world_state:
+		world_state[entity_id] = {}
+	
+	for key in entity_state:
+		world_state[entity_id][key] = entity_state[key]
 	
 	if not entity_manager.has_entity(entity_id):
 		entity_manager.spawn_entity(entity_state)

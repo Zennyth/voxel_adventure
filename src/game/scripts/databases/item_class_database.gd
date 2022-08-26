@@ -70,7 +70,7 @@ func parse_stack(data) -> Stack:
 	if data == null:
 		return null
 	
-	return Stack.new(data["q"], parse_item(data["i"]))
+	return Stack.new(parse_item(data["i"]), data["q"])
 
 func dump_stack(stack):
 	if stack == null:

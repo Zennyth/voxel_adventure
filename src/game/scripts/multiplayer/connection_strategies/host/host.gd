@@ -7,4 +7,4 @@ func init_connection(network: Network, args: Dictionary):
 
 func is_entity_authoritative(entity_state: Dictionary) -> bool:
 	return entity_state[WorldState.STATE_KEYS.SCENE] != "player" \
-				 or entity_state[WorldState.STATE_KEYS.ID] == _network.get_id()
+			or entity_state[WorldState.STATE_KEYS.ID] == _network.get_id()

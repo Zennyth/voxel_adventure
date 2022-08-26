@@ -2,82 +2,15 @@ extends Network
 class_name ENetNetwork
 
 ###
-# SIGNALS RESPONSES
-###
-func connection_succeeded():
-	_connection_succeeded.emit()
-func connection_failed():
-	_connection_failed.emit()
-func peer_connected(peer_id: int) -> void:
-	_peer_connected.emit(peer_id)
-func peer_disconnected(peer_id: int) -> void:
-	_peer_disconnected.emit(peer_id)
-
-
-###
 # OVERRIDE
 ###
+func _init():
+	network = ENetMultiplayerPeer.new()
+
 func create_client(args: Dictionary):
 	network.create_client(args['ip'], args['port'])
-	multiplayer.set_multiplayer_peer(network)
-	
-	network.connection_succeeded.connect(connection_succeeded)
-	network.connection_failed.connect(connection_failed)
+	super.create_client(args)
 
 func create_server(args: Dictionary):
 	network.create_server(args['port'], args['MAX_PLAYERS'])
-	multiplayer.set_multiplayer_peer(network)
-	
-	network.peer_connected.connect(peer_connected)
-	network.peer_disconnected.connect(peer_disconnected)
-
-func send(destination: int, channel: String, data):
-	rpc_id(destination, channel, data)
-
-func send_update(destination: int, state: Dictionary):
-	send(destination, "receive_update", state)
-
-func get_sender_id() -> int:
-	return multiplayer.get_remote_sender_id()
-
-func get_id() -> int:
-	return multiplayer.get_unique_id()
-
-
-###
-# BUILT-IN
-###
-var network := ENetMultiplayerPeer.new()
-
-###
-# BUILT-IN
-# Global
-###
-@rpc(any_peer)
-func global_requests(data: Dictionary):
-	_global_requests.emit(data)
-
-
-###
-# BUILT-IN
-# State
-###
-@rpc(any_peer, unreliable)
-func update_entity_unstable_state(data: Dictionary):
-	_update_entity_unstable_state.emit(data)
-
-@rpc(any_peer)
-func update_entity_stable_state(data: Dictionary):
-	_update_entity_stable_state.emit(data)
-
-@rpc(any_peer)
-func update_world_stable_state(data: Dictionary):
-	_update_world_stable_state.emit(data)
-
-###
-# BUILT-IN
-# Clock synchro
-###
-@rpc(any_peer)
-func clock_synchronization(data: Dictionary):
-	_clock_synchronization.emit(data)
+	super.create_server(args)

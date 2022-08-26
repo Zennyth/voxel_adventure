@@ -8,7 +8,7 @@ func _ready():
 func init_connection(network: Network, args: Dictionary):
 	super.init_connection(network, args)
 	
-	Engine.physics_ticks_per_second = 20
+	# Engine.physics_ticks_per_second = 20
 	
 	args['MAX_PLAYERS'] = MAX_PLAYERS
 	network.create_server(args)
@@ -38,6 +38,7 @@ func _peer_disconnected(player_id: int) -> void:
 	
 	stable_world_state_manager.despawn_entity(player_id)
 	unstable_world_state_manager.despawn_entity(player_id)
+	entity_manager.despawn_entity(player_id)
 	update_world_stable_state()
 
 ###

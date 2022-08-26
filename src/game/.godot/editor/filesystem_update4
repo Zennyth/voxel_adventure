@@ -4,4 +4,5 @@ res://resources/terrain/biomes/temperate_rainforest.tres
 res://resources/terrain/biomes/tundra.tres
 res://resources/terrain/biomes/desert.tres
 res://resources/environment/water_global.tres
-res://scripts/entities/stateful.gd
+res://scripts/multiplayer/networks/Steam.gd
+res://scripts/multiplayer/multiplayer.gd
