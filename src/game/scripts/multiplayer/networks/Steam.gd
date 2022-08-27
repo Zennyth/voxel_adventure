@@ -35,5 +35,5 @@ func _initialize_steam() -> void:
 		print("Failed to initialize Steam. "+str(init['verbal'])+" Shutting down...")
 		get_tree().quit()
 
-func _lobby_created(_connect_id:int, lobby_id: int):
-	print(lobby_id)
+func _lobby_created(_connect_id: int, lobby_id: int):
+	print_debug(lobby_id)
