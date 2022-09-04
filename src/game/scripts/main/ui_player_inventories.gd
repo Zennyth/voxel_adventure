@@ -91,7 +91,7 @@ func split_stack_container(slot_container: SlotContainer):
 	if slot.is_empty() or not slot.is_item_stackable():
 		return
 	
-	var split_amount := ceil(slot.stack.quantity / 2.0)
+	var split_amount: int = ceil(slot.stack.quantity / 2.0)
 
 	if not drag_preview.is_empty() and slot.get_item_name() == drag_preview.get_item_name():
 		var remaining_quantity := drag_preview.stack.fill_to(split_amount)

@@ -585,7 +585,7 @@ _global_script_class_icons={
 [application]
 
 config/name="game"
-run/main_scene="res://scenes/terrain/test.tscn"
+run/main_scene="res://scenes/multiplayer/menu.tscn"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
 config/icon="res://icon.png"
 

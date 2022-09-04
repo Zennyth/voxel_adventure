@@ -33,7 +33,7 @@ func parse_item(data) -> Item:
 		var vt = data["p"][property]
 		
 		if "t" in vt and vt["t"].contains("Mesh"):
-			item[property] = bytes2var_with_objects(data["p"][property]["v"])
+			item[property] = bytes_to_var_with_objects(data["p"][property]["v"])
 		else:
 			item[property] = vt["v"]
 
@@ -62,7 +62,7 @@ func dump_item(new_item):
 			data["p"][property["name"]]["t"] = value.get_class()
 			
 			if value.get_class().contains("Mesh"):
-				data["p"][property["name"]]["v"] = var2bytes_with_objects(value)
+				data["p"][property["name"]]["v"] = var_to_bytes_with_objects(value)
 	return data
 
 

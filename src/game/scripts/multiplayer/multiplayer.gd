@@ -1,33 +1,32 @@
 extends Node
 class_name MultiplayerManager
 
-var network := SteamNetwork.new()
+var network: Network
+var args: Dictionary
 var port := 1909
 var is_ready := false
 
 var connection_strategy: ConnectionStrategy
 func get_strategy() -> ConnectionStrategy:
-	if "--server" in OS.get_cmdline_args():
-		return ServerConnectionStrategy.new()
-	elif "--host" in OS.get_cmdline_args():
-		return HostConnectionStrategy.new()
-	else:
-		return ClientConnectionStrategy.new()
+#	if "--server" in OS.get_cmdline_args():
+#		return ServerConnectionStrategy.new()
+#	elif "--host" in OS.get_cmdline_args():
+#		return HostConnectionStrategy.new()
+#	else:
+#		return ClientConnectionStrategy.new()
 	
 	return SoloConnectionStrategy.new()
 
 func init(entity_manager: EntityManager):
-	connection_strategy = get_strategy()
 	connection_strategy.init(entity_manager)
 	add_child(connection_strategy)
-
-func _ready():
 	is_ready = true
-	connection_strategy.init_connection(network, {
-		'lobby_id': 0,
-		'lobby_type': 1,
-		'MAX_PLAYERS': 4
-	})
+	connection_strategy.init_connection(network, args)
+
+func set_connection(_connection_strategy: ConnectionStrategy, _network: Network, _args: Dictionary):
+	network = _network
+	connection_strategy = _connection_strategy
+	args = _args
 
 func is_entity_authoritative(data) -> bool:
 	if not is_ready:

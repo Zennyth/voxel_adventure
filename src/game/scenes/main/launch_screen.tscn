@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3pdaxxxgs4lf"]
+
+[ext_resource type="Theme" uid="uid://byewe1uxqyop1" path="res://resources/ui/main_theme.tres" id="1_skusc"]
+
+[node name="LaunchScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Multiplayer" type="Button" parent="."]
+texture_filter = 1
+offset_left = 479.0
+offset_top = 208.0
+offset_right = 615.0
+offset_bottom = 228.0
+theme = ExtResource("1_skusc")
+text = "Multiplayer
+"
+
+[node name="Solo" type="Button" parent="."]
+texture_filter = 1
+offset_left = 478.0
+offset_top = 245.0
+offset_right = 614.0
+offset_bottom = 265.0
+theme = ExtResource("1_skusc")
+text = "Solo"

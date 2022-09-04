@@ -12,7 +12,7 @@ func _init():
 var stack := Stack.new()
 
 var quantity := bind_property("stack.quantity", "q", true, {
-	"on_changed": func(new_quantity: int): label.text = new_quantity
+	"on_changed": func(new_quantity: int): label.text = str(new_quantity)
 })
 
 var item := bind_property("stack.item", "i", true, {
@@ -27,8 +27,8 @@ func pickup(desired_quantity: int = 1):
 		return
 	
 	quantity.set_value(remaining_quantity)
-	if remaining_quantity == 0:
-		destroy()
+#	if remaining_quantity == 0:
+#		destroy()
 
 
 
@@ -38,5 +38,5 @@ var sync_rotation := bind_property("rotation", WorldState.STATE_KEYS.ROTATION, f
 func _ready():
 	set_physics_process(is_authoritative())
 
-func _process():
+func _process(_delta: float):
 	update_unstable_state()

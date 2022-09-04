@@ -11,24 +11,24 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ja5vv"]
 shader = ExtResource("3_x2nol")
-shader_param/_AtmosDarkness = null
-shader_param/_AtmosDayTint = null
-shader_param/_AtmosHorizonTint = null
-shader_param/_AtmosLevelParams = null
-shader_param/_AtmosMie = null
-shader_param/_AtmosMieAnisotropy = null
-shader_param/_AtmosMieIntensity = null
-shader_param/_AtmosMieTint = null
-shader_param/_AtmosNightTint = null
-shader_param/_AtmosSunIntensity = null
-shader_param/_AtmosThickness = null
-shader_param/_ContrastLevel = null
-shader_param/_Exposure = null
-shader_param/_GroundColor = null
-shader_param/_SunDiskIntensity = null
-shader_param/_SunDiskSize = null
-shader_param/_SunDiskTint = null
-shader_param/_Tonemap = null
+_Tonemap = null
+_SunDiskTint = null
+_SunDiskSize = null
+_SunDiskIntensity = null
+_GroundColor = null
+_Exposure = null
+_ContrastLevel = null
+_AtmosThickness = null
+_AtmosSunIntensity = null
+_AtmosNightTint = null
+_AtmosMieTint = null
+_AtmosMieIntensity = null
+_AtmosMieAnisotropy = null
+_AtmosMie = null
+_AtmosLevelParams = null
+_AtmosHorizonTint = null
+_AtmosDayTint = null
+_AtmosDarkness = null
 
 [sub_resource type="Sky" id="Sky_prpta"]
 sky_material = SubResource("ShaderMaterial_ja5vv")
@@ -65,6 +65,8 @@ mesh = SubResource("PlaneMesh_4oyo1")
 shape = SubResource("ConcavePolygonShape3D_nc881")
 
 [node name="SubViewport" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
 offset_left = 20.0
 offset_top = 100.0
 offset_right = 20.0
@@ -109,24 +111,24 @@ offset_bottom = 86.0
 offset_right = 82.0
 offset_bottom = 14.0
 script = ExtResource("7_tnus3")
-label = "Hair"
 cosmetic_category = 0
+label = "Hair"
 
 [node name="Eyes" parent="SubViewport/VBoxContainer/Customization/Cosmetics" instance=ExtResource("4_7o6xd")]
 offset_top = 18.0
 offset_right = 82.0
 offset_bottom = 32.0
 script = ExtResource("7_tnus3")
-label = "Eyes"
 cosmetic_category = 2
+label = "Eyes"
 
 [node name="Face" parent="SubViewport/VBoxContainer/Customization/Cosmetics" instance=ExtResource("4_7o6xd")]
 offset_top = 36.0
 offset_right = 82.0
 offset_bottom = 50.0
 script = ExtResource("7_tnus3")
-label = "Face"
 cosmetic_category = 1
+label = "Face"
 
 [node name="Actions" type="VBoxContainer" parent="SubViewport"]
 offset_left = 190.5
@@ -137,21 +139,23 @@ offset_bottom = 232.0
 [node name="LineEdit" type="LineEdit" parent="SubViewport/Actions"]
 texture_filter = 1
 offset_right = 136.0
-offset_bottom = 16.0
+offset_bottom = 20.0
 theme = ExtResource("8_ysnah")
 placeholder_text = "Enter name"
 language = "en"
 
 [node name="Button" type="Button" parent="SubViewport/Actions"]
 texture_filter = 1
-offset_top = 20.0
+offset_top = 24.0
 offset_right = 136.0
-offset_bottom = 36.0
+offset_bottom = 44.0
 theme = ExtResource("8_ysnah")
 text = "Create character"
 
 [node name="Container" type="Control" parent="SubViewport"]
 visible = false
+layout_mode = 3
+anchors_preset = 0
 offset_left = 358.0
 offset_top = 5.0
 offset_right = 656.0
@@ -159,10 +163,10 @@ offset_bottom = 501.0
 scale = Vector2(0.5, 0.5)
 
 [node name="ColorPicker" type="ColorPicker" parent="SubViewport/Container"]
-offset_left = -1.0
-offset_top = -61.0
-offset_right = 289.0
-offset_bottom = 426.0
+offset_left = 47.0
+offset_top = -37.0
+offset_right = 313.0
+offset_bottom = 450.0
 edit_alpha = false
 presets_enabled = false
 presets_visible = false

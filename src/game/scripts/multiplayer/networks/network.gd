@@ -40,8 +40,8 @@ func _init():
 func create_client(_args: Dictionary):
 	multiplayer.set_multiplayer_peer(network)
 	
-	multiplayer.connection_succeeded.connect(connection_succeeded)
-	multiplayer.connection_failed.connect(connection_failed)
+	network.connection_succeeded.connect(connection_succeeded)
+	network.connection_failed.connect(connection_failed)
 
 func create_server(_args: Dictionary):
 	multiplayer.set_multiplayer_peer(network)
