@@ -61,8 +61,6 @@ func _stable_property_value_changed(property: Property):
 	if not is_authoritative():
 		return
 	
-	# print("[update] property ", property.key)
-	
 	var new_state = {
 		WorldState.STATE_KEYS.ID: id,
 		WorldState.STATE_KEYS.SCENE: scene,

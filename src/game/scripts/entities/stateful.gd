@@ -29,3 +29,6 @@ func update_stable_state() -> void:
 
 func is_authoritative() -> bool:
 	return false
+
+func get_owner() -> int:
+	return -1
