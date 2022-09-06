@@ -8,7 +8,7 @@ var client_clock = 0
 
 func _physics_process(delta: float) -> void:
 	client_clock += int(delta * 1000) + delta_latency
-	delta_latency -= delta_latency
+	delta_latency = 0
 	decimal_collector += (delta * 1000) - int(delta * 1000)
 	if decimal_collector >= 1.00:
 		client_clock += 1
@@ -31,6 +31,6 @@ func determine_latency(client_time: int):
 				total_latency += latency_array[i]
 		delta_latency = ( total_latency / latency_array.size()) - latency
 		latency = total_latency / latency_array.size()
-#		print("latency: " + str(latency))
-#		print("delta_latency: " + str(delta_latency))
+		EventBus._debug_property_updated.emit(DebugProperty.DebugPropertyKey.LATENCY_NETWORK, latency)
+		EventBus._debug_property_updated.emit(DebugProperty.DebugPropertyKey.DELTA_LATENCY_NETWORK, delta_latency)
 		latency_array.clear()
