@@ -18,7 +18,7 @@ var id: int = -1:
 var owner_id: int = -1:
 	set(value):
 		owner_id = value
-		set_network_master(owner_id)
+		set_multiplayer_authority(owner_id)
 
 var scene: String = ""
 
@@ -33,6 +33,7 @@ func get_owner_id() -> int:
 	return owner_id
 
 func init(entity_state: Dictionary) -> void:
+	
 	if WorldState.STATE_KEYS.ID in entity_state:
 		id = entity_state[WorldState.STATE_KEYS.ID]
 		owner_id = entity_state[WorldState.STATE_KEYS.OWNER_ID]
@@ -71,11 +72,8 @@ func _stable_property_value_changed(property: Property):
 	if not is_authoritative():
 		return
 	
-	var new_state = {
-		WorldState.STATE_KEYS.ID: id,
-		WorldState.STATE_KEYS.SCENE: scene,
-		property.key: property.dump()
-	}
+	var new_state = get_identity()
+	new_state[property.key] = property.dump()
 	Game.multiplayer_manager.update_entity_stable_state(new_state)
 
 ###

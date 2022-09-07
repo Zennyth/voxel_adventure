@@ -5,6 +5,7 @@ var is_ready: bool = false
 @onready var drag_preview: DragPreview = $DragPreview
 @onready var equipments_container: DictionaryInventoryContainer = $Inventory
 @onready var tooltip: Tooltip = $Tooltip
+@onready var debug_panel: Control = $DebugPanel
 
 var inventory: Inventory
 
@@ -15,9 +16,13 @@ func _unhandled_input(event):
 		return
 
 	if event.is_action_pressed("ui_inventory"):
+		debug_panel.visible = false
 		equipments_container.visible = !equipments_container.visible
 		Game.ui_manager.is_lock = equipments_container.visible 
 		hide_item_tooltip()
+	
+	elif event.is_action_pressed("ui_debug"):
+		debug_panel.visible = !debug_panel.visible
 
 func _init():
 	EventBus.connect("_player_initialized", _on_player_initialized)

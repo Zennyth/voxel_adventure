@@ -129,6 +129,16 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/entities/characters/data_manager.gd"
 }, {
+"base": "Control",
+"class": &"DebugPanel",
+"language": &"GDScript",
+"path": "res://scripts/ui/gui/debug/debug_panel.gd"
+}, {
+"base": "Control",
+"class": &"DebugProperty",
+"language": &"GDScript",
+"path": "res://scripts/ui/gui/debug/debug_properties/debug_property.gd"
+}, {
 "base": "Inventory",
 "class": &"DictionaryInventory",
 "language": &"GDScript",
@@ -404,11 +414,6 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/entities/components/bodies/bindable_slots/restrictions/travel_bindable_slot.gd"
 }, {
-"base": "Node2D",
-"class": &"UI",
-"language": &"GDScript",
-"path": "res://scripts/main/ui_player_inventories.gd"
-}, {
 "base": "RefCounted",
 "class": &"UIManager",
 "language": &"GDScript",
@@ -509,6 +514,8 @@ _global_script_class_icons={
 "Cosmetic": "",
 "CosmeticBindableSlot": "",
 "DataManager": "",
+"DebugPanel": "",
+"DebugProperty": "",
 "DictionaryInventory": "",
 "DictionaryInventoryContainer": "",
 "DragPreview": "",
@@ -564,7 +571,6 @@ _global_script_class_icons={
 "Tooltip": "",
 "Travel": "",
 "TravelBindableSlot": "",
-"UI": "",
 "UIManager": "",
 "UnstableWorldStateBuffer": "",
 "UnstableWorldStateManager": "",
@@ -585,7 +591,7 @@ _global_script_class_icons={
 [application]
 
 config/name="game"
-run/main_scene="res://scenes/multiplayer/menu.tscn"
+run/main_scene="res://scenes/main/test_multiplayer.tscn"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
 config/icon="res://icon.png"
 
@@ -629,14 +635,19 @@ controls_backward={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"unicode":0,"echo":false,"script":null)
 ]
 }
+controls_traveling={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":70,"unicode":0,"echo":false,"script":null)
+]
+}
 ui_inventory={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"unicode":0,"echo":false,"script":null)
 ]
 }
-ui_traveling={
+ui_debug={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":70,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":16777246,"unicode":0,"echo":false,"script":null)
 ]
 }
 

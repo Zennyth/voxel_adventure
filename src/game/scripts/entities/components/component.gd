@@ -22,7 +22,7 @@ func update_stable_state() -> void:
 	entity.update_stable_state()
 
 func get_owner_id() -> int:
-	return entity.get_owner_id()
+	return entity.get_owner_id() if entity != null else super.get_owner_id()
 
 
 ###

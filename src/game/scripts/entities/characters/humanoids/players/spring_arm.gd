@@ -24,9 +24,16 @@ var camera: Camera3D = $Camera3D
 func init(linked_player: Entity) -> void:
 	player = linked_player
 	Game.ui_manager._is_lock_changed.connect(_on_is_lock_changed)
+	set_camera_current()
 
 func _on_is_lock_changed(is_lock: bool):
 	lock = is_lock
 
 func _ready():
+	set_camera_current()
+
+func set_camera_current():
+	if not camera or not player:
+		return
+	
 	camera.current = player.is_authoritative()

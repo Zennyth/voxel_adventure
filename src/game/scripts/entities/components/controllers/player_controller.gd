@@ -42,7 +42,7 @@ func _input(event: InputEvent) -> void:
 	if not event:
 		return
 	
-	if Input.is_action_just_pressed("ui_traveling"):
+	if Input.is_action_just_pressed("controls_traveling"):
 		var is_slot_active = get_is_slot_active(Travel.get_key(Travel.TravelCategory.HANG_GLIDING))
 		
 		set_slot_active(Travel.get_key(Travel.TravelCategory.HANG_GLIDING), !is_slot_active)

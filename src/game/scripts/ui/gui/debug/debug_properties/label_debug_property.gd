@@ -1,6 +1,12 @@
+@tool
 extends DebugProperty
 
-var label: Label3D = $"."
+@export var prefix: String = "":
+	set(value):
+		prefix = value
+		update_value("")
+
+var label: Label = $"."
 
 func update_value(value):
-    label.text = str(value)
+	label.text = prefix + ": " + str(value)

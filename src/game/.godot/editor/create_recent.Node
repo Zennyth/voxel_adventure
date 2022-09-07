@@ -1,5 +1,7 @@
-GridContainer
+Label
 VBoxContainer
+HBoxContainer
+GridContainer
 TextEdit
 Button
 BaseButton
@@ -11,7 +13,6 @@ VoxelInstancer
 Control
 ColorPicker
 Container
-HBoxContainer
 MeshInstance3D
 LineEdit
 Camera3D
@@ -20,7 +21,6 @@ SubViewportContainer
 TextureButton
 TextureRect
 CenterContainer
-Label
 DirectionalLight3D
 OmniLight3D
 MarginContainer
@@ -30,4 +30,3 @@ DragPreview (drag_preview.gd)
 ItemContainer (ui_item.gd)
 StackContainer (ui_stack.gd)
 Node2D
-Panel
