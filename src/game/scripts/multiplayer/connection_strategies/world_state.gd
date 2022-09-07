@@ -17,7 +17,9 @@ const STATE_KEYS = {
 	ENTITIES = 'e',
 	
 	ID = 'id',
+	OWNER_ID = 'o',
 	SCENE = 's',
+
 	POSITION = 'p',
 	ROTATION = 'r',
 	

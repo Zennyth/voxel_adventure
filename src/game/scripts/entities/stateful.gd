@@ -28,4 +28,7 @@ func update_stable_state() -> void:
 
 
 func is_authoritative() -> bool:
-	return false
+	return is_network_master()
+
+func get_owner_id() -> int:
+	return -1

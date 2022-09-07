@@ -1,6 +1,9 @@
 extends ConnectionStrategy
 class_name SoloConnectionStrategy
 
+func _init():
+	EventBus._debug_property_updated.emit(DebugProperty.DebugPropertyKey.CONNECTION_STRATEGY_NETWORK, "Solo")
+
 func init_connection(_network_reference: Network, _args: Dictionary):
 	spawn_player(0)
 

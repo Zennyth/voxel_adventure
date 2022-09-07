@@ -1,6 +1,9 @@
 extends ConnectionStrategy
 class_name ClientConnectionStrategy
 
+func _init():
+	EventBus._debug_property_updated.emit(DebugProperty.DebugPropertyKey.CONNECTION_STRATEGY_NETWORK, "Client")
+
 func _ready():
 	add_child(clock_synchronizer)
 
@@ -10,19 +13,10 @@ func _ready():
 func init_connection(network: Network, args: Dictionary):
 	super.init_connection(network, args)
 	
-	args['ip'] = ip
 	network.create_client(args)
 	
 	_network._connection_failed.connect(_connection_failed)
 	_network._connection_succeeded.connect(_connection_succeeded)
-
-	unstable_world_state_buffer = UnstableWorldStateBuffer.new()
-	unstable_world_state_buffer.init(entity_manager, clock_synchronizer)
-	add_child(unstable_world_state_buffer)
-
-	stable_world_state_buffer = StableWorldStateBuffer.new()
-	stable_world_state_buffer.init(entity_manager, clock_synchronizer)
-	add_child(stable_world_state_buffer)
 
 func is_entity_authoritative(entity_state: Dictionary) -> bool:
 	return _network.get_id() == entity_state[WorldState.STATE_KEYS.ID]
@@ -32,6 +26,14 @@ func _connection_failed() -> void:
 	print("Failed to connect")
 
 func _connection_succeeded() -> void:
+	unstable_world_state_buffer = UnstableWorldStateBuffer.new()
+	unstable_world_state_buffer.init(entity_manager, clock_synchronizer)
+	add_child(unstable_world_state_buffer)
+
+	stable_world_state_buffer = StableWorldStateBuffer.new()
+	stable_world_state_buffer.init(entity_manager, clock_synchronizer)
+	add_child(stable_world_state_buffer)
+
 	print("Succefully connected")
 	is_connected = true
 	
@@ -42,7 +44,6 @@ func _connection_succeeded() -> void:
 ###
 # BUILT-IN
 ###
-var ip = "127.0.0.1"
 var is_connected = false
 
 

@@ -21,9 +21,8 @@ func update_unstable_state() -> void:
 func update_stable_state() -> void:
 	entity.update_stable_state()
 
-
-func is_authoritative() -> bool:
-	return entity and entity.is_authoritative()
+func get_owner_id() -> int:
+	return entity.get_owner_id()
 
 
 ###

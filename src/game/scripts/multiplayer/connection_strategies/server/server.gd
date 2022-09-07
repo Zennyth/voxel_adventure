@@ -1,6 +1,9 @@
 extends ConnectionStrategy
 class_name ServerConnectionStrategy
 
+func _init():
+	EventBus._debug_property_updated.emit(DebugProperty.DebugPropertyKey.CONNECTION_STRATEGY_NETWORK, "Server")
+
 func _ready():
 	add_child(clock_synchronizer)
 
@@ -85,7 +88,6 @@ func update_entity_unstable_state(entity_state: Dictionary):
 	unstable_world_state_manager.update_entity(entity_state)
 
 func _update_entity_stable_state(entity_state: Dictionary):
-	# print(entity_state)
 	stable_world_state_manager.update_entity(entity_state)
 	_network.send(Destination.ALL, Channel.UPDATE_ENTITY_STABLE_STATE, entity_state)
 

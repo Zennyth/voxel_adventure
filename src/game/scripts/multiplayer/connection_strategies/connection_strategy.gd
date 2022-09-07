@@ -51,6 +51,12 @@ var entity_manager: EntityManager
 func init(entity_manager_reference):
 	entity_manager = entity_manager_reference
 
+
+func create_authoritative_entity_state(entity_state: Dictionary) -> Dictionary:
+	entity_state[WorldState.STATE_KEYS.OWNER_ID] = _network.get_id()
+	return entity_state
+	
+
 func spawn_player(id: int = _network.get_id()):
 	if not entity_manager:
 		return
@@ -58,10 +64,13 @@ func spawn_player(id: int = _network.get_id()):
 	var player: Player = entity_manager.scenes["player"].instantiate()
 	player.data = Game.character_save_manager.load_character()
 	
-	entity_manager.spawn_entity({
-		WorldState.STATE_KEYS.ID: id,
-		WorldState.STATE_KEYS.SCENE: "player"
-	}, player)
+	entity_manager.spawn_entity(
+		create_authoritative_entity_state({
+			WorldState.STATE_KEYS.ID: id,
+			WorldState.STATE_KEYS.SCENE: "player"
+		}), 
+		player
+	)
 
 ###
 # STATIC

@@ -10,20 +10,33 @@ signal _destroyed(entity_id: int)
 ###
 # BUILT-IN
 ###
-var id: int = -1
+var id: int = -1:
+	set(value):
+		id = value
+		name = str(id)
+
+var owner_id: int = -1:
+	set(value):
+		owner_id = value
+		set_network_master(owner_id)
+
 var scene: String = ""
 
 func get_identity() -> Dictionary:
 	return {
 		WorldState.STATE_KEYS.ID: id,
+		WorldState.STATE_KEYS.OWNER_ID: owner_id,
 		WorldState.STATE_KEYS.SCENE: scene
 	}
+
+func get_owner_id() -> int:
+	return owner_id
 
 func init(entity_state: Dictionary) -> void:
 	if WorldState.STATE_KEYS.ID in entity_state:
 		id = entity_state[WorldState.STATE_KEYS.ID]
+		owner_id = entity_state[WorldState.STATE_KEYS.OWNER_ID]
 		scene = entity_state[WorldState.STATE_KEYS.SCENE]
-		name = str(id)
 
 	for component in get_children():
 		if component.has_method("init"):
@@ -38,9 +51,6 @@ func _ready():
 	if is_authoritative():
 		# Spawn the entity
 		update_stable_state()
-
-func is_authoritative() -> bool:
-	return Game.multiplayer_manager.is_entity_authoritative(get_identity())
 
 
 ###
@@ -60,8 +70,6 @@ func register_property(property: Property) -> bool:
 func _stable_property_value_changed(property: Property):
 	if not is_authoritative():
 		return
-	
-	# print("[update] property ", property.key)
 	
 	var new_state = {
 		WorldState.STATE_KEYS.ID: id,
