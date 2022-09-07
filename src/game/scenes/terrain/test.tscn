@@ -158,7 +158,7 @@ height = 1.0
 generator = SubResource("VoxelInstanceGenerator_ka4vc")
 mesh = SubResource("CylinderMesh_uimxc")
 
-[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_hclb5"]
+[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_m2hrd"]
 item_0 = SubResource("VoxelInstanceLibraryMultiMeshItem_1hybt")
 item_1 = SubResource("VoxelInstanceLibraryMultiMeshItem_roclw")
 item_2 = SubResource("VoxelInstanceLibraryMultiMeshItem_hptl7")
@@ -187,7 +187,7 @@ run_stream_in_editor = false
 mesh_block_size = 32
 
 [node name="VoxelInstancerWorld" type="VoxelInstancerWorld" parent="VoxelTerrain"]
-library = SubResource("VoxelInstanceLibrary_hclb5")
+library = SubResource("VoxelInstanceLibrary_m2hrd")
 
 [node name="EntityManager" type="Node3D" parent="."]
 script = ExtResource("8_g3enr")
@@ -203,5 +203,3 @@ is_generating_slot_containers = false
 [node name="Tooltip" parent="UI" instance=ExtResource("13_pnx4f")]
 
 [node name="DragPreview" parent="UI" instance=ExtResource("12_boprf")]
-layout_mode = 3
-anchors_preset = 0

@@ -3,8 +3,6 @@
 [ext_resource type="Theme" uid="uid://byewe1uxqyop1" path="res://resources/ui/main_theme.tres" id="1_skusc"]
 
 [node name="LaunchScreen" type="Control"]
-layout_mode = 3
-anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2

@@ -1,12 +1,10 @@
-res://scenes/multiplayer/menu.tscn
+res://scenes/terrain/test.tscn
 res://resources/terrain/biomes/seasonal_forest.tres
 res://resources/terrain/biomes/temperate_rainforest.tres
 res://resources/terrain/biomes/tundra.tres
 res://resources/terrain/biomes/desert.tres
 res://resources/environment/water_global.tres
-res://scenes/terrain/test.tscn
 res://scenes/main/launch_screen.tscn
 res://scenes/ui/CharacterCreation.tscn
-res://scripts/multiplayer/menu.gd
-res://scripts/multiplayer/multiplayer.gd
-res://scripts/main/game_manager.gd
+res://scenes/multiplayer/menu.tscn
+res://scripts/databases/item_class_database.gd

@@ -65,8 +65,6 @@ mesh = SubResource("PlaneMesh_4oyo1")
 shape = SubResource("ConcavePolygonShape3D_nc881")
 
 [node name="SubViewport" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
 offset_left = 20.0
 offset_top = 100.0
 offset_right = 20.0
@@ -154,8 +152,6 @@ text = "Create character"
 
 [node name="Container" type="Control" parent="SubViewport"]
 visible = false
-layout_mode = 3
-anchors_preset = 0
 offset_left = 358.0
 offset_top = 5.0
 offset_right = 656.0
@@ -163,10 +159,10 @@ offset_bottom = 501.0
 scale = Vector2(0.5, 0.5)
 
 [node name="ColorPicker" type="ColorPicker" parent="SubViewport/Container"]
-offset_left = 47.0
-offset_top = -37.0
-offset_right = 313.0
-offset_bottom = 450.0
+offset_left = 55.0
+offset_top = -33.0
+offset_right = 317.0
+offset_bottom = 454.0
 edit_alpha = false
 presets_enabled = false
 presets_visible = false
