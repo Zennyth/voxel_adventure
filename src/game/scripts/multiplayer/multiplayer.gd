@@ -31,18 +31,14 @@ func set_connection(_connection_strategy: ConnectionStrategy, _network: Network,
 func is_entity_authoritative(data) -> bool:
 	if not is_ready:
 		return false
+
+	var entity_id: int = data if data is int else data[WorldState.STATE_KEYS.ID]
+	var entity: Entity = connection_strategy.entity_manager.get_entity(entity_id)
 	
-	var entity_state: Dictionary
+	if not entity:
+		return false
 	
-	if data is int:
-		var entity = connection_strategy.entity_manager.get_entity(data)
-		if not entity:
-			return false
-		entity_state = entity.get_identity()
-	else:
-		entity_state = data
-	
-	return connection_strategy.is_entity_authoritative(entity_state)
+	return entity.is_authoritative()
 
 func update_entity_unstable_state(entity_state: Dictionary) -> void:
 	if not is_ready:
