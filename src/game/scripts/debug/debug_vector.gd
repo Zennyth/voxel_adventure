@@ -26,5 +26,5 @@ func _draw():
 	for vector in vectors:
 		vector.draw(self, get_viewport().get_camera())
 
-func add_vector(object, property, scale, width, color):
-	vectors.append(Vector.new(object, property, scale, width, color))
+func add_vector(object, property, _scale, width, color):
+	vectors.append(Vector.new(object, property, _scale, width, color))

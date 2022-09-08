@@ -1,6 +1,7 @@
 res://scenes/main/test_multiplayer.tscn
 res://scripts/databases/item_class_database.gd
-res://scripts/entities/characters/humanoids/players/step_assist.gd
+res://scripts/debug/debug_vector.gd
+res://modules/ui/hud/inventories/player/PlayerEquipments.tscn
 res://scenes/terrain/test.tscn
 res://resources/terrain/biomes/seasonal_forest.tres
 res://resources/terrain/biomes/temperate_rainforest.tres

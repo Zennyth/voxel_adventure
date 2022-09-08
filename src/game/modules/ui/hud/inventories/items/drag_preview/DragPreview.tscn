@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cmv6om6x12w3d"]
 
-[ext_resource type="Script" path="res://scripts/items/inventories/drag_preview.gd" id="1_c8ac3"]
+[ext_resource type="Script" path="res://modules/ui/hud/inventories/items/drag_preview/drag_preview.gd" id="1_c8ac3"]
 [ext_resource type="PackedScene" uid="uid://dft4do6d20gkp" path="res://scenes/items/item.tscn" id="2_rpnpv"]
 
 [node name="DragPreview" type="Control"]

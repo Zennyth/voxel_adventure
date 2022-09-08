@@ -3,7 +3,7 @@ extends Node2D
 var is_ready: bool = false
 
 @onready var drag_preview: DragPreview = $DragPreview
-@onready var equipments_container: DictionaryInventoryContainer = $Inventory
+@onready var equipments_container: InventoryContainer = $Inventory
 @onready var tooltip: Tooltip = $Tooltip
 @onready var debug_panel: Control = $DebugPanel
 

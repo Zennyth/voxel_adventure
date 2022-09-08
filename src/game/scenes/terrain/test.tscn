@@ -10,12 +10,12 @@
 [ext_resource type="Script" path="res://scripts/multiplayer/entity_manager.gd" id="8_g3enr"]
 [ext_resource type="ArrayMesh" uid="uid://do0xgigudrgal" path="res://assets/environment/common/trees/Treestump1.vox" id="8_nl8jd"]
 [ext_resource type="ArrayMesh" uid="uid://rtssipg20p1l" path="res://assets/environment/common/trees/Tree_Oak_L1.vox" id="9_iei2y"]
-[ext_resource type="Script" path="res://scripts/ui/gui/inventory_gui/inventory_gui.gd" id="10_f5co6"]
-[ext_resource type="PackedScene" uid="uid://bnap8qvpaghvn" path="res://scenes/items/inventories/player_equipments.tscn" id="11_kkr82"]
-[ext_resource type="PackedScene" uid="uid://cmv6om6x12w3d" path="res://scenes/items/inventories/drag_preview.tscn" id="12_boprf"]
-[ext_resource type="PackedScene" uid="uid://c4askhe2dmpsn" path="res://scenes/items/slots/slot.tscn" id="12_llc6r"]
-[ext_resource type="PackedScene" uid="uid://c0kpaq3nb2une" path="res://scenes/ui/gui/debug/debug_panel.tscn" id="12_p4l16"]
-[ext_resource type="PackedScene" uid="uid://e1hth0b0wqyl" path="res://scenes/items/tooltip.tscn" id="13_pnx4f"]
+[ext_resource type="Script" path="res://modules/ui/hud/inventories/inventories_container.gd" id="10_f5co6"]
+[ext_resource type="PackedScene" uid="uid://bnap8qvpaghvn" path="res://modules/ui/hud/inventories/player/PlayerEquipments.tscn" id="11_kkr82"]
+[ext_resource type="PackedScene" uid="uid://cmv6om6x12w3d" path="res://modules/ui/hud/inventories/items/drag_preview/DragPreview.tscn" id="12_boprf"]
+[ext_resource type="PackedScene" uid="uid://c0kpaq3nb2une" path="res://modules/ui/hud/debug/DebugPanel.tscn" id="12_p4l16"]
+[ext_resource type="PackedScene" uid="uid://e1hth0b0wqyl" path="res://modules/ui/components/tooltip/tooltip.tscn" id="13_pnx4f"]
+[ext_resource type="PackedScene" uid="uid://c4askhe2dmpsn" path="res://modules/ui/hud/inventories/slots/Slot.tscn" id="14_hd3he"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_riag3"]
 shader = ExtResource("2_hvotx")
@@ -44,12 +44,10 @@ sky_material = SubResource("ShaderMaterial_riag3")
 [sub_resource type="Environment" id="Environment_ghs71"]
 background_mode = 2
 background_color = Color(0.352941, 0.643137, 0.847059, 1)
-background_energy = 1.98
 sky = SubResource("Sky_tq1nc")
 ambient_light_source = 3
 reflected_light_source = 2
 tonemap_mode = 2
-auto_exposure_max_luma = 4.81
 ssr_fade_out = 1.27456
 ssao_enabled = true
 ssao_radius = 4.3
@@ -159,7 +157,7 @@ height = 1.0
 generator = SubResource("VoxelInstanceGenerator_ka4vc")
 mesh = SubResource("CylinderMesh_uimxc")
 
-[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_rb45q"]
+[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_ukqsc"]
 item_0 = SubResource("VoxelInstanceLibraryMultiMeshItem_1hybt")
 item_1 = SubResource("VoxelInstanceLibraryMultiMeshItem_roclw")
 item_2 = SubResource("VoxelInstanceLibraryMultiMeshItem_hptl7")
@@ -188,7 +186,7 @@ run_stream_in_editor = false
 mesh_block_size = 32
 
 [node name="VoxelInstancerWorld" type="VoxelInstancerWorld" parent="VoxelTerrain"]
-library = SubResource("VoxelInstanceLibrary_rb45q")
+library = SubResource("VoxelInstanceLibrary_ukqsc")
 
 [node name="EntityManager" type="Node3D" parent="."]
 script = ExtResource("8_g3enr")
@@ -204,7 +202,7 @@ mouse_filter = 2
 
 [node name="Inventory" parent="UI" instance=ExtResource("11_kkr82")]
 visible = false
-slot_container_template = ExtResource("12_llc6r")
+slot_container_template = ExtResource("14_hd3he")
 is_generating_slot_containers = false
 
 [node name="Tooltip" parent="UI" instance=ExtResource("13_pnx4f")]

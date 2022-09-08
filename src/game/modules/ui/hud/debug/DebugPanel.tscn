@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c0kpaq3nb2une"]
 
-[ext_resource type="Script" path="res://scripts/ui/gui/debug/debug_properties/label_debug_property.gd" id="1_aaqaw"]
-[ext_resource type="Script" path="res://scripts/ui/gui/debug/debug_panel.gd" id="1_g742f"]
+[ext_resource type="Script" path="res://modules/ui/hud/debug/debug_properties/label_debug_property.gd" id="1_aaqaw"]
+[ext_resource type="Script" path="res://modules/ui/hud/debug/debug_panel.gd" id="1_g742f"]
 
 [node name="debug_panel" type="Control"]
 anchor_right = 1.0

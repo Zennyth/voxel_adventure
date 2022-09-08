@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://scripts/items/items/equipments/cosmetic.gd" id="1_n8lry"]
+[ext_resource type="Script" path="res://scripts/items/equipments/cosmetic.gd" id="1_n8lry"]
 [ext_resource type="ArrayMesh" path="res://assets/items/equipments/cosmetics/chest.vox" id="1_v0kp1"]
 
 [resource]

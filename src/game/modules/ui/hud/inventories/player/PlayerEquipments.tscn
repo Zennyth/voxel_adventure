@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://bnap8qvpaghvn"]
 
 [ext_resource type="Texture2D" uid="uid://7q3bhoa82guc" path="res://assets/items/inventories/default_inventory_background.png" id="1_fvgjh"]
-[ext_resource type="Script" path="res://scripts/items/inventories/dictionaries/ui_dictionary_inventory.gd" id="1_weftr"]
-[ext_resource type="PackedScene" uid="uid://c4askhe2dmpsn" path="res://scenes/items/slots/slot.tscn" id="3_s1oep"]
-[ext_resource type="Script" path="res://scripts/items/slots/restrictions/travel_ui_slot.gd" id="4_4hjte"]
-[ext_resource type="Script" path="res://scripts/items/slots/restrictions/armor_ui_slot.gd" id="4_abwy1"]
-[ext_resource type="Script" path="res://scripts/items/slots/restrictions/weapon_ui_slot.gd" id="6_71g2h"]
+[ext_resource type="Script" path="res://modules/ui/hud/inventories/inventory.gd" id="1_weftr"]
+[ext_resource type="PackedScene" uid="uid://c4askhe2dmpsn" path="res://modules/ui/hud/inventories/slots/Slot.tscn" id="3_s1oep"]
+[ext_resource type="Script" path="res://modules/ui/hud/inventories/slots/restrictions/travel_slot.gd" id="4_4hjte"]
+[ext_resource type="Script" path="res://modules/ui/hud/inventories/slots/restrictions/armor_slot.gd" id="4_abwy1"]
+[ext_resource type="Script" path="res://modules/ui/hud/inventories/slots/restrictions/weapon_slot.gd" id="6_71g2h"]
 
 [node name="Inventory" type="Node2D"]
 scale = Vector2(3, 3)

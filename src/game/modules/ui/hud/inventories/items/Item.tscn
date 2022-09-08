@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dft4do6d20gkp"]
 
-[ext_resource type="Script" path="res://scripts/items/ui_item.gd" id="1_umkjf"]
+[ext_resource type="Script" path="res://modules/ui/hud/inventories/items/item.gd" id="1_umkjf"]
 [ext_resource type="ArrayMesh" uid="uid://ctrsllic5j83v" path="res://assets/entities/components/bodies/body_parts/chest.vox" id="3_eslj3"]
 
 [sub_resource type="Environment" id="Environment_wyskd"]

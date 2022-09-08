@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b70hiideifj4x"]
 
-[ext_resource type="Script" path="res://scripts/items/stacks/ui_stack.gd" id="1_pq2cf"]
+[ext_resource type="Script" path="res://modules/ui/hud/inventories/stacks/stack.gd" id="1_pq2cf"]
 [ext_resource type="PackedScene" uid="uid://dft4do6d20gkp" path="res://scenes/items/item.tscn" id="2_maf0v"]
 
 [node name="StackContainer" type="Control"]

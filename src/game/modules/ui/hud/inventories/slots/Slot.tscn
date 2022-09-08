@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c4askhe2dmpsn"]
 
 [ext_resource type="Texture2D" uid="uid://gy4lro5aj6vi" path="res://assets/items/inventories/item_slot_default_background.png" id="1_1i6vo"]
-[ext_resource type="Script" path="res://scripts/items/slots/ui_slot.gd" id="2_bww6q"]
+[ext_resource type="Script" path="res://modules/ui/hud/inventories/slots/slot.gd" id="2_bww6q"]
 [ext_resource type="PackedScene" uid="uid://b70hiideifj4x" path="res://scenes/items/stacks/stack.tscn" id="3_7l0ee"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hab1x"]
