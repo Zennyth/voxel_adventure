@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://dflcawiye0tgp"]
 
-[ext_resource type="Script" path="res://scripts/items/items/equipments/travel.gd" id="1_5vt5c"]
+[ext_resource type="Script" path="res://scripts/items/equipments/travel.gd" id="1_5vt5c"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_eonrk"]
 size = Vector3(10, 0.3, 5)

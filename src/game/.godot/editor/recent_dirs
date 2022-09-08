@@ -1,5 +1,5 @@
-res://scenes/terrain
 res://scripts/autoload
+res://scenes/terrain
 res://scenes/main
 C:/Users/mathi/Desktop/godot/bin
 C:/Users/mathi/Desktop
@@ -11,9 +11,7 @@ res://resources/classes
 res://resources/items/equipments/travels
 res://resources/environment
 res://scripts/main
-res://resources/ui
 res://scripts/databases
-res://scenes/ui/components
 C:/Users/mathi/Desktop/Voxel/src/game/scripts/environment
 res://scripts/items
 res://resources/items

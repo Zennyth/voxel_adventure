@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://scripts/main/world.gd" id="1_fpupi"]
 [ext_resource type="Shader" path="res://scripts/environment/sky.gdshader" id="1_rvima"]
 [ext_resource type="Script" path="res://scripts/multiplayer/entity_manager.gd" id="1_v4eul"]
-[ext_resource type="PackedScene" uid="uid://cmv6om6x12w3d" path="res://scenes/items/inventories/drag_preview.tscn" id="3_fp1ra"]
-[ext_resource type="PackedScene" uid="uid://bnap8qvpaghvn" path="res://scenes/items/inventories/player_equipments.tscn" id="3_i1hxt"]
-[ext_resource type="Script" path="res://scripts/ui/gui/inventory_gui/inventory_gui.gd" id="3_qy4cf"]
-[ext_resource type="PackedScene" uid="uid://e1hth0b0wqyl" path="res://scenes/items/tooltip.tscn" id="4_oljcv"]
-[ext_resource type="PackedScene" uid="uid://c4askhe2dmpsn" path="res://scenes/items/slots/slot.tscn" id="5_thcwg"]
-[ext_resource type="PackedScene" uid="uid://c0kpaq3nb2une" path="res://scenes/ui/gui/debug/debug_panel.tscn" id="8_k6gd6"]
+[ext_resource type="PackedScene" uid="uid://cmv6om6x12w3d" path="res://modules/ui/hud/inventories/items/drag_preview/DragPreview.tscn" id="3_fp1ra"]
+[ext_resource type="PackedScene" uid="uid://bnap8qvpaghvn" path="res://modules/ui/hud/inventories/player/PlayerEquipments.tscn" id="3_i1hxt"]
+[ext_resource type="Script" path="res://modules/ui/hud/inventories/inventories_container.gd" id="3_qy4cf"]
+[ext_resource type="PackedScene" uid="uid://e1hth0b0wqyl" path="res://modules/ui/components/tooltip/tooltip.tscn" id="4_oljcv"]
+[ext_resource type="PackedScene" uid="uid://c4askhe2dmpsn" path="res://modules/ui/hud/inventories/slots/Slot.tscn" id="6_5xfei"]
+[ext_resource type="PackedScene" uid="uid://c0kpaq3nb2une" path="res://modules/ui/hud/debug/DebugPanel.tscn" id="8_k6gd6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_72lcx"]
 shader = ExtResource("1_rvima")
@@ -66,7 +66,7 @@ mouse_filter = 2
 
 [node name="Inventory" parent="UI" instance=ExtResource("3_i1hxt")]
 visible = false
-slot_container_template = ExtResource("5_thcwg")
+slot_container_template = ExtResource("6_5xfei")
 is_generating_slot_containers = false
 
 [node name="DragPreview" parent="UI" instance=ExtResource("3_fp1ra")]

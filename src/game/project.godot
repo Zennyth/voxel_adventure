@@ -17,7 +17,7 @@ _global_script_classes=[{
 "base": "Equipment",
 "class": &"Armor",
 "language": &"GDScript",
-"path": "res://scripts/items/items/equipments/armor.gd"
+"path": "res://scripts/items/equipments/armor.gd"
 }, {
 "base": "EquipmentBindableSlot",
 "class": &"ArmorBindableSlot",
@@ -28,11 +28,6 @@ _global_script_classes=[{
 "class": &"ArrayInventory",
 "language": &"GDScript",
 "path": "res://scripts/items/inventories/arrays/array_inventory.gd"
-}, {
-"base": "InventoryContainer",
-"class": &"ArrayInventoryContainer",
-"language": &"GDScript",
-"path": "res://scripts/items/inventories/arrays/ui_array_inventory.gd"
 }, {
 "base": "Component",
 "class": &"BindableSlot",
@@ -57,7 +52,7 @@ _global_script_classes=[{
 "base": "HBoxContainer",
 "class": &"CarouselButton",
 "language": &"GDScript",
-"path": "res://scripts/ui/components/carouse_button.gd"
+"path": "res://modules/ui/components/carousel_button/carouse_button.gd"
 }, {
 "base": "Entity",
 "class": &"Character",
@@ -82,7 +77,7 @@ _global_script_classes=[{
 "base": "CarouselButton",
 "class": &"ClassCarouselButton",
 "language": &"GDScript",
-"path": "res://scripts/ui/screens/character_creation/class_carousel.gd"
+"path": "res://modules/ui/screens/character_creation/class_carousel.gd"
 }, {
 "base": "ConnectionStrategy",
 "class": &"ClientConnectionStrategy",
@@ -117,7 +112,7 @@ _global_script_classes=[{
 "base": "Equipment",
 "class": &"Cosmetic",
 "language": &"GDScript",
-"path": "res://scripts/items/items/equipments/cosmetic.gd"
+"path": "res://scripts/items/equipments/cosmetic.gd"
 }, {
 "base": "EquipmentBindableSlot",
 "class": &"CosmeticBindableSlot",
@@ -132,27 +127,22 @@ _global_script_classes=[{
 "base": "Control",
 "class": &"DebugPanel",
 "language": &"GDScript",
-"path": "res://scripts/ui/gui/debug/debug_panel.gd"
+"path": "res://modules/ui/hud/debug/debug_panel.gd"
 }, {
 "base": "Control",
 "class": &"DebugProperty",
 "language": &"GDScript",
-"path": "res://scripts/ui/gui/debug/debug_properties/debug_property.gd"
+"path": "res://modules/ui/hud/debug/debug_properties/debug_property.gd"
 }, {
 "base": "Inventory",
 "class": &"DictionaryInventory",
 "language": &"GDScript",
 "path": "res://scripts/items/inventories/dictionaries/dictionary_inventory.gd"
 }, {
-"base": "InventoryContainer",
-"class": &"DictionaryInventoryContainer",
-"language": &"GDScript",
-"path": "res://scripts/items/inventories/dictionaries/ui_dictionary_inventory.gd"
-}, {
 "base": "StackContainer",
 "class": &"DragPreview",
 "language": &"GDScript",
-"path": "res://scripts/items/inventories/drag_preview.gd"
+"path": "res://modules/ui/hud/inventories/items/drag_preview/drag_preview.gd"
 }, {
 "base": "Network",
 "class": &"ENetNetwork",
@@ -172,7 +162,7 @@ _global_script_classes=[{
 "base": "Item",
 "class": &"Equipment",
 "language": &"GDScript",
-"path": "res://scripts/items/items/equipments/equipment.gd"
+"path": "res://scripts/items/equipments/equipment.gd"
 }, {
 "base": "BindableSlot",
 "class": &"EquipmentBindableSlot",
@@ -232,17 +222,17 @@ _global_script_classes=[{
 "base": "Node2D",
 "class": &"InventoryContainer",
 "language": &"GDScript",
-"path": "res://scripts/items/inventories/ui_inventory.gd"
+"path": "res://modules/ui/hud/inventories/inventory.gd"
 }, {
 "base": "Resource",
 "class": &"Item",
 "language": &"GDScript",
-"path": "res://scripts/items/items/item.gd"
+"path": "res://scripts/items/item.gd"
 }, {
 "base": "SubViewportContainer",
 "class": &"ItemContainer",
 "language": &"GDScript",
-"path": "res://scripts/items/ui_item.gd"
+"path": "res://modules/ui/hud/inventories/items/item.gd"
 }, {
 "base": "MoveState",
 "class": &"JumpState",
@@ -277,7 +267,7 @@ _global_script_classes=[{
 "base": "RefCounted",
 "class": &"NodeUtils",
 "language": &"GDScript",
-"path": "res://scripts/utils/node_utils.gd"
+"path": "res://scripts/utils/node.gd"
 }, {
 "base": "StateManager",
 "class": &"PhysicalStateManager",
@@ -312,7 +302,7 @@ _global_script_classes=[{
 "base": "CarouselButton",
 "class": &"RaceCarouselButton",
 "language": &"GDScript",
-"path": "res://scripts/ui/screens/character_creation/race_carousel.gd"
+"path": "res://modules/ui/screens/character_creation/race_carousel.gd"
 }, {
 "base": "RefCounted",
 "class": &"RandomUtils",
@@ -342,12 +332,12 @@ _global_script_classes=[{
 "base": "Resource",
 "class": &"Slot",
 "language": &"GDScript",
-"path": "res://scripts/items/slots/slot.gd"
+"path": "res://scripts/items/slot.gd"
 }, {
 "base": "Panel",
 "class": &"SlotContainer",
 "language": &"GDScript",
-"path": "res://scripts/items/slots/ui_slot.gd"
+"path": "res://modules/ui/hud/inventories/slots/slot.gd"
 }, {
 "base": "ConnectionStrategy",
 "class": &"SoloConnectionStrategy",
@@ -372,12 +362,12 @@ _global_script_classes=[{
 "base": "Resource",
 "class": &"Stack",
 "language": &"GDScript",
-"path": "res://scripts/items/stacks/stack.gd"
+"path": "res://scripts/items/stack.gd"
 }, {
 "base": "Control",
 "class": &"StackContainer",
 "language": &"GDScript",
-"path": "res://scripts/items/stacks/ui_stack.gd"
+"path": "res://modules/ui/hud/inventories/stacks/stack.gd"
 }, {
 "base": "Node",
 "class": &"State",
@@ -402,12 +392,12 @@ _global_script_classes=[{
 "base": "ColorRect",
 "class": &"Tooltip",
 "language": &"GDScript",
-"path": "res://scripts/items/ui_tooltip.gd"
+"path": "res://modules/ui/components/tooltip/tooltip.gd"
 }, {
 "base": "Equipment",
 "class": &"Travel",
 "language": &"GDScript",
-"path": "res://scripts/items/items/equipments/travel.gd"
+"path": "res://scripts/items/equipments/travel.gd"
 }, {
 "base": "EquipmentBindableSlot",
 "class": &"TravelBindableSlot",
@@ -417,7 +407,7 @@ _global_script_classes=[{
 "base": "RefCounted",
 "class": &"UIManager",
 "language": &"GDScript",
-"path": "res://scripts/ui/ui_manager.gd"
+"path": "res://modules/ui/ui_manager.gd"
 }, {
 "base": "WorldState",
 "class": &"UnstableWorldStateBuffer",
@@ -472,7 +462,7 @@ _global_script_classes=[{
 "base": "Equipment",
 "class": &"Weapon",
 "language": &"GDScript",
-"path": "res://scripts/items/items/equipments/weapon.gd"
+"path": "res://scripts/items/equipments/weapon.gd"
 }, {
 "base": "EquipmentBindableSlot",
 "class": &"WeaponBindableSlot",
@@ -494,7 +484,6 @@ _global_script_class_icons={
 "Armor": "",
 "ArmorBindableSlot": "",
 "ArrayInventory": "",
-"ArrayInventoryContainer": "",
 "BindableSlot": "",
 "BindableSlotManager": "",
 "BindedProperty": "",
@@ -517,7 +506,6 @@ _global_script_class_icons={
 "DebugPanel": "",
 "DebugProperty": "",
 "DictionaryInventory": "",
-"DictionaryInventoryContainer": "",
 "DragPreview": "",
 "ENetNetwork": "",
 "Entity": "",
@@ -597,10 +585,10 @@ config/icon="res://icon.png"
 
 [autoload]
 
-EventBus="*res://scripts/main/event_bus.gd"
 Database="*res://scripts/databases/database_manager.gd"
-Game="*res://scripts/main/game_manager.gd"
 Debug="*res://scripts/autoload/debug.gd"
+EventBus="*res://scripts/autoload/event_bus.gd"
+Game="*res://scripts/autoload/game_manager.gd"
 
 [editor_plugins]
 

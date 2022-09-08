@@ -1,0 +1,135 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnap8qvpaghvn"]
+
+[ext_resource type="Texture2D" uid="uid://7q3bhoa82guc" path="res://assets/items/inventories/default_inventory_background.png" id="1_fvgjh"]
+[ext_resource type="Script" path="res://modules/ui/hud/inventories/inventory.gd" id="1_weftr"]
+[ext_resource type="PackedScene" uid="uid://c4askhe2dmpsn" path="res://modules/ui/hud/inventories/slots/Slot.tscn" id="3_s1oep"]
+[ext_resource type="Script" path="res://modules/ui/hud/inventories/slots/restrictions/travel_slot.gd" id="4_4hjte"]
+[ext_resource type="Script" path="res://modules/ui/hud/inventories/slots/restrictions/armor_slot.gd" id="4_abwy1"]
+[ext_resource type="Script" path="res://modules/ui/hud/inventories/slots/restrictions/weapon_slot.gd" id="6_71g2h"]
+
+[node name="Inventory" type="Node2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_weftr")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 61.6667
+offset_top = 44.6667
+offset_right = 268.667
+offset_bottom = 156.667
+texture = ExtResource("1_fvgjh")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = 97.0
+offset_top = 62.0
+offset_right = 115.0
+offset_bottom = 154.0
+columns = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 96.0
+offset_top = 63.0
+offset_right = 268.0
+offset_bottom = 155.0
+size_flags_vertical = 3
+
+[node name="MainArmorsContainer" type="VBoxContainer" parent="HBoxContainer"]
+offset_right = 20.0
+offset_bottom = 92.0
+
+[node name="Helmet" parent="HBoxContainer/MainArmorsContainer" instance=ExtResource("3_s1oep")]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 20.0
+offset_bottom = 20.0
+script = ExtResource("4_abwy1")
+identifier = 0
+
+[node name="ChestPlate" parent="HBoxContainer/MainArmorsContainer" instance=ExtResource("3_s1oep")]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 24.0
+offset_right = 20.0
+offset_bottom = 44.0
+script = ExtResource("4_abwy1")
+identifier = 1
+
+[node name="Gloves" parent="HBoxContainer/MainArmorsContainer" instance=ExtResource("3_s1oep")]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 48.0
+offset_right = 20.0
+offset_bottom = 68.0
+script = ExtResource("4_abwy1")
+identifier = 2
+
+[node name="Shoes" parent="HBoxContainer/MainArmorsContainer" instance=ExtResource("3_s1oep")]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 72.0
+offset_right = 20.0
+offset_bottom = 92.0
+script = ExtResource("4_abwy1")
+identifier = 3
+
+[node name="SecondaryArmorsContainer" type="VBoxContainer" parent="HBoxContainer"]
+offset_left = 24.0
+offset_right = 44.0
+offset_bottom = 92.0
+
+[node name="ShoulderPads" parent="HBoxContainer/SecondaryArmorsContainer" instance=ExtResource("3_s1oep")]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 20.0
+offset_bottom = 20.0
+script = ExtResource("4_abwy1")
+identifier = 4
+
+[node name="Ring" parent="HBoxContainer/SecondaryArmorsContainer" instance=ExtResource("3_s1oep")]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 24.0
+offset_right = 20.0
+offset_bottom = 44.0
+script = ExtResource("4_abwy1")
+identifier = 5
+
+[node name="Amulet" parent="HBoxContainer/SecondaryArmorsContainer" instance=ExtResource("3_s1oep")]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 48.0
+offset_right = 20.0
+offset_bottom = 68.0
+script = ExtResource("4_abwy1")
+identifier = 6
+
+[node name="Traveling" parent="HBoxContainer/SecondaryArmorsContainer" instance=ExtResource("3_s1oep")]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 72.0
+offset_right = 20.0
+offset_bottom = 92.0
+script = ExtResource("4_4hjte")
+identifier = 0
+
+[node name="WeaponsContainer" type="VBoxContainer" parent="HBoxContainer"]
+offset_left = 48.0
+offset_right = 68.0
+offset_bottom = 92.0
+
+[node name="LeftWeapon" parent="HBoxContainer/WeaponsContainer" instance=ExtResource("3_s1oep")]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 20.0
+offset_bottom = 20.0
+script = ExtResource("6_71g2h")
+identifier = null
+
+[node name="RightWeapon" parent="HBoxContainer/WeaponsContainer" instance=ExtResource("3_s1oep")]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 24.0
+offset_right = 20.0
+offset_bottom = 44.0
+script = ExtResource("6_71g2h")
+identifier = 1
