@@ -2,8 +2,6 @@ extends Control
 
 var network := SteamNetwork.new()
 
-
-
 @onready var join_lobby_input: TextEdit = $VBoxContainer/VBoxContainer/JoinLobbyInput
 
 func _on_create_lobby_pressed():

@@ -3,6 +3,7 @@ class_name UIManager
 
 # Is a menu open
 signal _is_lock_changed(_is_lock: bool)
+
 var is_lock: bool = false:
 	set(_is_lock):
 		is_lock = _is_lock

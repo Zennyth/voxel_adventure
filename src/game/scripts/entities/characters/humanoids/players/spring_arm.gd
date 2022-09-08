@@ -1,8 +1,7 @@
 extends SpringArm3D
 class_name SpringArmPlayer
 
-@export
-var mouse_sensibilty := 0.005
+@export var mouse_sensibilty := 0.005
 
 var lock: bool = false
 
@@ -18,8 +17,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			if event.keycode == KEY_ESCAPE:
 				Game.ui_manager.is_lock = !Game.ui_manager.is_lock
 
-@onready 
-var camera: Camera3D = $Camera3D
+@onready var camera: Camera3D = $Camera3D
 
 func init(linked_player: Entity) -> void:
 	player = linked_player
