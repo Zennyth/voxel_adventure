@@ -60,6 +60,8 @@ script = ExtResource("3_qy4cf")
 
 [node name="DebugPanel" parent="UI" instance=ExtResource("8_k6gd6")]
 visible = false
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 
 [node name="Inventory" parent="UI" instance=ExtResource("3_i1hxt")]

@@ -10,12 +10,15 @@ func _init():
 
 func _on_terrain_ready(terrain: VoxelTerrain):
 	voxel_tool = terrain.get_voxel_tool()
-	set_process(true)
+	set_process(voxel_tool != null)
 
 
 func _process(_delta):
+	if not voxel_tool:
+		return
+	
 	var character_position = character_entity.character.global_transform.origin
-	var forward_direction = player.controller.get_direction()
+	var forward_direction = character_entity.controller.get_direction()
 	
 	if forward_direction.length() == 0:
 		return
@@ -29,4 +32,4 @@ func _process(_delta):
 	if upper and lower.position != Vector3i.ZERO:
 		return
 	
-	character.global_position += Vector3.UP
+	character_entity.global_position += Vector3.UP

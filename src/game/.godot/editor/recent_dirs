@@ -1,9 +1,10 @@
+res://scenes/terrain
+res://scripts/autoload
 res://scenes/main
 C:/Users/mathi/Desktop/godot/bin
 C:/Users/mathi/Desktop
 C:/Users/mathi/Desktop/export
 C:/Users/mathi/Desktop/Voxel/src/game
-res://scenes/terrain
 res://resources/items/equipments/weapons
 res://resources/races
 res://resources/classes
@@ -19,4 +20,3 @@ res://resources/items
 res://scenes/entities/components/bodies
 res://assets/entities/components/bodies/collection/races
 res://scenes/entities/characters
-res://assets/environment/common/grass

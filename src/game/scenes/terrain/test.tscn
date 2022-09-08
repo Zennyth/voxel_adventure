@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://djm1jggm80cl2"]
+[gd_scene load_steps=44 format=3 uid="uid://djm1jggm80cl2"]
 
 [ext_resource type="Script" path="res://scripts/main/world.gd" id="1_hnd5j"]
 [ext_resource type="Shader" path="res://scripts/environment/sky.gdshader" id="2_hvotx"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bnap8qvpaghvn" path="res://scenes/items/inventories/player_equipments.tscn" id="11_kkr82"]
 [ext_resource type="PackedScene" uid="uid://cmv6om6x12w3d" path="res://scenes/items/inventories/drag_preview.tscn" id="12_boprf"]
 [ext_resource type="PackedScene" uid="uid://c4askhe2dmpsn" path="res://scenes/items/slots/slot.tscn" id="12_llc6r"]
+[ext_resource type="PackedScene" uid="uid://c0kpaq3nb2une" path="res://scenes/ui/gui/debug/debug_panel.tscn" id="12_p4l16"]
 [ext_resource type="PackedScene" uid="uid://e1hth0b0wqyl" path="res://scenes/items/tooltip.tscn" id="13_pnx4f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_riag3"]
@@ -158,7 +159,7 @@ height = 1.0
 generator = SubResource("VoxelInstanceGenerator_ka4vc")
 mesh = SubResource("CylinderMesh_uimxc")
 
-[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_m2hrd"]
+[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_rb45q"]
 item_0 = SubResource("VoxelInstanceLibraryMultiMeshItem_1hybt")
 item_1 = SubResource("VoxelInstanceLibraryMultiMeshItem_roclw")
 item_2 = SubResource("VoxelInstanceLibraryMultiMeshItem_hptl7")
@@ -187,19 +188,27 @@ run_stream_in_editor = false
 mesh_block_size = 32
 
 [node name="VoxelInstancerWorld" type="VoxelInstancerWorld" parent="VoxelTerrain"]
-library = SubResource("VoxelInstanceLibrary_m2hrd")
+library = SubResource("VoxelInstanceLibrary_rb45q")
 
 [node name="EntityManager" type="Node3D" parent="."]
 script = ExtResource("8_g3enr")
 
 [node name="UI" type="Node2D" parent="."]
-visible = false
 script = ExtResource("10_f5co6")
 
+[node name="DebugPanel" parent="UI" instance=ExtResource("12_p4l16")]
+visible = false
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="Inventory" parent="UI" instance=ExtResource("11_kkr82")]
+visible = false
 slot_container_template = ExtResource("12_llc6r")
 is_generating_slot_containers = false
 
 [node name="Tooltip" parent="UI" instance=ExtResource("13_pnx4f")]
+visible = false
 
 [node name="DragPreview" parent="UI" instance=ExtResource("12_boprf")]
+visible = false
