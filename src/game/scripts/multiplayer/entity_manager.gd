@@ -12,6 +12,9 @@ func get_entity(entity_id: int) -> Entity:
 func has_entity(entity_id: int) -> bool:
 	return has_node(str(entity_id))
 
+func add_entity(entity: Entity):
+	add_child(entity)
+
 	
 ####
 ## Scenes
@@ -65,7 +68,7 @@ func spawn_entity(entity_state: Dictionary, entity: Entity = null) -> Entity:
 		new_entity = scenes[entity_scene].instantiate()
 	
 	new_entity.init(entity_state)
-	add_child(new_entity)
+	add_entity(new_entity)
 	new_entity._destroyed.connect(destroy_entity)
 	random.randomize()
 	new_entity.position.x = random.randi_range(0, 10)

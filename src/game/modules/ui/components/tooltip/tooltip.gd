@@ -12,5 +12,3 @@ func display_info(tooltip):
 	# await yield(get_tree(), "idle_frame")
 	# margin_container.rect_size = Vector2()
 	# rect_size = margin_container.rect_size
-	
-	
