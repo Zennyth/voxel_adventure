@@ -76,3 +76,16 @@ func update():
 	if is_authoritative(): 
 		character.move_and_slide()
 		update_unstable_state()
+
+
+###
+# BUILT-IN
+# Controller
+###
+@onready var controller: Controller = $Controller
+
+func _ready():
+	super._ready()
+	
+	if not is_authoritative():
+		controller.process_mode = Node.PROCESS_MODE_DISABLED
