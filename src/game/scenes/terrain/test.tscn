@@ -19,24 +19,24 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_riag3"]
 shader = ExtResource("2_hvotx")
-_Tonemap = null
-_SunDiskTint = null
-_SunDiskSize = null
-_SunDiskIntensity = null
-_GroundColor = null
-_Exposure = null
-_ContrastLevel = null
-_AtmosThickness = null
-_AtmosSunIntensity = null
-_AtmosNightTint = null
-_AtmosMieTint = null
-_AtmosMieIntensity = null
-_AtmosMieAnisotropy = null
-_AtmosMie = null
+_Tonemap = 0.0
+_SunDiskTint = Color(0.99, 0.49, 0.22, 1)
+_SunDiskSize = 0.009
+_SunDiskIntensity = 1.3
+_GroundColor = Color(0.3, 0.3, 0.3, 1)
+_Exposure = 1.3
+_ContrastLevel = 0.4
+_AtmosThickness = 1.0
+_AtmosSunIntensity = 30.0
+_AtmosNightTint = Color(0.02, 0.03, 0.04, 1)
+_AtmosMieTint = Color(1, 1, 1, 1)
+_AtmosMieIntensity = 1.0
+_AtmosMieAnisotropy = 0.8
+_AtmosMie = 0.01
 _AtmosLevelParams = null
-_AtmosHorizonTint = null
-_AtmosDayTint = null
-_AtmosDarkness = null
+_AtmosHorizonTint = Color(0.980392, 0.635294, 0.462745, 1)
+_AtmosDayTint = Color(1, 1, 1, 1)
+_AtmosDarkness = 0.936
 
 [sub_resource type="Sky" id="Sky_tq1nc"]
 sky_material = SubResource("ShaderMaterial_riag3")
@@ -47,7 +47,9 @@ background_color = Color(0.352941, 0.643137, 0.847059, 1)
 sky = SubResource("Sky_tq1nc")
 ambient_light_source = 3
 reflected_light_source = 2
-tonemap_mode = 2
+tonemap_mode = 3
+tonemap_white = 3.74
+ssr_enabled = true
 ssr_fade_out = 1.27456
 ssao_enabled = true
 ssao_radius = 4.3
@@ -55,16 +57,15 @@ ssil_enabled = true
 ssil_radius = 13.8
 ssil_intensity = 0.5
 sdfgi_enabled = true
+sdfgi_use_occlusion = true
 glow_blend_mode = 4
 fog_light_color = Color(0, 0.423529, 0.701961, 1)
 fog_light_energy = 0.9
 fog_sun_scatter = 0.88
 fog_height_density = 2.0
-volumetric_fog_density = 0.0549
-volumetric_fog_albedo = Color(0, 0.968627, 1, 1)
-volumetric_fog_emission = Color(1, 1, 1, 1)
-volumetric_fog_length = 13.0
+volumetric_fog_density = 0.0157
 volumetric_fog_detail_spread = 6.0
+volumetric_fog_ambient_inject = 1.15
 
 [sub_resource type="VoxelStreamRegionFiles" id="VoxelStreamRegionFiles_byu7p"]
 directory = "res://save/terrain/regions"
@@ -72,7 +73,8 @@ directory = "res://save/terrain/regions"
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_n8vxe"]
 noise_type = 0
 seed = 10
-frequency = 0.003
+frequency = 0.001
+fractal_type = 2
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_pfgw4"]
 
@@ -157,7 +159,7 @@ height = 1.0
 generator = SubResource("VoxelInstanceGenerator_ka4vc")
 mesh = SubResource("CylinderMesh_uimxc")
 
-[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_ukqsc"]
+[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_pdtka"]
 item_0 = SubResource("VoxelInstanceLibraryMultiMeshItem_1hybt")
 item_1 = SubResource("VoxelInstanceLibraryMultiMeshItem_roclw")
 item_2 = SubResource("VoxelInstanceLibraryMultiMeshItem_hptl7")
@@ -171,7 +173,7 @@ environment = SubResource("Environment_ghs71")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.17901, -0.966659, -0.1831, 0.322252, -0.233449, 0.917418, -0.929575, 0.105223, 0.353297, 0, 10, 0)
-light_color = Color(0.992157, 1, 0.627451, 1)
+light_color = Color(0.960784, 1, 0.643137, 1)
 light_energy = 0.88
 light_indirect_energy = 0.637
 shadow_enabled = true
@@ -186,7 +188,7 @@ run_stream_in_editor = false
 mesh_block_size = 32
 
 [node name="VoxelInstancerWorld" type="VoxelInstancerWorld" parent="VoxelTerrain"]
-library = SubResource("VoxelInstanceLibrary_ukqsc")
+library = SubResource("VoxelInstanceLibrary_pdtka")
 
 [node name="EntityManager" type="Node3D" parent="."]
 script = ExtResource("8_g3enr")
