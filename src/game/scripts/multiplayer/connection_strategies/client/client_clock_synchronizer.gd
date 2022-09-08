@@ -31,6 +31,6 @@ func determine_latency(client_time: int):
 				total_latency += latency_array[i]
 		delta_latency = ( total_latency / latency_array.size()) - latency
 		latency = total_latency / latency_array.size()
-		EventBus._debug_property_updated.emit(DebugProperty.DebugPropertyKey.LATENCY_NETWORK, latency)
-		EventBus._debug_property_updated.emit(DebugProperty.DebugPropertyKey.DELTA_LATENCY_NETWORK, delta_latency)
+		Debug.update_debug_property(DebugProperty.DebugPropertyKey.LATENCY_NETWORK, latency)
+		Debug.update_debug_property(DebugProperty.DebugPropertyKey.DELTA_LATENCY_NETWORK, delta_latency)
 		latency_array.clear()

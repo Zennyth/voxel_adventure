@@ -2,7 +2,7 @@ extends ConnectionStrategy
 class_name ClientConnectionStrategy
 
 func _init():
-	EventBus._debug_property_updated.emit(DebugProperty.DebugPropertyKey.CONNECTION_STRATEGY_NETWORK, "Client")
+	Debug.update_debug_property(DebugProperty.DebugPropertyKey.CONNECTION_STRATEGY_NETWORK, "Client")
 
 func _ready():
 	add_child(clock_synchronizer)
