@@ -7,15 +7,6 @@ var port := 1909
 var is_ready := false
 
 var connection_strategy: ConnectionStrategy
-func get_strategy() -> ConnectionStrategy:
-#	if "--server" in OS.get_cmdline_args():
-#		return ServerConnectionStrategy.new()
-#	elif "--host" in OS.get_cmdline_args():
-#		return HostConnectionStrategy.new()
-#	else:
-#		return ClientConnectionStrategy.new()
-	
-	return SoloConnectionStrategy.new()
 
 func init(entity_manager: EntityManager):
 	connection_strategy.init(entity_manager)

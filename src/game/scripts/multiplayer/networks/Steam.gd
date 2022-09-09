@@ -9,11 +9,11 @@ func _init():
 	Steam.lobby_created.connect(_lobby_created)
 
 func create_client(args: Dictionary):
-	network.create_client(args['lobby_id'])
+	network.create_client(args[CommandLineArguments.STEAM_LOBBY_ID])
 	super.create_client(args)
 
 func create_server(args: Dictionary):
-	network.create_server(args['lobby_type'], args['MAX_PLAYERS'])
+	network.create_server(args[CommandLineArguments.STEAM_LOBBY_TYPE], args[CommandLineArguments.MAX_PLAYERS])
 	super.create_server(args)
 
 

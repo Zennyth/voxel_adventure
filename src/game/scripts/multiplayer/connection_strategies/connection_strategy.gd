@@ -42,6 +42,10 @@ func _global_requests(_data: Dictionary):
 func global_requests(_data: Dictionary):
 	pass
 
+
+func need_loaded_character() -> bool:
+	return true
+
 ###
 # BUILT-IN
 # Entity management

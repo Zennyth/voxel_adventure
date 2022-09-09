@@ -49,6 +49,9 @@ func _peer_disconnected(player_id: int) -> void:
 ###
 const MAX_PLAYERS = 4
 
+func need_loaded_character() -> bool:
+	return false
+
 ###
 # BUILT-IN
 # Clock synchro
