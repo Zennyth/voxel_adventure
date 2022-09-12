@@ -37,16 +37,17 @@ static func _add_dir_contents(dir: Directory, files: Array, directories: Array):
 
 static func get_folders(root_path: String) -> Array:
 	var folders := []
-
-	if dir.open(rootPath) == OK:
+	var dir = Directory.new()
+	
+	if dir.open(root_path) == OK:
 		dir.list_dir_begin()
 		var folder_name = dir.get_next()
-
+		
 		while (folder_name != ""):
 			folders.append(folder_name)
 			folder_name = dir.get_next()
 		
 	else:
 		push_error("An error occurred when trying to access the path.")
-
+	
 	return folders

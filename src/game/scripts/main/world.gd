@@ -8,6 +8,7 @@ var connection_strategy: ConnectionStrategy
 var args := {
 	"ip": "127.0.0.1",
 	"port": 9603,
+	"max_players": 4
 }
 
 func _init():
@@ -22,4 +23,4 @@ func _ready():
 	EventBus._world_ready.emit(Entities)
 	EventBus._terrain_ready.emit(Terrain)
 	
-	print((Terrain.generator as VoxelGeneratorWorld).biome_map)
+#	print((Terrain.generator as VoxelGeneratorWorld).get_biome_map().get_biome_by_position()

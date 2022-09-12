@@ -99,7 +99,7 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/multiplayer/connection_strategies/connection_strategy.gd"
 }, {
-"base": "Reference",
+"base": "Object",
 "class": &"ConnectionStrategyFactory",
 "language": &"GDScript",
 "path": "res://scripts/multiplayer/connection_strategies/connection_strategy_factory.gd"
@@ -258,6 +258,11 @@ _global_script_classes=[{
 "class": &"Network",
 "language": &"GDScript",
 "path": "res://scripts/multiplayer/networks/network.gd"
+}, {
+"base": "Object",
+"class": &"NetworkFactory",
+"language": &"GDScript",
+"path": "res://scripts/multiplayer/networks/network_factory.gd"
 }, {
 "base": "Property",
 "class": &"NewProperty",
@@ -530,6 +535,7 @@ _global_script_class_icons={
 "MoveState": "",
 "MultiplayerManager": "",
 "Network": "",
+"NetworkFactory": "",
 "NewProperty": "",
 "NodeUtils": "",
 "PhysicalStateManager": "",
@@ -589,6 +595,8 @@ Database="*res://scripts/databases/database_manager.gd"
 Debug="*res://scripts/autoload/debug.gd"
 EventBus="*res://scripts/autoload/event_bus.gd"
 Game="*res://scripts/autoload/game_manager.gd"
+Launch="*res://scripts/autoload/launch.gd"
+CommandLineArguments="*res://scripts/autoload/command_arguments.gd"
 
 [editor_plugins]
 
