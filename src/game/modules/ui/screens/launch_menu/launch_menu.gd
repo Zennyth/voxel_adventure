@@ -5,14 +5,11 @@ extends SequenceMenu
 @export var credits: PackedScene
 
 
-var skip: bool:
-	get():
-		return Launch.connection_strategy != null
+func skip_condition() -> bool:
+	return Launch.connection_strategy != null
 
-func _init():
-	if !is_previous and skip:
-		next_step(play)
-
+func logical_next_step() -> PackedScene:
+  return play
 
 func _on_play_pressed():
 	next_step(play)
