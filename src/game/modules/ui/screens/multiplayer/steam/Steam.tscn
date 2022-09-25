@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://be2na68dlty5y"]
+
+[ext_resource type="PackedScene" uid="uid://drptbuna7w3lf" path="res://modules/ui/screens/SequenceScreen.tscn" id="1_fvyax"]
+[ext_resource type="Script" path="res://modules/ui/screens/multiplayer/steam/steam.gd" id="1_wlqpr"]
+[ext_resource type="PackedScene" uid="uid://djm1jggm80cl2" path="res://scenes/terrain/test.tscn" id="3_36mrl"]
+
+[node name="SquenceScreen" instance=ExtResource("1_fvyax")]
+script = ExtResource("1_wlqpr")
+world = ExtResource("3_36mrl")
+
+[node name="Previous" parent="." index="0"]
+offset_top = 0.0
+offset_bottom = 31.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." index="1"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -70.0
+offset_right = 116.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PrivateServer" type="Button" parent="VBoxContainer" index="0"]
+texture_filter = 1
+offset_right = 221.0
+offset_bottom = 20.0
+disabled = true
+text = "Join private server
+"
+
+[node name="CreateLobby" type="Button" parent="VBoxContainer" index="1"]
+texture_filter = 1
+offset_top = 24.0
+offset_right = 221.0
+offset_bottom = 44.0
+text = "Create a lobby (via Steam)
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer" index="2"]
+offset_top = 48.0
+offset_right = 221.0
+offset_bottom = 107.0
+
+[node name="JoinLobbyInput" type="TextEdit" parent="VBoxContainer/VBoxContainer" index="0"]
+custom_minimum_size = Vector2i(0, 35)
+offset_right = 221.0
+offset_bottom = 35.0
+placeholder_text = "Enter lobby id"
+
+[node name="JoinLobby" type="Button" parent="VBoxContainer/VBoxContainer" index="1"]
+texture_filter = 1
+offset_top = 39.0
+offset_right = 221.0
+offset_bottom = 59.0
+text = "Join a lobby (via Steam)
+"
+
+[connection signal="pressed" from="VBoxContainer/CreateLobby" to="." method="_on_create_lobby_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/JoinLobby" to="." method="_on_join_lobby_pressed"]

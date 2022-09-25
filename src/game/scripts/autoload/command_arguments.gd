@@ -27,7 +27,14 @@ func _init():
 	_parse_arguments()
 
 func _parse_arguments():
-	for argument in OS.get_cmdline_args():
+	var arguments := OS.get_cmdline_args()
+	
+	for i in len(arguments):
+		var argument = arguments[i]
+		
+		if argument == "+connect_lobby":
+			_arguments[JOIN_GAME] = arguments[i+1].to_int()
+		
 		if argument.find(_DEFINITION) < 0:
 			continue
 		

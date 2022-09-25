@@ -1,6 +1,7 @@
 @tool
-class_name Voxel, "res://addons/voxel-core/assets/classes/voxel.png"
+class_name Voxel
 extends Object
+@icon("res://addons/voxel-core/assets/classes/voxel.png")
 # Utility class containing various properties and methods to do with voxels.
 #
 # Voxel Schema:

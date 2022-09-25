@@ -57,7 +57,7 @@ func init(entity_manager_reference):
 
 
 func create_authoritative_entity_state(entity_state: Dictionary) -> Dictionary:
-	entity_state[WorldState.STATE_KEYS.OWNER_ID] = _network.get_id()
+	entity_state[WorldState.STATE_KEYS.OWNER_ID] = _network.get_id() if _network else 0
 	return entity_state
 	
 

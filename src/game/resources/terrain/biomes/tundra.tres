@@ -1,4 +1,4 @@
-[gd_resource type="Biome" load_steps=9 format=3 uid="uid://ddalox82x3l3r"]
+[gd_resource type="Biome" load_steps=8 format=3 uid="uid://ddalox82x3l3r"]
 
 [sub_resource type="Curve" id="Curve_bqhhk"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.568293, 0.281818), 0.0, 0.0, 0, 0, Vector2(1, 0.990909), 0.0, 0.0, 0, 0]
@@ -6,7 +6,7 @@ point_count = 3
 
 [sub_resource type="HeightFilter" id="HeightFilter_1s8vd"]
 curve = SubResource("Curve_bqhhk")
-weight = 1.0
+weight = 0.0001
 
 [sub_resource type="Curve" id="Curve_n44a2"]
 
@@ -15,10 +15,9 @@ curve = SubResource("Curve_n44a2")
 
 [sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_hyvh4"]
 
-[sub_resource type="Curve" id="Curve_vsgsx"]
-
 [sub_resource type="HeightFilter" id="HeightFilter_s0bkd"]
-curve = SubResource("Curve_vsgsx")
+curve = SubResource("Curve_bqhhk")
+weight = 1.0
 
 [sub_resource type="Gradient" id="Gradient_s6574"]
 interpolation_mode = 1

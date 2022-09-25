@@ -181,10 +181,10 @@ func save_environment() -> void:
 		if dir.file_exists("res://addons/voxel-core/controls/voxel_viewer/config.var"):
 			dir.remove("res://addons/voxel-core/controls/voxel_viewer/config.var")
 	elif is_instance_valid(environment):
-		var file := File.new()
+		var file := FileAccess .new()
 		var opened = file.open(
 				"res://addons/voxel-core/controls/voxel_viewer/config.var",
-				File.WRITE)
+				FileAccess .WRITE)
 		if opened == OK:
 			file.store_string(environment.resource_path)
 		if file.is_open():
@@ -194,10 +194,10 @@ func save_environment() -> void:
 # Loads and sets the environment file
 func load_environment() -> void:
 	var loaded := false
-	var file := File.new()
+	var file := FileAccess .new()
 	var opened = file.open(
 			"res://addons/voxel-core/controls/voxel_viewer/config.var",
-			File.READ)
+			FileAccess .READ)
 	if opened == OK:
 		var environment_path = file.get_as_text()
 		if file.file_exists(environment_path):

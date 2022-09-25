@@ -1,7 +1,8 @@
-[gd_resource type="Biome" load_steps=18 format=3 uid="uid://b5crvssga2pre"]
+[gd_resource type="Biome" load_steps=22 format=3 uid="uid://b5crvssga2pre"]
 
 [ext_resource type="ArrayMesh" uid="uid://do0xgigudrgal" path="res://assets/environment/common/trees/Treestump1.vox" id="1_hwttp"]
 [ext_resource type="ArrayMesh" uid="uid://rtssipg20p1l" path="res://assets/environment/common/trees/Tree_Oak_L1.vox" id="2_hrpkt"]
+[ext_resource type="ArrayMesh" uid="uid://cpan4g7p41q8o" path="res://assets/environment/common/bush/Bush.vox" id="3_84b3y"]
 
 [sub_resource type="Curve" id="Curve_eoa7j"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.590074, 0.409091), 0.0, 0.0, 0, 0, Vector2(0.930041, 0.472727), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -43,9 +44,24 @@ noise = SubResource("FastNoiseLite_7bo3u")
 generator = SubResource("VoxelInstanceGenerator_31iiq")
 mesh = ExtResource("2_hrpkt")
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_b05cg"]
+frequency = 0.001
+fractal_type = 2
+
+[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_67kfa"]
+density = 0.001
+min_scale = 0.1
+max_scale = 0.1
+noise = SubResource("FastNoiseLite_b05cg")
+
+[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_o135i"]
+generator = SubResource("VoxelInstanceGenerator_67kfa")
+mesh = ExtResource("3_84b3y")
+
 [sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_dni7a"]
 item_1 = SubResource("VoxelInstanceLibraryMultiMeshItem_roclw")
 item_2 = SubResource("VoxelInstanceLibraryMultiMeshItem_hptl7")
+item_3 = SubResource("VoxelInstanceLibraryMultiMeshItem_o135i")
 
 [sub_resource type="Curve" id="Curve_15yq1"]
 

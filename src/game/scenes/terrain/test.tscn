@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://djm1jggm80cl2"]
+[gd_scene load_steps=40 format=3 uid="uid://djm1jggm80cl2"]
 
 [ext_resource type="Script" path="res://scripts/main/world.gd" id="1_hnd5j"]
 [ext_resource type="Shader" path="res://scripts/environment/sky.gdshader" id="2_hvotx"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scripts/multiplayer/entity_manager.gd" id="8_g3enr"]
 [ext_resource type="ArrayMesh" uid="uid://do0xgigudrgal" path="res://assets/environment/common/trees/Treestump1.vox" id="8_nl8jd"]
 [ext_resource type="ArrayMesh" uid="uid://rtssipg20p1l" path="res://assets/environment/common/trees/Tree_Oak_L1.vox" id="9_iei2y"]
+[ext_resource type="ArrayMesh" uid="uid://cpan4g7p41q8o" path="res://assets/environment/common/bush/Bush.vox" id="10_65tx6"]
 [ext_resource type="Script" path="res://modules/ui/hud/inventories/inventories_container.gd" id="10_f5co6"]
 [ext_resource type="PackedScene" uid="uid://bnap8qvpaghvn" path="res://modules/ui/hud/inventories/player/PlayerEquipments.tscn" id="11_kkr82"]
 [ext_resource type="PackedScene" uid="uid://cmv6om6x12w3d" path="res://modules/ui/hud/inventories/items/drag_preview/DragPreview.tscn" id="12_boprf"]
@@ -19,24 +20,24 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_riag3"]
 shader = ExtResource("2_hvotx")
-_Tonemap = 0.0
-_SunDiskTint = Color(0.99, 0.49, 0.22, 1)
-_SunDiskSize = 0.009
-_SunDiskIntensity = 1.3
-_GroundColor = Color(0.3, 0.3, 0.3, 1)
-_Exposure = 1.3
-_ContrastLevel = 0.4
-_AtmosThickness = 1.0
-_AtmosSunIntensity = 30.0
-_AtmosNightTint = Color(0.02, 0.03, 0.04, 1)
-_AtmosMieTint = Color(1, 1, 1, 1)
-_AtmosMieIntensity = 1.0
-_AtmosMieAnisotropy = 0.8
-_AtmosMie = 0.01
-_AtmosLevelParams = null
-_AtmosHorizonTint = Color(0.980392, 0.635294, 0.462745, 1)
-_AtmosDayTint = Color(1, 1, 1, 1)
-_AtmosDarkness = 0.936
+shader_parameter/_AtmosDarkness = 0.936
+shader_parameter/_AtmosDayTint = Color(1, 1, 1, 1)
+shader_parameter/_AtmosHorizonTint = Color(0.980392, 0.635294, 0.462745, 1)
+shader_parameter/_AtmosLevelParams = null
+shader_parameter/_AtmosMie = 0.01
+shader_parameter/_AtmosMieAnisotropy = 0.8
+shader_parameter/_AtmosMieIntensity = 1.0
+shader_parameter/_AtmosMieTint = Color(1, 1, 1, 1)
+shader_parameter/_AtmosNightTint = Color(0.02, 0.03, 0.04, 1)
+shader_parameter/_AtmosSunIntensity = 30.0
+shader_parameter/_AtmosThickness = 1.0
+shader_parameter/_ContrastLevel = 0.4
+shader_parameter/_Exposure = 1.3
+shader_parameter/_GroundColor = Color(0.3, 0.3, 0.3, 1)
+shader_parameter/_SunDiskIntensity = 1.3
+shader_parameter/_SunDiskSize = 0.009
+shader_parameter/_SunDiskTint = Color(0.99, 0.49, 0.22, 1)
+shader_parameter/_Tonemap = 0.0
 
 [sub_resource type="Sky" id="Sky_tq1nc"]
 sky_material = SubResource("ShaderMaterial_riag3")
@@ -49,32 +50,24 @@ ambient_light_source = 3
 reflected_light_source = 2
 tonemap_mode = 3
 tonemap_white = 3.74
-ssr_enabled = true
 ssr_fade_out = 1.27456
 ssao_enabled = true
 ssao_radius = 4.3
-ssil_enabled = true
 ssil_radius = 13.8
 ssil_intensity = 0.5
 sdfgi_enabled = true
 sdfgi_use_occlusion = true
-glow_blend_mode = 4
 fog_light_color = Color(0, 0.423529, 0.701961, 1)
 fog_light_energy = 0.9
 fog_sun_scatter = 0.88
 fog_height_density = 2.0
-volumetric_fog_density = 0.0157
-volumetric_fog_detail_spread = 6.0
-volumetric_fog_ambient_inject = 1.15
+volumetric_fog_detail_spread = 0.5
 
 [sub_resource type="VoxelStreamRegionFiles" id="VoxelStreamRegionFiles_byu7p"]
 directory = "res://save/terrain/regions"
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_n8vxe"]
-noise_type = 0
-seed = 10
 frequency = 0.001
-fractal_type = 2
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_pfgw4"]
 
@@ -83,6 +76,9 @@ seed = 1
 frequency = 0.001
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_url8d"]
+seed = 1
+frequency = 0.001
+fractal_type = 2
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_fwsue"]
 frequency = 0.001
@@ -101,22 +97,12 @@ erosion_noise = SubResource("FastNoiseLite_pfgw4")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6tquh"]
 vertex_color_use_as_albedo = true
+ao_light_affect = 0.25
 
 [sub_resource type="VoxelMesherCubes" id="VoxelMesherCubes_p8y6y"]
 greedy_meshing_enabled = false
 opaque_material = SubResource("StandardMaterial3D_6tquh")
 transparent_material = ExtResource("7_nb2ds")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_83nyr"]
-
-[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_q36sn"]
-noise = SubResource("FastNoiseLite_83nyr")
-
-[sub_resource type="BoxMesh" id="BoxMesh_pqb0l"]
-
-[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_1hybt"]
-generator = SubResource("VoxelInstanceGenerator_q36sn")
-mesh = SubResource("BoxMesh_pqb0l")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_6ofba"]
 seed = 1
@@ -145,25 +131,24 @@ noise = SubResource("FastNoiseLite_7bo3u")
 generator = SubResource("VoxelInstanceGenerator_31iiq")
 mesh = ExtResource("9_iei2y")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_djmx6"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_b05cg"]
 frequency = 0.001
+fractal_type = 2
 
-[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_ka4vc"]
+[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_67kfa"]
 density = 0.001
-noise = SubResource("FastNoiseLite_djmx6")
+min_scale = 0.1
+max_scale = 0.1
+noise = SubResource("FastNoiseLite_b05cg")
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_uimxc"]
-height = 1.0
+[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_o135i"]
+generator = SubResource("VoxelInstanceGenerator_67kfa")
+mesh = ExtResource("10_65tx6")
 
-[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_sr0aq"]
-generator = SubResource("VoxelInstanceGenerator_ka4vc")
-mesh = SubResource("CylinderMesh_uimxc")
-
-[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_324u7"]
-item_0 = SubResource("VoxelInstanceLibraryMultiMeshItem_1hybt")
-item_1 = SubResource("VoxelInstanceLibraryMultiMeshItem_roclw")
-item_2 = SubResource("VoxelInstanceLibraryMultiMeshItem_hptl7")
-item_3 = SubResource("VoxelInstanceLibraryMultiMeshItem_sr0aq")
+[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_kb1kt"]
+item_0 = SubResource("VoxelInstanceLibraryMultiMeshItem_roclw")
+item_1 = SubResource("VoxelInstanceLibraryMultiMeshItem_hptl7")
+item_2 = SubResource("VoxelInstanceLibraryMultiMeshItem_o135i")
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_hnd5j")
@@ -188,7 +173,7 @@ run_stream_in_editor = false
 mesh_block_size = 32
 
 [node name="VoxelInstancerWorld" type="VoxelInstancerWorld" parent="VoxelTerrain"]
-library = SubResource("VoxelInstanceLibrary_324u7")
+library = SubResource("VoxelInstanceLibrary_kb1kt")
 
 [node name="EntityManager" type="Node3D" parent="."]
 script = ExtResource("8_g3enr")
@@ -197,9 +182,6 @@ script = ExtResource("8_g3enr")
 script = ExtResource("10_f5co6")
 
 [node name="DebugPanel" parent="UI" instance=ExtResource("12_p4l16")]
-visible = false
-layout_mode = 3
-anchors_preset = 15
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

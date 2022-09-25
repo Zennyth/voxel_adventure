@@ -1,3 +1,4 @@
+LinkButton
 Label
 VBoxContainer
 HBoxContainer
@@ -5,7 +6,6 @@ GridContainer
 TextEdit
 Button
 BaseButton
-LinkButton
 Node3D
 AnimationTree
 VoxelInstancerWorld
@@ -25,7 +25,6 @@ DirectionalLight3D
 OmniLight3D
 MarginContainer
 Tooltip (ui_tooltip.gd)
-ArrayInventoryContainer (ui_array_inventory.gd)
 DragPreview (drag_preview.gd)
 ItemContainer (ui_item.gd)
 StackContainer (ui_stack.gd)

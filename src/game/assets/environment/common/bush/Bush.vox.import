@@ -1,17 +1,17 @@
 [remap]
 
-importer="VoxelVoxSceneImporter"
-type="PackedScene"
+importer="VoxelVoxMeshImporter"
+type="ArrayMesh"
 uid="uid://cpan4g7p41q8o"
-path="res://.godot/imported/Bush.vox-1d78802095e3c1d39bbc79d8848cb58e.tscn"
+path="res://.godot/imported/Bush.vox-1d78802095e3c1d39bbc79d8848cb58e.mesh"
 
 [deps]
 
 source_file="res://assets/environment/common/bush/Bush.vox"
-dest_files=["res://.godot/imported/Bush.vox-1d78802095e3c1d39bbc79d8848cb58e.tscn"]
+dest_files=["res://.godot/imported/Bush.vox-1d78802095e3c1d39bbc79d8848cb58e.mesh"]
 
 [params]
 
 store_colors_in_texture=false
 scale=1.0
-enable_baked_lighting=true
+pivot_mode=1

@@ -9,7 +9,7 @@ func skip_condition() -> bool:
 	return Launch.connection_strategy != null
 
 func logical_next_step() -> PackedScene:
-  return play
+	return play
 
 func _on_play_pressed():
 	next_step(play)

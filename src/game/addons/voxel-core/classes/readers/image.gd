@@ -1,5 +1,6 @@
-class_name ImageReader, "res://addons/voxel-core/assets/logos/MagicaVoxel.png"
+class_name ImageReader
 extends RefCounted
+@icon("res://addons/voxel-core/assets/logos/MagicaVoxel.png")
 # Image file reader
 
 

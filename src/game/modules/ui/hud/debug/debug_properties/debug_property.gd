@@ -6,7 +6,9 @@ enum DebugPropertyKey {
 
 	CONNECTION_STRATEGY_NETWORK,
 	LATENCY_NETWORK,
-	DELTA_LATENCY_NETWORK
+	DELTA_LATENCY_NETWORK,
+	
+	BIOME
 }
 
 @export var key: DebugPropertyKey = DebugPropertyKey.ALL

@@ -7,7 +7,7 @@
 [ext_resource type="Resource" path="res://resources/items/equipments/cosmetics/default_warrior_chest_plate.tres" id="5_5jkyv"]
 [ext_resource type="Script" path="res://scripts/items/stack.gd" id="6_slvrh"]
 [ext_resource type="Resource" path="res://resources/items/equipments/cosmetics/human_face_1.tres" id="7_ce7ns"]
-[ext_resource type="Resource" path="res://resources/items/equipments/cosmetics/human_hair_2.tres" id="8_yfrpl"]
+[ext_resource type="Resource" uid="uid://co2vn1ft4wsxe" path="res://resources/items/equipments/cosmetics/human_hair_2.tres" id="8_yfrpl"]
 [ext_resource type="Resource" uid="uid://bwatxo1yie0bi" path="res://resources/items/equipments/cosmetics/human_eyes_1.tres" id="9_gevxw"]
 [ext_resource type="Resource" path="res://resources/items/equipments/cosmetics/default_warrior_shoe.tres" id="10_6ht4x"]
 [ext_resource type="Resource" path="res://resources/items/equipments/cosmetics/human_hand_1.tres" id="11_mfw4k"]

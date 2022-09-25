@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3]
 
-[ext_resource type="ArrayMesh" path="res://.godot/imported/Bush_Dead.vox-4d472cbf904bb81404a800e6f9dea602.model0.mesh" id="1_d5yme"]
+[ext_resource type="ArrayMesh" path="res://.godot/imported/Bush_Dead.vox-4d472cbf904bb81404a800e6f9dea602.model0.mesh" id="1_d2gln"]
 
 [node name="Bush_Dead" type="Node3D"]
 
-[node name="@@75260" type="MeshInstance3D" parent="."]
+[node name="@@17230" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -7)
 gi_mode = 2
-mesh = ExtResource("1_d5yme")
+mesh = ExtResource("1_d2gln")

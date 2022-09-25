@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://drptbuna7w3lf"]
+
+[ext_resource type="Script" path="res://modules/ui/screens/sequence_screen.gd" id="1_hpb6b"]
+[ext_resource type="Theme" uid="uid://byewe1uxqyop1" path="res://modules/ui/theme.tres" id="1_lt0wb"]
+
+[node name="SquenceScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_lt0wb")
+script = ExtResource("1_hpb6b")
+
+[node name="Previous" type="Button" parent="."]
+texture_filter = 1
+offset_top = 2.0
+offset_right = 95.0
+offset_bottom = 33.0
+text = "< Previous
+"
+alignment = 0
+
+[connection signal="pressed" from="Previous" to="." method="_on_previous_pressed"]

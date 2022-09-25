@@ -3,9 +3,9 @@ class_name FilesUtils
 static func get_files_from_folder(rootPath: String):
 	var files = []
 	var directories = []
-	var dir = Directory.new()
+	var dir = DirAccess.open(rootPath)
 
-	if dir.open(rootPath) == OK:
+	if dir != null:
 		dir.list_dir_begin()
 		_add_dir_contents(dir, files, directories)
 	else:
@@ -14,15 +14,14 @@ static func get_files_from_folder(rootPath: String):
 	return files
 
 
-static func _add_dir_contents(dir: Directory, files: Array, directories: Array):
+static func _add_dir_contents(dir: DirAccess, files: Array, directories: Array):
 	var file_name = dir.get_next()
 	
 	while (file_name != ""):
 		var path = dir.get_current_dir() + "/" + file_name
 		
 		if dir.current_is_dir():
-			var subDir = Directory.new()
-			subDir.open(path)
+			var subDir = DirAccess.open(path)
 			subDir.list_dir_begin()
 			directories.append(path)
 			_add_dir_contents(subDir, files, directories)
@@ -37,9 +36,9 @@ static func _add_dir_contents(dir: Directory, files: Array, directories: Array):
 
 static func get_folders(root_path: String) -> Array:
 	var folders := []
-	var dir = Directory.new()
+	var dir = DirAccess.open(root_path)
 	
-	if dir.open(root_path) == OK:
+	if dir != null:
 		dir.list_dir_begin()
 		var folder_name = dir.get_next()
 		

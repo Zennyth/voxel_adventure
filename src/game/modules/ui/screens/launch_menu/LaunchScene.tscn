@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6nhq5rdvgwvi"]
+
+[ext_resource type="Script" path="res://modules/ui/screens/launch_menu/launch_menu.gd" id="1_cytv5"]
+[ext_resource type="PackedScene" uid="uid://drptbuna7w3lf" path="res://modules/ui/screens/SequenceScreen.tscn" id="1_ouvam"]
+[ext_resource type="PackedScene" uid="uid://dviqi31bw24v6" path="res://modules/ui/screens/multiplayer/Multiplayer.tscn" id="3_qt6tv"]
+
+[node name="LaunchScene" instance=ExtResource("1_ouvam")]
+script = ExtResource("1_cytv5")
+play = ExtResource("3_qt6tv")
+options = null
+credits = null
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." index="1"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -70.0
+offset_right = 116.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Play" type="Button" parent="VBoxContainer" index="0"]
+texture_filter = 1
+offset_top = 80.0
+offset_right = 221.0
+offset_bottom = 100.0
+text = "Play
+"
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]

@@ -13,23 +13,23 @@ func _on_terrain_ready(terrain: VoxelTerrain):
 	set_process(voxel_tool != null)
 
 
-func _process(_delta):
-	if not voxel_tool:
-		return
-	
-	var character_position = character_entity.character.global_transform.origin
-	var forward_direction = character_entity.controller.get_direction()
-	
-	if forward_direction.length() == 0:
-		return
-
-	var lower = voxel_tool.raycast(character_position, forward_direction, 0.5)
-	if not lower or lower.position == Vector3i.ZERO:
-		return
-	
-	
-	var upper = voxel_tool.raycast(character_position + Vector3.UP, forward_direction, 1)
-	if upper and lower.position != Vector3i.ZERO:
-		return
-	
-	character_entity.global_position += Vector3.UP
+#func _process(_delta):
+#	if not voxel_tool:
+#		return
+#
+#	var character_position = character_entity.character.global_transform.origin
+#	var forward_direction = character_entity.controller.get_direction()
+#
+#	if forward_direction.length() == 0:
+#		return
+#
+#	var lower = voxel_tool.raycast(character_position, forward_direction, 0.5)
+#	if not lower or lower.position == Vector3i.ZERO:
+#		return
+#
+#
+#	var upper = voxel_tool.raycast(character_position + Vector3.UP, forward_direction, 1)
+#	if upper and lower.position != Vector3i.ZERO:
+#		return
+#
+#	character_entity.global_position += Vector3.UP

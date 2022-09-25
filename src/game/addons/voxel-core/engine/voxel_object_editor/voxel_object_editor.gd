@@ -469,10 +469,10 @@ func set_voxel_raycasting(value : bool) -> void:
 
 # Saves the current editor config to file
 func save_config() -> void:
-	var file := File.new()
+	var file := FileAccess .new()
 	var opened = file.open(
 			"res://addons/voxel-core/engine/voxel_object_editor/config.var",
-			File.WRITE)
+			FileAccess .WRITE)
 	if opened == OK:
 		file.store_var(config)
 	if file.is_open():
@@ -482,10 +482,10 @@ func save_config() -> void:
 # Loads and sets the config file
 func load_config() -> void:
 	var loaded := false
-	var config_file := File.new()
+	var config_file := FileAccess .new()
 	var opened = config_file.open(
 			"res://addons/voxel-core/engine/voxel_object_editor/config.var",
-			File.READ)
+			FileAccess .READ)
 	if opened == OK and not config_file.eof_reached():
 		var config_file_data = config_file.get_var()
 		if typeof(config_file_data) == TYPE_DICTIONARY:
@@ -862,8 +862,8 @@ func _on_Clear_pressed():
 
 
 func _on_ExportFile_file_selected(path : String):
-	var file := File.new()
-	var opened = file.open(path, File.WRITE)
+	var file := FileAccess .new()
+	var opened = file.open(path, FileAccess .WRITE)
 	if opened == OK:
 		file.store_var({
 			"voxels": voxel_object.get_voxel_ids()

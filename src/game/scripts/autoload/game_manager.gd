@@ -1,8 +1,8 @@
 extends Node
 
-
 func _init():
 	EventBus._world_ready.connect(_on_world_ready)
+	EventBus._terrain_ready.connect(_on_terrain_ready)
 
 func _ready():
 	add_child(multiplayer_manager)
@@ -14,6 +14,10 @@ func _ready():
 var multiplayer_manager := MultiplayerManager.new()
 func _on_world_ready(entity_manager: EntityManager):
 	multiplayer_manager.init(entity_manager)
+	
+var Terrain
+func _on_terrain_ready(terrain):
+	Terrain = terrain
 
 
 ###

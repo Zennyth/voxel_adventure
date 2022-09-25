@@ -2,7 +2,7 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://chrtyt6wxnlrn"
+uid="uid://bh23oj8aynndh"
 path="res://.godot/imported/PressStart2P.ttf-575365d8537b7ec81e37fab7878bde5c.fontdata"
 
 [deps]
@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/PressStart2P.ttf-575365d8537b7ec81e37fab7878b
 [params]
 
 Rendering=null
-antialiased=true
+antialiasing=1
 generate_mipmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8

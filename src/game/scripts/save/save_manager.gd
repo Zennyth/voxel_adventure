@@ -7,10 +7,9 @@ var full_path := ""
 
 func set_save_path(save_identifier: String):
 	full_path = folder_path + save_identifier + "/"
-	var directory := Directory.new()
 
-	if not directory.dir_exists(full_path):
-		directory.open(folder_path)
+	if DirAccess.open(full_path) == null:
+		var directory := DirAccess.open(folder_path)
 		directory.make_dir(full_path)
 
 func reset_save_path():

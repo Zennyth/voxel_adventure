@@ -6,7 +6,7 @@ extends RefCounted
 
 ## Public Methods
 # Reads GPL file, and returns voxel palette
-static func read(gpl_file : File) -> Dictionary:
+static func read(gpl_file : FileAccess ) -> Dictionary:
 	var result := {
 		"error": OK,
 		"voxels": {},
@@ -39,8 +39,8 @@ static func read(gpl_file : File) -> Dictionary:
 
 static func read_file(gpl_path : String) -> Dictionary:
 	var result := { "error": OK }
-	var file := File.new()
-	result["error"] = file.open(gpl_path, File.READ)
+	var file := FileAccess .new()
+	result["error"] = file.open(gpl_path, FileAccess .READ)
 	if result["error"] == OK:
 		result = read(file)
 	if file.is_open():

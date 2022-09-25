@@ -44,7 +44,8 @@ func _init():
 @export var default_speed := 10.0
 @export var JUMP_VELOCITY := 8.0
 # Get the gravity from the project settings to be synced with CharacterBody3D nodes.
-var default_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+#var default_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var default_gravity = 18.6
 
 func jump():
 	if character.is_on_floor():

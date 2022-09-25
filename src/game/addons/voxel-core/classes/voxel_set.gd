@@ -1,6 +1,7 @@
 @tool
-class_name VoxelSet, "res://addons/voxel-core/assets/classes/voxel_set.png"
+class_name VoxelSet
 extends Resource
+@icon("res://addons/voxel-core/assets/classes/voxel_set.png")
 # Library of Voxels used by VoxelObjects.
 
 

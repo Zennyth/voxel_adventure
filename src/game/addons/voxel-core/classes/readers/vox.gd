@@ -1,5 +1,6 @@
-class_name VoxReader, "res://addons/voxel-core/assets/logos/MagicaVoxel.png"
+class_name VoxReader
 extends RefCounted
+@icon("res://addons/voxel-core/assets/logos/MagicaVoxel.png")
 # MagicaVoxel file reader
 
 
@@ -88,7 +89,7 @@ const MagicaVoxelPalette := [
 # "error": OK if no Errors occured
 # "tree": Dict tree structure containing the vox files scenes contents
 # "palette": Vox files Palette in form of an Array of Colors
-static func read(file : File) -> Dictionary:
+static func read(file: FileAccess) -> Dictionary:
 	var result := {
 		"error": OK,
 		"tree": {},
@@ -279,9 +280,9 @@ static func read(file : File) -> Dictionary:
 
 static func read_file(vox_path : String, merge_voxels := true) -> Dictionary:
 	var result := { "error": OK }
-	var vox_file := File.new()
+	var vox_file := FileAccess .new()
 	
-	result["error"] = vox_file.open(vox_path, File.READ)
+	result["error"] = vox_file.open(vox_path, FileAccess .READ)
 	
 	if result["error"] == OK:
 		result = read(vox_file)
@@ -301,7 +302,7 @@ static func read_file(vox_path : String, merge_voxels := true) -> Dictionary:
 
 ## Private Methods
 # Reads a key-value dictionary from a vox file
-static func _read_vox_dict(file: File) -> Dictionary:
+static func _read_vox_dict(file: FileAccess ) -> Dictionary:
 	# Dictionary containing data read from vox file
 	var dict := {}
 	
@@ -321,7 +322,7 @@ static func _read_vox_dict(file: File) -> Dictionary:
 	return dict
 
 
-static func _skip_unimplemented(file : File, chunk_size : int):
+static func _skip_unimplemented(file : FileAccess , chunk_size : int):
 	var _val = file.get_buffer(chunk_size)
 
 

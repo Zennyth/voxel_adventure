@@ -3,7 +3,6 @@ extends RefCounted
 # Makeshift interface class inhereted by all file readers.
 
 
-
 ## Public Methods
 # Calls on appropriate file reader according to file_path's extension.
 # file_path   :   String       :   path to file to be read

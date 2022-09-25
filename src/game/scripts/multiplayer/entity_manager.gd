@@ -71,9 +71,9 @@ func spawn_entity(entity_state: Dictionary, entity: Entity = null) -> Entity:
 	add_entity(new_entity)
 	new_entity._destroyed.connect(destroy_entity)
 	random.randomize()
-	new_entity.position.x = random.randi_range(0, 10)
+	new_entity.position.x = random.randi_range(0, 100)
 	new_entity.position.y = 150
-	new_entity.position.z = random.randi_range(0, 10)
+	new_entity.position.z = random.randi_range(0, 100)
 	return new_entity
 
 func despawn_entity(entity_id: int) -> void:

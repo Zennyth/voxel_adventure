@@ -1,6 +1,7 @@
 @tool
-class_name VoxelMesh, "res://addons/voxel-core/assets/classes/voxel_mesh.png"
+class_name VoxelMesh
 extends "res://addons/voxel-core/classes/voxel_object.gd"
+@icon("res://addons/voxel-core/assets/classes/voxel_mesh.png")
 # The most basic voxel visualization object, for a moderate amount of voxels.
 
 
