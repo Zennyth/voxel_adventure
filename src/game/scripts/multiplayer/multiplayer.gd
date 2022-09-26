@@ -4,20 +4,26 @@ class_name MultiplayerManager
 var network: Network
 var args: Dictionary
 var port := 1909
-var is_ready := false
+
+var is_init := false
+var is_connected := false
+var is_ready: bool:
+	get:
+		return is_init and is_connected
 
 var connection_strategy: ConnectionStrategy
 
 func init(entity_manager: EntityManager):
 	connection_strategy.init(entity_manager)
 	add_child(connection_strategy)
-	is_ready = true
+	is_init = true
 	connection_strategy.init_connection(network, args)
 
 func set_connection(_connection_strategy: ConnectionStrategy, _network: Network, _args: Dictionary):
 	network = _network
 	connection_strategy = _connection_strategy
 	args = _args
+	is_connected = true
 
 func is_entity_authoritative(data) -> bool:
 	if not is_ready:

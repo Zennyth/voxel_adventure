@@ -145,7 +145,7 @@ noise = SubResource("FastNoiseLite_b05cg")
 generator = SubResource("VoxelInstanceGenerator_67kfa")
 mesh = ExtResource("10_65tx6")
 
-[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_kb1kt"]
+[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_n8f0k"]
 item_0 = SubResource("VoxelInstanceLibraryMultiMeshItem_roclw")
 item_1 = SubResource("VoxelInstanceLibraryMultiMeshItem_hptl7")
 item_2 = SubResource("VoxelInstanceLibraryMultiMeshItem_o135i")
@@ -173,7 +173,7 @@ run_stream_in_editor = false
 mesh_block_size = 32
 
 [node name="VoxelInstancerWorld" type="VoxelInstancerWorld" parent="VoxelTerrain"]
-library = SubResource("VoxelInstanceLibrary_kb1kt")
+library = SubResource("VoxelInstanceLibrary_n8f0k")
 
 [node name="EntityManager" type="Node3D" parent="."]
 script = ExtResource("8_g3enr")

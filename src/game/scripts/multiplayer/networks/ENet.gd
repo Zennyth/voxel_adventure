@@ -12,5 +12,5 @@ func create_client(args: Dictionary):
 	super.create_client(args)
 
 func create_server(args: Dictionary):
-	network.create_server(args[CommandLineArguments.ENET_PORT], args[CommandLineArguments.MAX_PLAYERS])
+	network.create_server(args[CommandLineArguments.ENET_PORT].to_int(), args[CommandLineArguments.MAX_PLAYERS])
 	super.create_server(args)

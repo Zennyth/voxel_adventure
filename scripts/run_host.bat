@@ -1,1 +1,1 @@
-C:\Users\mathi\Desktop\godot\bin\godot.windows.opt.tools.64 --path ..\src\game --host
+C:\Users\pc\Desktop\Dev\Perso\Games\Voxel\godot\bin\godot.windows.opt.tools.x86_64 --path ..\src\game --host --enet --port 10000
