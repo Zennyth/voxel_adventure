@@ -597,12 +597,12 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Database="*res://scripts/databases/database_manager.gd"
-Debug="*res://scripts/autoload/debug.gd"
 EventBus="*res://scripts/autoload/event_bus.gd"
-Game="*res://scripts/autoload/game_manager.gd"
-Launch="*res://scripts/autoload/launch.gd"
 CommandLineArguments="*res://scripts/autoload/command_arguments.gd"
+Launch="*res://scripts/autoload/launch.gd"
+Debug="*res://scripts/autoload/debug.gd"
+Database="*res://scripts/databases/database_manager.gd"
+Game="*res://scripts/autoload/game_manager.gd"
 
 [editor_plugins]
 

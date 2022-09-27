@@ -13,4 +13,7 @@ static func get_by_arguments() -> ConnectionStrategy:
 	if CommandLineArguments.JOIN_GAME in arguments:
 		return ClientConnectionStrategy.new()
 	
+	if CommandLineArguments.HOST in arguments:
+		return HostConnectionStrategy.new()
+	
 	return null

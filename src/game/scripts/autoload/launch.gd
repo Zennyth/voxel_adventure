@@ -10,9 +10,11 @@ var loaded_character: DataManager
 
 var screen_command_manager := CommandManager.new()
 
-#func _init():
-#	network = NetworkFactory.get_by_arguments()
-#	connection_strategy = ConnectionStrategyFactory.get_by_arguments()
+func _ready():
+	connection_strategy = ConnectionStrategyFactory.get_by_arguments()
+	network = NetworkFactory.get_by_arguments()
+	
+	EventBus._multipayer_setup.emit(connection_strategy, network)
 
 	# MainMenu ?= connection_strategy is not null at init
 	# CharacterPicker ?= connection_strategy.need_loaded_character()

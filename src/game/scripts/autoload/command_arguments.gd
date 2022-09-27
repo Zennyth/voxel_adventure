@@ -1,27 +1,25 @@
 extends Node
 # class_name CommandLineArguments
 
-const MAX_PLAYERS = "max_players"
+const _SEPARATORS 			:= ["--", "+"]
 
-const SERVER = "server"
-const JOIN_GAME = "join"
+const MAX_PLAYERS 			= "max_players"
 
-const ENET = "enet"
-const ENET_IP = "ip"
-const ENET_PORT = "port"
+const SERVER 				= "server"
+const JOIN_GAME 			= "join"
+const HOST 					= "host"
 
-const STEAM = "steam"
-const STEAM_LOBBY_ID = "lobby_id"
-const STEAM_LOBBY_TYPE = "lobby_type"
+const ENET 					= "enet"
+const ENET_IP 				= "ip"
+const ENET_PORT 			= "port"
+
+const STEAM_CONNECT_LOBBY 	= "connect_lobby"
 
 
 func get_arguments() -> Dictionary:
 	return _arguments
 
 var _arguments: Dictionary = {}
-
-const _SEPARATOR = "--"
-const _DEFINITION = "="
 
 func _init():
 	_parse_arguments()
@@ -31,12 +29,25 @@ func _parse_arguments():
 	
 	for i in len(arguments):
 		var argument = arguments[i]
+		var separator = _find_separator(argument)
 		
-		if argument == "+connect_lobby":
-			_arguments[JOIN_GAME] = arguments[i+1].to_int()
-		
-		if argument.find(_DEFINITION) < 0:
+		if separator == null:
 			continue
+			
+		var key := argument.lstrip(separator)
 		
-		var key_value = argument.split(_DEFINITION)
-		_arguments[key_value[0].lstrip(_SEPARATOR)] = key_value[1]
+		if len(arguments) > i + 1 and _find_separator(arguments[i+1]) == null:
+			_arguments[key] = arguments[i+1]
+		else:
+			_arguments[key] = true
+	
+	if MAX_PLAYERS not in _arguments:
+		_arguments[MAX_PLAYERS] = 4
+
+
+func _find_separator(text: String):
+	for separator in _SEPARATORS:
+		if text.find(separator) >= 0:
+			return separator
+	
+	return null
