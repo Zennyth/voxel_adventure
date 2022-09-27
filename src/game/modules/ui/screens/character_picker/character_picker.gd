@@ -5,5 +5,5 @@ extends SequenceMenu
 func skip_condition() -> bool:
 	return Launch.connection_strategy != null
 
-func logical_next_step() -> PackedScene:
+func logical_next_screen() -> PackedScene:
   return connection_strategy_picker

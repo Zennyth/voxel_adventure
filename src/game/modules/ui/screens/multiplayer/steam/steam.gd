@@ -15,7 +15,7 @@ func _on_create_lobby_pressed():
 			'max_players': 4
 		}
 	)
-	next_step(world)
+	next_screen(world)
 
 func _on_join_lobby_pressed():
 	var connection_strategy := ClientConnectionStrategy.new()
@@ -26,4 +26,4 @@ func _on_join_lobby_pressed():
 			'lobby_id': join_lobby_input.text.to_int(),
 		}
 	)
-	next_step(world)
+	next_screen(world)

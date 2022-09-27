@@ -8,14 +8,14 @@ extends SequenceMenu
 func skip_condition() -> bool:
 	return Launch.connection_strategy != null
 
-func logical_next_step() -> PackedScene:
+func logical_next_screen() -> PackedScene:
 	return play
 
 func _on_play_pressed():
-	next_step(play)
+	next_screen(play)
 
 func _on_options_pressed():
-	next_step(options)
+	next_screen(options)
 
 func _on_credits_pressed():
-	next_step(credits)
+	next_screen(credits)
