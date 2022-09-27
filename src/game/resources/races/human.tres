@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://bwatxo1yie0bi" path="res://resources/items/equipments/cosmetics/human_eyes_1.tres" id="1_ajk2t"]
 [ext_resource type="Resource" path="res://resources/items/equipments/cosmetics/human_face_1.tres" id="2_68ymu"]
 [ext_resource type="Resource" path="res://resources/items/equipments/cosmetics/human_hair_1.tres" id="3_ncd5a"]
-[ext_resource type="Resource" path="res://resources/items/equipments/cosmetics/human_hair_2.tres" id="4_istr2"]
+[ext_resource type="Resource" uid="uid://co2vn1ft4wsxe" path="res://resources/items/equipments/cosmetics/human_hair_2.tres" id="4_istr2"]
 [ext_resource type="Resource" path="res://resources/items/equipments/cosmetics/human_hand_1.tres" id="5_8q8ay"]
 
 [resource]

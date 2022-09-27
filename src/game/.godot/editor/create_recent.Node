@@ -1,10 +1,11 @@
+Button
+CanvasLayer
 LinkButton
 Label
 VBoxContainer
 HBoxContainer
 GridContainer
 TextEdit
-Button
 BaseButton
 Node3D
 AnimationTree

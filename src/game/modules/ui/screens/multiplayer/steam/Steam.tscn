@@ -1,18 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://be2na68dlty5y"]
+[gd_scene load_steps=5 format=3 uid="uid://be2na68dlty5y"]
 
-[ext_resource type="PackedScene" uid="uid://drptbuna7w3lf" path="res://modules/ui/screens/SequenceScreen.tscn" id="1_fvyax"]
+[ext_resource type="Theme" uid="uid://byewe1uxqyop1" path="res://modules/ui/theme.tres" id="1_vwxf2"]
 [ext_resource type="Script" path="res://modules/ui/screens/multiplayer/steam/steam.gd" id="1_wlqpr"]
 [ext_resource type="PackedScene" uid="uid://djm1jggm80cl2" path="res://scenes/terrain/test.tscn" id="3_36mrl"]
+[ext_resource type="Script" path="res://modules/ui/components/link_button/undo_linked_button.gd" id="4_ocopw"]
 
-[node name="SquenceScreen" instance=ExtResource("1_fvyax")]
+[node name="SquenceScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vwxf2")
 script = ExtResource("1_wlqpr")
 world = ExtResource("3_36mrl")
 
-[node name="Previous" parent="." index="0"]
-offset_top = 0.0
-offset_bottom = 31.0
+[node name="Previous" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Previous"
+script = ExtResource("4_ocopw")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." index="1"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -25,35 +37,40 @@ offset_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PrivateServer" type="Button" parent="VBoxContainer" index="0"]
+[node name="PrivateServer" type="Button" parent="VBoxContainer"]
 texture_filter = 1
+layout_mode = 2
 offset_right = 221.0
 offset_bottom = 20.0
 disabled = true
 text = "Join private server
 "
 
-[node name="CreateLobby" type="Button" parent="VBoxContainer" index="1"]
+[node name="CreateLobby" type="Button" parent="VBoxContainer"]
 texture_filter = 1
+layout_mode = 2
 offset_top = 24.0
 offset_right = 221.0
 offset_bottom = 44.0
 text = "Create a lobby (via Steam)
 "
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer" index="2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
 offset_top = 48.0
 offset_right = 221.0
 offset_bottom = 107.0
 
-[node name="JoinLobbyInput" type="TextEdit" parent="VBoxContainer/VBoxContainer" index="0"]
+[node name="JoinLobbyInput" type="TextEdit" parent="VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2i(0, 35)
+layout_mode = 2
 offset_right = 221.0
 offset_bottom = 35.0
 placeholder_text = "Enter lobby id"
 
-[node name="JoinLobby" type="Button" parent="VBoxContainer/VBoxContainer" index="1"]
+[node name="JoinLobby" type="Button" parent="VBoxContainer/VBoxContainer"]
 texture_filter = 1
+layout_mode = 2
 offset_top = 39.0
 offset_right = 221.0
 offset_bottom = 59.0

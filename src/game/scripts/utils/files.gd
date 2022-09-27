@@ -27,7 +27,8 @@ static func _add_dir_contents(dir: DirAccess, files: Array, directories: Array):
 			_add_dir_contents(subDir, files, directories)
 		
 		else:
-			files.append(path)
+			# TODO: remove later
+			files.append(path.replace('.remap', ''))
 
 		file_name = dir.get_next()
 

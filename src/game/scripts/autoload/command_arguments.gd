@@ -6,7 +6,7 @@ const _SEPARATORS 			:= ["--", "+"]
 const MAX_PLAYERS 			= "max_players"
 
 const SERVER 				= "server"
-const JOIN_GAME 			= "join"
+const JOIN_GAME 			= "connect_lobby"
 const HOST 					= "host"
 
 const ENET 					= "enet"
@@ -14,6 +14,7 @@ const ENET_IP 				= "ip"
 const ENET_PORT 			= "port"
 
 const STEAM_CONNECT_LOBBY 	= "connect_lobby"
+const STEAM_LOBBY_TYPE		= "lobby_type"
 
 
 func get_arguments() -> Dictionary:

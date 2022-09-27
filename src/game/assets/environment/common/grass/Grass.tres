@@ -1,15 +1,15 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://q7umrrbjsvsc"]
 
 [ext_resource type="Shader" path="res://scripts/environment/wind.gdshader" id="1_i1o8n"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_i1o8n")
-shader_param/character_position = null
-shader_param/character_push_strength = 1.0
-shader_param/character_radius = 3.0
-shader_param/wind_horizontal_direction = Vector2(1, 0.5)
-shader_param/wind_speed = 0.2
-shader_param/wind_strength = 2.0
-shader_param/wind_texture_tile_size = 20.0
-shader_param/wind_vertical_strength = 0.3
+shader_parameter/character_position = null
+shader_parameter/character_push_strength = 1.0
+shader_parameter/character_radius = 3.0
+shader_parameter/wind_horizontal_direction = Vector2(1, 0.5)
+shader_parameter/wind_speed = 0.2
+shader_parameter/wind_strength = 2.0
+shader_parameter/wind_texture_tile_size = 20.0
+shader_parameter/wind_vertical_strength = 0.3

@@ -9,7 +9,7 @@ func _init():
 	Steam.lobby_created.connect(_lobby_created)
 
 func create_client(args: Dictionary):
-	network.create_client(args[CommandLineArguments.STEAM_LOBBY_ID])
+	network.create_client(args[CommandLineArguments.STEAM_CONNECT_LOBBY].to_int())
 	super.create_client(args)
 
 func create_server(args: Dictionary):

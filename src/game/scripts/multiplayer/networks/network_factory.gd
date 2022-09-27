@@ -10,7 +10,7 @@ static func get_by_arguments() -> Network:
 	if CommandLineArguments.ENET in arguments:
 		return ENetNetwork.new()
 	
-	if CommandLineArguments.STEAM in arguments:
+	if CommandLineArguments.STEAM_CONNECT_LOBBY in arguments:
 		return SteamNetwork.new()
 	
 	return null

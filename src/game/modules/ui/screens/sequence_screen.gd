@@ -1,11 +1,6 @@
 extends Control
 class_name SequenceMenu
 
-@onready var Previous: Button = $Previous
-
-func _on_previous_pressed():
-	previous_screen()
-
 
 var is_previous: bool:
 	get:
@@ -19,9 +14,6 @@ var skip: bool:
 func _init():
 	if !is_previous and skip:
 		next_screen(logical_next_screen())
-
-func _ready():
-	Previous.visible = Launch.screen_command_manager.has_undo
 
 func next_screen(scene: PackedScene):
 	Launch.screen_command_manager.execute(RedirectSceneCommand.new(self, scene))

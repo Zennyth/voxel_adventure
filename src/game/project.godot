@@ -89,6 +89,16 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/multiplayer/connection_strategies/clock_synchronizer.gd"
 }, {
+"base": "RefCounted",
+"class": &"Command",
+"language": &"GDScript",
+"path": "res://modules/utils/commands/command.gd"
+}, {
+"base": "RefCounted",
+"class": &"CommandManager",
+"language": &"GDScript",
+"path": "res://modules/utils/commands/command_manager.gd"
+}, {
 "base": "Stateful",
 "class": &"Component",
 "language": &"GDScript",
@@ -319,6 +329,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://addons/voxel-core/classes/reader.gd"
 }, {
+"base": "Command",
+"class": &"RedirectSceneCommand",
+"language": &"GDScript",
+"path": "res://modules/ui/screens/redirect_scene_command.gd"
+}, {
 "base": "Object",
 "class": &"ResourceDatabase",
 "language": &"GDScript",
@@ -506,6 +521,8 @@ _global_script_class_icons={
 "ClassCarouselButton": "",
 "ClientConnectionStrategy": "",
 "ClockSynchronizer": "",
+"Command": "",
+"CommandManager": "",
 "Component": "",
 "ConnectionStrategy": "",
 "ConnectionStrategyFactory": "",
@@ -552,6 +569,7 @@ _global_script_class_icons={
 "RaceCarouselButton": "",
 "RandomUtils": "",
 "Reader": "",
+"RedirectSceneCommand": "",
 "ResourceDatabase": "",
 "SaveManager": "",
 "SequenceMenu": "",
