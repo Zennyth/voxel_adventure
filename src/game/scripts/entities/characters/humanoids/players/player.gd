@@ -13,10 +13,3 @@ func _ready():
 		return
 	
 	EventBus._player_initialized.emit(self)
-
-
-func _process(delta):
-	if Game.Terrain == null:
-		return
-	
-	Debug.update_debug_property(DebugProperty.DebugPropertyKey.BIOME, (Game.Terrain.generator as VoxelGeneratorWorld).get_biome_map().get_biome_by_position(Vector2(character.position.x, character.position.z)).biome_name)

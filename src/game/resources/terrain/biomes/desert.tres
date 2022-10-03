@@ -1,4 +1,6 @@
-[gd_resource type="Biome" load_steps=10 format=3 uid="uid://bv2sjrcloqddy"]
+[gd_resource type="Biome" load_steps=14 format=3 uid="uid://bv2sjrcloqddy"]
+
+[ext_resource type="PackedScene" uid="uid://c1ramtaeul4qv" path="res://scenes/terrain/biomes/shared/misc/UpwardAirFlow.tscn" id="1_7xe8i"]
 
 [sub_resource type="Curve" id="Curve_ibab4"]
 _data = [Vector2(0, 0.109091), 0.0, 0.0, 0, 0, Vector2(1, 0.318182), 0.0, 0.0, 0, 0]
@@ -13,7 +15,21 @@ weight = 0.0001
 [sub_resource type="HeightFilter" id="HeightFilter_inhky"]
 curve = SubResource("Curve_layv6")
 
-[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_8kw1m"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6j6uc"]
+noise_type = 4
+seed = 1
+frequency = 0.001
+
+[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_vj5oy"]
+density = 0.001
+noise = SubResource("FastNoiseLite_6j6uc")
+
+[sub_resource type="VoxelInstanceLibrarySceneItem" id="VoxelInstanceLibrarySceneItem_8whbj"]
+generator = SubResource("VoxelInstanceGenerator_vj5oy")
+scene = ExtResource("1_7xe8i")
+
+[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_7fve5"]
+item_1 = SubResource("VoxelInstanceLibrarySceneItem_8whbj")
 
 [sub_resource type="Curve" id="Curve_w4h6w"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.336364), 0.0, 0.0, 0, 0]
@@ -33,7 +49,7 @@ colors = PackedColorArray(0, 0, 0, 1, 0.570312, 0.570312, 0.570312, 1, 0.382812,
 
 [resource]
 biome_name = "Desert"
-library = SubResource("VoxelInstanceLibrary_8kw1m")
+library = SubResource("VoxelInstanceLibrary_7fve5")
 continentalness = SubResource("HeightFilter_pbb03")
 erosion = SubResource("HeightFilter_inhky")
 peaks_and_valleys = SubResource("HeightFilter_qym2r")

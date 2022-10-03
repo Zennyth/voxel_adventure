@@ -1,0 +1,115 @@
+[gd_scene load_steps=19 format=3 uid="uid://d1nbhx07urqoe"]
+
+[ext_resource type="Shader" path="res://scripts/environment/sky.gdshader" id="1_7ijiw"]
+[ext_resource type="Biome" uid="uid://dd2lc421omhbw" path="res://resources/terrain/biomes/seasonal_forest.tres" id="2_p0tgo"]
+[ext_resource type="Biome" uid="uid://b5crvssga2pre" path="res://resources/terrain/biomes/temperate_rainforest.tres" id="3_phb2e"]
+[ext_resource type="Biome" uid="uid://ddalox82x3l3r" path="res://resources/terrain/biomes/tundra.tres" id="4_cyj8w"]
+[ext_resource type="Biome" uid="uid://bv2sjrcloqddy" path="res://resources/terrain/biomes/desert.tres" id="5_x17fk"]
+[ext_resource type="Material" uid="uid://cdt78n65d6g4i" path="res://resources/environment/water_global.tres" id="6_f8gae"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a6e0a"]
+shader = ExtResource("1_7ijiw")
+shader_parameter/_AtmosDarkness = 0.936
+shader_parameter/_AtmosDayTint = Color(1, 1, 1, 1)
+shader_parameter/_AtmosHorizonTint = Color(0.980392, 0.635294, 0.462745, 1)
+shader_parameter/_AtmosLevelParams = null
+shader_parameter/_AtmosMie = 0.01
+shader_parameter/_AtmosMieAnisotropy = 0.8
+shader_parameter/_AtmosMieIntensity = 1.0
+shader_parameter/_AtmosMieTint = Color(1, 1, 1, 1)
+shader_parameter/_AtmosNightTint = Color(0.02, 0.03, 0.04, 1)
+shader_parameter/_AtmosSunIntensity = 30.0
+shader_parameter/_AtmosThickness = 1.0
+shader_parameter/_ContrastLevel = 0.4
+shader_parameter/_Exposure = 1.3
+shader_parameter/_GroundColor = Color(0.3, 0.3, 0.3, 1)
+shader_parameter/_SunDiskIntensity = 1.3
+shader_parameter/_SunDiskSize = 0.009
+shader_parameter/_SunDiskTint = Color(0.99, 0.49, 0.22, 1)
+shader_parameter/_Tonemap = 0.0
+
+[sub_resource type="Sky" id="Sky_tq1nc"]
+sky_material = SubResource("ShaderMaterial_a6e0a")
+
+[sub_resource type="Environment" id="Environment_5th6o"]
+background_mode = 2
+background_color = Color(0.352941, 0.643137, 0.847059, 1)
+sky = SubResource("Sky_tq1nc")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 3
+tonemap_white = 3.74
+ssr_fade_out = 1.27456
+ssao_enabled = true
+ssao_radius = 4.3
+ssil_radius = 13.8
+ssil_intensity = 0.5
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+fog_light_color = Color(0, 0.423529, 0.701961, 1)
+fog_light_energy = 0.9
+fog_sun_scatter = 0.88
+fog_height_density = 2.0
+volumetric_fog_detail_spread = 0.5
+
+[sub_resource type="VoxelStreamRegionFiles" id="VoxelStreamRegionFiles_dal70"]
+directory = "res://save/terrain/regions"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_n8vxe"]
+frequency = 0.001
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pfgw4"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q5o7r"]
+seed = 1
+frequency = 0.001
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_url8d"]
+seed = 1
+frequency = 0.001
+fractal_type = 2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fwsue"]
+seed = 2
+frequency = 0.001
+fractal_octaves = 1
+fractal_lacunarity = 1.0
+fractal_gain = 0.1
+
+[sub_resource type="VoxelGeneratorWorld" id="VoxelGeneratorWorld_887k1"]
+biomes = [ExtResource("2_p0tgo"), ExtResource("3_phb2e"), ExtResource("4_cyj8w"), ExtResource("5_x17fk")]
+temperature_noise = SubResource("FastNoiseLite_fwsue")
+moisture_noise = SubResource("FastNoiseLite_q5o7r")
+height = 250
+continentalness_noise = SubResource("FastNoiseLite_n8vxe")
+peaks_and_valleys_noise = SubResource("FastNoiseLite_url8d")
+erosion_noise = SubResource("FastNoiseLite_pfgw4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k1ofg"]
+
+[sub_resource type="VoxelMesherCubes" id="VoxelMesherCubes_mb0ii"]
+greedy_meshing_enabled = false
+opaque_material = SubResource("StandardMaterial3D_k1ofg")
+transparent_material = ExtResource("6_f8gae")
+
+[node name="BasicTerrain" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5th6o")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.17901, -0.966659, -0.1831, 0.322252, -0.233449, 0.917418, -0.929575, 0.105223, 0.353297, 0, 10, 0)
+light_color = Color(0.960784, 1, 0.643137, 1)
+light_energy = 0.88
+light_indirect_energy = 0.637
+shadow_enabled = true
+shadow_blur = 0.614
+
+[node name="VoxelTerrain" type="VoxelTerrain" parent="."]
+stream = SubResource("VoxelStreamRegionFiles_dal70")
+generator = SubResource("VoxelGeneratorWorld_887k1")
+mesher = SubResource("VoxelMesherCubes_mb0ii")
+max_view_distance = 256
+mesh_block_size = 32
+
+[node name="VoxelInstancerWorld" type="VoxelInstancerWorld" parent="VoxelTerrain"]

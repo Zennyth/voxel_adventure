@@ -6,7 +6,7 @@ class_name UnstableWorldStateBuffer
 ###
 var last_world_state_timestamp = 0
 var world_state_buffer = []
-const interpolation_offset = 50
+const interpolation_offset = 100
 
 func _physics_process(_delta: float) -> void:
 	handle_world_state_buffer()
@@ -59,9 +59,9 @@ func handle_world_state_buffer():
 					entity_manager.update_entity_unstable_state(entity_id, duplicate_state)
 
 func update_world_state_buffer(world_state: Dictionary) -> void:
-	# if world_state[STATE_KEYS.TIME] > last_world_state_timestamp:
-	# 	last_world_state_timestamp = world_state[STATE_KEYS.TIME]
-	# 	world_state_buffer.append(world_state)
-	for entity_id in world_state[STATE_KEYS.ENTITIES].keys():
-		if entity_manager.has_entity(entity_id):
-			entity_manager.update_entity_unstable_state(entity_id, world_state[STATE_KEYS.ENTITIES][entity_id])
+	if world_state[STATE_KEYS.TIME] > last_world_state_timestamp:
+		last_world_state_timestamp = world_state[STATE_KEYS.TIME]
+		world_state_buffer.append(world_state)
+#	for entity_id in world_state[STATE_KEYS.ENTITIES].keys():
+#		if entity_manager.has_entity(entity_id):
+#			entity_manager.update_entity_unstable_state(entity_id, world_state[STATE_KEYS.ENTITIES][entity_id])

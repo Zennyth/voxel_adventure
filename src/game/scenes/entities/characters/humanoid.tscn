@@ -24,9 +24,9 @@ script = ExtResource("7_5sdow")
 
 [node name="StateManager" type="Node3D" parent="."]
 script = ExtResource("1_2hpls")
+character_controller_path = NodePath("../Controller")
 starting_state = NodePath("IdleState")
 debug = true
-character_controller_path = NodePath("../Controller")
 
 [node name="IdleState" type="Node" parent="StateManager"]
 script = ExtResource("2_aiskc")
@@ -56,10 +56,10 @@ hang_gliding_node = NodePath("../HangGlidingState")
 
 [node name="HangGlidingState" type="Node" parent="StateManager"]
 script = ExtResource("8_s5fke")
+fall_node = NodePath("../FallState")
 idle_node = NodePath("../IdleState")
 walk_node = NodePath("../WalkState")
 hang_gliding_node = NodePath(".")
-fall_node = NodePath("../FallState")
 
 [node name="Debug" type="Label3D" parent="StateManager"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.62127, 0)

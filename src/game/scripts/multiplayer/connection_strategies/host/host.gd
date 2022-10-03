@@ -6,7 +6,7 @@ func _init():
 
 func init_connection(network: Network, args: Dictionary):
 	super.init_connection(network, args)
-	spawn_player()
+	network._connection_succeeded.connect(spawn_player)
 
 func is_entity_authoritative(entity_state: Dictionary) -> bool:
 	return entity_state[WorldState.STATE_KEYS.SCENE] != "player" \

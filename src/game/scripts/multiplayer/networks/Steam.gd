@@ -36,4 +36,5 @@ func _initialize_steam() -> void:
 		get_tree().quit()
 
 func _lobby_created(_connect_id: int, lobby_id: int):
+	_connection_succeeded.emit()
 	print_debug(lobby_id)

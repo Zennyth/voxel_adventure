@@ -10,8 +10,8 @@ func _on_create_lobby_pressed():
 		connection_strategy, 
 		network, 
 		{
-			'lobby_type': 1,
-			'max_players': 4
+			CommandLineArguments.STEAM_LOBBY_TYPE: 1,
+			CommandLineArguments.MAX_PLAYERS: 4
 		}
 	)
 	next_screen(world)
@@ -22,7 +22,7 @@ func _on_join_lobby_pressed():
 		connection_strategy, 
 		network,
 		{
-			'lobby_id': join_lobby_input.text.to_int(),
+			CommandLineArguments.JOIN_GAME: join_lobby_input.text,
 		}
 	)
 	next_screen(world)

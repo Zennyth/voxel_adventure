@@ -7,6 +7,7 @@ func _init(path_value: String, key_, owner_: Stateful, is_stable_: bool = true, 
 	super._init(key_, owner_, is_stable_, options)
 
 	_path_value = path_value
+	
 	set_value(get_value())
 
 

@@ -1,6 +1,8 @@
 extends Node
 class_name Network
 
+var _is_connected := false
+
 ###
 # SIGNALS DEFINITION
 ###
@@ -20,6 +22,7 @@ signal _global_requests
 # SIGNALS RESPONSES
 ###
 func connection_succeeded():
+	_is_connected = true
 	_connection_succeeded.emit()
 func connection_failed():
 	_connection_failed.emit()
@@ -50,6 +53,9 @@ func create_server(_args: Dictionary):
 	multiplayer.peer_disconnected.connect(peer_disconnected)
 
 func send(destination: int, channel: String, data):
+	if not _is_connected:
+		return
+	
 	rpc_id(destination, channel, data)
 
 func get_sender_id() -> int:
