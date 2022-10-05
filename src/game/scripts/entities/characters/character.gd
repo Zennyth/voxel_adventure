@@ -70,7 +70,9 @@ func move(direction, delta: float, gravity: float = -1.0, speed: float = -1.0):
 	else:
 		character.velocity.x = move_toward(character.velocity.x, 0, speed)
 		character.velocity.z = move_toward(character.velocity.z, 0, speed)
-		
+	
+	character.Body.rotation.x = lerpf(character.Body.rotation.x, clampf(Vector2(character.velocity.x, character.velocity.z).length(), 0, 0.2), delta * 9.8)
+	
 	update()
 
 func update():

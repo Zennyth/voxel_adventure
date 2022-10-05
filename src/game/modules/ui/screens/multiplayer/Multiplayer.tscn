@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dviqi31bw24v6"]
+[gd_scene load_steps=7 format=3 uid="uid://dviqi31bw24v6"]
 
 [ext_resource type="Script" path="res://modules/ui/components/link_button/undo_linked_button.gd" id="1_af70i"]
 [ext_resource type="Script" path="res://modules/ui/components/link_button/link_button.gd" id="1_i74x8"]
 [ext_resource type="Theme" uid="uid://byewe1uxqyop1" path="res://modules/ui/theme.tres" id="1_verik"]
 [ext_resource type="PackedScene" uid="uid://be2na68dlty5y" path="res://modules/ui/screens/multiplayer/steam/Steam.tscn" id="3_7ykck"]
+[ext_resource type="Script" path="res://modules/ui/screens/multiplayer/solo/solo_link_button.gd" id="5_dcdwm"]
+[ext_resource type="PackedScene" uid="uid://djm1jggm80cl2" path="res://scenes/terrain/test.tscn" id="6_2v80h"]
 
 [node name="Multiplayer" type="CanvasLayer"]
 
@@ -34,6 +36,7 @@ alignment = 1
 
 [node name="Steam" type="Button" parent="VBoxContainer"]
 texture_filter = 1
+layout_mode = 2
 offset_top = 56.0
 offset_right = 221.0
 offset_bottom = 76.0
@@ -45,6 +48,7 @@ to = ExtResource("3_7ykck")
 
 [node name="Enet" type="Button" parent="VBoxContainer"]
 texture_filter = 1
+layout_mode = 2
 offset_top = 80.0
 offset_right = 221.0
 offset_bottom = 100.0
@@ -55,10 +59,12 @@ script = ExtResource("1_i74x8")
 
 [node name="Solo" type="Button" parent="VBoxContainer"]
 texture_filter = 1
+layout_mode = 2
 offset_top = 104.0
 offset_right = 221.0
 offset_bottom = 124.0
 theme = ExtResource("1_verik")
 text = "Play solo
 "
-script = ExtResource("1_i74x8")
+script = ExtResource("5_dcdwm")
+to = ExtResource("6_2v80h")

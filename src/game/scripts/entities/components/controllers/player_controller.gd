@@ -14,9 +14,11 @@ class_name PlayerController
 ###
 func get_direction() -> Vector3:
 	var input_dir := Input.get_vector("controls_left", "controls_right", "controls_forward", "controls_backward")
-	if input_dir.length_squared() > 1.0: input_dir = input_dir.normalized()
 	
-	var direction = (player.transform.basis * Vector3(input_dir.x, 0, input_dir.y))
+	if input_dir.length_squared() > 1.0: 
+		input_dir = input_dir.normalized()
+	
+	var direction = (Vector3(input_dir.x, 0, input_dir.y))
 	direction = direction.rotated(Vector3.UP, player.springArmPlayer.rotation.y)
 	
 	return direction

@@ -1,4 +1,5 @@
 extends Button
+class_name CustomLinkButton
 
 signal _to_changed
 

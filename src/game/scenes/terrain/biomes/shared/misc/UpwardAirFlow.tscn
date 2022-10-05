@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1ramtaeul4qv"]
+[gd_scene load_steps=7 format=3 uid="uid://c1ramtaeul4qv"]
 
 [ext_resource type="Script" path="res://scenes/terrain/biomes/shared/misc/upward_air_flow.gd" id="1_6wreb"]
 
@@ -9,7 +9,25 @@ vertex_color_use_as_albedo = true
 material = SubResource("StandardMaterial3D_5vvb5")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_rek8s"]
-height = 5.32826
+height = 8.05905
+radius = 1.7703
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xpmt8"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 3.0
+emission_ring_inner_radius = 0.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 15.0
+scale_min = 0.8
+scale_max = 1.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_pbqg7"]
+size = Vector3(0.1, 0.5, 0.1)
 
 [node name="UpwardAitFlow" type="Node3D"]
 script = ExtResource("1_6wreb")
@@ -21,5 +39,11 @@ mesh = SubResource("CylinderMesh_06ywm")
 [node name="AirFlux" type="Area3D" parent="."]
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="AirFlux"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.69494, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25769, 0)
 shape = SubResource("CylinderShape3D_rek8s")
+
+[node name="GpuParticles3d" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.782312, 0)
+visibility_aabb = AABB(-1.79316, -4, -1.80892, 3.58632, 8, 3.61785)
+process_material = SubResource("ParticleProcessMaterial_xpmt8")
+draw_pass_1 = SubResource("BoxMesh_pbqg7")

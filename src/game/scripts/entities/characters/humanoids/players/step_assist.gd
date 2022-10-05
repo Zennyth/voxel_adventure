@@ -3,7 +3,7 @@ extends Node3D
 @onready var character_entity: Character = get_parent()
 @onready var voxel_tool: VoxelTool = Game.Terrain.get_voxel_tool()
 
-func _process(_delta):	
+func _physics_process(_delta):	
 	if not voxel_tool:
 		return
 

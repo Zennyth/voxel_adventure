@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d1nbhx07urqoe"]
+[gd_scene load_steps=36 format=3 uid="uid://d1nbhx07urqoe"]
 
 [ext_resource type="Shader" path="res://scripts/environment/sky.gdshader" id="1_7ijiw"]
 [ext_resource type="Biome" uid="uid://dd2lc421omhbw" path="res://resources/terrain/biomes/seasonal_forest.tres" id="2_p0tgo"]
@@ -6,6 +6,10 @@
 [ext_resource type="Biome" uid="uid://ddalox82x3l3r" path="res://resources/terrain/biomes/tundra.tres" id="4_cyj8w"]
 [ext_resource type="Biome" uid="uid://bv2sjrcloqddy" path="res://resources/terrain/biomes/desert.tres" id="5_x17fk"]
 [ext_resource type="Material" uid="uid://cdt78n65d6g4i" path="res://resources/environment/water_global.tres" id="6_f8gae"]
+[ext_resource type="ArrayMesh" uid="uid://do0xgigudrgal" path="res://assets/environment/common/trees/Treestump1.vox" id="7_lxgfp"]
+[ext_resource type="ArrayMesh" uid="uid://rtssipg20p1l" path="res://assets/environment/common/trees/Tree_Oak_L1.vox" id="8_pxmg4"]
+[ext_resource type="ArrayMesh" uid="uid://cpan4g7p41q8o" path="res://assets/environment/common/bush/Bush.vox" id="9_fkkpt"]
+[ext_resource type="PackedScene" uid="uid://c1ramtaeul4qv" path="res://scenes/terrain/biomes/shared/misc/UpwardAirFlow.tscn" id="10_dogkf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a6e0a"]
 shader = ExtResource("1_7ijiw")
@@ -92,6 +96,70 @@ greedy_meshing_enabled = false
 opaque_material = SubResource("StandardMaterial3D_k1ofg")
 transparent_material = ExtResource("6_f8gae")
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6ofba"]
+seed = 1
+frequency = 0.001
+
+[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_vf3og"]
+density = 0.001
+min_scale = 0.1
+max_scale = 0.1
+noise = SubResource("FastNoiseLite_6ofba")
+
+[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_roclw"]
+generator = SubResource("VoxelInstanceGenerator_vf3og")
+mesh = ExtResource("7_lxgfp")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7bo3u"]
+frequency = 0.001
+
+[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_31iiq"]
+density = 0.001
+min_scale = 0.1
+max_scale = 0.1
+noise = SubResource("FastNoiseLite_7bo3u")
+
+[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_hptl7"]
+generator = SubResource("VoxelInstanceGenerator_31iiq")
+mesh = ExtResource("8_pxmg4")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_b05cg"]
+frequency = 0.001
+fractal_type = 2
+
+[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_67kfa"]
+density = 0.001
+min_scale = 0.1
+max_scale = 0.1
+noise = SubResource("FastNoiseLite_b05cg")
+
+[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_o135i"]
+generator = SubResource("VoxelInstanceGenerator_67kfa")
+mesh = ExtResource("9_fkkpt")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6j6uc"]
+noise_type = 4
+seed = 1
+frequency = 0.001
+fractal_type = 2
+fractal_octaves = 1
+fractal_lacunarity = 0.0
+fractal_gain = 0.0
+
+[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_vj5oy"]
+density = 0.001
+noise = SubResource("FastNoiseLite_6j6uc")
+
+[sub_resource type="VoxelInstanceLibrarySceneItem" id="VoxelInstanceLibrarySceneItem_8whbj"]
+generator = SubResource("VoxelInstanceGenerator_vj5oy")
+scene = ExtResource("10_dogkf")
+
+[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_1eod4"]
+item_0 = SubResource("VoxelInstanceLibraryMultiMeshItem_roclw")
+item_1 = SubResource("VoxelInstanceLibraryMultiMeshItem_hptl7")
+item_2 = SubResource("VoxelInstanceLibraryMultiMeshItem_o135i")
+item_3 = SubResource("VoxelInstanceLibrarySceneItem_8whbj")
+
 [node name="BasicTerrain" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -113,3 +181,4 @@ max_view_distance = 256
 mesh_block_size = 32
 
 [node name="VoxelInstancerWorld" type="VoxelInstancerWorld" parent="VoxelTerrain"]
+library = SubResource("VoxelInstanceLibrary_1eod4")

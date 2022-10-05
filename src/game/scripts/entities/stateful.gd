@@ -28,7 +28,7 @@ func update_stable_state() -> void:
 
 
 func is_authoritative() -> bool:
-	return get_owner_id() == Game.multiplayer_manager.connection_strategy._network.get_id()
+	return get_owner_id() == Game.multiplayer_manager.get_id()
 
 func get_owner_id() -> int:
 	return -1

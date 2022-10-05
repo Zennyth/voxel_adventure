@@ -15,11 +15,10 @@ var connection_strategy: ConnectionStrategy
 
 func init(entity_manager: EntityManager):
 	connection_strategy.init(entity_manager)
-	add_child(connection_strategy)
 	is_init = true
 	connection_strategy.init_connection(network, args)
 
-func set_connection(_connection_strategy: ConnectionStrategy, _network: Network, _args: Dictionary):
+func set_connection(_connection_strategy: ConnectionStrategy, _network: Network, _args: Dictionary = {}):
 	network = _network
 	connection_strategy = _connection_strategy
 	args = _args
@@ -48,3 +47,6 @@ func update_entity_stable_state(entity_state: Dictionary) -> void:
 		return
 	
 	connection_strategy.update_entity_stable_state(entity_state)
+
+func get_id() -> int:
+	return connection_strategy.get_id()
